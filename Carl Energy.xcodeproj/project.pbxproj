@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9FA4A4BE191A95A300AE3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4BD191A95A300AE3551 /* Foundation.framework */; };
+		9FA4A4C0191A95A300AE3551 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4BF191A95A300AE3551 /* CoreGraphics.framework */; };
+		9FA4A4C2191A95A300AE3551 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4C1191A95A300AE3551 /* UIKit.framework */; };
+		9FA4A4C8191A95A300AE3551 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4C6191A95A300AE3551 /* InfoPlist.strings */; };
+		9FA4A4CA191A95A300AE3551 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4C9191A95A300AE3551 /* main.m */; };
+		9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4CD191A95A300AE3551 /* AppDelegate.m */; };
+		9FA4A4D1191A95A300AE3551 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4CF191A95A300AE3551 /* Main.storyboard */; };
+		9FA4A4D4191A95A300AE3551 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D3191A95A300AE3551 /* FirstViewController.m */; };
+		9FA4A4D7191A95A300AE3551 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D6191A95A300AE3551 /* SecondViewController.m */; };
+		9FA4A4D9191A95A300AE3551 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D8191A95A300AE3551 /* Images.xcassets */; };
+		9FA4A4E0191A95A300AE3551 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4DF191A95A300AE3551 /* XCTest.framework */; };
+		9FA4A4E1191A95A400AE3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4BD191A95A300AE3551 /* Foundation.framework */; };
+		9FA4A4E2191A95A400AE3551 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4C1191A95A300AE3551 /* UIKit.framework */; };
+		9FA4A4EA191A95A400AE3551 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4E8191A95A400AE3551 /* InfoPlist.strings */; };
+		9FA4A4EC191A95A400AE3551 /* Carl_EnergyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4EB191A95A400AE3551 /* Carl_EnergyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9FA4A4E3191A95A400AE3551 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FA4A4B2191A95A300AE3551 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FA4A4B9191A95A300AE3551;
+			remoteInfo = "Carl Energy";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9FA4A4BA191A95A300AE3551 /* Carl Energy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carl Energy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA4A4BD191A95A300AE3551 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9FA4A4BF191A95A300AE3551 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9FA4A4C1191A95A300AE3551 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9FA4A4C5191A95A300AE3551 /* Carl Energy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Carl Energy-Info.plist"; sourceTree = "<group>"; };
+		9FA4A4C7191A95A300AE3551 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FA4A4C9191A95A300AE3551 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9FA4A4CB191A95A300AE3551 /* Carl Energy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Carl Energy-Prefix.pch"; sourceTree = "<group>"; };
+		9FA4A4CC191A95A300AE3551 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9FA4A4CD191A95A300AE3551 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9FA4A4D0191A95A300AE3551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9FA4A4D2191A95A300AE3551 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		9FA4A4D3191A95A300AE3551 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		9FA4A4D5191A95A300AE3551 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		9FA4A4D6191A95A300AE3551 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		9FA4A4D8191A95A300AE3551 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9FA4A4DE191A95A300AE3551 /* Carl EnergyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Carl EnergyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA4A4DF191A95A300AE3551 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9FA4A4E7191A95A400AE3551 /* Carl EnergyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Carl EnergyTests-Info.plist"; sourceTree = "<group>"; };
+		9FA4A4E9191A95A400AE3551 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FA4A4EB191A95A400AE3551 /* Carl_EnergyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Carl_EnergyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FA4A4B7191A95A300AE3551 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA4A4C0191A95A300AE3551 /* CoreGraphics.framework in Frameworks */,
+				9FA4A4C2191A95A300AE3551 /* UIKit.framework in Frameworks */,
+				9FA4A4BE191A95A300AE3551 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA4A4DB191A95A300AE3551 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA4A4E0191A95A300AE3551 /* XCTest.framework in Frameworks */,
+				9FA4A4E2191A95A400AE3551 /* UIKit.framework in Frameworks */,
+				9FA4A4E1191A95A400AE3551 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9FA4A4B1191A95A300AE3551 = {
+			isa = PBXGroup;
+			children = (
+				9FA4A4C3191A95A300AE3551 /* Carl Energy */,
+				9FA4A4E5191A95A400AE3551 /* Carl EnergyTests */,
+				9FA4A4BC191A95A300AE3551 /* Frameworks */,
+				9FA4A4BB191A95A300AE3551 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FA4A4BB191A95A300AE3551 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4A4BA191A95A300AE3551 /* Carl Energy.app */,
+				9FA4A4DE191A95A300AE3551 /* Carl EnergyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FA4A4BC191A95A300AE3551 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4A4BD191A95A300AE3551 /* Foundation.framework */,
+				9FA4A4BF191A95A300AE3551 /* CoreGraphics.framework */,
+				9FA4A4C1191A95A300AE3551 /* UIKit.framework */,
+				9FA4A4DF191A95A300AE3551 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FA4A4C3191A95A300AE3551 /* Carl Energy */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4A4CC191A95A300AE3551 /* AppDelegate.h */,
+				9FA4A4CD191A95A300AE3551 /* AppDelegate.m */,
+				9FA4A4CF191A95A300AE3551 /* Main.storyboard */,
+				9FA4A4D2191A95A300AE3551 /* FirstViewController.h */,
+				9FA4A4D3191A95A300AE3551 /* FirstViewController.m */,
+				9FA4A4D5191A95A300AE3551 /* SecondViewController.h */,
+				9FA4A4D6191A95A300AE3551 /* SecondViewController.m */,
+				9FA4A4D8191A95A300AE3551 /* Images.xcassets */,
+				9FA4A4C4191A95A300AE3551 /* Supporting Files */,
+			);
+			path = "Carl Energy";
+			sourceTree = "<group>";
+		};
+		9FA4A4C4191A95A300AE3551 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4A4C5191A95A300AE3551 /* Carl Energy-Info.plist */,
+				9FA4A4C6191A95A300AE3551 /* InfoPlist.strings */,
+				9FA4A4C9191A95A300AE3551 /* main.m */,
+				9FA4A4CB191A95A300AE3551 /* Carl Energy-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9FA4A4E5191A95A400AE3551 /* Carl EnergyTests */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4A4EB191A95A400AE3551 /* Carl_EnergyTests.m */,
+				9FA4A4E6191A95A400AE3551 /* Supporting Files */,
+			);
+			path = "Carl EnergyTests";
+			sourceTree = "<group>";
+		};
+		9FA4A4E6191A95A400AE3551 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4A4E7191A95A400AE3551 /* Carl EnergyTests-Info.plist */,
+				9FA4A4E8191A95A400AE3551 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FA4A4B9191A95A300AE3551 /* Carl Energy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FA4A4EF191A95A400AE3551 /* Build configuration list for PBXNativeTarget "Carl Energy" */;
+			buildPhases = (
+				9FA4A4B6191A95A300AE3551 /* Sources */,
+				9FA4A4B7191A95A300AE3551 /* Frameworks */,
+				9FA4A4B8191A95A300AE3551 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Carl Energy";
+			productName = "Carl Energy";
+			productReference = 9FA4A4BA191A95A300AE3551 /* Carl Energy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9FA4A4DD191A95A300AE3551 /* Carl EnergyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FA4A4F2191A95A400AE3551 /* Build configuration list for PBXNativeTarget "Carl EnergyTests" */;
+			buildPhases = (
+				9FA4A4DA191A95A300AE3551 /* Sources */,
+				9FA4A4DB191A95A300AE3551 /* Frameworks */,
+				9FA4A4DC191A95A300AE3551 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9FA4A4E4191A95A400AE3551 /* PBXTargetDependency */,
+			);
+			name = "Carl EnergyTests";
+			productName = "Carl EnergyTests";
+			productReference = 9FA4A4DE191A95A300AE3551 /* Carl EnergyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FA4A4B2191A95A300AE3551 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Carleton College";
+				TargetAttributes = {
+					9FA4A4DD191A95A300AE3551 = {
+						TestTargetID = 9FA4A4B9191A95A300AE3551;
+					};
+				};
+			};
+			buildConfigurationList = 9FA4A4B5191A95A300AE3551 /* Build configuration list for PBXProject "Carl Energy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9FA4A4B1191A95A300AE3551;
+			productRefGroup = 9FA4A4BB191A95A300AE3551 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FA4A4B9191A95A300AE3551 /* Carl Energy */,
+				9FA4A4DD191A95A300AE3551 /* Carl EnergyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FA4A4B8191A95A300AE3551 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA4A4D9191A95A300AE3551 /* Images.xcassets in Resources */,
+				9FA4A4C8191A95A300AE3551 /* InfoPlist.strings in Resources */,
+				9FA4A4D1191A95A300AE3551 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA4A4DC191A95A300AE3551 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA4A4EA191A95A400AE3551 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FA4A4B6191A95A300AE3551 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA4A4D7191A95A300AE3551 /* SecondViewController.m in Sources */,
+				9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */,
+				9FA4A4D4191A95A300AE3551 /* FirstViewController.m in Sources */,
+				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9FA4A4DA191A95A300AE3551 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA4A4EC191A95A400AE3551 /* Carl_EnergyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9FA4A4E4191A95A400AE3551 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FA4A4B9191A95A300AE3551 /* Carl Energy */;
+			targetProxy = 9FA4A4E3191A95A400AE3551 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9FA4A4C6191A95A300AE3551 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FA4A4C7191A95A300AE3551 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9FA4A4CF191A95A300AE3551 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FA4A4D0191A95A300AE3551 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9FA4A4E8191A95A400AE3551 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FA4A4E9191A95A400AE3551 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9FA4A4ED191A95A400AE3551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9FA4A4EE191A95A400AE3551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9FA4A4F0191A95A400AE3551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
+				INFOPLIST_FILE = "Carl Energy/Carl Energy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9FA4A4F1191A95A400AE3551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
+				INFOPLIST_FILE = "Carl Energy/Carl Energy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9FA4A4F3191A95A400AE3551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Carl Energy.app/Carl Energy";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Carl EnergyTests/Carl EnergyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9FA4A4F4191A95A400AE3551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Carl Energy.app/Carl Energy";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
+				INFOPLIST_FILE = "Carl EnergyTests/Carl EnergyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FA4A4B5191A95A300AE3551 /* Build configuration list for PBXProject "Carl Energy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA4A4ED191A95A400AE3551 /* Debug */,
+				9FA4A4EE191A95A400AE3551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FA4A4EF191A95A400AE3551 /* Build configuration list for PBXNativeTarget "Carl Energy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA4A4F0191A95A400AE3551 /* Debug */,
+				9FA4A4F1191A95A400AE3551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9FA4A4F2191A95A400AE3551 /* Build configuration list for PBXNativeTarget "Carl EnergyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA4A4F3191A95A400AE3551 /* Debug */,
+				9FA4A4F4191A95A400AE3551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FA4A4B2191A95A300AE3551 /* Project object */;
+}

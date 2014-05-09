@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CEBuilding.h"
+#import "CEDataPoint.h"
 
 typedef enum {
     kResolutionHour,
@@ -39,6 +41,6 @@ typedef enum {
 
 
 - (void)retreiver:(CEDataRetriever *)retreiver gotBuildings:(NSArray *)buildings;
-- (void)retreiver:(CEDataRetriever *)retreiver gotUsage:(NSDictionary *)usage ofType:(UsageType)usageType forBuilding:(NSString *)building;
+- (void)retreiver:(CEDataRetriever *)retreiver gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(NSString *)building;
 
 @end

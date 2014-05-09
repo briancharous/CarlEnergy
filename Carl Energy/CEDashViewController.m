@@ -1,18 +1,18 @@
 //
-//  SecondViewController.m
+//  FirstViewController.m
 //  Carl Energy
 //
 //  Created by Brian Charous on 5/7/14.
 //  Copyright (c) 2014 Carleton College. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "CEDashViewController.h"
 
-@interface SecondViewController ()
+@interface CEDashViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation CEDashViewController
 
 - (void)viewDidLoad
 {

@@ -14,8 +14,8 @@
 		9FA4A4CA191A95A300AE3551 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4C9191A95A300AE3551 /* main.m */; };
 		9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4CD191A95A300AE3551 /* AppDelegate.m */; };
 		9FA4A4D1191A95A300AE3551 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4CF191A95A300AE3551 /* Main.storyboard */; };
-		9FA4A4D4191A95A300AE3551 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D3191A95A300AE3551 /* FirstViewController.m */; };
-		9FA4A4D7191A95A300AE3551 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D6191A95A300AE3551 /* SecondViewController.m */; };
+		9FA4A4D4191A95A300AE3551 /* CEDashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D3191A95A300AE3551 /* CEDashViewController.m */; };
+		9FA4A4D7191A95A300AE3551 /* CEBuildingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D6191A95A300AE3551 /* CEBuildingListViewController.m */; };
 		9FA4A4D9191A95A300AE3551 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D8191A95A300AE3551 /* Images.xcassets */; };
 		9FA4A4E0191A95A300AE3551 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4DF191A95A300AE3551 /* XCTest.framework */; };
 		9FA4A4E1191A95A400AE3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4BD191A95A300AE3551 /* Foundation.framework */; };
@@ -47,10 +47,10 @@
 		9FA4A4CC191A95A300AE3551 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9FA4A4CD191A95A300AE3551 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9FA4A4D0191A95A300AE3551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9FA4A4D2191A95A300AE3551 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		9FA4A4D3191A95A300AE3551 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		9FA4A4D5191A95A300AE3551 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		9FA4A4D6191A95A300AE3551 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		9FA4A4D2191A95A300AE3551 /* CEDashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEDashViewController.h; sourceTree = "<group>"; };
+		9FA4A4D3191A95A300AE3551 /* CEDashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEDashViewController.m; sourceTree = "<group>"; };
+		9FA4A4D5191A95A300AE3551 /* CEBuildingListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEBuildingListViewController.h; sourceTree = "<group>"; };
+		9FA4A4D6191A95A300AE3551 /* CEBuildingListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEBuildingListViewController.m; sourceTree = "<group>"; };
 		9FA4A4D8191A95A300AE3551 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9FA4A4DE191A95A300AE3551 /* Carl EnergyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Carl EnergyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA4A4DF191A95A300AE3551 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -121,10 +121,10 @@
 				9FA4A4CC191A95A300AE3551 /* AppDelegate.h */,
 				9FA4A4CD191A95A300AE3551 /* AppDelegate.m */,
 				9FA4A4CF191A95A300AE3551 /* Main.storyboard */,
-				9FA4A4D2191A95A300AE3551 /* FirstViewController.h */,
-				9FA4A4D3191A95A300AE3551 /* FirstViewController.m */,
-				9FA4A4D5191A95A300AE3551 /* SecondViewController.h */,
-				9FA4A4D6191A95A300AE3551 /* SecondViewController.m */,
+				9FA4A4D2191A95A300AE3551 /* CEDashViewController.h */,
+				9FA4A4D3191A95A300AE3551 /* CEDashViewController.m */,
+				9FA4A4D5191A95A300AE3551 /* CEBuildingListViewController.h */,
+				9FA4A4D6191A95A300AE3551 /* CEBuildingListViewController.m */,
 				9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */,
 				9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */,
 				9FA4A4D8191A95A300AE3551 /* Images.xcassets */,
@@ -262,9 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FA4A4D7191A95A300AE3551 /* SecondViewController.m in Sources */,
+				9FA4A4D7191A95A300AE3551 /* CEBuildingListViewController.m in Sources */,
 				9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */,
-				9FA4A4D4191A95A300AE3551 /* FirstViewController.m in Sources */,
+				9FA4A4D4191A95A300AE3551 /* CEDashViewController.m in Sources */,
 				9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */,
 				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,
 			);
@@ -475,6 +475,7 @@
 				9FA4A4F1191A95A400AE3551 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9FA4A4F2191A95A400AE3551 /* Build configuration list for PBXNativeTarget "Carl EnergyTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +484,7 @@
 				9FA4A4F4191A95A400AE3551 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

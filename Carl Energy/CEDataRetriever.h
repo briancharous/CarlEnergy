@@ -20,14 +20,16 @@ typedef enum {
     kUsageTypeSteam
 } UsageType;
 
+
 @protocol CEDataRetrieverDelegate;
 
 @interface CEDataRetriever : NSObject
-
 - (void)getBuildingsOnCampus;
+
 - (void)getUsage:(UsageType)usageType ForBuilding:(NSString *)building startTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
 
 @property (nonatomic, assign) id <CEDataRetrieverDelegate> delegate;
+@property NSString *baseUrl;
 
 @end
 
@@ -35,6 +37,8 @@ typedef enum {
 
 @required
 
+
+- (void)retreiver:(CEDataRetriever *)retreiver gotBuildings:(NSArray *)buildings;
 - (void)retreiver:(CEDataRetriever *)retreiver gotUsage:(NSDictionary *)usage ofType:(UsageType)usageType forBuilding:(NSString *)building;
 
 @end

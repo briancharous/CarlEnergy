@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Building List View Controller - Second-->
+        <!--Dashboard View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
             <objects>
-                <viewController title="Second" id="QUy-BD-bpt" customClass="CEBuildingListViewController" sceneMemberID="viewController">
+                <viewController title="Second" id="QUy-BD-bpt" customClass="CEDashboardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FgS-U6-xeU"/>
                         <viewControllerLayoutGuide type="bottom" id="stI-4g-hlJ"/>
@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="498"/>
+            <point key="canvasLocation" x="1151" y="706"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -59,8 +59,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="kzh-Xi-ooo" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
                         <segue destination="ytq-45-nbQ" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
+                        <segue destination="kzh-Xi-ooo" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
@@ -71,7 +71,7 @@
         <scene sceneID="nZC-2z-xE8">
             <objects>
                 <navigationController title="Carl Energy" automaticallyAdjustsScrollViewInsets="NO" id="kzh-Xi-ooo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Buildings" image="first" id="u1e-5L-l1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mdc-p3-k9n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -86,22 +86,25 @@
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
-        <!--Dash View Controller-->
+        <!--Buildings List Table View Controller - Carl Energy-->
         <scene sceneID="acT-Ih-dpk">
             <objects>
-                <tableViewController id="NLM-NJ-Dql" customClass="CEDashViewController" sceneMemberID="viewController">
+                <tableViewController id="NLM-NJ-Dql" customClass="CEBuildingsListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0yg-li-CgP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ns6-7a-5e4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BuildingName" id="ns6-7a-5e4">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ns6-7a-5e4" id="Ogz-5O-ubc">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="YXv-bG-9kb" kind="push" id="YID-Oy-Y2E"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -109,17 +112,51 @@
                             <outlet property="delegate" destination="NLM-NJ-Dql" id="Dr9-Th-eEs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="7je-OM-T2y"/>
+                    <navigationItem key="navigationItem" title="Carl Energy" id="7je-OM-T2y"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0Z-38-Fg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1151" y="-155"/>
+            <point key="canvasLocation" x="1151" y="-138"/>
         </scene>
-        <!--Navigation Controller - Buildings-->
+        <!--Building Detail View Controller - Building Name-->
+        <scene sceneID="e1q-Nd-WUw">
+            <objects>
+                <viewController id="YXv-bG-9kb" customClass="CEBuildingDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yd8-kD-OEo"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZWI-wb-4mw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h0C-z4-BZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tzg-Bq-0Tf">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Day" id="dFK-Au-2JK"/>
+                                    <tabBarItem title="Month" id="RVm-go-Vts"/>
+                                    <tabBarItem title="Week" id="2xB-gM-s33"/>
+                                    <tabBarItem title="Year" id="kgv-S5-Kms"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Building Name" id="KpR-Ni-FhO">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="3O0-VV-nBM"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nqo-pd-uPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1649" y="-138"/>
+        </scene>
+        <!--Navigation Controller - Dashboard-->
         <scene sceneID="oNn-dr-Mvr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ytq-45-nbQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Buildings" image="second" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="second" id="Z7h-1E-pvt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gsc-IR-pRL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -132,7 +169,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWv-je-ixf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1179" y="498"/>
+            <point key="canvasLocation" x="653" y="706"/>
         </scene>
     </scenes>
     <resources>

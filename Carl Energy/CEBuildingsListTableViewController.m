@@ -6,13 +6,14 @@
 //  Copyright (c) 2014 Carleton College. All rights reserved.
 //
 
-#import "CEDashViewController.h"
+#import "CEBuildingsListTableViewController.h"
 
-@interface CEDashViewController ()
+@interface CEBuildingsListTableViewController ()
 
+@property NSMutableArray* dummyList;
 @end
 
-@implementation CEDashViewController
+@implementation CEBuildingsListTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,12 +27,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.dummyList = [[NSMutableArray alloc] init];
+    [self loadInitialData];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)loadInitialData {
+    NSString *item1 = @"Nourse";
+    [self.dummyList addObject:item1];
+    NSString *item2 = @"Burton";
+    [self.dummyList addObject:item2];
+    NSString *item3 = @"LDC";
+    [self.dummyList addObject:item3];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,26 +59,26 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.dummyList count];
 }
 
-/*
+
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
  {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BuildingName" forIndexPath:indexPath];
+     NSString *building = [self.dummyList objectAtIndex:indexPath.row];
+     cell.textLabel.text = building;
+  
+     return cell;
  }
- */
+
 
 /*
  // Override to support conditional editing of the table view.

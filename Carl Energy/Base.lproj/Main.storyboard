@@ -103,7 +103,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="YXv-bG-9kb" kind="push" id="YID-Oy-Y2E"/>
+                                    <segue destination="YXv-bG-9kb" kind="push" id="58U-Ut-Glf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -144,13 +144,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="A1n-W9-IYn"/>
                     <navigationItem key="navigationItem" title="Building Name" id="KpR-Ni-FhO">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="3O0-VV-nBM"/>
+                        <barButtonItem key="backBarButtonItem" title="Buildings" id="82M-3H-gNN"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqo-pd-uPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1649" y="-138"/>
+            <point key="canvasLocation" x="2175" y="-138"/>
         </scene>
         <!--Navigation Controller - Dashboard-->
         <scene sceneID="oNn-dr-Mvr">
@@ -171,6 +172,24 @@
             </objects>
             <point key="canvasLocation" x="653" y="706"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="N8h-Hf-uYA">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="7Ys-MO-kIo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="yjX-ZX-EOD">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="YXv-bG-9kb" kind="relationship" relationship="viewControllers" id="Sp7-gl-i8y"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFQ-TE-FJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1649" y="-138"/>
+        </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
@@ -181,4 +200,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Sp7-gl-i8y"/>
+    </inferredMetricsTieBreakers>
 </document>

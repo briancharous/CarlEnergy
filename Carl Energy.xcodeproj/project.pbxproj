@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */; };
 		9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480E8191D4556005F09BA /* CEBuilding.m */; };
 		9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480EB191D4A14005F09BA /* CEDataPoint.m */; };
 		9FA4A4BE191A95A300AE3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4BD191A95A300AE3551 /* Foundation.framework */; };
@@ -16,8 +17,8 @@
 		9FA4A4CA191A95A300AE3551 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4C9191A95A300AE3551 /* main.m */; };
 		9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4CD191A95A300AE3551 /* AppDelegate.m */; };
 		9FA4A4D1191A95A300AE3551 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4CF191A95A300AE3551 /* Main.storyboard */; };
-		9FA4A4D4191A95A300AE3551 /* CEDashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D3191A95A300AE3551 /* CEDashViewController.m */; };
-		9FA4A4D7191A95A300AE3551 /* CEBuildingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D6191A95A300AE3551 /* CEBuildingListViewController.m */; };
+		9FA4A4D4191A95A300AE3551 /* CEBuildingsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D3191A95A300AE3551 /* CEBuildingsListTableViewController.m */; };
+		9FA4A4D7191A95A300AE3551 /* CEDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D6191A95A300AE3551 /* CEDashboardViewController.m */; };
 		9FA4A4D9191A95A300AE3551 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4D8191A95A300AE3551 /* Images.xcassets */; };
 		9FA4A4E0191A95A300AE3551 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4DF191A95A300AE3551 /* XCTest.framework */; };
 		9FA4A4E1191A95A400AE3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4BD191A95A300AE3551 /* Foundation.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuildingDetailViewController.h; sourceTree = "<group>"; };
+		329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuildingDetailViewController.m; sourceTree = "<group>"; };
 		9F8480E7191D4556005F09BA /* CEBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuilding.h; sourceTree = "<group>"; };
 		9F8480E8191D4556005F09BA /* CEBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuilding.m; sourceTree = "<group>"; };
 		9F8480EA191D4A14005F09BA /* CEDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataPoint.h; sourceTree = "<group>"; };
@@ -53,10 +56,10 @@
 		9FA4A4CC191A95A300AE3551 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9FA4A4CD191A95A300AE3551 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9FA4A4D0191A95A300AE3551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9FA4A4D2191A95A300AE3551 /* CEDashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEDashViewController.h; sourceTree = "<group>"; };
-		9FA4A4D3191A95A300AE3551 /* CEDashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEDashViewController.m; sourceTree = "<group>"; };
-		9FA4A4D5191A95A300AE3551 /* CEBuildingListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEBuildingListViewController.h; sourceTree = "<group>"; };
-		9FA4A4D6191A95A300AE3551 /* CEBuildingListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEBuildingListViewController.m; sourceTree = "<group>"; };
+		9FA4A4D2191A95A300AE3551 /* CEBuildingsListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEBuildingsListTableViewController.h; sourceTree = "<group>"; };
+		9FA4A4D3191A95A300AE3551 /* CEBuildingsListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEBuildingsListTableViewController.m; sourceTree = "<group>"; };
+		9FA4A4D5191A95A300AE3551 /* CEDashboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEDashboardViewController.h; sourceTree = "<group>"; };
+		9FA4A4D6191A95A300AE3551 /* CEDashboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEDashboardViewController.m; sourceTree = "<group>"; };
 		9FA4A4D8191A95A300AE3551 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9FA4A4DE191A95A300AE3551 /* Carl EnergyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Carl EnergyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA4A4DF191A95A300AE3551 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -105,6 +108,8 @@
 		9FA4A4B1191A95A300AE3551 = {
 			isa = PBXGroup;
 			children = (
+				329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */,
+				329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */,
 				9FA4A4C3191A95A300AE3551 /* Carl Energy */,
 				9FA4A4E5191A95A400AE3551 /* Carl EnergyTests */,
 				9FA4A4BC191A95A300AE3551 /* Frameworks */,
@@ -138,10 +143,10 @@
 				9FA4A4CC191A95A300AE3551 /* AppDelegate.h */,
 				9FA4A4CD191A95A300AE3551 /* AppDelegate.m */,
 				9FA4A4CF191A95A300AE3551 /* Main.storyboard */,
-				9FA4A4D2191A95A300AE3551 /* CEDashViewController.h */,
-				9FA4A4D3191A95A300AE3551 /* CEDashViewController.m */,
-				9FA4A4D5191A95A300AE3551 /* CEBuildingListViewController.h */,
-				9FA4A4D6191A95A300AE3551 /* CEBuildingListViewController.m */,
+				9FA4A4D2191A95A300AE3551 /* CEBuildingsListTableViewController.h */,
+				9FA4A4D3191A95A300AE3551 /* CEBuildingsListTableViewController.m */,
+				9FA4A4D5191A95A300AE3551 /* CEDashboardViewController.h */,
+				9FA4A4D6191A95A300AE3551 /* CEDashboardViewController.m */,
 				9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */,
 				9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */,
 				9F8480ED191D4BD3005F09BA /* Data Wrappers */,
@@ -286,6 +291,7 @@
 				9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */,
 				9FA4A4D4191A95A300AE3551 /* CEDashViewController.m in Sources */,
 				9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */,
+				329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */,
 				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

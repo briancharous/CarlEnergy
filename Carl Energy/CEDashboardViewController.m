@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Carleton College. All rights reserved.
 //
 
-#import "CEBuildingListViewController.h"
+#import "CEDashboardViewController.h"
 
-@interface CEBuildingListViewController ()
+@interface CEDashboardViewController ()
 
 @end
 
-@implementation CEBuildingListViewController
+@implementation CEDashboardViewController
 
 - (void)viewDidLoad
 {

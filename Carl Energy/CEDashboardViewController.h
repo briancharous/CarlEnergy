@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  SecondViewController.h
 //  Carl Energy
 //
 //  Created by Brian Charous on 5/7/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CEDashViewController : UITableViewController
+@interface CEDashboardViewController : UIViewController
 
 @end

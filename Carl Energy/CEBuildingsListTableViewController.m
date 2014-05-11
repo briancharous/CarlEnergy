@@ -27,7 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.dummyList = [[NSMutableArray alloc] init];
     [self loadInitialData];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -38,13 +37,20 @@
 }
 
 - (void)loadInitialData {
-    NSString *item1 = @"Nourse";
-    [self.dummyList addObject:item1];
-    NSString *item2 = @"Burton";
-    [self.dummyList addObject:item2];
-    NSString *item3 = @"LDC";
-    [self.dummyList addObject:item3];
+//    NSString *item1 = @"Nourse";
+//    [self.dummyList addObject:item1];
+//    NSString *item2 = @"Burton";
+//    [self.dummyList addObject:item2];
+//    NSString *item3 = @"LDC";
+//    [self.dummyList addObject:item3];
+    CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
+    [retreiver setDelegate:self];
+    [retreiver getBuildingsOnCampus];
+}
 
+- (void)retreiver:(CEDataRetriever *)retreiver gotBuildings:(NSArray *)buildings {
+    [self setBuildings:buildings];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,26 +61,23 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [self.dummyList count];
+    return [self.buildings count];
 }
 
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
  {
      UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BuildingName" forIndexPath:indexPath];
-     NSString *building = [self.dummyList objectAtIndex:indexPath.row];
-     cell.textLabel.text = building;
+     CEBuilding *building = [self.buildings objectAtIndex:[indexPath row]];
+     NSString *buildingName = [building displayName];
+     cell.textLabel.text = buildingName;
   
      return cell;
  }

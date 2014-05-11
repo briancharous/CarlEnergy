@@ -44,8 +44,7 @@ typedef enum {
 
 @protocol CEDataRetrieverDelegate <NSObject>
 
-@required
-
+@optional
 
 - (void)retreiver:(CEDataRetriever *)retreiver gotBuildings:(NSArray *)buildings;
 - (void)retreiver:(CEDataRetriever *)retreiver gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(NSString *)building;

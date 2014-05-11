@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CEDataRetriever.h"
+#import "CEBuilding.h"
 
-@interface CEBuildingsListTableViewController : UITableViewController
+@interface CEBuildingsListTableViewController : UITableViewController <CEDataRetrieverDelegate>
+
+@property NSArray *buildings;
 
 @end

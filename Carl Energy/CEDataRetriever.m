@@ -35,15 +35,17 @@
     [burton setDisplayName:@"Burton"];
     [burton setBuildingImage:nil];
     CEBuilding *Sayles = [[CEBuilding alloc] init];
-    [burton setWebName:@"syles"];
-    [burton setDisplayName:@"Sayles-Hill Campus Center"];
-    [burton setBuildingImage:nil];
+    [Sayles setWebName:@"syles"];
+    [Sayles setDisplayName:@"Sayles-Hill Campus Center"];
+    [Sayles setBuildingImage:nil];
     CEBuilding *Weitz = [[CEBuilding alloc] init];
-    [burton setWebName:@"weitz"];
-    [burton setDisplayName:@"Weitz Center for Creativity"];
-    [burton setBuildingImage:nil];
+    [Weitz setWebName:@"weitz"];
+    [Weitz setDisplayName:@"Weitz Center for Creativity"];
+    [Weitz setBuildingImage:nil];
     NSArray *dummyBuildings = @[burton, Sayles, Weitz];
-    [self.delegate retreiver:self gotBuildings:dummyBuildings];
+    if ([self.delegate respondsToSelector:@selector(retreiver:gotBuildings:)]) {
+        [self.delegate retreiver:self gotBuildings:dummyBuildings];
+    }
     [self setRequestInProgress:NO];
 }
 
@@ -56,7 +58,9 @@
     NSDate *dummyDate3 = [[NSDate alloc] initWithTimeIntervalSince1970:2880];
     CEDataPoint *point3 = [[CEDataPoint alloc] initWithTimestamp:dummyDate3 hoursElapsed:1 weight:24 value:23];
     NSArray *dummyData = @[point1, point2, point3];
-    [self.delegate retreiver:self gotUsage:dummyData ofType:usageType forBuilding:building];
+    if ([self.delegate respondsToSelector:@selector(retreiver:gotUsage:ofType:forBuilding:)]) {
+        [self.delegate retreiver:self gotUsage:dummyData ofType:usageType forBuilding:building];
+    }
     [self setRequestInProgress:NO];
 }
 

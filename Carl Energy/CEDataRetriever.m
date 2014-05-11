@@ -20,42 +20,34 @@
 }
 
 - (void)getBuildingsOnCampus {
+    // RUN THIS IN A SEPARATE THREAD OTHERWISE IT WILL LOCK UP THE UI
+    
     [self setRequestInProgress:YES];
     
     NSMutableArray *buildings = [[NSMutableArray alloc] init];
     
+    // fire off a web request
     NSString *urlString = [NSString stringWithFormat:@"%@/json/carleton/children/", self.baseUrl];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLResponse *response = nil;
     NSError *webError = nil;
     NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
+    
+    //TODO: Error handling
     if (webError == nil) {
         NSError *jsonError = nil;
         NSArray *json = [NSJSONSerialization JSONObjectWithData:result options:0 error:&jsonError];
         if (jsonError == nil) {
-            
             for (NSDictionary *buildingJSON in json) {
                 CEBuilding *b = [[CEBuilding alloc] init];
                 [b setDisplayName:[buildingJSON objectForKey:@"displayName"]];
                 [b setWebName:[buildingJSON objectForKey:@"urlElement"]];
+                [b setImageURL:[buildingJSON objectForKey:@"profile"]];
                 [buildings addObject:b];
             }
         }
     }
-//    CEBuilding *burton = [[CEBuilding alloc] init];
-//    [burton setWebName:@"burton"];
-//    [burton setDisplayName:@"Burton"];
-//    [burton setBuildingImage:nil];
-//    CEBuilding *Sayles = [[CEBuilding alloc] init];
-//    [Sayles setWebName:@"syles"];
-//    [Sayles setDisplayName:@"Sayles-Hill Campus Center"];
-//    [Sayles setBuildingImage:nil];
-//    CEBuilding *Weitz = [[CEBuilding alloc] init];
-//    [Weitz setWebName:@"weitz"];
-//    [Weitz setDisplayName:@"Weitz Center for Creativity"];
-//    [Weitz setBuildingImage:nil];
-//    NSArray *dummyBuildings = @[burton, Sayles, Weitz];
     
     if ([self.delegate respondsToSelector:@selector(retreiver:gotBuildings:)]) {
         [self.delegate retreiver:self gotBuildings:buildings];

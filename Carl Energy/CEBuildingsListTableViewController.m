@@ -81,6 +81,23 @@
      CEBuilding *building = [self.buildings objectAtIndex:[indexPath row]];
      NSString *buildingName = [building displayName];
      cell.textLabel.text = buildingName;
+     
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+         NSString *imageURL = [building imageURL];
+         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+         if (imageData) {
+             UIImage *image = [UIImage imageWithData:imageData];
+             if (image) {
+                 dispatch_async(dispatch_get_main_queue(), ^ {
+                     UITableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                     if (updateCell) {
+                         [cell.imageView setImage:image];
+                         [cell setNeedsLayout];
+                     }
+                 });
+             }
+         }
+     });
   
      return cell;
  }

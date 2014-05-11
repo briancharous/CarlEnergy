@@ -12,6 +12,6 @@
 
 @property NSString *webName;
 @property NSString *displayName;
-@property UIImage *buildingImage;
+@property NSString *imageURL;
 
 @end

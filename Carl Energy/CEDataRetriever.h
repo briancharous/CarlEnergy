@@ -32,6 +32,13 @@ typedef enum {
 
 @property (nonatomic, assign) id <CEDataRetrieverDelegate> delegate;
 @property NSString *baseUrl;
+@property UsageType currentRequestUsageType;
+@property Resolution currentRequestResolution;
+@property NSString *currentRequestBuilding;
+@property NSDate *currentRequestStartTime;
+@property NSDate *currentRequestEndTime;
+@property BOOL requestInProgress;
+
 
 @end
 

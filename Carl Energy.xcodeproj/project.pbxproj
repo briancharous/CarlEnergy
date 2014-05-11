@@ -285,11 +285,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FA4A4D7191A95A300AE3551 /* CEDashboardViewController.m in Sources */,
+				9FA4A4D7191A95A300AE3551 /* CEBuildingListViewController.m in Sources */,
 				9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */,
 				9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */,
 				9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */,
-				9FA4A4D4191A95A300AE3551 /* CEBuildingsListTableViewController.m in Sources */,
+				9FA4A4D4191A95A300AE3551 /* CEDashViewController.m in Sources */,
 				9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */,
 				329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */,
 				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,

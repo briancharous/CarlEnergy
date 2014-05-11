@@ -39,8 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuildingDetailViewController.h; sourceTree = "<group>"; };
-		329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuildingDetailViewController.m; sourceTree = "<group>"; };
+		329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEBuildingDetailViewController.h; path = ../CEBuildingDetailViewController.h; sourceTree = "<group>"; };
+		329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CEBuildingDetailViewController.m; path = ../CEBuildingDetailViewController.m; sourceTree = "<group>"; };
 		9F8480E7191D4556005F09BA /* CEBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuilding.h; sourceTree = "<group>"; };
 		9F8480E8191D4556005F09BA /* CEBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuilding.m; sourceTree = "<group>"; };
 		9F8480EA191D4A14005F09BA /* CEDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataPoint.h; sourceTree = "<group>"; };
@@ -108,8 +108,6 @@
 		9FA4A4B1191A95A300AE3551 = {
 			isa = PBXGroup;
 			children = (
-				329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */,
-				329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */,
 				9FA4A4C3191A95A300AE3551 /* Carl Energy */,
 				9FA4A4E5191A95A400AE3551 /* Carl EnergyTests */,
 				9FA4A4BC191A95A300AE3551 /* Frameworks */,
@@ -140,6 +138,8 @@
 		9FA4A4C3191A95A300AE3551 /* Carl Energy */ = {
 			isa = PBXGroup;
 			children = (
+				329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */,
+				329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */,
 				9FA4A4CC191A95A300AE3551 /* AppDelegate.h */,
 				9FA4A4CD191A95A300AE3551 /* AppDelegate.m */,
 				9FA4A4CF191A95A300AE3551 /* Main.storyboard */,

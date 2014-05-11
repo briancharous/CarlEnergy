@@ -27,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [self setRefreshControl:refreshControl];
     [self loadInitialData];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -43,14 +45,15 @@
 //    [self.dummyList addObject:item2];
 //    NSString *item3 = @"LDC";
 //    [self.dummyList addObject:item3];
+    
+    [self.refreshControl beginRefreshing];
+    // scroll past top to show refresh control
+    [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
+
     CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
     [retreiver setDelegate:self];
-    [retreiver getBuildingsOnCampus];
-}
-
-- (void)retreiver:(CEDataRetriever *)retreiver gotBuildings:(NSArray *)buildings {
-    [self setBuildings:buildings];
-    [self.tableView reloadData];
+    [NSThread detachNewThreadSelector:@selector(getBuildingsOnCampus) toTarget:retreiver withObject:nil];
+//    [retreiver getBuildingsOnCampus];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,6 +85,14 @@
      return cell;
  }
 
+# pragma mark Data Retriever Delegate
+
+- (void)retreiver:(CEDataRetriever *)retreiver gotBuildings:(NSArray *)buildings {
+    [self setBuildings:buildings];
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+    [self.refreshControl removeFromSuperview];
+}
 
 /*
  // Override to support conditional editing of the table view.

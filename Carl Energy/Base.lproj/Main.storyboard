@@ -130,7 +130,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="YXv-bG-9kb" kind="push" id="XFd-Mt-m33"/>
+                                    <segue destination="YXv-bG-9kb" kind="push" id="318-Ew-0OZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -156,6 +156,18 @@
                     <view key="view" contentMode="scaleToFill" id="h0C-z4-BZ2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ndw-Qb-CeI">
+                                <rect key="frame" x="25" y="76" width="271" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Day"/>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                    <segment title="Year"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Building Name" id="KpR-Ni-FhO">
@@ -164,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqo-pd-uPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2549" y="-138"/>
+            <point key="canvasLocation" x="2035" y="-138"/>
         </scene>
         <!--Navigation Controller - Week-->
         <scene sceneID="xJ0-k7-XnP">
@@ -308,28 +320,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAf-k3-thS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111" y="-138"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="0B6-L3-ffx">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="EVq-Sz-CRO" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="AsA-IU-6uy">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="IWw-MW-MN1" kind="relationship" relationship="viewControllers" id="Uwu-lr-4Zx"/>
-                        <segue destination="J6c-Da-zmW" kind="relationship" relationship="viewControllers" id="m0a-pV-FhH"/>
-                        <segue destination="ZgU-Rb-TOr" kind="relationship" relationship="viewControllers" id="Fmk-Nl-WkS"/>
-                        <segue destination="bnY-PQ-UyA" kind="relationship" relationship="viewControllers" id="J34-gE-whJ"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vbH-I8-oz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1617" y="-138"/>
+            <point key="canvasLocation" x="1583" y="-138"/>
         </scene>
     </scenes>
     <resources>
@@ -342,6 +333,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yDd-X3-GlW"/>
+        <segue reference="318-Ew-0OZ"/>
     </inferredMetricsTieBreakers>
 </document>

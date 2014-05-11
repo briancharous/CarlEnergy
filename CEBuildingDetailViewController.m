@@ -9,6 +9,9 @@
 #import "CEBuildingDetailViewController.h"
 
 @interface CEBuildingDetailViewController ()
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UILabel *dummyLabel;
+- (IBAction)timeChanged:(UISegmentedControl *)sender;
 
 @end
 
@@ -27,6 +30,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.dummyLabel.text = @"day";
+}
+
+-(IBAction)timeChanged:(UISegmentedControl *)sender
+{
+    switch (self.segmentedControl.selectedSegmentIndex)
+    {
+        case 0:
+            self.dummyLabel.text = @"day";
+            break;
+        case 1:
+            self.dummyLabel.text = @"week";
+            break;
+        case 2:
+            self.dummyLabel.text = @"month";
+            break;
+        case 3:
+            self.dummyLabel.text = @"year";
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning

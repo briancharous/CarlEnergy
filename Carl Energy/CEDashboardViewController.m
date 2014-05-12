@@ -7,6 +7,8 @@
 //
 
 #import "CEDashboardViewController.h"
+#import "CorePlot-CocoaTouch.h"
+
 
 @interface CEDashboardViewController ()
 

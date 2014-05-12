@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D61920800B00478145 /* QuartzCore.framework */; };
+		019ED0D91920801000478145 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D81920801000478145 /* Accelerate.framework */; };
+		019ED0F11920886300478145 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */; };
 		329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */; };
 		9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480E8191D4556005F09BA /* CEBuilding.m */; };
 		9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480EB191D4A14005F09BA /* CEDataPoint.m */; };
@@ -29,6 +32,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		019ED0ED1920884300478145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		019ED0EF1920885F00478145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
 		9FA4A4E3191A95A400AE3551 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9FA4A4B2191A95A300AE3551 /* Project object */;
@@ -39,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		019ED0D61920800B00478145 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		019ED0D81920801000478145 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEBuildingDetailViewController.h; path = ../CEBuildingDetailViewController.h; sourceTree = "<group>"; };
 		329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CEBuildingDetailViewController.m; path = ../CEBuildingDetailViewController.m; sourceTree = "<group>"; };
 		9F8480E7191D4556005F09BA /* CEBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuilding.h; sourceTree = "<group>"; };
@@ -75,6 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				019ED0F11920886300478145 /* libCorePlot-CocoaTouch.a in Frameworks */,
+				019ED0D91920801000478145 /* Accelerate.framework in Frameworks */,
+				019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */,
 				9FA4A4C0191A95A300AE3551 /* CoreGraphics.framework in Frameworks */,
 				9FA4A4C2191A95A300AE3551 /* UIKit.framework in Frameworks */,
 				9FA4A4BE191A95A300AE3551 /* Foundation.framework in Frameworks */,
@@ -94,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		019ED0E81920884300478145 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9F8480ED191D4BD3005F09BA /* Data Wrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +143,7 @@
 				9FA4A4E5191A95A400AE3551 /* Carl EnergyTests */,
 				9FA4A4BC191A95A300AE3551 /* Frameworks */,
 				9FA4A4BB191A95A300AE3551 /* Products */,
+				019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +159,8 @@
 		9FA4A4BC191A95A300AE3551 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				019ED0D81920801000478145 /* Accelerate.framework */,
+				019ED0D61920800B00478145 /* QuartzCore.framework */,
 				9FA4A4BD191A95A300AE3551 /* Foundation.framework */,
 				9FA4A4BF191A95A300AE3551 /* CoreGraphics.framework */,
 				9FA4A4C1191A95A300AE3551 /* UIKit.framework */,
@@ -199,6 +233,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				019ED0F01920885F00478145 /* PBXTargetDependency */,
 			);
 			name = "Carl Energy";
 			productName = "Carl Energy";
@@ -251,6 +286,12 @@
 			mainGroup = 9FA4A4B1191A95A300AE3551;
 			productRefGroup = 9FA4A4BB191A95A300AE3551 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 019ED0E81920884300478145 /* Products */;
+					ProjectRef = 019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9FA4A4B9191A95A300AE3551 /* Carl Energy */,
@@ -258,6 +299,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 019ED0ED1920884300478145 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9FA4A4B8191A95A300AE3551 /* Resources */ = {
@@ -285,11 +336,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FA4A4D7191A95A300AE3551 /* CEBuildingListViewController.m in Sources */,
+				9FA4A4D7191A95A300AE3551 /* CEDashboardViewController.m in Sources */,
 				9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */,
 				9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */,
 				9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */,
-				9FA4A4D4191A95A300AE3551 /* CEDashViewController.m in Sources */,
+				9FA4A4D4191A95A300AE3551 /* CEBuildingsListTableViewController.m in Sources */,
 				9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */,
 				329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */,
 				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,
@@ -307,6 +358,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		019ED0F01920885F00478145 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = 019ED0EF1920885F00478145 /* PBXContainerItemProxy */;
+		};
 		9FA4A4E4191A95A400AE3551 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9FA4A4B9191A95A300AE3551 /* Carl Energy */;
@@ -420,8 +476,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"framework/**",
+				);
 				INFOPLIST_FILE = "Carl Energy/Carl Energy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -435,8 +497,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"framework/**",
+				);
 				INFOPLIST_FILE = "Carl Energy/Carl Energy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

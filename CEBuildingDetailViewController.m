@@ -7,6 +7,8 @@
 //
 
 #import "CEBuildingDetailViewController.h"
+#import "CorePlot-CocoaTouch.h"
+
 
 @interface CEBuildingDetailViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -30,11 +32,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self makeLineGraph:0];
     self.dummyLabel.text = @"day";
 }
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender
 {
+    // Should probably figure out a better way to do this than passing the index
+    [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
     switch (self.segmentedControl.selectedSegmentIndex)
     {
         case 0:
@@ -52,6 +57,14 @@
         default:
             break;
     }
+}
+
+-(void)makeLineGraph:(NSInteger)timeframeIndex
+{
+    // make a graph, maybe in an embedded view controller
+    CPTXYGraph *graph = [[CPTXYGraph alloc] init];
+    graph.title = @"Electricity";
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -49,8 +49,8 @@
         }
     }
     
-    if ([self.delegate respondsToSelector:@selector(retreiver:gotBuildings:)]) {
-        [self.delegate retreiver:self gotBuildings:buildings];
+    if ([self.delegate respondsToSelector:@selector(retriever:gotBuildings:)]) {
+        [self.delegate retriever:self gotBuildings:buildings];
     }
     [self setRequestInProgress:NO];
 }
@@ -64,8 +64,8 @@
     NSDate *dummyDate3 = [[NSDate alloc] initWithTimeIntervalSince1970:2880];
     CEDataPoint *point3 = [[CEDataPoint alloc] initWithTimestamp:dummyDate3 hoursElapsed:1 weight:24 value:23];
     NSArray *dummyData = @[point1, point2, point3];
-    if ([self.delegate respondsToSelector:@selector(retreiver:gotUsage:ofType:forBuilding:)]) {
-        [self.delegate retreiver:self gotUsage:dummyData ofType:usageType forBuilding:building];
+    if ([self.delegate respondsToSelector:@selector(retriever:gotUsage:ofType:forBuilding:)]) {
+        [self.delegate retriever:self gotUsage:dummyData ofType:usageType forBuilding:building];
     }
     [self setRequestInProgress:NO];
 }

@@ -82,6 +82,8 @@
      NSString *buildingName = [building displayName];
      cell.textLabel.text = buildingName;
      
+     
+     // TODO: caching (look at SDWebImage https://github.com/rs/SDWebImage or AFNetworking https://github.com/AFNetworking/AFNetworking)
      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
          NSString *imageURL = [building imageURL];
          NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];

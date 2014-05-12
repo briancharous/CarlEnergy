@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    self.imageCache = [[NSCache alloc] init];
+    self.imageCache = [[NSMutableDictionary alloc] init];
 
     // show spinner
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];

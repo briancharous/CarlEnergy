@@ -79,6 +79,9 @@
      CEBuilding *building = [self.buildings objectAtIndex:[indexPath row]];
      NSString *buildingName = [building displayName];
      cell.textLabel.text = buildingName;
+     cell.imageView.bounds = CGRectMake(0, 0, 50, 50);
+     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+     spinner.center = CGPointMake(CGRectGetMidX(cell.imageView.bounds), CGRectGetMaxY(cell.imageView.bounds));
      
      // try to get image from caceh
      UIImage *cachedImage = [self.imageCache objectForKey:building.imageURL];
@@ -121,6 +124,11 @@
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
     [self.refreshControl removeFromSuperview];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 /*

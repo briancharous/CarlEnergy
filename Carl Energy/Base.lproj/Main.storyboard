@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,11 +8,15 @@
         <scene sceneID="ot8-2e-RuS">
             <objects>
                 <viewController title="Second" id="QUy-BD-bpt" customClass="CEDashboardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MHS-vZ-PqN"/>
+                        <viewControllerLayoutGuide type="bottom" id="vbh-e8-Dfb"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gMD-aP-Fq6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="4m0-F8-DOm">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4m0-F8-DOm">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </scrollView>
@@ -35,6 +39,10 @@
         <scene sceneID="C5a-ty-C4A">
             <objects>
                 <viewController id="w3o-kJ-p4d" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iGX-cc-nEF"/>
+                        <viewControllerLayoutGuide type="bottom" id="hp5-FQ-1wL"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4FB-kd-kjj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,17 +139,21 @@
         <scene sceneID="e1q-Nd-WUw">
             <objects>
                 <viewController id="YXv-bG-9kb" customClass="CEBuildingDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h8w-Sm-h2d"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Sb-Yc-Mpj"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="h0C-z4-BZ2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="0qu-iL-Tky">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0qu-iL-Tky">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ndw-Qb-CeI">
-                                        <rect key="frame" x="25" y="100" width="271" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ndw-Qb-CeI">
+                                        <rect key="frame" x="20" y="10" width="281" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Day"/>
                                             <segment title="Week"/>
@@ -152,21 +164,34 @@
                                             <action selector="timeChanged:" destination="YXv-bG-9kb" eventType="valueChanged" id="Bmw-ZH-NLk"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pzg-MC-Yy5">
-                                        <rect key="frame" x="139" y="187" width="42" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzg-MC-Yy5">
+                                        <rect key="frame" x="120" y="87" width="80" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="ndw-Qb-CeI" secondAttribute="centerX" id="0kw-Ml-ac2"/>
+                                    <constraint firstAttribute="trailing" secondItem="ndw-Qb-CeI" secondAttribute="trailing" constant="20" id="1IY-n8-ebH"/>
+                                    <constraint firstItem="ndw-Qb-CeI" firstAttribute="top" secondItem="0qu-iL-Tky" secondAttribute="top" constant="10" id="Ga4-ji-ext"/>
+                                    <constraint firstItem="ndw-Qb-CeI" firstAttribute="leading" secondItem="0qu-iL-Tky" secondAttribute="leading" constant="20" id="ktg-ql-Leo"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0qu-iL-Tky" firstAttribute="leading" secondItem="h0C-z4-BZ2" secondAttribute="leading" id="DRD-mp-YfA"/>
+                            <constraint firstAttribute="trailing" secondItem="0qu-iL-Tky" secondAttribute="trailing" id="YDP-OD-tUD"/>
+                            <constraint firstItem="0qu-iL-Tky" firstAttribute="top" secondItem="h8w-Sm-h2d" secondAttribute="bottom" id="am4-0g-yUM"/>
+                            <constraint firstItem="4Sb-Yc-Mpj" firstAttribute="top" secondItem="0qu-iL-Tky" secondAttribute="bottom" id="llW-hv-kD0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Building Name" id="KpR-Ni-FhO">
                         <barButtonItem key="backBarButtonItem" title="Buildings" id="82M-3H-gNN"/>
                     </navigationItem>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="dummyLabel" destination="pzg-MC-Yy5" id="CNY-3e-Ek0"/>
                         <outlet property="segmentedControl" destination="ndw-Qb-CeI" id="Qyk-n7-cOG"/>
@@ -196,6 +221,10 @@
         <scene sceneID="nr5-Oh-KE6">
             <objects>
                 <viewController id="pcu-Vc-v4D" customClass="CEBuildingDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="byH-pt-7cb"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZCB-Ht-7KP"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fL1-Ro-Phh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -227,6 +256,10 @@
         <scene sceneID="J38-IJ-SJZ">
             <objects>
                 <viewController id="da9-ki-947" customClass="CEBuildingDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="93U-hx-IsL"/>
+                        <viewControllerLayoutGuide type="bottom" id="qmu-J5-ghP"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6CF-Ep-pdV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -258,6 +291,10 @@
         <scene sceneID="Yxi-Gr-wKM">
             <objects>
                 <viewController id="xjf-0P-nYK" customClass="CEBuildingDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QVG-M7-NoG"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sx4-zH-k4d"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2fY-jw-Wxe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

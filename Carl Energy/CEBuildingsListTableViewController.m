@@ -119,7 +119,7 @@
 
 # pragma mark Data Retriever Delegate
 
-- (void)retreiver:(CEDataRetriever *)retreiver gotBuildings:(NSArray *)buildings {
+- (void)retriever:(CEDataRetriever *)retriever gotBuildings:(NSArray *)buildings {
     [self setBuildings:buildings];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];

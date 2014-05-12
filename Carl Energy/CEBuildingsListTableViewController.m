@@ -27,6 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.imageCache = [[NSCache alloc] init];
+
+    // show spinner
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [self setRefreshControl:refreshControl];
     [self loadInitialData];
@@ -39,12 +43,6 @@
 }
 
 - (void)loadInitialData {
-//    NSString *item1 = @"Nourse";
-//    [self.dummyList addObject:item1];
-//    NSString *item2 = @"Burton";
-//    [self.dummyList addObject:item2];
-//    NSString *item3 = @"LDC";
-//    [self.dummyList addObject:item3];
     
     [self.refreshControl beginRefreshing];
     // scroll past top to show refresh control
@@ -82,24 +80,36 @@
      NSString *buildingName = [building displayName];
      cell.textLabel.text = buildingName;
      
-     
-     // TODO: caching (look at SDWebImage https://github.com/rs/SDWebImage or AFNetworking https://github.com/AFNetworking/AFNetworking)
-     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-         NSString *imageURL = [building imageURL];
-         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-         if (imageData) {
-             UIImage *image = [UIImage imageWithData:imageData];
-             if (image) {
-                 dispatch_async(dispatch_get_main_queue(), ^ {
-                     UITableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                     if (updateCell) {
-                         [cell.imageView setImage:image];
-                         [cell setNeedsLayout];
-                     }
-                 });
+     // try to get image from caceh
+     UIImage *cachedImage = [self.imageCache objectForKey:building.imageURL];
+     if (cachedImage == nil) {
+         // remove image
+         [cell.imageView setImage:nil];
+         
+         // async get the image
+         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+             NSString *imageURL = [building imageURL];
+             NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+             if (imageData) {
+                 UIImage *image = [UIImage imageWithData:imageData];
+                 if (image) {
+                     dispatch_async(dispatch_get_main_queue(), ^ {
+                         UITableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                         if (updateCell) {
+                             [updateCell.imageView setImage:image];
+                             [updateCell setNeedsLayout];
+                             // save image in cache
+                             [self.imageCache setObject:image forKey:imageURL];
+                         }
+                     });
+                 }
              }
-         }
-     });
+         });
+     }
+     else {
+         // set the imageview's image from the cache
+         [cell.imageView setImage:cachedImage];
+     }
   
      return cell;
  }

@@ -32,6 +32,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
+    [retriever setDelegate:self];
     [self makeLineGraph:0];
     self.dummyLabel.text = @"day";
 }

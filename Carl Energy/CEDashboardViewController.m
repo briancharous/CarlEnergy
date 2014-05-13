@@ -20,6 +20,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
+    [retriever setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning

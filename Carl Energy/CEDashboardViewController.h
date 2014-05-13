@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CEDataRetriever.h"
 
-@interface CEDashboardViewController : UIViewController
+@interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate>
 
 @end

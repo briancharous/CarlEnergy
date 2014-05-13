@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CEDataRetriever.h"
 
-@interface CEBuildingDetailViewController : UIViewController
+@interface CEBuildingDetailViewController : UIViewController <CEDataRetrieverDelegate>
 
 @end
 

@@ -7,7 +7,6 @@
 //
 
 #import "CEBuildingDetailViewController.h"
-#import "CorePlot-CocoaTouch.h"
 
 
 @interface CEBuildingDetailViewController ()

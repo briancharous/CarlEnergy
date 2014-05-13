@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CEDataRetriever.h"
+#import "CorePlot-CocoaTouch.h"
 
-@interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate>
+
+@interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate, CPTPlotDataSource>
+
+@property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
+
 
 @end

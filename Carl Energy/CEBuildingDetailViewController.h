@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CEDataRetriever.h"
+#import "CorePlot-CocoaTouch.h"
+
 
 @interface CEBuildingDetailViewController : UIViewController <CEDataRetrieverDelegate>
 

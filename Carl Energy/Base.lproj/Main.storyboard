@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Dashboard View Controller - Second-->
@@ -79,7 +79,7 @@
         <scene sceneID="nZC-2z-xE8">
             <objects>
                 <navigationController title="Carl Energy" automaticallyAdjustsScrollViewInsets="NO" id="kzh-Xi-ooo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Buildings" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Buildings" image="line__0000s_0032_home1" id="u1e-5L-l1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mdc-p3-k9n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -185,7 +185,6 @@
                     <navigationItem key="navigationItem" title="Building Name" id="KpR-Ni-FhO">
                         <barButtonItem key="backBarButtonItem" title="Buildings" id="82M-3H-gNN"/>
                     </navigationItem>
-                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="dummyLabel" destination="pzg-MC-Yy5" id="CNY-3e-Ek0"/>
                         <outlet property="segmentedControl" destination="ndw-Qb-CeI" id="Qyk-n7-cOG"/>
@@ -199,7 +198,7 @@
         <scene sceneID="oNn-dr-Mvr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ytq-45-nbQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="second" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="line__0000s_0056_light1" id="Z7h-1E-pvt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gsc-IR-pRL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -216,8 +215,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="line__0000s_0032_home1" width="30" height="30"/>
+        <image name="line__0000s_0056_light1" width="21" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

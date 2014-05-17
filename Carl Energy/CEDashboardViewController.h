@@ -14,6 +14,6 @@
 @interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate, CPTPlotDataSource>
 
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
-
+@property IBOutlet UIScrollView *scrollView;
 
 @end

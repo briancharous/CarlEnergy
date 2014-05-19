@@ -33,7 +33,7 @@
     [retriever setDelegate:self];
     
     // TODO: Change this to call a dataRetriever method to get data
-    NSMutableArray *contentArray = [NSMutableArray arrayWithObjects:@40.0, @60.0, nil];
+    NSMutableArray *contentArray = [NSMutableArray arrayWithObjects:@40.0, @80.0, nil];
     
     self.dataForChart = contentArray;
     [self makePieChart];
@@ -42,9 +42,8 @@
 - (void)makePieChart
 {
     // Create and assign the host view
-    //TODO: Put this in a scroll view
     CPTXYGraph *pieChart = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    CGRect parentRect = CGRectMake(0, 100, self.scrollView.frame.size.width, 250);
+    CGRect parentRect = CGRectMake(0, 60, self.scrollView.frame.size.width, 300);
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
     [self.scrollView setFrame:self.view.bounds];
     [self.scrollView addSubview:self.hostView];
@@ -57,11 +56,10 @@
     textStyle.fontSize = 25.0f;
     
     // Set up the graph title
-    //TODO: Make title show up. Maybe the bounds of the graph are too big?
     pieChart.axisSet = nil;
     pieChart.title = @"Current Electricity vs. Wind";
     pieChart.titleTextStyle = textStyle;
-    pieChart.titleDisplacement = CGPointMake(0.0f, 100);
+    pieChart.titleDisplacement = CGPointMake(0.0f, 60);
     CPTTheme *theme = [CPTTheme themeNamed:nil];
     [pieChart applyTheme:theme];
     
@@ -77,8 +75,18 @@
     piePlot.delegate        = self;
     [pieChart addPlot:piePlot];
     
-    //TODO: Add legend for data types
-    //TODO: Make pretty
+    // Create the legend
+    CPTLegend *myLegend = [CPTLegend legendWithGraph:pieChart];
+    myLegend.numberOfColumns = 1;
+    myLegend.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
+    myLegend.borderLineStyle = [CPTLineStyle lineStyle];
+    myLegend.cornerRadius = 5.0;
+    pieChart.legend = myLegend;
+    pieChart.legendAnchor = CPTRectAnchorBottomLeft;
+    CGFloat legendPadding = (self.view.bounds.size.width / 16);
+    pieChart.legendDisplacement = CGPointMake(legendPadding, 0.0);
+    
+    //TODO: Deal with rotation
     
     
 }
@@ -100,7 +108,7 @@
     }
     
     if ( fieldEnum == CPTPieChartFieldSliceWidth ) {
-        return (self.dataForChart)[index];
+        return [self.dataForChart objectAtIndex:index];
     }
     else {
         return @(index);
@@ -108,11 +116,38 @@
 }
 
 -(CPTLayer *)dataLabelForPlot:(CPTPlot *)plot recordIndex:(NSUInteger)index {
-    return nil;
+    static CPTMutableTextStyle *labelText = nil;
+    if (!labelText) {
+        labelText= [[CPTMutableTextStyle alloc] init];
+        labelText.color = [CPTColor darkGrayColor];
+    }
+    
+    float windValue = [[self.dataForChart objectAtIndex:0] floatValue];
+    float elecValue = [[self.dataForChart objectAtIndex:1] floatValue];
+    float totalEnergy = windValue + elecValue;
+    NSString *labelValue = nil;
+    
+    // electric
+    if (index == 0) {
+        float elecPercent = elecValue / totalEnergy;
+        labelValue = [NSString stringWithFormat:@"%0.2f units (%0.1f %%)", elecValue, (elecPercent * 100.0f)];
+    }
+    // wind
+    else if (index == 1) {
+        float windPercent = windValue / totalEnergy;
+        labelValue = [NSString stringWithFormat:@"%0.2f units (%0.1f %%)", windValue, (windPercent * 100.0f)];
+    }
+    return [[CPTTextLayer alloc] initWithText:labelValue style:labelText];
 }
 
 -(NSString *)legendTitleForPieChart:(CPTPieChart *)pieChart recordIndex:(NSUInteger)index {
-    return [NSString stringWithFormat:@"legend: %lu", (unsigned long)index];
+    if (index == 0) {
+        return @"Electric";
+    }
+    else if (index == 1) {
+        return @"Wind";
+    }
+    return nil;
 }
 
 @end

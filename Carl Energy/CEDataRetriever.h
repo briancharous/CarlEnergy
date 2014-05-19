@@ -13,7 +13,7 @@
 typedef enum {
     kResolutionHour,
     kResolutionDay,
-    kResolutionMonth
+    kResolutionMonth,
 } Resolution;
 
 typedef enum {
@@ -28,7 +28,7 @@ typedef enum {
 @interface CEDataRetriever : NSObject
 - (void)getBuildingsOnCampus;
 
-- (void)getUsage:(UsageType)usageType ForBuilding:(NSString *)building startTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
+- (void)getUsage:(UsageType)usageType ForBuilding:(CEBuilding *)building startTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
 
 @property (nonatomic, assign) id <CEDataRetrieverDelegate> delegate;
 @property NSString *baseUrl;
@@ -47,6 +47,6 @@ typedef enum {
 @optional
 
 - (void)retriever:(CEDataRetriever *)retriever gotBuildings:(NSArray *)buildings;
-- (void)retriever:(CEDataRetriever *)retriever gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(NSString *)building;
+- (void)retriever:(CEDataRetriever *)retriever gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(CEBuilding *)building;
 
 @end

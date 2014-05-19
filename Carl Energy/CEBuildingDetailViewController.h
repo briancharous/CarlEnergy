@@ -13,5 +13,7 @@
 
 @interface CEBuildingDetailViewController : UIViewController <CEDataRetrieverDelegate>
 
+- (void)requestData;
+
 @end
 

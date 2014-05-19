@@ -35,6 +35,20 @@
     [retriever setDelegate:self];
     [self makeLineGraph:0];
     self.dummyLabel.text = @"day";
+
+    [NSThread detachNewThreadSelector:@selector(requestData) toTarget:self withObject:nil];
+}
+
+- (void)requestData {
+    CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
+    NSDate *start = [formatter dateFromString:@"2014/01/01+00:00:00"];
+    NSDate *end = [formatter dateFromString:@"2015/01/01+00:00:00"];
+    CEBuilding *b = [[CEBuilding alloc] init];
+    [b setDisplayName:@"Burton"];
+    [b setWebName:@"burton"];
+    [retreiver getUsage:kUsageTypeElectricity ForBuilding:b startTime:start endTime:end resolution:kResolutionMonth];
 }
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender

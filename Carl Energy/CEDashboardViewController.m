@@ -122,8 +122,8 @@
         labelText.color = [CPTColor darkGrayColor];
     }
     
-    float windValue = [[self.dataForChart objectAtIndex:0] floatValue];
-    float elecValue = [[self.dataForChart objectAtIndex:1] floatValue];
+    float windValue = [[self.dataForChart objectAtIndex:1] floatValue];
+    float elecValue = [[self.dataForChart objectAtIndex:0] floatValue];
     float totalEnergy = windValue + elecValue;
     NSString *labelValue = nil;
     

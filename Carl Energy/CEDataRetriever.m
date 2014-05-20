@@ -105,6 +105,10 @@
     NSError *webError = nil;
     NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
     
+    NSMutableArray *dataPoints = [[NSMutableArray alloc] init];
+    
+    // extract data from the JSON
+    // TODO: more error handling
     if (webError == nil) {
         NSError *jsonError = nil;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:result options:0 error:&jsonError];
@@ -123,25 +127,17 @@
                         NSDate *startTimestamp = [resultsFormatter dateFromString:[wrapper objectForKey:@"startTimestamp"]];
                         [point setTimestamp:startTimestamp];
                         [point setHoursElapsed:[[data valueForKey:@"hoursElapsed"] floatValue]];
-                            [point setWeight:[[data valueForKey:@"weight"] floatValue]];
-                            [point setValue:[[data valueForKey:@"value"] floatValue]];
-        //                CEDataPoint *point = [[CEDataPoint alloc] init];
-        //                [point setTimestamp:[]
+                        [point setWeight:[[data valueForKey:@"weight"] floatValue]];
+                        [point setValue:[[data valueForKey:@"value"] floatValue]];
+                        [dataPoints addObject:point];
                     }
                 }
             }
         }
     }
-    
-    NSDate *dummyDate1 = [[NSDate alloc] initWithTimeIntervalSince1970:0];
-    CEDataPoint *point1 = [[CEDataPoint alloc] initWithTimestamp:dummyDate1 hoursElapsed:24 weight:24 value:10];
-    NSDate *dummyDate2 = [[NSDate alloc] initWithTimeIntervalSince1970:1440];
-    CEDataPoint *point2 = [[CEDataPoint alloc] initWithTimestamp:dummyDate2 hoursElapsed:1 weight:24 value:51];
-    NSDate *dummyDate3 = [[NSDate alloc] initWithTimeIntervalSince1970:2880];
-    CEDataPoint *point3 = [[CEDataPoint alloc] initWithTimestamp:dummyDate3 hoursElapsed:1 weight:24 value:23];
-    NSArray *dummyData = @[point1, point2, point3];
+
     if ([self.delegate respondsToSelector:@selector(retriever:gotUsage:ofType:forBuilding:)]) {
-        [self.delegate retriever:self gotUsage:dummyData ofType:usageType forBuilding:building];
+        [self.delegate retriever:self gotUsage:dataPoints ofType:usageType forBuilding:building];
     }
     [self setRequestInProgress:NO];
 }

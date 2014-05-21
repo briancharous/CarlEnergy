@@ -83,11 +83,11 @@
 {
     // Create and assign the host view
     CPTXYGraph *lineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    CGRect parentRect = CGRectMake(0, 60, self.scrollView.frame.size.width, 300);
+    CGRect parentRect = CGRectMake(0, 60, self.segmentedControl.frame.size.width, 300);
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
     [self.scrollView setFrame:self.view.bounds];
-    [self.scrollView addSubview:self.hostView];
-    //[self.scrollView bringSubviewToFront:self.hostView];
+    [self.segmentedControl setFrame:self.scrollView.bounds];
+    [self.segmentedControl addSubview:self.hostView];
     self.hostView.hostedGraph = lineGraph;
     
     // Define the textStyle for the title
@@ -100,8 +100,8 @@
     NSString *title = @"Electricity Usage";
     lineGraph.title = title;
     lineGraph.titleTextStyle = textStyle;
-    lineGraph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
-    lineGraph.titleDisplacement = CGPointMake(0.0f, 0.0f);
+    //lineGraph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
+    lineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
     
     // Set plot area padding
     [lineGraph.plotAreaFrame setPaddingLeft:30.0f];

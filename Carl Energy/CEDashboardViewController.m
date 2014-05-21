@@ -24,6 +24,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_dashboard_selected"]];
+    
     CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
     [retriever setDelegate:self];
     

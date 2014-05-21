@@ -27,7 +27,7 @@
     NSMutableArray *buildings = [[NSMutableArray alloc] init];
     
     // fire off a web request
-    NSString *urlString = [NSString stringWithFormat:@"%@/json/carleton/children/", self.baseUrl];
+    NSString *urlString = [NSString stringWithFormat:@"%@/json/carleton/children", self.baseUrl];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLResponse *response = nil;

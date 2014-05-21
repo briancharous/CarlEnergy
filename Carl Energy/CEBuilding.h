@@ -13,5 +13,6 @@
 @property NSString *webName;
 @property NSString *displayName;
 @property NSString *imageURL;
+@property NSMutableArray *meters;
 
 @end

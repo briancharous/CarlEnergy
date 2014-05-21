@@ -13,6 +13,7 @@
 		329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */; };
 		9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480E8191D4556005F09BA /* CEBuilding.m */; };
 		9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480EB191D4A14005F09BA /* CEDataPoint.m */; };
+		9F8E0560192C0735001335C4 /* CEMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E055F192C0735001335C4 /* CEMeter.m */; };
 		9FA4A4BE191A95A300AE3551 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4BD191A95A300AE3551 /* Foundation.framework */; };
 		9FA4A4C0191A95A300AE3551 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4BF191A95A300AE3551 /* CoreGraphics.framework */; };
 		9FA4A4C2191A95A300AE3551 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4A4C1191A95A300AE3551 /* UIKit.framework */; };
@@ -65,6 +66,8 @@
 		9F8480E8191D4556005F09BA /* CEBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuilding.m; sourceTree = "<group>"; };
 		9F8480EA191D4A14005F09BA /* CEDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataPoint.h; sourceTree = "<group>"; };
 		9F8480EB191D4A14005F09BA /* CEDataPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDataPoint.m; sourceTree = "<group>"; };
+		9F8E055E192C0735001335C4 /* CEMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEMeter.h; sourceTree = "<group>"; };
+		9F8E055F192C0735001335C4 /* CEMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEMeter.m; sourceTree = "<group>"; };
 		9FA4A4BA191A95A300AE3551 /* Carl Energy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carl Energy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA4A4BD191A95A300AE3551 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9FA4A4BF191A95A300AE3551 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,6 +135,8 @@
 				9F8480EB191D4A14005F09BA /* CEDataPoint.m */,
 				9F8480E7191D4556005F09BA /* CEBuilding.h */,
 				9F8480E8191D4556005F09BA /* CEBuilding.m */,
+				9F8E055E192C0735001335C4 /* CEMeter.h */,
+				9F8E055F192C0735001335C4 /* CEMeter.m */,
 			);
 			name = "Data Wrappers";
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */,
 				9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */,
 				9FA4A4D4191A95A300AE3551 /* CEBuildingsListTableViewController.m in Sources */,
+				9F8E0560192C0735001335C4 /* CEMeter.m in Sources */,
 				9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */,
 				329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */,
 				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,

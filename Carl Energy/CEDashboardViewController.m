@@ -36,6 +36,17 @@
     NSMutableArray *contentArray = [NSMutableArray arrayWithObjects:@40.0, @80.0, nil];
     
     self.dataForChart = contentArray;
+    // Maybe not needed after more content added:
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
+    [self makePieChart];
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    // undraw and redraw the graph
+    [self.hostView removeFromSuperview];
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    // Maybe not needed after more content added:
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
     [self makePieChart];
 }
 
@@ -86,7 +97,7 @@
     CGFloat legendPadding = (self.view.bounds.size.width / 16);
     pieChart.legendDisplacement = CGPointMake(legendPadding, 0.0);
     
-    //TODO: Deal with rotation
+    //TODO: Center graph on rotation to landscape
     
     
 }

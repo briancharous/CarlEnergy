@@ -13,10 +13,14 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UILabel *dummyLabel;
 - (IBAction)timeChanged:(UISegmentedControl *)sender;
+//@property (nonatomic, strong) CPTGraphHostingView *hostView;
 
 @end
 
 @implementation CEBuildingDetailViewController
+
+@synthesize dataForChart;
+@synthesize hostView = hostView_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +37,11 @@
     // Do any additional setup after loading the view.
     CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
     [retriever setDelegate:self];
+    // placeholder code:
+    self.dataForChart = [[NSMutableArray alloc] init];
+    for (int i = 1; i <= 24; i++) {
+        [self.dataForChart addObject:@50.0];
+    }
     [self makeLineGraph:0];
     self.dummyLabel.text = @"day";
 
@@ -53,7 +62,6 @@
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender
 {
-    // Should probably figure out a better way to do this than passing the index
     [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
     switch (self.segmentedControl.selectedSegmentIndex)
     {
@@ -76,9 +84,46 @@
 
 -(void)makeLineGraph:(NSInteger)timeframeIndex
 {
-    // make a graph, maybe in an embedded view controller
-    CPTXYGraph *graph = [[CPTXYGraph alloc] init];
-    graph.title = @"Electricity";
+    // Create and assign the host view
+    CPTXYGraph *lineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    CGRect parentRect = CGRectMake(0, 60, self.scrollView.frame.size.width, 300);
+    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+    [self.scrollView setFrame:self.view.bounds];
+    [self.scrollView addSubview:self.hostView];
+    self.hostView.hostedGraph = lineGraph;
+    
+    // Define the textStyle for the title
+    CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
+    textStyle.color = [CPTColor darkGrayColor];
+    textStyle.fontName = @"HelveticaNeue-Thin";
+    textStyle.fontSize = 25.0f;
+    
+    // Make title
+    NSString *title = @"Electricity Usage";
+    lineGraph.title = title;
+    lineGraph.titleTextStyle = textStyle;
+    lineGraph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
+    lineGraph.titleDisplacement = CGPointMake(0.0f, 0.0f);
+    
+    // Set plot area padding
+    [lineGraph.plotAreaFrame setPaddingLeft:30.0f];
+    [lineGraph.plotAreaFrame setPaddingBottom:30.0f];
+    
+    // Create plot
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) lineGraph.defaultPlotSpace;
+    CPTScatterPlot *elecPlot = [[CPTScatterPlot alloc] init];
+    elecPlot.dataSource = self;
+    //elecPlot.identifier = elec;
+    CPTColor *elecColor = [CPTColor redColor];
+    [lineGraph addPlot:elecPlot toPlotSpace:plotSpace];
+    
+    // Configure plot space??
+    
+    // Do line style stuff?
+    
+    // Configure axes
+    
+    
     
 }
 
@@ -86,6 +131,22 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - CPTPlotDataSource methods
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
+    // extremely temporary
+    return 24;
+}
+
+-(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
+    if (index >= 24) {
+        return nil;
+    }
+    else {
+        return [self.dataForChart objectAtIndex:index];
+    }
+    return [self.dataForChart objectAtIndex:index];
 }
 
 /*

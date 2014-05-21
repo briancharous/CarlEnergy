@@ -11,7 +11,11 @@
 #import "CorePlot-CocoaTouch.h"
 
 
-@interface CEBuildingDetailViewController : UIViewController <CEDataRetrieverDelegate>
+@interface CEBuildingDetailViewController : UIViewController <CEDataRetrieverDelegate, CPTPlotDataSource>
+
+@property (nonatomic, strong) CPTGraphHostingView *hostView;
+@property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
+@property IBOutlet UIScrollView *scrollView;
 
 - (void)requestData;
 

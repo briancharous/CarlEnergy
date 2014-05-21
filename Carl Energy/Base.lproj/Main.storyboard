@@ -167,13 +167,6 @@
                                             <action selector="timeChanged:" destination="YXv-bG-9kb" eventType="valueChanged" id="Bmw-ZH-NLk"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzg-MC-Yy5">
-                                        <rect key="frame" x="126" y="81" width="80" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -189,7 +182,6 @@
                         <barButtonItem key="backBarButtonItem" title="Buildings" id="82M-3H-gNN"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="dummyLabel" destination="pzg-MC-Yy5" id="CNY-3e-Ek0"/>
                         <outlet property="segmentedControl" destination="ndw-Qb-CeI" id="Qyk-n7-cOG"/>
                     </connections>
                 </viewController>

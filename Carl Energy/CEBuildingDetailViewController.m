@@ -10,17 +10,14 @@
 
 
 @interface CEBuildingDetailViewController ()
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-@property (weak, nonatomic) IBOutlet UILabel *dummyLabel;
+//@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+//@property (weak, nonatomic) IBOutlet UILabel *dummyLabel;
 - (IBAction)timeChanged:(UISegmentedControl *)sender;
 //@property (nonatomic, strong) CPTGraphHostingView *hostView;
 
 @end
 
 @implementation CEBuildingDetailViewController
-
-@synthesize dataForChart;
-@synthesize hostView = hostView_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -90,6 +87,7 @@
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
     [self.scrollView setFrame:self.view.bounds];
     [self.scrollView addSubview:self.hostView];
+    //[self.scrollView bringSubviewToFront:self.hostView];
     self.hostView.hostedGraph = lineGraph;
     
     // Define the textStyle for the title
@@ -118,11 +116,29 @@
     [lineGraph addPlot:elecPlot toPlotSpace:plotSpace];
     
     // Configure plot space??
+    [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
+    CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
+    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    plotSpace.xRange = xRange;
+    CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
+    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     
     // Do line style stuff?
+    CPTMutableLineStyle *lineStyle = [elecPlot.dataLineStyle mutableCopy];
+    lineStyle.lineWidth = 2.5;
+    lineStyle.lineColor = elecColor;
+    elecPlot.dataLineStyle = lineStyle;
+    CPTMutableLineStyle *elecSymbolLineStyle = [CPTMutableLineStyle lineStyle];
+    elecSymbolLineStyle.lineColor = elecColor;
+    CPTPlotSymbol *elecSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+    elecSymbol.fill = [CPTFill fillWithColor:elecColor];
+    elecSymbol.lineStyle = elecSymbolLineStyle;
+    elecSymbol.size = CGSizeMake(6.0f, 6.0f);
+    elecPlot.plotSymbol = elecSymbol;
     
     // Configure axes
-    
+    CPTMutableLineStyle *axisLineStyle = [CPTMutableLineStyle lineStyle];
+    axisLineStyle.lineWidth = 2.0f;
     
     
 }
@@ -140,13 +156,17 @@
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
-    if (index >= 24) {
-        return nil;
+    switch (fieldEnum) {
+        case CPTScatterPlotFieldX:
+            return [NSNumber numberWithUnsignedInteger:index];
+            break;
+            
+        case CPTScatterPlotFieldY:
+            return [self.dataForChart objectAtIndex:index];
+            break;
     }
-    else {
-        return [self.dataForChart objectAtIndex:index];
-    }
-    return [self.dataForChart objectAtIndex:index];
+    return [NSDecimalNumber zero];
+
 }
 
 /*

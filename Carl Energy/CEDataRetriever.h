@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CEBuilding.h"
 #import "CEDataPoint.h"
+#import "CEMeter.h"
 
 typedef enum {
     kResolutionHour,

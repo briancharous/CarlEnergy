@@ -34,6 +34,9 @@
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [self setRefreshControl:refreshControl];
     [self loadInitialData];
+    
+    
+    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_building_selected"]];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

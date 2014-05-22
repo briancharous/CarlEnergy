@@ -56,6 +56,7 @@
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
     [self.scrollView setFrame:self.view.bounds];
     [self.scrollView addSubview:self.hostView];
+    //NSLog(@"%@", self.scrollView.subviews);
     self.hostView.hostedGraph = pieChart;
     
     // Define the textStyle for the title

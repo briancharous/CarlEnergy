@@ -7,6 +7,8 @@
 //
 
 #import "CEBuildingDetailViewController.h"
+#include <stdlib.h>
+
 
 
 @interface CEBuildingDetailViewController ()
@@ -37,7 +39,9 @@
     // placeholder code:
     self.dataForChart = [[NSMutableArray alloc] init];
     for (int i = 1; i <= 24; i++) {
-        [self.dataForChart addObject:@50.0];
+        int r = arc4random() % 100;
+        NSNumber *myNumber = [NSNumber numberWithInt:r];
+        [self.dataForChart addObject:myNumber];
     }
     [self makeLineGraph:0];
     self.dummyLabel.text = @"day";
@@ -79,15 +83,16 @@
     }
 }
 
+// TODO: subclass this entire method into a graphMaker
+// TOOO: make this use real data
 -(void)makeLineGraph:(NSInteger)timeframeIndex
 {
     // Create and assign the host view
     CPTXYGraph *lineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    CGRect parentRect = CGRectMake(0, 60, self.segmentedControl.frame.size.width, 300);
+    CGRect parentRect = CGRectMake(0, 80, self.scrollView.frame.size.width, 250);
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
     [self.scrollView setFrame:self.view.bounds];
-    [self.segmentedControl setFrame:self.scrollView.bounds];
-    [self.segmentedControl addSubview:self.hostView];
+    [self.scrollView addSubview:self.hostView];
     self.hostView.hostedGraph = lineGraph;
     
     // Define the textStyle for the title
@@ -105,7 +110,7 @@
     
     // Set plot area padding
     [lineGraph.plotAreaFrame setPaddingLeft:30.0f];
-    [lineGraph.plotAreaFrame setPaddingBottom:30.0f];
+    [lineGraph.plotAreaFrame setPaddingBottom:45.0f];
     
     // Create plot
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) lineGraph.defaultPlotSpace;
@@ -118,10 +123,11 @@
     // Configure plot space??
     [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
     CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
-    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.xRange = xRange;
     CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
+    plotSpace.yRange = yRange;
     
     // Do line style stuff?
     CPTMutableLineStyle *lineStyle = [elecPlot.dataLineStyle mutableCopy];
@@ -136,10 +142,95 @@
     elecSymbol.size = CGSizeMake(6.0f, 6.0f);
     elecPlot.plotSymbol = elecSymbol;
     
+    // TODO: clean up this code
     // Configure axes
+    // 1 - Create styles
+    CPTMutableTextStyle *axisTitleStyle = [CPTMutableTextStyle textStyle];
+    axisTitleStyle.color = [CPTColor blackColor];
+    axisTitleStyle.fontName = @"Helvetica-Bold";
+    axisTitleStyle.fontSize = 12.0f;
     CPTMutableLineStyle *axisLineStyle = [CPTMutableLineStyle lineStyle];
     axisLineStyle.lineWidth = 2.0f;
-    
+    axisLineStyle.lineColor = [CPTColor blackColor];
+    CPTMutableTextStyle *axisTextStyle = [[CPTMutableTextStyle alloc] init];
+    axisTextStyle.color = [CPTColor blackColor];
+    axisTextStyle.fontName = @"Helvetica-Bold";
+    axisTextStyle.fontSize = 11.0f;
+    CPTMutableLineStyle *tickLineStyle = [CPTMutableLineStyle lineStyle];
+    tickLineStyle.lineColor = [CPTColor blackColor];
+    tickLineStyle.lineWidth = 2.0f;
+    CPTMutableLineStyle *gridLineStyle = [CPTMutableLineStyle lineStyle];
+    tickLineStyle.lineColor = [CPTColor blackColor];
+    tickLineStyle.lineWidth = 1.0f;
+    // 2 - Get axis set
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.hostView.hostedGraph.axisSet;
+    // 3 - Configure x-axis
+    CPTAxis *x = axisSet.xAxis;
+    x.title = @"Hour";
+    x.titleTextStyle = axisTitleStyle;
+    x.titleOffset = 15.0f;
+    x.axisLineStyle = axisLineStyle;
+    x.labelingPolicy = CPTAxisLabelingPolicyNone;
+    x.labelTextStyle = axisTextStyle;
+    x.majorTickLineStyle = axisLineStyle;
+    x.majorTickLength = 4.0f;
+    x.tickDirection = CPTSignNegative;
+    CGFloat dateCount = 24;
+    NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
+    NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
+    for (int k = 1; k <= 24; k++) {
+        if (k % 2 == 0) {
+            NSString *myString = [NSString stringWithFormat:@"%i", k];
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:x.labelTextStyle];
+            CGFloat location = k;
+            label.tickLocation = CPTDecimalFromCGFloat(location);
+            label.offset = x.majorTickLength;
+            if (label) {
+                [xLabels addObject:label];
+                [xLocations addObject:[NSNumber numberWithFloat:location]];
+            }
+        }
+    }
+    x.axisLabels = xLabels;
+    x.majorTickLocations = xLocations;
+    // 4 - Configure y-axis
+    CPTAxis *y = axisSet.yAxis;
+    y.title = @"Electric Units";
+    y.titleTextStyle = axisTitleStyle;
+    y.titleOffset = -40.0f;
+    y.axisLineStyle = axisLineStyle;
+    y.majorGridLineStyle = gridLineStyle;
+    y.labelingPolicy = CPTAxisLabelingPolicyNone;
+    y.labelTextStyle = axisTextStyle;
+    y.labelOffset = 16.0f;
+    y.majorTickLineStyle = axisLineStyle;
+    y.majorTickLength = 4.0f;
+    y.minorTickLength = 2.0f;
+    y.tickDirection = CPTSignPositive;
+    NSInteger majorIncrement = 10;
+    NSInteger minorIncrement = 5;
+    CGFloat yMax = 100.0f;  // should determine dynamically
+    NSMutableSet *yLabels = [NSMutableSet set];
+    NSMutableSet *yMajorLocations = [NSMutableSet set];
+    NSMutableSet *yMinorLocations = [NSMutableSet set];
+    for (NSInteger j = minorIncrement; j <= yMax; j += minorIncrement) {
+        NSUInteger mod = j % majorIncrement;
+        if (mod == 0) {
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i", j] textStyle:y.labelTextStyle];
+            NSDecimal location = CPTDecimalFromInteger(j);
+            label.tickLocation = location;
+            label.offset = -y.majorTickLength - y.labelOffset;
+            if (label) {
+                [yLabels addObject:label];
+            }
+            [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
+        } else {
+            [yMinorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromInteger(j)]];
+        }
+    }
+    y.axisLabels = yLabels;    
+    y.majorTickLocations = yMajorLocations;
+    y.minorTickLocations = yMinorLocations;
     
 }
 
@@ -149,6 +240,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// TODO: make this use real data
 #pragma mark - CPTPlotDataSource methods
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
     // extremely temporary

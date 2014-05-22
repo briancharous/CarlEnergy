@@ -33,7 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    // set title
+    if (self.building) {
+        [self.navigationItem setTitle:self.building.displayName];
+    }
+
     CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
     [retriever setDelegate:self];
     // placeholder code:
@@ -50,20 +55,18 @@
 }
 
 - (void)requestData {
+    // get some dummy data to test if the request works
     CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
     NSDate *start = [formatter dateFromString:@"2014/01/01+00:00:00"];
     NSDate *end = [formatter dateFromString:@"2015/01/01+00:00:00"];
-    CEBuilding *b = [[CEBuilding alloc] init];
-    [b setDisplayName:@"Burton"];
-    [b setWebName:@"burton"];
-    [retreiver getUsage:kUsageTypeElectricity ForBuilding:b startTime:start endTime:end resolution:kResolutionMonth];
+    [retreiver getUsage:kUsageTypeElectricity ForBuilding:self.building startTime:start endTime:end resolution:kResolutionMonth];
 }
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender
 {
-    [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+//    [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
     switch (self.segmentedControl.selectedSegmentIndex)
     {
         case 0:

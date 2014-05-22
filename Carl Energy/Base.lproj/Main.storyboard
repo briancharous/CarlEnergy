@@ -123,7 +123,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="YXv-bG-9kb" kind="push" id="318-Ew-0OZ"/>
+                                    <segue destination="YXv-bG-9kb" kind="push" identifier="showBuildingDetail" id="318-Ew-0OZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

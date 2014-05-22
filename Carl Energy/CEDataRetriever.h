@@ -11,18 +11,11 @@
 #import "CEDataPoint.h"
 #import "CEMeter.h"
 
-typedef enum {
+typedef NS_ENUM(NSInteger, Resolution) {
     kResolutionHour,
     kResolutionDay,
     kResolutionMonth,
-} Resolution;
-
-typedef enum {
-    kUsageTypeWater,
-    kUsageTypeElectricity,
-    kUsageTypeSteam
-} UsageType;
-
+};
 
 @protocol CEDataRetrieverDelegate;
 

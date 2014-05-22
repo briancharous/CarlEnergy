@@ -33,14 +33,12 @@
     CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
     [retriever setDelegate:self];
     // placeholder code:
-    self.dataForChart = [[NSMutableArray alloc] init];
-    for (int i = 1; i <= 24; i++) {
-        int r = arc4random() % 100;
-        NSNumber *myNumber = [NSNumber numberWithInt:r];
-        [self.dataForChart addObject:myNumber];
-    }
-    [self makeLineGraph:0];
-    self.dummyLabel.text = @"day";
+    self.dataForElectricityChart = [[NSMutableArray alloc] init];
+//    for (int i = 1; i <= 24; i++) {
+//        [self.dataForElectricityChart addObject:@10];
+//    }
+    [self timeChanged:nil];
+    [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
 
 }
 
@@ -106,7 +104,7 @@
 -(void)makeLineGraph:(NSInteger)timeframeIndex
 {
     // Create and assign the host view
-    CPTXYGraph *lineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     CGRect parentRect = CGRectMake(0, 80, self.scrollView.frame.size.width, 250);
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
 //    [self.segmentedControl setFrame:self.scrollView.bounds];
@@ -127,8 +125,8 @@
     self.electricityLineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
     
     // Set plot area padding
-    [lineGraph.plotAreaFrame setPaddingLeft:30.0f];
-    [lineGraph.plotAreaFrame setPaddingBottom:45.0f];
+    [self.electricityLineGraph.plotAreaFrame setPaddingLeft:30.0f];
+    [self.electricityLineGraph.plotAreaFrame setPaddingBottom:45.0f];
     
     // Create plot
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.electricityLineGraph.defaultPlotSpace;

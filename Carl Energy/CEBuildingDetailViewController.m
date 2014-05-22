@@ -10,14 +10,6 @@
 #include <stdlib.h>
 
 
-@interface CEBuildingDetailViewController ()
-//@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-//@property (weak, nonatomic) IBOutlet UILabel *dummyLabel;
-- (IBAction)timeChanged:(UISegmentedControl *)sender;
-//@property (nonatomic, strong) CPTGraphHostingView *hostView;
-
-@end
-
 @implementation CEBuildingDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,35 +42,59 @@
     [self makeLineGraph:0];
     self.dummyLabel.text = @"day";
 
-    [NSThread detachNewThreadSelector:@selector(requestData) toTarget:self withObject:nil];
 }
 
-- (void)requestData {
+- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale {
     // get some dummy data to test if the request works
     CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
+    [retreiver setDelegate:self];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
-    NSDate *start = [formatter dateFromString:@"2014/01/01+00:00:00"];
-    NSDate *end = [formatter dateFromString:@"2015/01/01+00:00:00"];
-    [retreiver getUsage:kUsageTypeElectricity ForBuilding:self.building startTime:start endTime:end resolution:kResolutionMonth];
+    NSDate *now = [NSDate date];
+    NSDate *previous;
+    Resolution resolution;
+    switch (timeScale) {
+        case kTimeScaleDay:
+            previous = [now dateByAddingTimeInterval:-60*60*24];
+            resolution = kResolutionHour;
+            break;
+        case kTimeScaleWeek:
+            previous = [now dateByAddingTimeInterval:-60*60*24*7];
+            resolution = kResolutionDay;
+            break;
+        case kTimeScaleMonth:
+            previous = [now dateByAddingTimeInterval:-60*60*24*30];
+            resolution = kResolutionDay;
+        case kTimeScaleYear:
+            previous = [now dateByAddingTimeInterval:-60*60*24*365];
+            resolution = kResolutionMonth;
+        default:
+            break;
+    }
+    
+    // TODO: cancel request if another one is in progress
+    if (!retreiver.requestInProgress) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+            [retreiver getUsage:kUsageTypeElectricity ForBuilding:self.building startTime:previous endTime:now resolution:resolution];
+        });
+    }
 }
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender
 {
-//    [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
     switch (self.segmentedControl.selectedSegmentIndex)
     {
         case 0:
-            self.dummyLabel.text = @"day";
+            [self requestDataOfType:kUsageTypeElectricity forTimeScale:kTimeScaleDay];
             break;
         case 1:
-            self.dummyLabel.text = @"week";
+            [self requestDataOfType:kUsageTypeElectricity forTimeScale:kTimeScaleWeek];
             break;
         case 2:
-            self.dummyLabel.text = @"month";
+            [self requestDataOfType:kUsageTypeElectricity forTimeScale:kTimeScaleMonth];
             break;
         case 3:
-            self.dummyLabel.text = @"year";
+            [self requestDataOfType:kUsageTypeElectricity forTimeScale:kTimeScaleYear];
             break;
         default:
             break;
@@ -95,7 +111,7 @@
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
 //    [self.segmentedControl setFrame:self.scrollView.bounds];
     [self.scrollView addSubview:self.hostView];
-    self.hostView.hostedGraph = lineGraph;
+    self.hostView.hostedGraph = self.electricityLineGraph;
     
     // Define the textStyle for the title
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
@@ -105,22 +121,22 @@
     
     // Make title
     NSString *title = @"Electricity Usage";
-    lineGraph.title = title;
-    lineGraph.titleTextStyle = textStyle;
+    self.electricityLineGraph.title = title;
+    self.electricityLineGraph.titleTextStyle = textStyle;
     //lineGraph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
-    lineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
+    self.electricityLineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
     
     // Set plot area padding
     [lineGraph.plotAreaFrame setPaddingLeft:30.0f];
     [lineGraph.plotAreaFrame setPaddingBottom:45.0f];
     
     // Create plot
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) lineGraph.defaultPlotSpace;
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.electricityLineGraph.defaultPlotSpace;
     CPTScatterPlot *elecPlot = [[CPTScatterPlot alloc] init];
     elecPlot.dataSource = self;
     //elecPlot.identifier = elec;
     CPTColor *elecColor = [CPTColor redColor];
-    [lineGraph addPlot:elecPlot toPlotSpace:plotSpace];
+    [self.electricityLineGraph addPlot:elecPlot toPlotSpace:plotSpace];
     
     // Configure plot space??
     [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
@@ -245,22 +261,34 @@
 // TODO: make this use real data
 #pragma mark - CPTPlotDataSource methods
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-    // extremely temporary
-    return 24;
+    return [self.dataForElectricityChart count];
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
     switch (fieldEnum) {
         case CPTScatterPlotFieldX:
-            return [NSNumber numberWithUnsignedInteger:index];
+            return @(index);
             break;
             
-        case CPTScatterPlotFieldY:
-            return [self.dataForChart objectAtIndex:index];
+        case CPTScatterPlotFieldY: {
+            NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
+            NSLog(@"%lu: %@", (unsigned long)index, yValue);
+            return yValue;
             break;
+        }
     }
     return [NSDecimalNumber zero];
 
+}
+
+#pragma mark - CEDataRetreiverDelegate methods
+- (void)retriever:(CEDataRetriever *)retriever gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(CEBuilding *)building {
+    [self.dataForElectricityChart removeAllObjects];
+    for (CEDataPoint *point in usage) {
+        [self.dataForElectricityChart addObject:@(point.weight * point.value)];
+    }
+    [self.electricityLineGraph reloadData];
+    [self.electricityLineGraph.defaultPlotSpace scaleToFitPlots:[self.electricityLineGraph allPlots]];
 }
 
 /*

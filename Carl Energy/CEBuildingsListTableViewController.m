@@ -28,14 +28,6 @@
 {
     [super viewDidLoad];
     
-    self.imageCache = [[NSMutableDictionary alloc] init];
-
-    // show spinner
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [self setRefreshControl:refreshControl];
-    [self loadInitialData];
-    
-    
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_building_selected"]];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -47,10 +39,6 @@
 
 - (void)loadInitialData {
     
-    [self.refreshControl beginRefreshing];
-    // scroll past top to show refresh control
-    [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
-
     CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
     [retreiver setDelegate:self];
     [NSThread detachNewThreadSelector:@selector(getBuildingsOnCampus) toTarget:retreiver withObject:nil];
@@ -92,8 +80,6 @@
 - (void)retriever:(CEDataRetriever *)retriever gotBuildings:(NSArray *)buildings {
     [self setBuildings:buildings];
     [self.tableView reloadData];
-    [self.refreshControl endRefreshing];
-    [self.refreshControl removeFromSuperview];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

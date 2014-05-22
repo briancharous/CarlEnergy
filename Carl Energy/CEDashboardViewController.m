@@ -20,11 +20,6 @@
 
 @implementation CEDashboardViewController
 
-
-@synthesize dataForChart;
-@synthesize hostView = hostView_;
-@synthesize selectedTheme = selectedTheme_;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

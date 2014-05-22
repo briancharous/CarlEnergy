@@ -16,6 +16,8 @@
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
 @property IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UILabel *dummyLabel;
 
 - (void)requestData;
 

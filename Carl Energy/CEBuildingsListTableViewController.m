@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadInitialData];
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_building_selected"]];
 

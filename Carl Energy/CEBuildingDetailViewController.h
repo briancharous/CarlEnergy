@@ -9,18 +9,28 @@
 #import <UIKit/UIKit.h>
 #import "CEDataRetriever.h"
 #import "CorePlot-CocoaTouch.h"
+#import "CEMeter.h"
+
+typedef NS_ENUM(NSInteger, CETimeScale) {
+    kTimeScaleDay,
+    kTimeScaleWeek,
+    kTimeScaleMonth,
+    kTimeScaleYear
+};
 
 
 @interface CEBuildingDetailViewController : UIViewController <CEDataRetrieverDelegate, CPTPlotDataSource>
 
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
-@property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
+@property (readwrite, strong, nonatomic) NSMutableArray *dataForElectricityChart;
 @property IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-@property (weak, nonatomic) IBOutlet UILabel *dummyLabel;
 @property CEBuilding *building;
+@property CPTXYGraph *electricityLineGraph;
 
-- (void)requestData;
+- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale;
+- (IBAction)timeChanged:(UISegmentedControl *)sender;
+
 
 @end
 

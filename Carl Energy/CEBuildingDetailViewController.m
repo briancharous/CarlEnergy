@@ -10,7 +10,6 @@
 #include <stdlib.h>
 
 
-
 @interface CEBuildingDetailViewController ()
 //@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 //@property (weak, nonatomic) IBOutlet UILabel *dummyLabel;
@@ -94,7 +93,7 @@
     CPTXYGraph *lineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     CGRect parentRect = CGRectMake(0, 80, self.scrollView.frame.size.width, 250);
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-    [self.scrollView setFrame:self.view.bounds];
+//    [self.segmentedControl setFrame:self.scrollView.bounds];
     [self.scrollView addSubview:self.hostView];
     self.hostView.hostedGraph = lineGraph;
     

@@ -63,9 +63,11 @@
         case kTimeScaleMonth:
             previous = [now dateByAddingTimeInterval:-60*60*24*30];
             resolution = kResolutionDay;
+            break;
         case kTimeScaleYear:
             previous = [now dateByAddingTimeInterval:-60*60*24*365];
             resolution = kResolutionMonth;
+            break;
         default:
             break;
     }

@@ -56,7 +56,6 @@
     NSDate *end = [formatter dateFromString:@"2015/01/01+00:00:00"];
     CEBuilding *b = [[CEBuilding alloc] init];
     [b setDisplayName:@"Burton"];
-    [b setWebName:@"burton"];
     [retreiver getUsage:kUsageTypeElectricity ForBuilding:b startTime:start endTime:end resolution:kResolutionMonth];
 }
 

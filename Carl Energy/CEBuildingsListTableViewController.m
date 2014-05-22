@@ -82,40 +82,7 @@
      CEBuilding *building = [self.buildings objectAtIndex:[indexPath row]];
      NSString *buildingName = [building displayName];
      cell.textLabel.text = buildingName;
-     cell.imageView.bounds = CGRectMake(0, 0, 50, 50);
-     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-     spinner.center = CGPointMake(CGRectGetMidX(cell.imageView.bounds), CGRectGetMaxY(cell.imageView.bounds));
-     
-     // try to get image from caceh
-     UIImage *cachedImage = [self.imageCache objectForKey:building.imageURL];
-     if (cachedImage == nil) {
-         // remove image
-         [cell.imageView setImage:nil];
-         
-         // async get the image
-         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-             NSString *imageURL = [building imageURL];
-             NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-             if (imageData) {
-                 UIImage *image = [UIImage imageWithData:imageData];
-                 if (image) {
-                     dispatch_async(dispatch_get_main_queue(), ^ {
-                         UITableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                         if (updateCell) {
-                             [updateCell.imageView setImage:image];
-                             [updateCell setNeedsLayout];
-                             // save image in cache
-                             [self.imageCache setObject:image forKey:imageURL];
-                         }
-                     });
-                 }
-             }
-         });
-     }
-     else {
-         // set the imageview's image from the cache
-         [cell.imageView setImage:cachedImage];
-     }
+     [cell.imageView setImage:[UIImage imageNamed:[building imageName]]];
   
      return cell;
  }

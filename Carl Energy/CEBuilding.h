@@ -10,9 +10,9 @@
 
 @interface CEBuilding : NSObject
 
-@property NSString *webName;
 @property NSString *displayName;
-@property NSString *imageURL;
-@property NSMutableArray *meters;
+@property NSString *imageName;
+@property NSMutableDictionary *meters; // meters keyed by usage type (see CEMeter.h)
+@property NSInteger area;
 
 @end

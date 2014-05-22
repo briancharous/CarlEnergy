@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>area</key>
+		<real>65620.0</real>
+		<key>displayName</key>
+		<string>Burton Hall</string>
+		<key>image</key>
+		<string>burton.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_burton_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_burton_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_burton_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>91536.0</real>
+		<key>displayName</key>
+		<string>Cassat Hall / James Hall</string>
+		<key>image</key>
+		<string>cassat hall.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_cassatjames_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_cassatjames_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_cassatjames_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>30829.0</real>
+		<key>displayName</key>
+		<string>Cowling Gym</string>
+		<key>image</key>
+		<string>cowling.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_cowling_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_cowling_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_cowling_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>30795.0</real>
+		<key>displayName</key>
+		<string>Davis Hall</string>
+		<key>image</key>
+		<string>davis.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_davis_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_davis_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_davis_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>48963.0</real>
+		<key>displayName</key>
+		<string>Evans Hall</string>
+		<key>image</key>
+		<string>evans.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_evans_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_evans_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_evans_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>66691.0</real>
+		<key>displayName</key>
+		<string>Goodhue Hall</string>
+		<key>image</key>
+		<string>goodhue.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_goodhue_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_goodhue_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_goodhue_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>111220.0</real>
+		<key>displayName</key>
+		<string>Gould Library</string>
+		<key>image</key>
+		<string>gould.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_gould_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_gould_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_gould_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>72000.0</real>
+		<key>displayName</key>
+		<string>Hulings Hall</string>
+		<key>image</key>
+		<string>hulings.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_hulings_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_hulings_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_hulings_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>50710.0</real>
+		<key>displayName</key>
+		<string>Laird Stadium</string>
+		<key>image</key>
+		<string>laird stadium.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_laird_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_laird_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_laird_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>1700000.0</real>
+		<key>displayName</key>
+		<string>Main Campus</string>
+		<key>image</key>
+		<string>campus.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_campus_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Gas Use</string>
+				<key>systemName</key>
+				<string>carleton_campus_gas_use</string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_campus_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Solar Production</string>
+				<key>systemName</key>
+				<string>carleton_campus_total_pv_prod</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Turbine 1: Public grid, Production</string>
+				<key>systemName</key>
+				<string>carleton_turbine1_produced_power</string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Turbine 2 (Kracum): Carleton Grid, Production</string>
+				<key>systemName</key>
+				<string>carleton_wind_production</string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Turbine 2 (Kracum): Carleton Grid, Wind Speed</string>
+				<key>systemName</key>
+				<string>carleton_wind_speed</string>
+				<key>type</key>
+				<integer>36</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>56522.0</real>
+		<key>displayName</key>
+		<string>Mudd Hall</string>
+		<key>image</key>
+		<string>mudd.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_mudd_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_mudd_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_mudd_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>16515.0</real>
+		<key>displayName</key>
+		<string>Music Hall</string>
+		<key>image</key>
+		<string>music.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_music_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>39787.0</real>
+		<key>displayName</key>
+		<string>Musser Hall</string>
+		<key>image</key>
+		<string>musser.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_musser_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_musser_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_musser_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>40392.0</real>
+		<key>displayName</key>
+		<string>Myers Hall</string>
+		<key>image</key>
+		<string>myers.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_myers_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_myers_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_myers_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>36033.0</real>
+		<key>displayName</key>
+		<string>Nourse Hall</string>
+		<key>image</key>
+		<string>nourse.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_nourse_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_nourse_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_nourse_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>54899.0</real>
+		<key>displayName</key>
+		<string>Olin Hall</string>
+		<key>image</key>
+		<string>olin.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_olin_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_olin_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_olin_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>90085.0</real>
+		<key>displayName</key>
+		<string>Recreation Center</string>
+		<key>image</key>
+		<string>rec center.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_reccenter_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_reccenter_steam_flow</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_reccenter_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>44875.0</real>
+		<key>displayName</key>
+		<string>Sayles-Hill Campus Center</string>
+		<key>image</key>
+		<string>sayles.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_sayles_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_sayles_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_sayles_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>43957.0</real>
+		<key>displayName</key>
+		<string>Severance Hall</string>
+		<key>image</key>
+		<string>severence.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_severance_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_severance_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_severance_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_severence_en_derived</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>28213.0</real>
+		<key>displayName</key>
+		<string>Skinner Memorial Chapel</string>
+		<key>image</key>
+		<string>skinner chapel.png</string>
+		<key>meters</key>
+		<array>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>37977.0</real>
+		<key>displayName</key>
+		<string>Student Townhouses</string>
+		<key>image</key>
+		<string>townhouses.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_townhouses_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_townhouses_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_townhouses_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>53346.0</real>
+		<key>displayName</key>
+		<string>Watson Hall</string>
+		<key>image</key>
+		<string>watson.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_watson_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_watson_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_watson_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>135000.0</real>
+		<key>displayName</key>
+		<string>Weitz Center for Creativity</string>
+		<key>image</key>
+		<string>weitz.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_weitz_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Gas Use</string>
+				<key>systemName</key>
+				<string>carleton_weitz_gas_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_weitz_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>area</key>
+		<real>63534.0</real>
+		<key>displayName</key>
+		<string>West Gym</string>
+		<key>image</key>
+		<string>west gym.png</string>
+		<key>meters</key>
+		<array>
+			<dict>
+				<key>displayName</key>
+				<string>Electricity Use</string>
+				<key>systemName</key>
+				<string>carleton_westgym_en_use</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Steam Use</string>
+				<key>systemName</key>
+				<string>carleton_westgym_steam_use</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Water Use</string>
+				<key>systemName</key>
+				<string>carleton_westgym_water_use</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

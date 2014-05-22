@@ -13,6 +13,5 @@
 @interface CEBuildingsListTableViewController : UITableViewController <CEDataRetrieverDelegate>
 
 @property NSArray *buildings;
-@property NSMutableDictionary *imageCache;
 
 @end

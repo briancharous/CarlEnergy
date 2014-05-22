@@ -7,12 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CEDataRetriever.h"
+
+typedef NS_ENUM(NSInteger, UsageType) {
+    // this is how BuildingOS defines the usage types
+    kUsageTypeWater = 3,
+    kUsageTypeElectricity = 1,
+    kUsageTypeSteam = 4
+};
 
 @interface CEMeter : NSObject
 
 @property NSString *systemName;
-//@property UsageType usageType;
-
+@property (nonatomic, assign) UsageType usageType;
+@property NSString *displayName;
 
 @end

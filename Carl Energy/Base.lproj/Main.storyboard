@@ -123,7 +123,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="YXv-bG-9kb" kind="push" id="318-Ew-0OZ"/>
+                                    <segue destination="YXv-bG-9kb" kind="push" identifier="showBuildingDetail" id="318-Ew-0OZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -184,6 +184,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="scrollView" destination="0qu-iL-Tky" id="edo-r3-QCA"/>
                         <outlet property="segmentedControl" destination="ndw-Qb-CeI" id="Qyk-n7-cOG"/>
                     </connections>
                 </viewController>

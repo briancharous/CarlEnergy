@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CEDataRetriever.h"
 #import "CEBuilding.h"
+#import "CEBuildingDetailViewController.h"
 
 @interface CEBuildingsListTableViewController : UITableViewController <CEDataRetrieverDelegate>
 

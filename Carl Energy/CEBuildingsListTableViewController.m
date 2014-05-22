@@ -126,16 +126,26 @@
  }
  */
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     if ([[segue identifier] isEqualToString:@"showBuildingDetail"]) {
+         CEBuildingDetailViewController *detailVC = (CEBuildingDetailViewController *)[segue destinationViewController];
+         CEBuilding *selectedBuilding = [self.buildings objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+         [detailVC setBuilding:selectedBuilding];
+         
+         // make the back button have no title
+         // otherwise sometimes building names that are long (i.e. "Weitz Center for Creativity") look funny
+         UIBarButtonItem *backNoTitle = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+         [self.navigationItem setBackBarButtonItem:backNoTitle];
+     }
+
  }
- */
+
 
 
 @end

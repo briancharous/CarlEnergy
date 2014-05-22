@@ -196,6 +196,10 @@
     for (CEDataPoint *point in usage) {
         [self.dataForElectricityChart addObject:@(point.weight * point.value)];
     }
+    [self performSelectorOnMainThread:@selector(reloadPlotData) withObject:nil waitUntilDone:NO];
+}
+
+- (void)reloadPlotData {
     [self.electricityLineGraph reloadData];
     [self.electricityLineGraph.defaultPlotSpace scaleToFitPlots:[self.electricityLineGraph allPlots]];
 }

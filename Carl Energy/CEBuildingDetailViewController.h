@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, CETimeScale) {
 
 - (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale;
 - (IBAction)timeChanged:(UISegmentedControl *)sender;
+- (void)reloadPlotData;
 
 
 @end

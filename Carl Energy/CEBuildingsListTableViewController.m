@@ -27,14 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.imageCache = [[NSMutableDictionary alloc] init];
-
-    // show spinner
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [self setRefreshControl:refreshControl];
     [self loadInitialData];
-    
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_building_selected"]];
 
@@ -47,10 +40,6 @@
 
 - (void)loadInitialData {
     
-    [self.refreshControl beginRefreshing];
-    // scroll past top to show refresh control
-    [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
-
     CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
     [retreiver setDelegate:self];
     [NSThread detachNewThreadSelector:@selector(getBuildingsOnCampus) toTarget:retreiver withObject:nil];
@@ -82,40 +71,7 @@
      CEBuilding *building = [self.buildings objectAtIndex:[indexPath row]];
      NSString *buildingName = [building displayName];
      cell.textLabel.text = buildingName;
-     cell.imageView.bounds = CGRectMake(0, 0, 50, 50);
-     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-     spinner.center = CGPointMake(CGRectGetMidX(cell.imageView.bounds), CGRectGetMaxY(cell.imageView.bounds));
-     
-     // try to get image from caceh
-     UIImage *cachedImage = [self.imageCache objectForKey:building.imageURL];
-     if (cachedImage == nil) {
-         // remove image
-         [cell.imageView setImage:nil];
-         
-         // async get the image
-         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-             NSString *imageURL = [building imageURL];
-             NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-             if (imageData) {
-                 UIImage *image = [UIImage imageWithData:imageData];
-                 if (image) {
-                     dispatch_async(dispatch_get_main_queue(), ^ {
-                         UITableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                         if (updateCell) {
-                             [updateCell.imageView setImage:image];
-                             [updateCell setNeedsLayout];
-                             // save image in cache
-                             [self.imageCache setObject:image forKey:imageURL];
-                         }
-                     });
-                 }
-             }
-         });
-     }
-     else {
-         // set the imageview's image from the cache
-         [cell.imageView setImage:cachedImage];
-     }
+     [cell.imageView setImage:[UIImage imageNamed:[building imageName]]];
   
      return cell;
  }
@@ -125,8 +81,6 @@
 - (void)retriever:(CEDataRetriever *)retriever gotBuildings:(NSArray *)buildings {
     [self setBuildings:buildings];
     [self.tableView reloadData];
-    [self.refreshControl endRefreshing];
-    [self.refreshControl removeFromSuperview];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -172,16 +126,26 @@
  }
  */
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     if ([[segue identifier] isEqualToString:@"showBuildingDetail"]) {
+         CEBuildingDetailViewController *detailVC = (CEBuildingDetailViewController *)[segue destinationViewController];
+         CEBuilding *selectedBuilding = [self.buildings objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+         [detailVC setBuilding:selectedBuilding];
+         
+         // make the back button have no title
+         // otherwise sometimes building names that are long (i.e. "Weitz Center for Creativity") look funny
+         UIBarButtonItem *backNoTitle = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+         [self.navigationItem setBackBarButtonItem:backNoTitle];
+     }
+
  }
- */
+
 
 
 @end

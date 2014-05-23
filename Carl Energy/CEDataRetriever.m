@@ -22,35 +22,59 @@
 - (void)getBuildingsOnCampus {
     // RUN THIS IN A SEPARATE THREAD OTHERWISE IT WILL LOCK UP THE UI
     
-    [self setRequestInProgress:YES];
+//    [self setRequestInProgress:YES];
+//    
+//    NSMutableArray *buildings = [[NSMutableArray alloc] init];
+//    
+//    // fire off a web request
+//    NSString *urlString = [NSString stringWithFormat:@"%@/json/carleton/children", self.baseUrl];
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    NSURLResponse *response = nil;
+//    NSError *webError = nil;
+//    NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
+//    
+//    //TODO: Error handling
+//    if (webError == nil) {
+//        NSError *jsonError = nil;
+//        NSArray *json = [NSJSONSerialization JSONObjectWithData:result options:0 error:&jsonError];
+//        if (jsonError == nil) {
+//            for (NSDictionary *buildingJSON in json) {
+//                CEBuilding *b = [[CEBuilding alloc] init];
+//                [b setDisplayName:[buildingJSON objectForKey:@"displayName"]];
+//                [b setWebName:[buildingJSON objectForKey:@"urlElement"]];
+//                [b setImageURL:[buildingJSON objectForKey:@"profile"]];
+//                [buildings addObject:b];
+//            }
+//        }
+//    }
     
-    NSMutableArray *buildings = [[NSMutableArray alloc] init];
     
-    // fire off a web request
-    NSString *urlString = [NSString stringWithFormat:@"%@/json/carleton/children", self.baseUrl];
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSURLResponse *response = nil;
-    NSError *webError = nil;
-    NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
-    
-    //TODO: Error handling
-    if (webError == nil) {
-        NSError *jsonError = nil;
-        NSArray *json = [NSJSONSerialization JSONObjectWithData:result options:0 error:&jsonError];
-        if (jsonError == nil) {
-            for (NSDictionary *buildingJSON in json) {
-                CEBuilding *b = [[CEBuilding alloc] init];
-                [b setDisplayName:[buildingJSON objectForKey:@"displayName"]];
-                [b setWebName:[buildingJSON objectForKey:@"urlElement"]];
-                [b setImageURL:[buildingJSON objectForKey:@"profile"]];
-                [buildings addObject:b];
-            }
+    // read from plist
+    NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
+    NSMutableArray *buildingsArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *dict in buildingsDictionaries) {
+        CEBuilding *building = [[CEBuilding alloc] init];
+        [building setDisplayName:[dict objectForKey:@"displayName"]];
+        [building setImageName:[dict objectForKey:@"image"]];
+        [building setArea:[[dict objectForKey:@"area"] integerValue]];
+        NSMutableDictionary *meters = [[NSMutableDictionary alloc] init];
+        
+        NSArray *metersDictionaries = [dict objectForKey:@"meters"];
+        for (NSDictionary *meterDict in metersDictionaries) {
+            CEMeter *meter = [[CEMeter alloc] init];
+            [meter setUsageType:[[meterDict objectForKey:@"type"] integerValue]];
+            [meter setSystemName:[meterDict objectForKey:@"systemName"]];
+            [meter setDisplayName:[meterDict objectForKey:@"displayName"]];
+            [meters setObject:meter forKey:@([meter usageType])];
         }
+        
+        [building setMeters:meters];
+        [buildingsArray addObject:building];
     }
     
     if ([self.delegate respondsToSelector:@selector(retriever:gotBuildings:)]) {
-        [self.delegate retriever:self gotBuildings:buildings];
+        [self.delegate retriever:self gotBuildings:buildingsArray];
     }
     [self setRequestInProgress:NO];
 }
@@ -80,22 +104,10 @@
             break;
     }
     
-    // format the building energy type
-    NSString *nameString;
-    switch (usageType) {
-        case kUsageTypeWater:
-            nameString = [NSString stringWithFormat:@"carleton_%@_water_use", [building webName]];
-            break;
-        case kUsageTypeElectricity:
-            nameString = [NSString stringWithFormat:@"carleton_%@_en_use", [building webName]];
-            break;
-        case kUsageTypeSteam:
-            nameString = [NSString stringWithFormat:@"carleton_%@_steam_use", [building webName]];
-            break;
-        default:
-            nameString = @"";
-            break;
-    }
+    // get the meter system name
+    CEMeter *meter = [[building meters] objectForKey:@(usageType)];
+    NSString *nameString = [meter systemName];
+
     
     NSString *urlString = [NSString stringWithFormat:@"%@/reports/timeseries/?start=%@&end=%@&resolution=%@&name=%@", self.baseUrl, startString, endString, resolutionString, nameString];
     NSURL *requestURL = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];

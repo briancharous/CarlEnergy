@@ -30,6 +30,7 @@
 		9FA4A4EA191A95A400AE3551 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4E8191A95A400AE3551 /* InfoPlist.strings */; };
 		9FA4A4EC191A95A400AE3551 /* Carl_EnergyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4EB191A95A400AE3551 /* Carl_EnergyTests.m */; };
 		9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */; };
+		9FC36343192DB70B002E00B6 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FC36342192DB70B002E00B6 /* buildings.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		9FA4A4EB191A95A400AE3551 /* Carl_EnergyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Carl_EnergyTests.m; sourceTree = "<group>"; };
 		9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataRetriever.h; sourceTree = "<group>"; };
 		9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDataRetriever.m; sourceTree = "<group>"; };
+		9FC36342192DB70B002E00B6 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 		9FA4A4C4191A95A300AE3551 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9FC36342192DB70B002E00B6 /* buildings.plist */,
 				9FA4A4C5191A95A300AE3551 /* Carl Energy-Info.plist */,
 				9FA4A4C6191A95A300AE3551 /* InfoPlist.strings */,
 				9FA4A4C9191A95A300AE3551 /* main.m */,
@@ -322,6 +325,7 @@
 			files = (
 				9FA4A4D9191A95A300AE3551 /* Images.xcassets in Resources */,
 				9FA4A4C8191A95A300AE3551 /* InfoPlist.strings in Resources */,
+				9FC36343192DB70B002E00B6 /* buildings.plist in Resources */,
 				9FA4A4D1191A95A300AE3551 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

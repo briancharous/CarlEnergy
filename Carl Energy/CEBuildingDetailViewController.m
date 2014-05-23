@@ -117,7 +117,7 @@
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
     textStyle.color = [CPTColor darkGrayColor];
     textStyle.fontName = @"HelveticaNeue-Thin";
-    textStyle.fontSize = 25.0f;
+    textStyle.fontSize = 20.0f;
     
     // Make title
     NSString *title = @"Electricity Usage";
@@ -127,8 +127,8 @@
     self.electricityLineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
     
     // Set plot area padding
-    [self.electricityLineGraph.plotAreaFrame setPaddingLeft:30.0f];
-    [self.electricityLineGraph.plotAreaFrame setPaddingBottom:45.0f];
+    [self.electricityLineGraph.plotAreaFrame setPaddingLeft:35.0f];
+    [self.electricityLineGraph.plotAreaFrame setPaddingBottom:150.0f];
     
     // Create plot
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.electricityLineGraph.defaultPlotSpace;
@@ -146,6 +146,7 @@
     CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.yRange = yRange;
+    
     
     // Do line style stuff?
     CPTMutableLineStyle *lineStyle = [elecPlot.dataLineStyle mutableCopy];
@@ -213,7 +214,7 @@
     x.majorTickLocations = xLocations;
     // 4 - Configure y-axis
     CPTAxis *y = axisSet.yAxis;
-    y.title = @"Electric Units";
+    y.title = @"kW";
     y.titleTextStyle = axisTitleStyle;
     y.titleOffset = -40.0f;
     y.axisLineStyle = axisLineStyle;

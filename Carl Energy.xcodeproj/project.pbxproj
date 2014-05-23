@@ -10,6 +10,7 @@
 		019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D61920800B00478145 /* QuartzCore.framework */; };
 		019ED0D91920801000478145 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D81920801000478145 /* Accelerate.framework */; };
 		019ED0F11920886300478145 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */; };
+		32269D1D192FE71600013D3E /* CEAboutPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32269D1C192FE71600013D3E /* CEAboutPageViewController.m */; };
 		329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */; };
 		9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480E8191D4556005F09BA /* CEBuilding.m */; };
 		9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480EB191D4A14005F09BA /* CEDataPoint.m */; };
@@ -61,6 +62,8 @@
 		019ED0D61920800B00478145 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		019ED0D81920801000478145 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		32269D1B192FE71600013D3E /* CEAboutPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEAboutPageViewController.h; sourceTree = "<group>"; };
+		32269D1C192FE71600013D3E /* CEAboutPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEAboutPageViewController.m; sourceTree = "<group>"; };
 		329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuildingDetailViewController.h; sourceTree = "<group>"; };
 		329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuildingDetailViewController.m; sourceTree = "<group>"; };
 		9F8480E7191D4556005F09BA /* CEBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuilding.h; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 				9FA4A4D6191A95A300AE3551 /* CEDashboardViewController.m */,
 				9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */,
 				9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */,
+				32269D1B192FE71600013D3E /* CEAboutPageViewController.h */,
+				32269D1C192FE71600013D3E /* CEAboutPageViewController.m */,
 				9F8480ED191D4BD3005F09BA /* Data Wrappers */,
 				9FA4A4D8191A95A300AE3551 /* Images.xcassets */,
 				9FA4A4C4191A95A300AE3551 /* Supporting Files */,
@@ -346,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FA4A4D7191A95A300AE3551 /* CEDashboardViewController.m in Sources */,
+				32269D1D192FE71600013D3E /* CEAboutPageViewController.m in Sources */,
 				9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */,
 				9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */,
 				9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */,

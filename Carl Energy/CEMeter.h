@@ -12,7 +12,8 @@ typedef NS_ENUM(NSInteger, UsageType) {
     // this is how BuildingOS defines the usage types
     kUsageTypeWater = 3,
     kUsageTypeElectricity = 1,
-    kUsageTypeSteam = 4
+    kUsageTypeSteam = 4,
+    kUsageTypeWindProduction = 11
 };
 
 @interface CEMeter : NSObject

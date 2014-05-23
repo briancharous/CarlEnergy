@@ -12,6 +12,7 @@
 #import "CEMeter.h"
 
 typedef NS_ENUM(NSInteger, Resolution) {
+    kResolutionLive,
     kResolutionHour,
     kResolutionDay,
     kResolutionMonth,
@@ -21,8 +22,11 @@ typedef NS_ENUM(NSInteger, Resolution) {
 
 @interface CEDataRetriever : NSObject
 - (void)getBuildingsOnCampus;
-
 - (void)getUsage:(UsageType)usageType ForBuilding:(CEBuilding *)building startTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
+- (NSArray *)syncGetUsage:(UsageType)usageType ForBuilding:(CEBuilding *)building startTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
+- (void)getTotalWindProductionWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
+- (CEBuilding *)buildingFromDictionary:(NSDictionary *)dict;
+- (void)getTotalCampusElectricityUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
 
 @property (nonatomic, assign) id <CEDataRetrieverDelegate> delegate;
 @property NSString *baseUrl;
@@ -42,5 +46,7 @@ typedef NS_ENUM(NSInteger, Resolution) {
 
 - (void)retriever:(CEDataRetriever *)retriever gotBuildings:(NSArray *)buildings;
 - (void)retriever:(CEDataRetriever *)retriever gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(CEBuilding *)building;
+- (void)retriever:(CEDataRetriever *)retreiver gotWindProduction:(NSArray *)production;
+- (void)retriever:(CEDataRetriever *)retreiver gotCampusElectricityUsage:(NSArray *)usage;
 
 @end

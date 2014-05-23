@@ -12,7 +12,7 @@
 
 @property NSString *displayName;
 @property NSString *imageName;
-@property NSMutableDictionary *meters; // meters keyed by usage type (see CEMeter.h)
+@property NSMutableArray *meters; // meters keyed by usage type (see CEMeter.h)
 @property NSInteger area;
 
 @end

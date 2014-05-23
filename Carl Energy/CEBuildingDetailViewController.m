@@ -39,6 +39,7 @@
 //    }
     [self timeChanged:nil];
     [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
 
 }
 
@@ -51,22 +52,28 @@
     NSDate *now = [NSDate date];
     NSDate *previous;
     Resolution resolution;
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.hostView.hostedGraph.axisSet;
+    CPTAxis *x = axisSet.xAxis;
     switch (timeScale) {
         case kTimeScaleDay:
             previous = [now dateByAddingTimeInterval:-60*60*24];
             resolution = kResolutionHour;
+            x.title = @"Hour";
             break;
         case kTimeScaleWeek:
             previous = [now dateByAddingTimeInterval:-60*60*24*7];
             resolution = kResolutionDay;
+            x.title = @"Day";
             break;
         case kTimeScaleMonth:
             previous = [now dateByAddingTimeInterval:-60*60*24*30];
             resolution = kResolutionDay;
+            x.title = @"Day";
             break;
         case kTimeScaleYear:
             previous = [now dateByAddingTimeInterval:-60*60*24*365];
             resolution = kResolutionMonth;
+            x.title = @"Month";
             break;
         default:
             break;
@@ -107,9 +114,10 @@
 {
     // Create and assign the host view
     self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    CGRect parentRect = CGRectMake(0, 80, self.scrollView.frame.size.width, 250);
+    CGRect parentRect = CGRectMake(0, 80, self.scrollView.frame.size.width,250);
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
 //    [self.segmentedControl setFrame:self.scrollView.bounds];
+    [self.scrollView setFrame:self.view.bounds];
     [self.scrollView addSubview:self.hostView];
     self.hostView.hostedGraph = self.electricityLineGraph;
     
@@ -127,8 +135,8 @@
     self.electricityLineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
     
     // Set plot area padding
-    [self.electricityLineGraph.plotAreaFrame setPaddingLeft:30.0f];
-    [self.electricityLineGraph.plotAreaFrame setPaddingBottom:45.0f];
+    [self.electricityLineGraph.plotAreaFrame setPaddingLeft:35.0f];
+    [self.electricityLineGraph.plotAreaFrame setPaddingBottom:150.0f];
     
     // Create plot
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.electricityLineGraph.defaultPlotSpace;
@@ -213,7 +221,7 @@
     x.majorTickLocations = xLocations;
     // 4 - Configure y-axis
     CPTAxis *y = axisSet.yAxis;
-    y.title = @"Electric Units";
+    y.title = @"kW";
     y.titleTextStyle = axisTitleStyle;
     y.titleOffset = -40.0f;
     y.axisLineStyle = axisLineStyle;

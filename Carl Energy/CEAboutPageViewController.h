@@ -10,6 +10,7 @@
 
 @interface CEAboutPageViewController : UIViewController
 @property IBOutlet UIScrollView *scrollView;
-@property UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *instructionsLabel;
 
 @end

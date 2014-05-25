@@ -28,17 +28,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
-    tempScrollView.contentSize=CGSizeMake(1280,960);
+    [self.welcomeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22.0]];
+    [self.instructionsLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
 
-}
-
-- (void)makeLabel
-{
-    self.label.text = @"Instructions: The Dashboard displays information on current campus energy usage. You may select one of the buildings on the Buildings list to view the individual building's energy usage. You may change the time reference to see daily, weekly, monthly, and yearly energy usage.";
     
-    [self.scrollView setFrame:self.view.bounds];
-    [self.scrollView addSubview:self.label];
+    //UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
+    //tempScrollView.contentSize=CGSizeMake(1280,960);
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -54,14 +54,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWx-Ug-2S7">
-                                        <rect key="frame" x="0.0" y="0.0" width="319" height="568"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWx-Ug-2S7">
+                                        <rect key="frame" x="0.0" y="-1" width="319" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="279" translatesAutoresizingMaskIntoConstraints="NO" id="Nov-XO-aVp">
-                                                <rect key="frame" x="20" y="82" width="279" height="194"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="279" translatesAutoresizingMaskIntoConstraints="NO" id="Nov-XO-aVp">
+                                                <rect key="frame" x="20" y="126" width="279" height="194"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="194" id="IE0-jz-Zni"/>
+                                                </constraints>
                                                 <string key="text">Instructions: The Dashboard displays information on current campus energy usage. You may select one of the buildings on the Buildings list to view the individual building's energy usage. You may change the time reference to see daily, weekly, monthly, and yearly energy usage.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to CarlEnergy, Carleton College's Energy App." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="258" translatesAutoresizingMaskIntoConstraints="NO" id="jks-Qv-uPw">
+                                                <rect key="frame" x="30" y="46" width="258" height="72"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -69,14 +78,19 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="568" id="1PX-7I-hI3"/>
+                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="leading" secondItem="dWx-Ug-2S7" secondAttribute="leading" constant="20" symbolic="YES" id="L02-O2-22s"/>
+                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="top" secondItem="dWx-Ug-2S7" secondAttribute="top" constant="126" id="kDS-m7-X3R"/>
+                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="centerX" secondItem="jks-Qv-uPw" secondAttribute="centerX" id="q3k-od-8ZF"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nov-XO-aVp" secondAttribute="trailing" constant="20" symbolic="YES" id="vMQ-Gh-U5e"/>
+                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="top" secondItem="jks-Qv-uPw" secondAttribute="bottom" constant="8" symbolic="YES" id="wnG-cw-ShC"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="dWx-Ug-2S7" secondAttribute="bottom" constant="232" id="1Qz-Cg-3LG"/>
+                                    <constraint firstAttribute="bottom" secondItem="dWx-Ug-2S7" secondAttribute="bottom" constant="233" id="1Qz-Cg-3LG"/>
                                     <constraint firstItem="dWx-Ug-2S7" firstAttribute="leading" secondItem="55U-fc-qi8" secondAttribute="leading" id="75E-St-KgF"/>
-                                    <constraint firstItem="dWx-Ug-2S7" firstAttribute="top" secondItem="55U-fc-qi8" secondAttribute="top" id="LXF-cJ-tQi"/>
-                                    <constraint firstAttribute="trailing" secondItem="dWx-Ug-2S7" secondAttribute="trailing" id="ZPE-RX-E2g"/>
+                                    <constraint firstItem="dWx-Ug-2S7" firstAttribute="top" secondItem="55U-fc-qi8" secondAttribute="top" constant="-1" id="LXF-cJ-tQi"/>
+                                    <constraint firstAttribute="trailing" secondItem="dWx-Ug-2S7" secondAttribute="trailing" constant="1" id="ZPE-RX-E2g"/>
                                     <constraint firstItem="dWx-Ug-2S7" firstAttribute="centerX" secondItem="55U-fc-qi8" secondAttribute="centerX" id="kSV-uB-q3x"/>
                                 </constraints>
                             </scrollView>
@@ -94,7 +108,9 @@
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="instructionsLabel" destination="Nov-XO-aVp" id="Tl6-LM-hhv"/>
                         <outlet property="scrollView" destination="55U-fc-qi8" id="JXL-5b-jnL"/>
+                        <outlet property="welcomeLabel" destination="jks-Qv-uPw" id="Ta3-7G-goY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5D-eQ-TjT" userLabel="First Responder" sceneMemberID="firstResponder"/>

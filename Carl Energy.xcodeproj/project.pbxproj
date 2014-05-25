@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013B09771932837300376BB6 /* CELineGraphMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B09761932837300376BB6 /* CELineGraphMaker.m */; };
 		019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D61920800B00478145 /* QuartzCore.framework */; };
 		019ED0D91920801000478145 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D81920801000478145 /* Accelerate.framework */; };
 		019ED0F11920886300478145 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */; };
@@ -59,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		013B09751932837300376BB6 /* CELineGraphMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CELineGraphMaker.h; sourceTree = "<group>"; };
+		013B09761932837300376BB6 /* CELineGraphMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CELineGraphMaker.m; sourceTree = "<group>"; };
 		019ED0D61920800B00478145 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		019ED0D81920801000478145 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 			children = (
 				329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */,
 				329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */,
+				013B09751932837300376BB6 /* CELineGraphMaker.h */,
+				013B09761932837300376BB6 /* CELineGraphMaker.m */,
 				9FA4A4CC191A95A300AE3551 /* AppDelegate.h */,
 				9FA4A4CD191A95A300AE3551 /* AppDelegate.m */,
 				9FA4A4CF191A95A300AE3551 /* Main.storyboard */,
@@ -355,6 +360,7 @@
 				9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */,
 				9FA4A4CE191A95A300AE3551 /* AppDelegate.m in Sources */,
 				9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */,
+				013B09771932837300376BB6 /* CELineGraphMaker.m in Sources */,
 				9FA4A4D4191A95A300AE3551 /* CEBuildingsListTableViewController.m in Sources */,
 				9F8E0560192C0735001335C4 /* CEMeter.m in Sources */,
 				9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */,

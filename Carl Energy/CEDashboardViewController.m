@@ -26,7 +26,7 @@
     // Maybe not needed after more content added:
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
     [self makePieChart];
-    [self getElectricProducionAndUsage];
+    [self getElectricProductionAndUsage];
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -44,7 +44,7 @@
 {
     // Create and assign the host view
     pieChart = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    CGRect parentRect = CGRectMake(0, 60, self.scrollView.frame.size.width, 300);
+    CGRect parentRect = CGRectMake(0, 50, self.scrollView.frame.size.width, 300);
     self.hostView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
     [self.scrollView setFrame:self.view.bounds];
     [self.scrollView addSubview:self.hostView];
@@ -68,11 +68,11 @@
     // Create the plot
     CPTPieChart *piePlot = [[CPTPieChart alloc] init];
     piePlot.dataSource      = self;
-    piePlot.pieRadius       = 100.0;
+    piePlot.pieRadius       = 70.0;
     piePlot.identifier      = @"Pie Chart 1";
     piePlot.startAngle      = M_PI_4;
     piePlot.sliceDirection  = CPTPieDirectionCounterClockwise;
-    piePlot.centerAnchor    = CGPointMake(0.5, 0.5);
+    piePlot.centerAnchor    = CGPointMake(0.5, 0.6);
     piePlot.borderLineStyle = nil;
     piePlot.delegate        = self;
     [pieChart addPlot:piePlot];
@@ -136,14 +136,14 @@
     NSString *labelValue = nil;
     
     // electric
-    if (index == 0) {
+    if (index == 1) {
         float elecPercent = elecValue / totalEnergy;
-        labelValue = [NSString stringWithFormat:@"%0.2f units (%0.1f %%)", elecValue, (elecPercent * 100.0f)];
+        labelValue = [NSString stringWithFormat:@"%.f kW (%0.1f %%)", elecValue, (elecPercent * 100.0f)];
     }
     // wind
-    else if (index == 1) {
+    else if (index == 0) {
         float windPercent = windValue / totalEnergy;
-        labelValue = [NSString stringWithFormat:@"%0.2f units (%0.1f %%)", windValue, (windPercent * 100.0f)];
+        labelValue = [NSString stringWithFormat:@"%.f kW (%0.1f %%)", windValue, (windPercent * 100.0f)];
     }
     return [[CPTTextLayer alloc] initWithText:labelValue style:labelText];
 }
@@ -159,7 +159,7 @@
 }
 
 #pragma mark Data Retrieval
-- (void)getElectricProducionAndUsage {
+- (void)getElectricProductionAndUsage {
     // get wind production and main campus consumption
     // between now and one hour ago
     
@@ -188,7 +188,6 @@
     if (!gotWindProduction || !gotElectricityUsage) {
         return;
     }
-    
     [pieChart reloadData];
     NSLog(@"draw now!!!!");
     [pieChart.plotAreaFrame.plotArea setNeedsDisplay];

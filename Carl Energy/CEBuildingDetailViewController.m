@@ -147,7 +147,7 @@
     [self.electricityLineGraph addPlot:elecPlot toPlotSpace:plotSpace];
     
     // Configure plot space??
-    [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
+    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
     CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
     [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.xRange = xRange;

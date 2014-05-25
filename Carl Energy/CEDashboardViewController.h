@@ -20,7 +20,7 @@
 }
 
 - (void)makePieChart;
-- (void)getElectricProducionAndUsage;
+- (void)getElectricProductionAndUsage;
 - (void)updatePieChart;
 
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;

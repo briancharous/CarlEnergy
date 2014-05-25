@@ -20,7 +20,7 @@
     NSDate *now = [NSDate date];
     NSDate *previous;
     Resolution resolution;
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.hostView.hostedGraph.axisSet;
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.electricityLineGraph.axisSet;
     CPTAxis *x = axisSet.xAxis;
     switch (timeScale) {
         case kTimeScaleDay:
@@ -161,7 +161,7 @@
     tickLineStyle.lineColor = [CPTColor blackColor];
     tickLineStyle.lineWidth = 1.0f;
     // 2 - Get axis set
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.hostView.hostedGraph.axisSet;
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.electricityLineGraph.axisSet;
     // 3 - Configure x-axis
     CPTAxis *x = axisSet.xAxis;
     x.title = @"Hour";

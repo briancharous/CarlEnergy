@@ -155,19 +155,6 @@
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.yRange = yRange;
     
-    // Do line style stuff?
-    CPTMutableLineStyle *lineStyle = [elecPlot.dataLineStyle mutableCopy];
-    lineStyle.lineWidth = 2.5;
-    lineStyle.lineColor = elecColor;
-    elecPlot.dataLineStyle = lineStyle;
-    CPTMutableLineStyle *elecSymbolLineStyle = [CPTMutableLineStyle lineStyle];
-    elecSymbolLineStyle.lineColor = elecColor;
-    CPTPlotSymbol *elecSymbol = [CPTPlotSymbol ellipsePlotSymbol];
-    elecSymbol.fill = [CPTFill fillWithColor:elecColor];
-    elecSymbol.lineStyle = elecSymbolLineStyle;
-    elecSymbol.size = CGSizeMake(6.0f, 6.0f);
-    elecPlot.plotSymbol = elecSymbol;
-    
     // TODO: clean up this code
     // Configure axes
     // 1 - Create styles
@@ -257,6 +244,7 @@
     y.axisLabels = yLabels;    
     y.majorTickLocations = yMajorLocations;
     y.minorTickLocations = yMinorLocations;
+    
     
 }
 

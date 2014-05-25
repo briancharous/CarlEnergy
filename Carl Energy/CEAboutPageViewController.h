@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CEAboutPageViewController : UIViewController
+@property IBOutlet UIScrollView *scrollView;
+@property UILabel *label;
 
 @end

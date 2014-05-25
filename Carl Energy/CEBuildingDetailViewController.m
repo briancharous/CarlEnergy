@@ -12,6 +12,9 @@
 
 @implementation CEBuildingDetailViewController
 
+NSString *  const CEClear       = @"clear";
+NSString *  const CEElectric       = @"elec";
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,9 +36,13 @@
     CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
     [retriever setDelegate:self];
     // placeholder code:
+    NSUInteger numObjects = [self.dataForElectricityChart count];
+    NSLog([NSString stringWithFormat:@"%i", numObjects]);
     self.dataForElectricityChart = [[NSMutableArray alloc] init];
-//    for (int i = 1; i <= 24; i++) {
-//        [self.dataForElectricityChart addObject:@10];
+    self.dataForClearChart = [[NSMutableArray alloc] init];
+    
+//    for (int i = 1; i <= numObjects; i++) {
+//        [self.dataForClearChart addObject:@0];
 //    }
     [self timeChanged:nil];
     [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
@@ -125,7 +132,7 @@
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
     textStyle.color = [CPTColor darkGrayColor];
     textStyle.fontName = @"HelveticaNeue-Thin";
-    textStyle.fontSize = 25.0f;
+    textStyle.fontSize = 20.0f;
     
     // Make title
     NSString *title = @"Electricity Usage";
@@ -136,15 +143,20 @@
     
     // Set plot area padding
     [self.electricityLineGraph.plotAreaFrame setPaddingLeft:35.0f];
-    [self.electricityLineGraph.plotAreaFrame setPaddingBottom:150.0f];
+    [self.electricityLineGraph.plotAreaFrame setPaddingBottom:100.0f];
     
     // Create plot
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.electricityLineGraph.defaultPlotSpace;
     CPTScatterPlot *elecPlot = [[CPTScatterPlot alloc] init];
     elecPlot.dataSource = self;
-    //elecPlot.identifier = elec;
+    elecPlot.identifier = CEElectric;
     CPTColor *elecColor = [CPTColor redColor];
     [self.electricityLineGraph addPlot:elecPlot toPlotSpace:plotSpace];
+    CPTScatterPlot *msftPlot = [[CPTScatterPlot alloc] init];
+	msftPlot.dataSource = self;
+	msftPlot.identifier = CEClear;
+	CPTColor *msftColor = [CPTColor clearColor];
+	[self.electricityLineGraph addPlot:msftPlot toPlotSpace:plotSpace];
     
     // Configure plot space??
     //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
@@ -154,6 +166,7 @@
     CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.yRange = yRange;
+    
     
     // Do line style stuff?
     CPTMutableLineStyle *lineStyle = [elecPlot.dataLineStyle mutableCopy];
@@ -167,6 +180,17 @@
     elecSymbol.lineStyle = elecSymbolLineStyle;
     elecSymbol.size = CGSizeMake(6.0f, 6.0f);
     elecPlot.plotSymbol = elecSymbol;
+    CPTMutableLineStyle *msftLineStyle = [msftPlot.dataLineStyle mutableCopy];
+	msftLineStyle.lineWidth = 2.0;
+	msftLineStyle.lineColor = msftColor;
+	msftPlot.dataLineStyle = msftLineStyle;
+	CPTMutableLineStyle *msftSymbolLineStyle = [CPTMutableLineStyle lineStyle];
+	msftSymbolLineStyle.lineColor = msftColor;
+	CPTPlotSymbol *msftSymbol = [CPTPlotSymbol diamondPlotSymbol];
+	msftSymbol.fill = [CPTFill fillWithColor:msftColor];
+	msftSymbol.lineStyle = msftSymbolLineStyle;
+	msftSymbol.size = CGSizeMake(6.0f, 6.0f);
+	msftPlot.plotSymbol = msftSymbol;
     
     // TODO: clean up this code
     // Configure axes
@@ -279,9 +303,18 @@
             break;
             
         case CPTScatterPlotFieldY: {
-            NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
-            return yValue;
-            break;
+//            NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
+//            return yValue;
+//            break;
+            if ([plot.identifier isEqual:CEElectric] == YES) {
+				NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
+                
+                return yValue;}
+            else if ([plot.identifier isEqual:CEClear] == YES) {
+				NSNumber *yValue = [self.dataForClearChart objectAtIndex:index];
+                return yValue;
+			}
+			break;
         }
     }
     return [NSDecimalNumber zero];
@@ -298,6 +331,11 @@
 }
 
 - (void)reloadPlotData {
+    NSUInteger numObjects = [self.dataForElectricityChart count];
+    NSLog([NSString stringWithFormat:@"%i", numObjects]);
+    for (int i = 1; i <= numObjects; i++) {
+        [self.dataForClearChart addObject:@0];
+    }
     [self.electricityLineGraph reloadData];
     [self.electricityLineGraph.defaultPlotSpace scaleToFitPlots:[self.electricityLineGraph allPlots]];
 }

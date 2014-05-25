@@ -51,8 +51,9 @@ NSString *  const CEElectric       = @"elec";
 //    }
 //    [self timeChanged:nil];
 //    [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
-    CPTGraph *elecLineGraph = [self.graphMaker makeLineGraph:self.segmentedControl.selectedSegmentIndex];
-    CPTGraph *waterLineGraph = [self.graphMaker makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+    CPTGraph *elecLineGraph = [self.graphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
+    CPTGraph *waterLineGraph = [self.graphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
+   
 
     self.electricityLineGraphView.hostedGraph = elecLineGraph;
     [self.scrollView addSubview:self.electricityLineGraphView];

@@ -29,8 +29,8 @@ extern NSString * const CEElectric;
 @property CEBuilding *building;
 @property CPTXYGraph *electricityLineGraph;
 
-- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale;
+- (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale;
 - (void)reloadPlotData;
--(CPTGraph *)makeLineGraph:(NSInteger)timeframeIndex;
+-(CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forBuilding:(CEBuilding*)building;
 
 @end

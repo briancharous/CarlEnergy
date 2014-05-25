@@ -126,7 +126,7 @@ NSString *  const CEElectric       = @"elec";
 //        default:
 //            break;
 //    }
-    CPTGraph *elecLineGraph = [self.graphMaker makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+    CPTGraph *elecLineGraph = [self.graphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
     self.electricityLineGraphView.hostedGraph = elecLineGraph;
     return;
 }

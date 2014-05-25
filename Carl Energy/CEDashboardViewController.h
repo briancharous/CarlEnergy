@@ -14,8 +14,12 @@
 @interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate, CPTPlotDataSource> {
     NSNumber *windProduction;
     NSNumber *energyConsumption;
+    NSNumber *gasConsumption;
+    NSNumber *fuelConsumption;
     BOOL gotWindProduction;
     BOOL gotElectricityUsage;
+    BOOL gotGasUsage;
+    BOOL gotFuelUsage;
     CPTXYGraph *pieChart;
 }
 

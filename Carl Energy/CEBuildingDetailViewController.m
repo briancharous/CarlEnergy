@@ -39,6 +39,7 @@
 //    }
     [self timeChanged:nil];
     [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
 
 }
 
@@ -51,22 +52,28 @@
     NSDate *now = [NSDate date];
     NSDate *previous;
     Resolution resolution;
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.hostView.hostedGraph.axisSet;
+    CPTAxis *x = axisSet.xAxis;
     switch (timeScale) {
         case kTimeScaleDay:
             previous = [now dateByAddingTimeInterval:-60*60*24];
             resolution = kResolutionHour;
+            x.title = @"Hour";
             break;
         case kTimeScaleWeek:
             previous = [now dateByAddingTimeInterval:-60*60*24*7];
             resolution = kResolutionDay;
+            x.title = @"Day";
             break;
         case kTimeScaleMonth:
             previous = [now dateByAddingTimeInterval:-60*60*24*30];
             resolution = kResolutionDay;
+            x.title = @"Day";
             break;
         case kTimeScaleYear:
             previous = [now dateByAddingTimeInterval:-60*60*24*365];
             resolution = kResolutionMonth;
+            x.title = @"Month";
             break;
         default:
             break;
@@ -107,9 +114,10 @@
 {
     // Create and assign the host view
     self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    CGRect parentRect = CGRectMake(0, 80, self.scrollView.frame.size.width, 250);
+    CGRect parentRect = CGRectMake(0, 80, self.scrollView.frame.size.width,250);
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
 //    [self.segmentedControl setFrame:self.scrollView.bounds];
+    [self.scrollView setFrame:self.view.bounds];
     [self.scrollView addSubview:self.hostView];
     self.hostView.hostedGraph = self.electricityLineGraph;
     
@@ -235,7 +243,7 @@
     for (NSInteger j = minorIncrement; j <= yMax; j += minorIncrement) {
         NSUInteger mod = j % majorIncrement;
         if (mod == 0) {
-            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i", j] textStyle:y.labelTextStyle];
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)j] textStyle:y.labelTextStyle];
             NSDecimal location = CPTDecimalFromInteger(j);
             label.tickLocation = location;
             label.offset = -y.majorTickLength - y.labelOffset;
@@ -273,7 +281,6 @@
             
         case CPTScatterPlotFieldY: {
             NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
-            NSLog(@"%lu: %@", (unsigned long)index, yValue);
             return yValue;
             break;
         }

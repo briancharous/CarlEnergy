@@ -77,6 +77,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Developers: Brian Charous, Michelle Chen, Lila Conlee, Larkin Flodin" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="279" translatesAutoresizingMaskIntoConstraints="NO" id="6v3-Vf-Zeb">
+                                                <rect key="frame" x="20" y="364" width="279" height="75"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
@@ -112,6 +118,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
+                        <outlet property="developersLabel" destination="6v3-Vf-Zeb" id="PI0-WN-J49"/>
                         <outlet property="instructionsLabel" destination="Nov-XO-aVp" id="Tl6-LM-hhv"/>
                         <outlet property="scrollView" destination="55U-fc-qi8" id="JXL-5b-jnL"/>
                         <outlet property="welcomeLabel" destination="jks-Qv-uPw" id="Ta3-7G-goY"/>

@@ -12,5 +12,6 @@
 @property IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *instructionsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *developersLabel;
 
 @end

@@ -28,8 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.welcomeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:22.0]];
+    [self.welcomeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0]];
     [self.instructionsLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
+    [self.developersLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
+
 
     
     //UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;

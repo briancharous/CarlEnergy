@@ -29,6 +29,8 @@ NSString *  const CEElectric       = @"elec";
     [super viewDidLoad];
     CGRect parentRect = CGRectMake(0, 80, 320, 250);
     self.electricityLineGraphView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+    CGRect parentRect2 = CGRectMake(0, 300, 320, 250);
+    self.waterLineGraphView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect2];
     self.graphMaker = [[CELineGraphMaker alloc] init];
 
     // set title
@@ -50,8 +52,13 @@ NSString *  const CEElectric       = @"elec";
 //    [self timeChanged:nil];
 //    [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
     CPTGraph *elecLineGraph = [self.graphMaker makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+    CPTGraph *waterLineGraph = [self.graphMaker makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+
     self.electricityLineGraphView.hostedGraph = elecLineGraph;
     [self.scrollView addSubview:self.electricityLineGraphView];
+    self.waterLineGraphView.hostedGraph = waterLineGraph;
+    [self.scrollView addSubview:self.waterLineGraphView];
+    
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
 
 }

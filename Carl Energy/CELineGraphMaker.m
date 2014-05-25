@@ -87,7 +87,7 @@
     }
     
     // Create and assign the host view
-    self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    //self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
 //    CGRect parentRect = CGRectMake(0, 80, 320, 250);
 //    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
     //    [self.segmentedControl setFrame:self.scrollView.bounds];

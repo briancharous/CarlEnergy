@@ -26,7 +26,7 @@
     // Maybe not needed after more content added:
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
     [self makePieChart];
-    [self getElectricProducionAndUsage];
+    [self getElectricProductionAndUsage];
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -44,7 +44,7 @@
 {
     // Create and assign the host view
     pieChart = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    CGRect parentRect = CGRectMake(0, 60, self.scrollView.frame.size.width, 300);
+    CGRect parentRect = CGRectMake(0, 50, self.scrollView.frame.size.width, 300);
     self.hostView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
     [self.scrollView setFrame:self.view.bounds];
     [self.scrollView addSubview:self.hostView];
@@ -68,11 +68,11 @@
     // Create the plot
     CPTPieChart *piePlot = [[CPTPieChart alloc] init];
     piePlot.dataSource      = self;
-    piePlot.pieRadius       = 100.0;
+    piePlot.pieRadius       = 50.0;
     piePlot.identifier      = @"Pie Chart 1";
     piePlot.startAngle      = M_PI_4;
     piePlot.sliceDirection  = CPTPieDirectionCounterClockwise;
-    piePlot.centerAnchor    = CGPointMake(0.5, 0.5);
+    piePlot.centerAnchor    = CGPointMake(0.5, 0.6);
     piePlot.borderLineStyle = nil;
     piePlot.delegate        = self;
     [pieChart addPlot:piePlot];
@@ -101,12 +101,12 @@
 
 #pragma mark - CPTPlotDataSource methods
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-     return 2;
+     return 4;
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
     NSLog(@"number for plot: %lu", (unsigned long)index);
-    if ( index >= 2) {
+    if ( index >= 4) {
         return nil;
     }
     
@@ -116,6 +116,12 @@
             break;
         case 1:
             return energyConsumption;
+            break;
+        case 2:
+            return gasConsumption;
+            break;
+        case 3:
+            return fuelConsumption;
             break;
         default:
             break;
@@ -132,41 +138,64 @@
     
     float windValue = [windProduction floatValue];
     float elecValue = [energyConsumption floatValue];
-    float totalEnergy = windValue + elecValue;
+    float gasValue = [gasConsumption floatValue];
+    float fuelValue = [fuelConsumption floatValue];
+    float totalEnergy = windValue + elecValue + gasValue + fuelValue;
     NSString *labelValue = nil;
     
     // electric
-    if (index == 0) {
+    if (index == 1) {
         float elecPercent = elecValue / totalEnergy;
-        labelValue = [NSString stringWithFormat:@"%0.2f units (%0.1f %%)", elecValue, (elecPercent * 100.0f)];
+        labelValue = [NSString stringWithFormat:@"%.f (%0.1f%%)", elecValue, (elecPercent * 100.0f)];
     }
     // wind
-    else if (index == 1) {
+    else if (index == 0) {
         float windPercent = windValue / totalEnergy;
-        labelValue = [NSString stringWithFormat:@"%0.2f units (%0.1f %%)", windValue, (windPercent * 100.0f)];
+        labelValue = [NSString stringWithFormat:@"%.f (%0.1f%%)", windValue, (windPercent * 100.0f)];
     }
     return [[CPTTextLayer alloc] initWithText:labelValue style:labelText];
+    // gas
+    if (index == 2) {
+        float gasPercent = gasValue / totalEnergy;
+        labelValue = [NSString stringWithFormat:@"%.f (%0.1f%%)", gasValue, (gasPercent * 100.0f)];
+    }
+    // fuel
+    if (index == 3) {
+        float fuelPercent = fuelValue / totalEnergy;
+        labelValue = [NSString stringWithFormat:@"%.f (%0.1f%%)", fuelValue, (fuelPercent * 100.0f)];
+    }
 }
 
 -(NSString *)legendTitleForPieChart:(CPTPieChart *)pieChart recordIndex:(NSUInteger)index {
+    // These units might be wrong
     if (index == 0) {
-        return @"Consumption";
+        return @"Electric Consumption (kW)";
     }
     else if (index == 1) {
-        return @"Wind Production";
+        return @"Wind Production (kW)";
+    }
+    else if (index == 2) {
+        return @"Gas Consumption (kW)";
+    }
+    else if (index == 3) {
+        return @"Oil Consumption (kW)";
     }
     return nil;
 }
 
 #pragma mark Data Retrieval
-- (void)getElectricProducionAndUsage {
+- (void)getElectricProductionAndUsage {
     // get wind production and main campus consumption
     // between now and one hour ago
     
     CEDataRetriever *windRetreiver = [[CEDataRetriever alloc] init];
     CEDataRetriever *electricRetreiver = [[CEDataRetriever alloc] init];
+    CEDataRetriever *gasRetreiver = [[CEDataRetriever alloc] init];
+    CEDataRetriever *fuelRetreiver = [[CEDataRetriever alloc] init];
     [windRetreiver setDelegate:self];
     [electricRetreiver setDelegate:self];
+    [gasRetreiver setDelegate:self];
+    [fuelRetreiver setDelegate:self];
     
     NSDate *now = [NSDate date];
     NSDate *oneHourAgo = [now dateByAddingTimeInterval:-60*60*24];
@@ -182,13 +211,25 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
         [electricRetreiver getTotalCampusElectricityUsageWithStartTime:oneHourAgo endTime:now resolution:kResolutionLive];
     });
+    
+    gotGasUsage = NO;
+    energyConsumption = @(0);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+        [gasRetreiver getTotalCampusElectricityUsageWithStartTime:oneHourAgo endTime:now resolution:kResolutionLive];
+    });
+    
+    gotFuelUsage = NO;
+    energyConsumption = @(0);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+        [fuelRetreiver getTotalCampusElectricityUsageWithStartTime:oneHourAgo endTime:now resolution:kResolutionLive];
+    });
 }
 
 - (void)updatePieChart {
+    // TODO: add || !gotGasUsage || !gotFuelUsage when it doesn't break everything
     if (!gotWindProduction || !gotElectricityUsage) {
         return;
     }
-    
     [pieChart reloadData];
     NSLog(@"draw now!!!!");
     [pieChart.plotAreaFrame.plotArea setNeedsDisplay];
@@ -214,6 +255,26 @@
     }
     energyConsumption = @(totalUsage);
     gotElectricityUsage = YES;
+    [self performSelectorOnMainThread:@selector(updatePieChart) withObject:nil waitUntilDone:NO];
+}
+
+- (void)retriever:(CEDataRetriever *)retreiver gotCampusGasUsage:(NSArray *)usage {
+    float totalUsage = 0;
+    for (CEDataPoint *point in usage) {
+        totalUsage += point.value * point.weight;
+    }
+    gasConsumption = @(totalUsage);
+    gotGasUsage = YES;
+    [self performSelectorOnMainThread:@selector(updatePieChart) withObject:nil waitUntilDone:NO];
+}
+
+- (void)retriever:(CEDataRetriever *)retreiver gotCampusFuelUsage:(NSArray *)usage {
+    float totalUsage = 0;
+    for (CEDataPoint *point in usage) {
+        totalUsage += point.value * point.weight;
+    }
+    fuelConsumption = @(totalUsage);
+    gotFuelUsage = YES;
     [self performSelectorOnMainThread:@selector(updatePieChart) withObject:nil waitUntilDone:NO];
 }
 

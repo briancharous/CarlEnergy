@@ -19,10 +19,15 @@ typedef NS_ENUM(NSInteger, CETimeScale) {
 };
 
 
+extern NSString * const CEClear;
+extern NSString * const CEElectric;
+
+
 @interface CEBuildingDetailViewController : UIViewController <CEDataRetrieverDelegate, CPTPlotDataSource>
 
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForElectricityChart;
+@property (readwrite, strong, nonatomic) NSMutableArray *dataForClearChart;
 @property IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property CEBuilding *building;

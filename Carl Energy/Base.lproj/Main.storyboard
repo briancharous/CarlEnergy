@@ -54,53 +54,56 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWx-Ug-2S7">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWx-Ug-2S7">
                                         <rect key="frame" x="0.0" y="-1" width="319" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="279" translatesAutoresizingMaskIntoConstraints="NO" id="Nov-XO-aVp">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="279" translatesAutoresizingMaskIntoConstraints="NO" id="Nov-XO-aVp">
                                                 <rect key="frame" x="20" y="126" width="279" height="194"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="194" id="IE0-jz-Zni"/>
+                                                    <constraint firstAttribute="height" constant="194" id="fWY-aw-7HD"/>
                                                 </constraints>
                                                 <string key="text">Instructions: The Dashboard displays information on current campus energy usage. You may select one of the buildings on the Buildings list to view the individual building's energy usage. You may change the time reference to see daily, weekly, monthly, and yearly energy usage.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to CarlEnergy, Carleton College's Energy App." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="258" translatesAutoresizingMaskIntoConstraints="NO" id="jks-Qv-uPw">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to CarlEnergy, Carleton College's Energy App." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="258" translatesAutoresizingMaskIntoConstraints="NO" id="jks-Qv-uPw">
                                                 <rect key="frame" x="30" y="46" width="258" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="vZP-JM-GcF"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="568" id="1PX-7I-hI3"/>
-                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="leading" secondItem="dWx-Ug-2S7" secondAttribute="leading" constant="20" symbolic="YES" id="L02-O2-22s"/>
-                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="top" secondItem="dWx-Ug-2S7" secondAttribute="top" constant="126" id="kDS-m7-X3R"/>
-                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="centerX" secondItem="jks-Qv-uPw" secondAttribute="centerX" id="q3k-od-8ZF"/>
-                                            <constraint firstAttribute="trailing" secondItem="Nov-XO-aVp" secondAttribute="trailing" constant="20" symbolic="YES" id="vMQ-Gh-U5e"/>
-                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="top" secondItem="jks-Qv-uPw" secondAttribute="bottom" constant="8" symbolic="YES" id="wnG-cw-ShC"/>
+                                            <constraint firstItem="jks-Qv-uPw" firstAttribute="leading" secondItem="dWx-Ug-2S7" secondAttribute="leading" constant="30" id="569-TB-oZZ"/>
+                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="leading" secondItem="dWx-Ug-2S7" secondAttribute="leading" constant="20" symbolic="YES" id="JQj-hd-6Pb"/>
+                                            <constraint firstItem="Nov-XO-aVp" firstAttribute="top" secondItem="jks-Qv-uPw" secondAttribute="bottom" constant="8" symbolic="YES" id="d2k-pI-WBe"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nov-XO-aVp" secondAttribute="trailing" constant="20" symbolic="YES" id="eWE-B7-pyB"/>
+                                            <constraint firstItem="jks-Qv-uPw" firstAttribute="centerX" secondItem="Nov-XO-aVp" secondAttribute="centerX" id="ixv-Of-LOS"/>
+                                            <constraint firstAttribute="height" constant="568" id="l8M-k6-qyO"/>
+                                            <constraint firstItem="jks-Qv-uPw" firstAttribute="top" secondItem="dWx-Ug-2S7" secondAttribute="top" constant="46" id="mcb-lf-iBa"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="dWx-Ug-2S7" secondAttribute="bottom" constant="233" id="1Qz-Cg-3LG"/>
-                                    <constraint firstItem="dWx-Ug-2S7" firstAttribute="leading" secondItem="55U-fc-qi8" secondAttribute="leading" id="75E-St-KgF"/>
-                                    <constraint firstItem="dWx-Ug-2S7" firstAttribute="top" secondItem="55U-fc-qi8" secondAttribute="top" constant="-1" id="LXF-cJ-tQi"/>
-                                    <constraint firstAttribute="trailing" secondItem="dWx-Ug-2S7" secondAttribute="trailing" constant="1" id="ZPE-RX-E2g"/>
-                                    <constraint firstItem="dWx-Ug-2S7" firstAttribute="centerX" secondItem="55U-fc-qi8" secondAttribute="centerX" id="kSV-uB-q3x"/>
+                                    <constraint firstAttribute="bottom" secondItem="dWx-Ug-2S7" secondAttribute="bottom" constant="233" id="808-y8-Pd4"/>
+                                    <constraint firstItem="dWx-Ug-2S7" firstAttribute="leading" secondItem="55U-fc-qi8" secondAttribute="leading" id="BhW-CZ-UaU"/>
+                                    <constraint firstItem="dWx-Ug-2S7" firstAttribute="top" secondItem="55U-fc-qi8" secondAttribute="top" constant="-1" id="cjF-yY-hi0"/>
+                                    <constraint firstAttribute="trailing" secondItem="dWx-Ug-2S7" secondAttribute="trailing" constant="1" id="oqy-7C-w98"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="55U-fc-qi8" firstAttribute="top" secondItem="4FB-kd-kjj" secondAttribute="top" id="YgT-RM-yIr"/>
-                            <constraint firstAttribute="trailing" secondItem="55U-fc-qi8" secondAttribute="trailing" id="iOq-AJ-ukv"/>
-                            <constraint firstItem="55U-fc-qi8" firstAttribute="leading" secondItem="4FB-kd-kjj" secondAttribute="leading" id="pIH-Fe-HqD"/>
-                            <constraint firstAttribute="bottom" secondItem="55U-fc-qi8" secondAttribute="bottom" constant="-232" id="t88-sU-fV0"/>
+                            <constraint firstItem="55U-fc-qi8" firstAttribute="leading" secondItem="4FB-kd-kjj" secondAttribute="leading" id="AL9-FR-o6i"/>
+                            <constraint firstAttribute="bottom" secondItem="55U-fc-qi8" secondAttribute="bottom" constant="-232" id="OIx-u3-icd"/>
+                            <constraint firstItem="55U-fc-qi8" firstAttribute="top" secondItem="4FB-kd-kjj" secondAttribute="top" id="UcV-Yo-eSf"/>
+                            <constraint firstAttribute="trailing" secondItem="55U-fc-qi8" secondAttribute="trailing" id="lQG-Ir-8gN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="XAL-1I-Dd3">

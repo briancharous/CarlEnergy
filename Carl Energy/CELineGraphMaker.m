@@ -10,7 +10,7 @@
 
 @implementation CELineGraphMaker
 
-- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale
+- (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale
 {
     // get some dummy data to test if the request works
     CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
@@ -50,29 +50,29 @@
     //TODO: cancel request if another one is in progress
     if (!retreiver.requestInProgress) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-            [retreiver getUsage:kUsageTypeElectricity ForBuilding:self.building startTime:previous endTime:now resolution:resolution];
+            [retreiver getUsage:kUsageTypeElectricity ForBuilding:building startTime:previous endTime:now resolution:resolution];
         });
     }
 }
 
 
 
-- (CPTGraph *)makeLineGraph:(NSInteger)timeframeIndex
+- (CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forBuilding:(CEBuilding*)building
 {
     // prep stuff
     switch (timeframeIndex)
     {
         case 0:
-            [self requestDataOfType:kUsageTypeElectricity forTimeScale:kTimeScaleDay];
+            [self requestDataOfType:kUsageTypeElectricity forBuilding:building forTimeScale:kTimeScaleDay];
             break;
         case 1:
-            [self requestDataOfType:kUsageTypeElectricity forTimeScale:kTimeScaleWeek];
+            [self requestDataOfType:kUsageTypeElectricity forBuilding:building forTimeScale:kTimeScaleWeek];
             break;
         case 2:
-            [self requestDataOfType:kUsageTypeElectricity forTimeScale:kTimeScaleMonth];
+            [self requestDataOfType:kUsageTypeElectricity forBuilding:building forTimeScale:kTimeScaleMonth];
             break;
         case 3:
-            [self requestDataOfType:kUsageTypeElectricity forTimeScale:kTimeScaleYear];
+            [self requestDataOfType:kUsageTypeElectricity forBuilding:building forTimeScale:kTimeScaleYear];
             break;
         default:
             break;
@@ -275,6 +275,10 @@
 }
 
 - (void)reloadPlotData {
+//    for (NSObject *item in self.dataForElectricityChart) {
+//        NSLog(@"%a", item);
+//    }
+    //NSLog(@"%a", self.dataForElectricityChart);
     NSUInteger numObjects = [self.dataForElectricityChart count];
     NSLog([NSString stringWithFormat:@"%i", numObjects]);
     for (int i = 1; i <= numObjects; i++) {

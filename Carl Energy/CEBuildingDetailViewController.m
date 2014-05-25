@@ -49,7 +49,7 @@ NSString *  const CEElectric       = @"elec";
 //    }
 //    [self timeChanged:nil];
 //    [self makeLineGraph:self.segmentedControl.selectedSegmentIndex];
-    CPTGraph *elecLineGraph = [self.graphMaker makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+    CPTGraph *elecLineGraph = [self.graphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
     self.electricityLineGraphView.hostedGraph = elecLineGraph;
     [self.scrollView addSubview:self.electricityLineGraphView];
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
@@ -119,7 +119,7 @@ NSString *  const CEElectric       = @"elec";
 //        default:
 //            break;
 //    }
-    CPTGraph *elecLineGraph = [self.graphMaker makeLineGraph:self.segmentedControl.selectedSegmentIndex];
+    CPTGraph *elecLineGraph = [self.graphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
     self.electricityLineGraphView.hostedGraph = elecLineGraph;
     return;
 }

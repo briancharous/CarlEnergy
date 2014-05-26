@@ -12,6 +12,7 @@
 
 - (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale
 {
+    NSLog(@"Request Data of Type");
     // get some dummy data to test if the request works
     CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
     [retreiver setDelegate:self];
@@ -27,21 +28,25 @@
             previous = [now dateByAddingTimeInterval:-60*60*24];
             resolution = kResolutionHour;
             self.x.title = @"Hour";
+            self.requestType = 0;
             break;
         case kTimeScaleWeek:
             previous = [now dateByAddingTimeInterval:-60*60*24*7];
             resolution = kResolutionDay;
             self.x.title = @"Day ";
+            self.requestType = 1;
             break;
         case kTimeScaleMonth:
             previous = [now dateByAddingTimeInterval:-60*60*24*30];
             resolution = kResolutionDay;
             self.x.title = @"Day";
+            self.requestType = 2;
             break;
         case kTimeScaleYear:
             previous = [now dateByAddingTimeInterval:-60*60*24*365];
             resolution = kResolutionMonth;
             self.x.title = @"Month";
+            self.requestType = 3;
             break;
         default:
             break;
@@ -59,6 +64,7 @@
 
 - (CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forBuilding:(CEBuilding*)building
 {
+    NSLog(@"MAKELINECALLED");
     // prep stuff
     switch (timeframeIndex)
     {
@@ -85,7 +91,7 @@
     for (int i = 1; i <= numObjects; i++) {
         [self.dataForClearChart addObject:@0];
     }
-    //self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     
     
     // Define the textStyle for the title
@@ -149,7 +155,7 @@
     CPTMutableTextStyle *axisTextStyle = [[CPTMutableTextStyle alloc] init];
     axisTextStyle.color = [CPTColor blackColor];
     axisTextStyle.fontName = @"Helvetica-Bold";
-    axisTextStyle.fontSize = 11.0f;
+    axisTextStyle.fontSize = 10.0f;
     CPTMutableLineStyle *tickLineStyle = [CPTMutableLineStyle lineStyle];
     tickLineStyle.lineColor = [CPTColor blackColor];
     tickLineStyle.lineWidth = 2.0f;
@@ -159,8 +165,8 @@
     // 2 - Get axis set
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.electricityLineGraph.axisSet;
     // 3 - Configure x-axis
-    //CPTAxis *x = axisSet.xAxis;
-    self.x.title = @"Hour";
+    self.x = axisSet.xAxis;
+    //self.x.title = @"Hour";
     self.x.titleTextStyle = axisTitleStyle;
     self.x.titleOffset = 15.0f;
     self.x.axisLineStyle = axisLineStyle;
@@ -169,6 +175,7 @@
     self.x.majorTickLineStyle = axisLineStyle;
     self.x.majorTickLength = 4.0f;
     self.x.tickDirection = CPTSignNegative;
+    //NSLog([NSString stringWithFormat:@"%i", day]);
     CGFloat dateCount = 24;
     NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
     NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
@@ -185,7 +192,7 @@
             }
         }
     }
-    self.x.axisLabels = xLabels;
+    self.self.x.axisLabels = xLabels;
     self.x.majorTickLocations = xLocations;
     // 4 - Configure y-axis
     self.y = axisSet.yAxis;
@@ -220,7 +227,7 @@
         [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
         
     }
-    self.y.axisLabels = yLabels;
+    self.self.y.axisLabels = yLabels;
     self.y.majorTickLocations = yMajorLocations;
     self.y.minorTickLocations = yMinorLocations;
     self.electricityLineGraph.axisSet = axisSet;
@@ -266,20 +273,6 @@
     [self performSelectorOnMainThread:@selector(reloadPlotData) withObject:nil waitUntilDone:NO];
 }
 
-//- (void)reloadPlotData {
-////    for (NSObject *item in self.dataForElectricityChart) {
-////        NSLog(@"%a", item);
-////    }
-//    //NSLog(@"%a", self.dataForElectricityChart);
-//    
-//    NSUInteger numObjects = [self.dataForElectricityChart count];
-//    NSLog([NSString stringWithFormat:@"%i", numObjects]);
-//    for (int i = 1; i <= numObjects; i++) {
-//        [self.dataForClearChart addObject:@0];
-//    }
-//    [self.electricityLineGraph reloadData];
-//    [self.electricityLineGraph.defaultPlotSpace scaleToFitPlots:[self.electricityLineGraph allPlots]];
-//}
 - (void)reloadPlotData {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
@@ -288,20 +281,21 @@
     NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
     NSInteger hour = [components hour];
     NSInteger day = [components day];
-    NSLog([NSString stringWithFormat:@"%i", day]);
+    //NSLog([NSString stringWithFormat:@"%i", day]);
     CGFloat dateCount = 24;
     NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
     NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
     NSUInteger numObjects = [self.dataForElectricityChart count];
-    if ([self.x.title isEqualToString:@"Hour"]){
+    NSLog(self.x.title);
+    if (self.requestType == 0){
         NSLog(@"DAY INCREMENT");
         for (int k = 1; k <= numObjects; k++) {
-            if (k % 5 == 0) {
+            if (k % 2 == 0) {
                 int newK = hour - (24 - k);
                 if (newK < 0)
                     newK = 24 + newK;
-                NSLog([NSString stringWithFormat:@"%i", k]);
-                NSLog([NSString stringWithFormat:@"%i", newK]);
+                //NSLog([NSString stringWithFormat:@"%i", k]);
+                //NSLog([NSString stringWithFormat:@"%i", newK]);
                 NSString *myString = [NSString stringWithFormat:@"%i", newK];
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;
@@ -315,7 +309,7 @@
         }
         
     }
-    else if ([self.x.title isEqualToString:@"Day "]){
+    else if (self.requestType == 1){
         NSLog(@"WEEK INCREMENT");
         for (int k = 1; k <= numObjects; k++) {
             NSString *myString = [NSString stringWithFormat:@"%i", k];
@@ -329,7 +323,7 @@
             }
         }
     }
-    else if ([self.x.title isEqualToString:@"Day"]){
+    else if (self.requestType == 2){
         NSLog(@"MONTH INCREMENT");
         for (int k = 1; k <= numObjects; k++) {
             if (k % 2 == 0) {
@@ -345,7 +339,7 @@
             }
         }
     }
-    else if ([self.x.title isEqualToString:@"Month"]){
+    else if (self.requestType == 3){
         NSLog(@"YEAR INCREMENT");
         for (int k = 1; k <= numObjects; k++) {
             if (k % 2 == 0) {

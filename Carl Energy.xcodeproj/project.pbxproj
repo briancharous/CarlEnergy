@@ -33,6 +33,8 @@
 		9FA4A4EA191A95A400AE3551 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA4A4E8191A95A400AE3551 /* InfoPlist.strings */; };
 		9FA4A4EC191A95A400AE3551 /* Carl_EnergyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4EB191A95A400AE3551 /* Carl_EnergyTests.m */; };
 		9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */; };
+		9FB5F6E61932B46F00C9B419 /* CEWindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5F6E51932B46F00C9B419 /* CEWindView.m */; };
+		9FB5F6E81932B4DC00C9B419 /* CEWindView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */; };
 		9FC36343192DB70B002E00B6 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FC36342192DB70B002E00B6 /* buildings.plist */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +102,9 @@
 		9FA4A4EB191A95A400AE3551 /* Carl_EnergyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Carl_EnergyTests.m; sourceTree = "<group>"; };
 		9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataRetriever.h; sourceTree = "<group>"; };
 		9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDataRetriever.m; sourceTree = "<group>"; };
+		9FB5F6E41932B46F00C9B419 /* CEWindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEWindView.h; sourceTree = "<group>"; };
+		9FB5F6E51932B46F00C9B419 /* CEWindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEWindView.m; sourceTree = "<group>"; };
+		9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CEWindView.xib; sourceTree = "<group>"; };
 		9FC36342192DB70B002E00B6 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +203,9 @@
 				9FA4A4D3191A95A300AE3551 /* CEBuildingsListTableViewController.m */,
 				9FA4A4D5191A95A300AE3551 /* CEDashboardViewController.h */,
 				9FA4A4D6191A95A300AE3551 /* CEDashboardViewController.m */,
+				9FB5F6E41932B46F00C9B419 /* CEWindView.h */,
+				9FB5F6E51932B46F00C9B419 /* CEWindView.m */,
+				9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */,
 				9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */,
 				9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */,
 				32269D1B192FE71600013D3E /* CEAboutPageViewController.h */,
@@ -336,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB5F6E81932B4DC00C9B419 /* CEWindView.xib in Resources */,
 				9FA4A4D9191A95A300AE3551 /* Images.xcassets in Resources */,
 				9FA4A4C8191A95A300AE3551 /* InfoPlist.strings in Resources */,
 				013B09811932DE3400376BB6 /* aboutPage.txt in Resources */,
@@ -359,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB5F6E61932B46F00C9B419 /* CEWindView.m in Sources */,
 				9FA4A4D7191A95A300AE3551 /* CEDashboardViewController.m in Sources */,
 				32269D1D192FE71600013D3E /* CEAboutPageViewController.m in Sources */,
 				9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */,

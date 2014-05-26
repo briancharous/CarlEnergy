@@ -43,11 +43,11 @@ NSString *  const CEElectric       = @"elec";
     if (self.building) {
         [self.navigationItem setTitle:self.building.displayName];
     }
-
+    
     // create graphs and add them to the scroll view
-    CPTGraph *elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
-    CPTGraph *waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
-    CPTGraph *steamLineGraph = [self.steamGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
+    CPTGraph *elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeElectricity forBuilding:self.building];
+    CPTGraph *waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeWater forBuilding:self.building];
+    CPTGraph *steamLineGraph = [self.steamGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeSteam forBuilding:self.building];
     self.electricityLineGraphView.hostedGraph = elecLineGraph;
     [self.scrollView addSubview:self.electricityLineGraphView];
     self.waterLineGraphView.hostedGraph = waterLineGraph;
@@ -62,9 +62,9 @@ NSString *  const CEElectric       = @"elec";
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender
 {
-    CPTGraph *elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
+    CPTGraph *elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeElectricity forBuilding:self.building];
     self.electricityLineGraphView.hostedGraph = elecLineGraph;
-    CPTGraph *waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forBuilding:self.building];
+    CPTGraph *waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeWater forBuilding:self.building];
     self.waterLineGraphView.hostedGraph = waterLineGraph;
     return;
 }

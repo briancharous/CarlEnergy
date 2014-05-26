@@ -128,7 +128,7 @@
         NSString *urlString = [NSString stringWithFormat:@"%@/reports/timeseries/?start=%@&end=%@&resolution=%@&name=%@", self.baseUrl, startString, endString, resolutionString, nameString];
         NSURL *requestURL = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
-        NSLog(@"%@", [requestURL absoluteString]);
+//        NSLog(@"%@", [requestURL absoluteString]);
         NSURLResponse *response = nil;
         NSError *webError = nil;
         NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];

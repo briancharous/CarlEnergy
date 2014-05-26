@@ -131,8 +131,9 @@
     msftPlot.dataLineStyle = msftLineStyle;
 	[self.electricityLineGraph addPlot:msftPlot toPlotSpace:plotSpace];
     
-    // Configure plot space??
-    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
+    // Configure plot space
+    // do we want to use the next line?
+    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, msftPlot, nil]];
     CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
     [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.xRange = xRange;
@@ -226,11 +227,11 @@
         [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
         
     }
-    self.self.y.axisLabels = yLabels;
+    self.y.axisLabels = yLabels;
     self.y.majorTickLocations = yMajorLocations;
-    numObjects = [self.dataForElectricityChart count];
-    NSLog([NSString stringWithFormat:@"%i", 6666]);
-    NSLog([NSString stringWithFormat:@"%i", numObjects]);
+    self.y.minorTickLocations = yMinorLocations;
+    self.electricityLineGraph.axisSet = axisSet;
+    
     return self.electricityLineGraph;
     
     
@@ -248,9 +249,6 @@
             break;
 
         case CPTScatterPlotFieldY: {
-//            NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
-//            return yValue;
-//            break;
             if ([plot.identifier isEqual:CEElectric] == YES) {
 				NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
 

@@ -159,7 +159,7 @@
 
     NSString *producedString = [NSString stringWithFormat:@"%lu kWh produced", (long)[windProduction integerValue]];
    
-    float percentageWind = [windProduction floatValue]/[energyConsumption floatValue] * 100;
+    float percentageWind = [windProduction floatValue]/([windProduction floatValue]+ [energyConsumption floatValue]) * 100;
     NSString *consumedString = [NSString stringWithFormat:@"%i%% campus energy from wind", (int)percentageWind];
     [[windView producedLabel] setText:producedString];
     [[windView consumedLabel] setText:consumedString];

@@ -191,6 +191,17 @@
         }
     }
     
+    // remove turbine 1 from the list of meters so that data does not get factored
+    // into the total wind production because turbine 1 is hooked up to Xcel
+    // and not the Carleton grid.
+    NSMutableArray *metersNoTurbine1 = [[NSMutableArray alloc] init];
+    for (CEMeter *meter in mainCampus.meters) {
+        if (![meter.systemName isEqualToString:@"carleton_turbine1_produced_power"]) {
+            [metersNoTurbine1 addObject:meter];
+        }
+    }
+    [mainCampus setMeters:metersNoTurbine1];
+    
     NSArray *points = [self syncGetUsage:kUsageTypeWindProduction ForBuilding:mainCampus startTime:start endTime:end resolution:res];
     
     if ([self.delegate respondsToSelector:@selector(retriever:gotWindProduction:)]) {

@@ -28,6 +28,8 @@ extern NSString * const CEElectric;
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForClearChart;
 @property CEBuilding *building;
 @property CPTXYGraph *electricityLineGraph;
+@property CPTAxis *x;
+@property CPTAxis *y;
 
 - (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale;
 - (void)reloadPlotData;

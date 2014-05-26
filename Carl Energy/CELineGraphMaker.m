@@ -21,27 +21,27 @@
     NSDate *previous;
     Resolution resolution;
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.electricityLineGraph.axisSet;
-    CPTAxis *x = axisSet.xAxis;
+    self.x = axisSet.xAxis;
     switch (timeScale) {
         case kTimeScaleDay:
             previous = [now dateByAddingTimeInterval:-60*60*24];
             resolution = kResolutionHour;
-            x.title = @"Hour";
+            self.x.title = @"Hour";
             break;
         case kTimeScaleWeek:
             previous = [now dateByAddingTimeInterval:-60*60*24*7];
             resolution = kResolutionDay;
-            x.title = @"Day";
+            self.x.title = @"Day ";
             break;
         case kTimeScaleMonth:
             previous = [now dateByAddingTimeInterval:-60*60*24*30];
             resolution = kResolutionDay;
-            x.title = @"Day";
+            self.x.title = @"Day";
             break;
         case kTimeScaleYear:
             previous = [now dateByAddingTimeInterval:-60*60*24*365];
             resolution = kResolutionMonth;
-            x.title = @"Month";
+            self.x.title = @"Month";
             break;
         default:
             break;
@@ -109,7 +109,7 @@
     self.electricityLineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
     
     // Set plot area padding
-    [self.electricityLineGraph.plotAreaFrame setPaddingLeft:35.0f];
+    [self.electricityLineGraph.plotAreaFrame setPaddingLeft:40.0f];
     [self.electricityLineGraph.plotAreaFrame setPaddingBottom:100.0f];
     
     // Create plot
@@ -140,6 +140,8 @@
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.yRange = yRange;
     
+    
+    
     // TODO: clean up this code
     // Configure axes
     // 1 - Create styles
@@ -163,73 +165,72 @@
     // 2 - Get axis set
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.electricityLineGraph.axisSet;
     // 3 - Configure x-axis
-    CPTAxis *x = axisSet.xAxis;
-    x.title = @"Hour";
-    x.titleTextStyle = axisTitleStyle;
-    x.titleOffset = 15.0f;
-    x.axisLineStyle = axisLineStyle;
-    x.labelingPolicy = CPTAxisLabelingPolicyNone;
-    x.labelTextStyle = axisTextStyle;
-    x.majorTickLineStyle = axisLineStyle;
-    x.majorTickLength = 4.0f;
-    x.tickDirection = CPTSignNegative;
+    //CPTAxis *x = axisSet.xAxis;
+    self.x.title = @"Hour";
+    self.x.titleTextStyle = axisTitleStyle;
+    self.x.titleOffset = 15.0f;
+    self.x.axisLineStyle = axisLineStyle;
+    self.x.labelingPolicy = CPTAxisLabelingPolicyNone;
+    self.x.labelTextStyle = axisTextStyle;
+    self.x.majorTickLineStyle = axisLineStyle;
+    self.x.majorTickLength = 4.0f;
+    self.x.tickDirection = CPTSignNegative;
     CGFloat dateCount = 24;
     NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
     NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
     for (int k = 1; k <= 24; k++) {
         if (k % 2 == 0) {
             NSString *myString = [NSString stringWithFormat:@"%i", k];
-            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:x.labelTextStyle];
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
             CGFloat location = k;
             label.tickLocation = CPTDecimalFromCGFloat(location);
-            label.offset = x.majorTickLength;
+            label.offset = self.x.majorTickLength;
             if (label) {
                 [xLabels addObject:label];
                 [xLocations addObject:[NSNumber numberWithFloat:location]];
             }
         }
     }
-    x.axisLabels = xLabels;
-    x.majorTickLocations = xLocations;
+    self.x.axisLabels = xLabels;
+    self.x.majorTickLocations = xLocations;
     // 4 - Configure y-axis
-    CPTAxis *y = axisSet.yAxis;
-    y.title = @"kW";
-    y.titleTextStyle = axisTitleStyle;
-    y.titleOffset = -40.0f;
-    y.axisLineStyle = axisLineStyle;
-    y.majorGridLineStyle = gridLineStyle;
-    y.labelingPolicy = CPTAxisLabelingPolicyNone;
-    y.labelTextStyle = axisTextStyle;
-    y.labelOffset = 16.0f;
-    y.majorTickLineStyle = axisLineStyle;
-    y.majorTickLength = 4.0f;
-    y.minorTickLength = 2.0f;
-    y.tickDirection = CPTSignPositive;
+    self.y = axisSet.yAxis;
+    self.y.title = @"kW";
+    self.y.titleTextStyle = axisTitleStyle;
+    self.y.titleOffset = -40.0f;
+    self.y.axisLineStyle = axisLineStyle;
+    self.y.majorGridLineStyle = gridLineStyle;
+    self.y.labelingPolicy = CPTAxisLabelingPolicyNone;
+    self.y.labelTextStyle = axisTextStyle;
+    self.y.labelOffset = 16.0f;
+    self.y.majorTickLineStyle = axisLineStyle;
+    self.y.majorTickLength = 4.0f;
+    self.y.minorTickLength = 2.0f;
+    self.y.tickDirection = CPTSignPositive;
     NSInteger majorIncrement = 10;
-    NSInteger minorIncrement = 5;
-    CGFloat yMax = 100.0f;  // should determine dynamically
+    
+    //NSLog([NSString stringWithFormat:@"%@", [self.dataForElectricityChart objectAtIndex:0]]);
+    CGFloat yMax = 200.0f;  // should determine dynamically
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
     NSMutableSet *yMinorLocations = [NSMutableSet set];
-    for (NSInteger j = minorIncrement; j <= yMax; j += minorIncrement) {
+    for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
         NSUInteger mod = j % majorIncrement;
-        if (mod == 0) {
-            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)j] textStyle:y.labelTextStyle];
-            NSDecimal location = CPTDecimalFromInteger(j);
-            label.tickLocation = location;
-            label.offset = -y.majorTickLength - y.labelOffset;
-            if (label) {
-                [yLabels addObject:label];
-            }
-            [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
-        } else {
-            [yMinorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromInteger(j)]];
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)j] textStyle:self.y.labelTextStyle];
+        NSDecimal location = CPTDecimalFromInteger(j);
+        label.tickLocation = location;
+        label.offset = -self.y.majorTickLength - self.y.labelOffset;
+        if (label) {
+            [yLabels addObject:label];
         }
+        [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
+        
     }
-    y.axisLabels = yLabels;
-    y.majorTickLocations = yMajorLocations;
-    y.minorTickLocations = yMinorLocations;
-    
+    self.self.y.axisLabels = yLabels;
+    self.y.majorTickLocations = yMajorLocations;
+    numObjects = [self.dataForElectricityChart count];
+    NSLog([NSString stringWithFormat:@"%i", 6666]);
+    NSLog([NSString stringWithFormat:@"%i", numObjects]);
     return self.electricityLineGraph;
     
     
@@ -274,18 +275,162 @@
     [self performSelectorOnMainThread:@selector(reloadPlotData) withObject:nil waitUntilDone:NO];
 }
 
-- (void)reloadPlotData {
-//    for (NSObject *item in self.dataForElectricityChart) {
-//        NSLog(@"%a", item);
+//- (void)reloadPlotData {
+////    for (NSObject *item in self.dataForElectricityChart) {
+////        NSLog(@"%a", item);
+////    }
+//    //NSLog(@"%a", self.dataForElectricityChart);
+//    
+//    NSUInteger numObjects = [self.dataForElectricityChart count];
+//    NSLog([NSString stringWithFormat:@"%i", numObjects]);
+//    for (int i = 1; i <= numObjects; i++) {
+//        [self.dataForClearChart addObject:@0];
 //    }
-    //NSLog(@"%a", self.dataForElectricityChart);
+//    [self.electricityLineGraph reloadData];
+//    [self.electricityLineGraph.defaultPlotSpace scaleToFitPlots:[self.electricityLineGraph allPlots]];
+//}
+- (void)reloadPlotData {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
+    //NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
+    NSInteger hour = [components hour];
+    NSInteger day = [components day];
+    NSLog([NSString stringWithFormat:@"%i", day]);
+    CGFloat dateCount = 24;
+    NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
+    NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
     NSUInteger numObjects = [self.dataForElectricityChart count];
-    NSLog([NSString stringWithFormat:@"%i", numObjects]);
+    if ([self.x.title isEqualToString:@"Hour"]){
+        NSLog(@"DAY INCREMENT");
+        for (int k = 1; k <= numObjects; k++) {
+            if (k % 5 == 0) {
+                int newK = hour - (24 - k);
+                if (newK < 0)
+                    newK = 24 + newK;
+                NSLog([NSString stringWithFormat:@"%i", k]);
+                NSLog([NSString stringWithFormat:@"%i", newK]);
+                NSString *myString = [NSString stringWithFormat:@"%i", newK];
+                CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
+                CGFloat location = k;
+                label.tickLocation = CPTDecimalFromCGFloat(location);
+                label.offset = self.x.majorTickLength;
+                if (label) {
+                    [xLabels addObject:label];
+                    [xLocations addObject:[NSNumber numberWithFloat:location]];
+                }
+            }
+        }
+        
+    }
+    else if ([self.x.title isEqualToString:@"Day "]){
+        NSLog(@"WEEK INCREMENT");
+        for (int k = 1; k <= numObjects; k++) {
+            NSString *myString = [NSString stringWithFormat:@"%i", k];
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
+            CGFloat location = k;
+            label.tickLocation = CPTDecimalFromCGFloat(location);
+            label.offset = self.x.majorTickLength;
+            if (label) {
+                [xLabels addObject:label];
+                [xLocations addObject:[NSNumber numberWithFloat:location]];
+            }
+        }
+    }
+    else if ([self.x.title isEqualToString:@"Day"]){
+        NSLog(@"MONTH INCREMENT");
+        for (int k = 1; k <= numObjects; k++) {
+            if (k % 2 == 0) {
+                NSString *myString = [NSString stringWithFormat:@"%i", k];
+                CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
+                CGFloat location = k;
+                label.tickLocation = CPTDecimalFromCGFloat(location);
+                label.offset = self.x.majorTickLength;
+                if (label) {
+                    [xLabels addObject:label];
+                    [xLocations addObject:[NSNumber numberWithFloat:location]];
+                }
+            }
+        }
+    }
+    else if ([self.x.title isEqualToString:@"Month"]){
+        NSLog(@"YEAR INCREMENT");
+        for (int k = 1; k <= numObjects; k++) {
+            if (k % 2 == 0) {
+                NSString *myString = [NSString stringWithFormat:@"%i", k];
+                CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
+                CGFloat location = k;
+                label.tickLocation = CPTDecimalFromCGFloat(location);
+                label.offset = self.x.majorTickLength;
+                if (label) {
+                    [xLabels addObject:label];
+                    [xLocations addObject:[NSNumber numberWithFloat:location]];
+                }
+            }
+        }
+    }
+    
+    
+    NSNumber * max = [self.dataForElectricityChart valueForKeyPath:@"@max.intValue"];
+    int maxInt = [max intValue];
     for (int i = 1; i <= numObjects; i++) {
         [self.dataForClearChart addObject:@0];
     }
     [self.electricityLineGraph reloadData];
+    self.y.title = @"kW";
+    NSInteger majorIncrement = (maxInt/5);
+    CGFloat yMax = maxInt;
+    NSMutableSet *yLabels = [NSMutableSet set];
+    NSMutableSet *yMajorLocations = [NSMutableSet set];
+    for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
+        long jRound = j;
+        if (maxInt < 100){
+            jRound = (j/2) * 2;
+        }
+        else if (maxInt < 1000){
+            jRound = (j/10) * 10;
+        }
+        else if (maxInt < 10000){
+            jRound = (j/100) * 100;
+        }
+        else if (maxInt < 100000){
+            jRound = (j/1000) * 1000;
+        }
+        else if (maxInt > 100000){
+            jRound = (j/1000) * 1000;
+        }
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)jRound] textStyle:self.y.labelTextStyle];
+        //        if (jRound > 99999){
+        //            NSMutableString *strLabel = [NSMutableString stringWithFormat:@"%li", (long)jRound];
+        //            NSString *newString = [strLabel substringToIndex:[strLabel length]-5];
+        //            NSMutableString *stringLabel = [NSMutableString stringWithFormat:@"%@%", newString, "k"];
+        //            label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%@", stringLabel] textStyle:self.y.labelTextStyle];
+        //            self.y.title = @"10k kWs";
+        //        }
+        if (jRound > 999){
+            NSMutableString *strLabel = [NSMutableString stringWithFormat:@"%li", (long)jRound];
+            NSString *newString = [strLabel substringToIndex:[strLabel length]-3];
+            NSMutableString *stringLabel = [NSMutableString stringWithFormat:@"%@%s", newString, "k"];
+            label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%@", stringLabel] textStyle:self.y.labelTextStyle];
+        }
+        NSDecimal location = CPTDecimalFromInteger(j);
+        label.tickLocation = location;
+        label.offset = -self.y.majorTickLength - self.y.labelOffset;
+        if (label) {
+            [yLabels addObject:label];
+        }
+        [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
+        
+    }
+
+    self.self.x.axisLabels = xLabels;
+    self.x.majorTickLocations = xLocations;
+    
+    self.self.y.axisLabels = yLabels;
+    self.y.majorTickLocations = yMajorLocations;
     [self.electricityLineGraph.defaultPlotSpace scaleToFitPlots:[self.electricityLineGraph allPlots]];
+    
 }
 
 @end

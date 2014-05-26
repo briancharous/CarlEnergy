@@ -85,7 +85,8 @@
     for (int i = 1; i <= numObjects; i++) {
         [self.dataForClearChart addObject:@0];
     }
-    self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    //self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    
     
     // Define the textStyle for the title
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];

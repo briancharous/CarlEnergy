@@ -5,7 +5,7 @@ Instructions: The Dashboard displays information on current campus energy usage.
 Developers: Brian Charous, Michelle Chen, Lila Conlee, Larkin Flodin
 
 ==============================
-3rd Party Licences
+3rd Party Licenses
 ==============================
 
 CorePlot Licensing Info:

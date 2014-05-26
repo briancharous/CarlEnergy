@@ -8,24 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "CEDataRetriever.h"
-#import "CorePlot-CocoaTouch.h"
+#import "CEWindView.h"
 
-
-@interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate, CPTPlotDataSource> {
+@interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate> {
     NSNumber *windProduction;
     NSNumber *energyConsumption;
     BOOL gotWindProduction;
     BOOL gotElectricityUsage;
-    CPTXYGraph *pieChart;
+    CEWindView *windView;
 }
 
-- (void)makePieChart;
 - (void)getElectricProducionAndUsage;
-- (void)updatePieChart;
+- (void)updateUsageData;
+- (void)makeTurbine;
+- (void)restartBladeAnimation;
 
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
 @property IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) CPTGraphHostingView *hostView;
-@property (nonatomic, strong) CPTTheme *selectedTheme;
 
 @end

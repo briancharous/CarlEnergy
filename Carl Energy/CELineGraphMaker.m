@@ -55,7 +55,7 @@
     //TODO: cancel request if another one is in progress
     if (!retreiver.requestInProgress) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-            [retreiver getUsage:kUsageTypeElectricity ForBuilding:building startTime:previous endTime:now resolution:resolution];
+            [retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
         });
     }
 }
@@ -410,7 +410,7 @@
         self.y.title = @"gallons";
     }
     else
-        self.y.title =@"kBTUs";
+        self.y.title =@"kBtus";
     NSInteger majorIncrement = (maxInt/5);
     CGFloat yMax = maxInt;
     NSMutableSet *yLabels = [NSMutableSet set];

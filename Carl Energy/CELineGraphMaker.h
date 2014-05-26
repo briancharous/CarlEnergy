@@ -24,15 +24,16 @@ extern NSString * const CEElectric;
 @interface CELineGraphMaker : NSObject <CEDataRetrieverDelegate, CPTPlotDataSource>
 
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
-@property (readwrite, strong, nonatomic) NSMutableArray *dataForElectricityChart;
+@property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForClearChart;
 @property CEBuilding *building;
-@property CPTXYGraph *electricityLineGraph;
+@property CPTXYGraph *lineGraph;
 @property CPTAxis *x;
 @property CPTAxis *y;
+@property UsageType *energyType;
 @property int requestType;
 - (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale;
 - (void)reloadPlotData;
--(CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forBuilding:(CEBuilding*)building;
+-(CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forUsage:(UsageType)type forBuilding:(CEBuilding*)building;
 
 @end

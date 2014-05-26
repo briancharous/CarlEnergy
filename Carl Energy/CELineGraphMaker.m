@@ -21,7 +21,7 @@
     NSDate *now = [NSDate date];
     NSDate *previous;
     Resolution resolution;
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.electricityLineGraph.axisSet;
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.lineGraph.axisSet;
     self.x = axisSet.xAxis;
     switch (timeScale) {
         case kTimeScaleDay:
@@ -62,38 +62,38 @@
 
 
 
-- (CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forBuilding:(CEBuilding*)building
+- (CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forUsage:(UsageType)type forBuilding:(CEBuilding*)building
 {
     NSLog(@"MAKELINECALLED");
     // prep stuff
     switch (timeframeIndex)
     {
         case 0:
-            [self requestDataOfType:kUsageTypeElectricity forBuilding:building forTimeScale:kTimeScaleDay];
+            [self requestDataOfType:type forBuilding:building forTimeScale:kTimeScaleDay];
             break;
         case 1:
-            [self requestDataOfType:kUsageTypeElectricity forBuilding:building forTimeScale:kTimeScaleWeek];
+            [self requestDataOfType:type forBuilding:building forTimeScale:kTimeScaleWeek];
             break;
         case 2:
-            [self requestDataOfType:kUsageTypeElectricity forBuilding:building forTimeScale:kTimeScaleMonth];
+            [self requestDataOfType:type forBuilding:building forTimeScale:kTimeScaleMonth];
             break;
         case 3:
-            [self requestDataOfType:kUsageTypeElectricity forBuilding:building forTimeScale:kTimeScaleYear];
+            [self requestDataOfType:type forBuilding:building forTimeScale:kTimeScaleYear];
             break;
         default:
             break;
     }
     CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
     [retriever setDelegate:self];
-    NSUInteger numObjects = [self.dataForElectricityChart count];
-    self.dataForElectricityChart = [[NSMutableArray alloc] init];
+    NSUInteger numObjects = [self.dataForChart count];
+    self.dataForChart = [[NSMutableArray alloc] init];
     self.dataForClearChart = [[NSMutableArray alloc] init];
     for (int i = 1; i <= numObjects; i++) {
         [self.dataForClearChart addObject:@0];
     }
     
     // Create and assign the host view
-    self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    self.lineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     
     // Define the textStyle for the title
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
@@ -102,18 +102,30 @@
     textStyle.fontSize = 20.0f;
     
     // Make title
-    NSString *title = @"Electricity Usage";
-    self.electricityLineGraph.title = title;
-    self.electricityLineGraph.titleTextStyle = textStyle;
+    NSString *title = [[NSString alloc] init];
+    if (type == kUsageTypeElectricity) {
+        self.energyType = kUsageTypeElectricity;
+        title = @"Electricity Usage";
+    }
+    else if (type == kUsageTypeWater) {
+        self.energyType = kUsageTypeWater;
+        title = @"Water Usage";
+    }
+    else {
+        self.energyType = kUsageTypeSteam;
+        title = @"Steam Usage";
+    }
+    self.lineGraph.title = title;
+    self.lineGraph.titleTextStyle = textStyle;
     //lineGraph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
-    self.electricityLineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
+    self.lineGraph.titleDisplacement = CGPointMake(0.0f, 40.0f);
     
     // Set plot area padding
-    [self.electricityLineGraph.plotAreaFrame setPaddingLeft:40.0f];
-    [self.electricityLineGraph.plotAreaFrame setPaddingBottom:100.0f];
+    [self.lineGraph.plotAreaFrame setPaddingLeft:40.0f];
+    [self.lineGraph.plotAreaFrame setPaddingBottom:100.0f];
     
     // Create plot
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.electricityLineGraph.defaultPlotSpace;
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.lineGraph.defaultPlotSpace;
     CPTScatterPlot *elecPlot = [[CPTScatterPlot alloc] init];
     elecPlot.dataSource = self;
     elecPlot.identifier = CEElectric;
@@ -121,7 +133,7 @@
     CPTMutableLineStyle *elecLineStyle = [elecPlot.dataLineStyle mutableCopy];
     elecLineStyle.lineColor = elecColor;
     elecPlot.dataLineStyle = elecLineStyle;
-    [self.electricityLineGraph addPlot:elecPlot toPlotSpace:plotSpace];
+    [self.lineGraph addPlot:elecPlot toPlotSpace:plotSpace];
     CPTScatterPlot *msftPlot = [[CPTScatterPlot alloc] init];
 	msftPlot.dataSource = self;
 	msftPlot.identifier = CEClear;
@@ -129,7 +141,7 @@
     CPTMutableLineStyle *msftLineStyle = [msftPlot.dataLineStyle mutableCopy];
     msftLineStyle.lineColor = msftColor;
     msftPlot.dataLineStyle = msftLineStyle;
-	[self.electricityLineGraph addPlot:msftPlot toPlotSpace:plotSpace];
+	[self.lineGraph addPlot:msftPlot toPlotSpace:plotSpace];
     
     // Configure plot space
     // do we want to use the next line?
@@ -164,7 +176,7 @@
     tickLineStyle.lineColor = [CPTColor blackColor];
     tickLineStyle.lineWidth = 1.0f;
     // 2 - Get axis set
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.electricityLineGraph.axisSet;
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.lineGraph.axisSet;
     // 3 - Configure x-axis
     self.x = axisSet.xAxis;
     //self.x.title = @"Hour";
@@ -197,7 +209,11 @@
     self.x.majorTickLocations = xLocations;
     // 4 - Configure y-axis
     self.y = axisSet.yAxis;
-    self.y.title = @"kW";
+    if (type == kUsageTypeElectricity) {
+        self.y.title = @"kW";
+    }
+    else
+        self.y.title = @"gallons";
     self.y.titleTextStyle = axisTitleStyle;
     self.y.titleOffset = -40.0f;
     self.y.axisLineStyle = axisLineStyle;
@@ -231,16 +247,16 @@
     self.self.y.axisLabels = yLabels;
     self.y.majorTickLocations = yMajorLocations;
     self.y.minorTickLocations = yMinorLocations;
-    self.electricityLineGraph.axisSet = axisSet;
+    self.lineGraph.axisSet = axisSet;
     
-    return self.electricityLineGraph;
+    return self.lineGraph;
     
     
 }
 
 #pragma mark - CPTPlotDataSource methods
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-    return [self.dataForElectricityChart count];
+    return [self.dataForChart count];
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
@@ -251,7 +267,7 @@
 
         case CPTScatterPlotFieldY: {
             if ([plot.identifier isEqual:CEElectric] == YES) {
-				NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
+				NSNumber *yValue = [self.dataForChart objectAtIndex:index];
 
                 return yValue;}
             else if ([plot.identifier isEqual:CEClear] == YES) {
@@ -267,9 +283,9 @@
 
 #pragma mark - CEDataRetreiverDelegate methods
 - (void)retriever:(CEDataRetriever *)retriever gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(CEBuilding *)building {
-    [self.dataForElectricityChart removeAllObjects];
+    [self.dataForChart removeAllObjects];
     for (CEDataPoint *point in usage) {
-        [self.dataForElectricityChart addObject:@(point.weight * point.value)];
+        [self.dataForChart addObject:@(point.weight * point.value)];
     }
     [self performSelectorOnMainThread:@selector(reloadPlotData) withObject:nil waitUntilDone:NO];
 }
@@ -286,7 +302,7 @@
     CGFloat dateCount = 24;
     NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
     NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
-    NSUInteger numObjects = [self.dataForElectricityChart count];
+    NSUInteger numObjects = [self.dataForChart count];
     if (self.requestType == 0){
         NSLog(@"DAY INCREMENT");
          self.x.title = @"Hour";
@@ -361,13 +377,20 @@
     }
     
     
-    NSNumber * max = [self.dataForElectricityChart valueForKeyPath:@"@max.intValue"];
+    NSNumber * max = [self.dataForChart valueForKeyPath:@"@max.intValue"];
     int maxInt = [max intValue];
     for (int i = 1; i <= numObjects; i++) {
         [self.dataForClearChart addObject:@0];
     }
-    [self.electricityLineGraph reloadData];
-    self.y.title = @"kW";
+    [self.lineGraph reloadData];
+    if (self.energyType == kUsageTypeElectricity) {
+        self.y.title = @"kW";
+    }
+    else if (self.energyType == kUsageTypeWater) {
+        self.y.title = @"gallons";
+    }
+    else
+        self.y.title =@"kBTUs";
     NSInteger majorIncrement = (maxInt/5);
     CGFloat yMax = maxInt;
     NSMutableSet *yLabels = [NSMutableSet set];
@@ -411,7 +434,7 @@
     
     self.self.y.axisLabels = yLabels;
     self.y.majorTickLocations = yMajorLocations;
-    [self.electricityLineGraph.defaultPlotSpace scaleToFitPlots:[self.electricityLineGraph allPlots]];
+    [self.lineGraph.defaultPlotSpace scaleToFitPlots:[self.lineGraph allPlots]];
     
 }
 

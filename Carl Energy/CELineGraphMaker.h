@@ -32,6 +32,8 @@ extern NSString * const CEElectric;
 @property CPTAxis *y;
 @property UsageType energyType;
 @property int requestType;
+@property CEDataRetriever *retreiver;
+
 - (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale;
 - (void)reloadPlotData;
 -(CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forUsage:(UsageType)type forBuilding:(CEBuilding*)building;

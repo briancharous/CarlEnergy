@@ -14,8 +14,12 @@
 {
     NSLog(@"Request Data of Type");
     // get some dummy data to test if the request works
-    CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
-    [retreiver setDelegate:self];
+    
+    if (!self.retreiver) {
+        self.retreiver = [[CEDataRetriever alloc] init];
+        [self.retreiver setDelegate:self];
+    }
+
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
     NSDate *now = [NSDate date];
@@ -53,9 +57,9 @@
     }
     
     //TODO: cancel request if another one is in progress
-    if (!retreiver.requestInProgress) {
+    if (!self.retreiver.requestInProgress) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-            [retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
+            [self.retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
         });
     }
 }
@@ -102,7 +106,7 @@
     textStyle.fontSize = 20.0f;
     
     // Make title
-    NSString *title = [[NSString alloc] init];
+    NSString *title = @"";
     if (type == kUsageTypeElectricity) {
         self.energyType = kUsageTypeElectricity;
         title = @"Electricity Usage";
@@ -196,7 +200,7 @@
     for (int k = 1; k <= 24; k++) {
         if (k % 2 == 0) {
             NSString *myString = [NSString stringWithFormat:@"%i", k];
-            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString textStyle:self.x.labelTextStyle];
             CGFloat location = k;
             label.tickLocation = CPTDecimalFromCGFloat(location);
             label.offset = self.x.majorTickLength;
@@ -206,15 +210,16 @@
             }
         }
     }
-    self.self.x.axisLabels = xLabels;
+    self.x.axisLabels = xLabels;
     self.x.majorTickLocations = xLocations;
     // 4 - Configure y-axis
     self.y = axisSet.yAxis;
     if (type == kUsageTypeElectricity) {
         self.y.title = @"kW";
     }
-    else
+    else {
         self.y.title = @"gallons";
+    }
     self.y.titleTextStyle = axisTitleStyle;
     self.y.titleOffset = -40.0f;
     self.y.axisLineStyle = axisLineStyle;
@@ -245,7 +250,7 @@
         [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
         
     }
-    self.self.y.axisLabels = yLabels;
+    self.y.axisLabels = yLabels;
     self.y.majorTickLocations = yMajorLocations;
     self.y.minorTickLocations = yMinorLocations;
     self.lineGraph.axisSet = axisSet;
@@ -304,7 +309,7 @@
     NSUInteger numObjects = [self.dataForChart count];
     if (self.requestType == 0){
         NSLog(@"DAY INCREMENT");
-         self.x.title = @"Hour";
+        self.x.title = @"Hour";
         NSString *kString;
         for (int k = 1; k <= numObjects; k++) {
             if (k % 6 == 3) {
@@ -331,7 +336,6 @@
                 }
             }
         }
-        
     }
     else if (self.requestType == 1){
         NSLog(@"WEEK INCREMENT");
@@ -411,7 +415,7 @@
     }
     else
         self.y.title =@"kBtus";
-    NSInteger majorIncrement = (maxInt/5);
+    NSInteger majorIncrement = ceil(maxInt/5.);
     CGFloat yMax = maxInt;
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
@@ -449,10 +453,10 @@
         
     }
 
-    self.self.x.axisLabels = xLabels;
+    self.x.axisLabels = xLabels;
     self.x.majorTickLocations = xLocations;
     
-    self.self.y.axisLabels = yLabels;
+    self.y.axisLabels = yLabels;
     self.y.majorTickLocations = yMajorLocations;
     [self.lineGraph.defaultPlotSpace scaleToFitPlots:[self.lineGraph allPlots]];
     

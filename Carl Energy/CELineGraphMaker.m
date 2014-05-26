@@ -123,6 +123,7 @@
     // Set plot area padding
     [self.lineGraph.plotAreaFrame setPaddingLeft:40.0f];
     [self.lineGraph.plotAreaFrame setPaddingBottom:100.0f];
+     self.lineGraph.plotAreaFrame.masksToBorder = NO;
     
     // Create plot
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.lineGraph.defaultPlotSpace;

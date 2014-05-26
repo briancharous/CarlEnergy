@@ -47,6 +47,7 @@ NSString *  const CEElectric       = @"elec";
     // create graphs and add them to the scroll view
     CPTGraph *elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeElectricity forBuilding:self.building];
     CPTGraph *waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeWater forBuilding:self.building];
+    CPTGraph *steamLineGraph = [self.steamGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeSteam forBuilding:self.building];
     self.electricityLineGraphView.hostedGraph = elecLineGraph;
     [self.scrollView addSubview:self.electricityLineGraphView];
     self.waterLineGraphView.hostedGraph = waterLineGraph;

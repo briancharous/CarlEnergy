@@ -93,13 +93,7 @@
     }
     
     // Create and assign the host view
-    //self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-//    CGRect parentRect = CGRectMake(0, 80, 320, 250);
-//    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-    //    [self.segmentedControl setFrame:self.scrollView.bounds];
-    //[self.scrollView setFrame:self.view.bounds];
-    //[self.scrollView addSubview:self.hostView];
-    //self.hostView.hostedGraph = self.electricityLineGraph;
+    self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     
     // Define the textStyle for the title
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];

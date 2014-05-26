@@ -415,7 +415,11 @@
     }
     else
         self.y.title =@"kBtus";
+    if (maxInt == 0) {
+        maxInt = 1;
+    }
     NSInteger majorIncrement = ceil(maxInt/5.);
+    NSLog(@"majorIncrement: %lu, maxInt: %i", (long)majorIncrement, maxInt);
     CGFloat yMax = maxInt;
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];

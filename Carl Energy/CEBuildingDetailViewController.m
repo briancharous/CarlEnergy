@@ -27,12 +27,15 @@ NSString *  const CEElectric       = @"elec";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.scrollView setFrame:self.view.frame];
+    
     //initialize graph views and graph maker
-    CGRect parentRect = CGRectMake(0, 160, 320, 250);
+    CGRect parentRect = CGRectMake(0, 75, 320, 250);
     self.electricityLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
-    CGRect parentRect2 = CGRectMake(0, 380, 320, 250);
+    CGRect parentRect2 = CGRectMake(0, 325, 320, 250);
     self.waterLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect2];
-    CGRect parentRect3 = CGRectMake(0, 600, 320, 250);
+    CGRect parentRect3 = CGRectMake(0, 575, 320, 250);
     self.steamLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect3];
     
     self.elecGraphMaker = [[CELineGraphMaker alloc] init];

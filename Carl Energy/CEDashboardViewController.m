@@ -29,7 +29,8 @@
     
     // Maybe not needed after more content added:
 
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+    [self.scrollView setContentSize:self.view.frame.size];
+    [self.scrollView setFrame:self.view.frame];
     [self makeTurbine];
     [self getElectricProductionAndUsage];
 }
@@ -50,13 +51,32 @@
 //    // Maybe not needed after more content added:
 //    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
 //    [self makePieChart];
+
 }
 
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if (windView) {
+        
+        // NO IDEA WHAT IS GOING ON HERE
+        /*
+        [UIView animateWithDuration:duration animations:^ {
+            if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+                NSLog(@"landscape");
+                [windView setFrame:CGRectMake(windView.frame.origin.x, windView.frame.origin.y, self.scrollView.bounds.size.width, 200)];
+            }
+            else {
+                NSLog(@"portrait");
+                [windView setFrame:CGRectMake(windView.frame.origin.x, windView.frame.origin.y, self.scrollView.bounds.size.width, 350)];
+            }
+        }];
+        */
+    }
+}
+
 - (void)makeTurbine {
-//    CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 300)];
     windView = [[[NSBundle mainBundle] loadNibNamed:@"CEWindView" owner:self options:nil] objectAtIndex:0];
-    [windView setFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 400)];
+    [windView setFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 350)];
     [windView.producedLabel setText:@""];
     [windView.consumedLabel setText:@""];
     [self.scrollView addSubview:windView];
@@ -130,16 +150,6 @@
     dispatch_async(dispatch_queue_create("com.carlenergy.dashboard", NULL), ^ {
         [electricRetreiver getTotalCampusElectricityUsageWithStartTime:oneHourAgo endTime:now resolution:kResolutionHour];
     });
-    
-    energyConsumption = @(0);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-        [gasRetreiver getTotalCampusElectricityUsageWithStartTime:oneHourAgo endTime:now resolution:kResolutionLive];
-    });
-    
-    energyConsumption = @(0);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-        [fuelRetreiver getTotalCampusElectricityUsageWithStartTime:oneHourAgo endTime:now resolution:kResolutionLive];
-    });
 }
 
 - (void)updateUsageData {
@@ -147,7 +157,7 @@
         return;
     }
 
-    NSString *producedString = [NSString stringWithFormat:@"%lu kWh produced", [windProduction integerValue]];
+    NSString *producedString = [NSString stringWithFormat:@"%lu kWh produced", (long)[windProduction integerValue]];
    
     float percentageWind = [windProduction floatValue]/[energyConsumption floatValue] * 100;
     NSString *consumedString = [NSString stringWithFormat:@"%i%% campus energy from wind", (int)percentageWind];
@@ -180,26 +190,6 @@
         [self updateUsageData];
     });
 //    [self performSelectorOnMainThread:@selector(updateUsageData) withObject:nil waitUntilDone:NO];
-}
-
-- (void)retriever:(CEDataRetriever *)retreiver gotCampusGasUsage:(NSArray *)usage {
-    float totalUsage = 0;
-    for (CEDataPoint *point in usage) {
-        totalUsage += point.value * point.weight;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^ {
-        [self updateUsageData];
-    });
-}
-
-- (void)retriever:(CEDataRetriever *)retreiver gotCampusFuelUsage:(NSArray *)usage {
-    float totalUsage = 0;
-    for (CEDataPoint *point in usage) {
-        totalUsage += point.value * point.weight;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^ {
-        [self updateUsageData];
-    });
 }
 
 

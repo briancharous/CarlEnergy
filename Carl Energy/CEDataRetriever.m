@@ -223,50 +223,51 @@
     
 }
 
-- (void)getTotalCampusGasUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res {
-    
-    [self setRequestInProgress:YES];
-    CEBuilding *mainCampus = nil;
-    
-    NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
-    for (NSDictionary *dict in buildingsDictionaries) {
-        if ([[dict objectForKey:@"displayName"] isEqualToString:@"Main Campus"]) {
-            mainCampus = [self buildingFromDictionary:dict];
-            break;
-        }
-    }
-    
-    NSArray *points = [self syncGetUsage:kUsageTypeElectricity ForBuilding:mainCampus startTime:start endTime:end resolution:res];
-    
-    if ([self.delegate respondsToSelector:@selector(retriever:gotCampusGasUsage:)]) {
-        [self.delegate retriever:self gotCampusGasUsage:points];
-    }
-    
-    [self setRequestInProgress:NO];
-    
-}
+// These use the wrong usageType
+//- (void)getTotalCampusGasUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res {
+//    
+//    [self setRequestInProgress:YES];
+//    CEBuilding *mainCampus = nil;
+//    
+//    NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
+//    for (NSDictionary *dict in buildingsDictionaries) {
+//        if ([[dict objectForKey:@"displayName"] isEqualToString:@"Main Campus"]) {
+//            mainCampus = [self buildingFromDictionary:dict];
+//            break;
+//        }
+//    }
+//    
+//    NSArray *points = [self syncGetUsage:kUsageTypeElectricity ForBuilding:mainCampus startTime:start endTime:end resolution:res];
+//    
+//    if ([self.delegate respondsToSelector:@selector(retriever:gotCampusGasUsage:)]) {
+//        [self.delegate retriever:self gotCampusGasUsage:points];
+//    }
+//    
+//    [self setRequestInProgress:NO];
+//    
+//}
+//
+//- (void)getTotalCampusFuelUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res {
+//    
+//    [self setRequestInProgress:YES];
+//    CEBuilding *mainCampus = nil;
+//    
+//    NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
+//    for (NSDictionary *dict in buildingsDictionaries) {
+//        if ([[dict objectForKey:@"displayName"] isEqualToString:@"Main Campus"]) {
+//            mainCampus = [self buildingFromDictionary:dict];
+//            break;
+//        }
+//    }
+//    
+//    NSArray *points = [self syncGetUsage:kUsageTypeElectricity ForBuilding:mainCampus startTime:start endTime:end resolution:res];
+//    
+//    if ([self.delegate respondsToSelector:@selector(retriever:gotCampusFuelUsage:)]) {
+//        [self.delegate retriever:self gotCampusFuelUsage:points];
+//    }
+//    
+//    [self setRequestInProgress:NO];
 
-- (void)getTotalCampusFuelUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res {
-    
-    [self setRequestInProgress:YES];
-    CEBuilding *mainCampus = nil;
-    
-    NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
-    for (NSDictionary *dict in buildingsDictionaries) {
-        if ([[dict objectForKey:@"displayName"] isEqualToString:@"Main Campus"]) {
-            mainCampus = [self buildingFromDictionary:dict];
-            break;
-        }
-    }
-    
-    NSArray *points = [self syncGetUsage:kUsageTypeElectricity ForBuilding:mainCampus startTime:start endTime:end resolution:res];
-    
-    if ([self.delegate respondsToSelector:@selector(retriever:gotCampusFuelUsage:)]) {
-        [self.delegate retriever:self gotCampusFuelUsage:points];
-    }
-    
-    [self setRequestInProgress:NO];
-    
-}
+//}
 
 @end

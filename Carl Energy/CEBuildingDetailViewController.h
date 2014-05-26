@@ -34,8 +34,10 @@
 @property CEBuilding *building;
 @property CPTGraphHostingView *electricityLineGraphView;
 @property CPTGraphHostingView *waterLineGraphView;
+@property CPTGraphHostingView *steamLineGraphView;
 @property CELineGraphMaker *elecGraphMaker;
 @property CELineGraphMaker *waterGraphMaker;
+@property CELineGraphMaker *steamGraphMaker;
 
 
 //- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale;

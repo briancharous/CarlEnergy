@@ -110,6 +110,7 @@
     // Set plot area padding
     [self.electricityLineGraph.plotAreaFrame setPaddingLeft:40.0f];
     [self.electricityLineGraph.plotAreaFrame setPaddingBottom:100.0f];
+    self.electricityLineGraph.plotAreaFrame.masksToBorder = NO;
     
     // Create plot
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.electricityLineGraph.defaultPlotSpace;
@@ -132,7 +133,7 @@
     
     // Configure plot space
     // do we want to use the next line?
-    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, msftPlot, nil]];
+    [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, msftPlot, nil]];
     CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
     [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.3f)];
     plotSpace.xRange = xRange;

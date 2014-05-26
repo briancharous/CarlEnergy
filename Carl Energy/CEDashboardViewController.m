@@ -18,28 +18,47 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // listen for when the app enters the foreground to start animating the
+    // wind turbine blades
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartBladeAnimation) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_dashboard_selected"]];
     
     CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
     [retriever setDelegate:self];
     
     // Maybe not needed after more content added:
+<<<<<<< HEAD
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
     [self makePieChart];
     [self getElectricProductionAndUsage];
+=======
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+    [self makeTurbine];
+    [self getElectricProducionAndUsage];
+>>>>>>> no-coreplot
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self restartBladeAnimation];
+}
+
+- (void)restartBladeAnimation {
+    if (windView) {
+        [windView startBladeAnimation];
+    }
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    // undraw and redraw the graph
-    [self.hostView removeFromSuperview];
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    // Maybe not needed after more content added:
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
-    [self makePieChart];
+//    // undraw and redraw the graph
+//    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+//    // Maybe not needed after more content added:
+//    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
+//    [self makePieChart];
 }
 
-#pragma mark Pie Chart functions
 
+<<<<<<< HEAD
 - (void)makePieChart
 {
     // Create and assign the host view
@@ -91,7 +110,49 @@
     //TODO: Center graph on rotation to landscape
     
     
+=======
+- (void)makeTurbine {
+//    CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 300)];
+    windView = [[[NSBundle mainBundle] loadNibNamed:@"CEWindView" owner:self options:nil] objectAtIndex:0];
+    [windView setFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 400)];
+    [windView.producedLabel setText:@""];
+    [windView.consumedLabel setText:@""];
+    [self.scrollView addSubview:windView];
+>>>>>>> no-coreplot
 }
+//
+//- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart {
+//    return 2;
+//}
+//
+//- (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index {
+//    
+//    switch (index) {
+//        case 0:
+//            return [windProduction floatValue];
+//            break;
+//        case 1:
+//            return [energyConsumption floatValue];
+//            break;
+//        default:
+//            break;
+//    }
+//    return 0;
+//}
+//
+//- (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index {
+//    switch (index) {
+//        case 0:
+//            return [NSString stringWithFormat:@"%@", windProduction];
+//            break;
+//        case 1:
+//            return [NSString stringWithFormat:@"%@", energyConsumption];
+//            break;
+//        default:
+//            break;
+//    }
+//    return @"";
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -99,6 +160,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+<<<<<<< HEAD
 #pragma mark - CPTPlotDataSource methods
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
      return 4;
@@ -182,6 +244,8 @@
     }
     return nil;
 }
+=======
+>>>>>>> no-coreplot
 
 #pragma mark Data Retrieval
 - (void)getElectricProductionAndUsage {
@@ -202,14 +266,14 @@
     
     gotWindProduction = NO;
     windProduction = @(0);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-        [windRetreiver getTotalWindProductionWithStartTime:oneHourAgo endTime:now resolution:kResolutionLive];
+    dispatch_async(dispatch_queue_create("com.carlenergy.dashboard", NULL), ^ {
+        [windRetreiver getTotalWindProductionWithStartTime:oneHourAgo endTime:now resolution:kResolutionHour];
     });
     
     gotElectricityUsage = NO;
     energyConsumption = @(0);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-        [electricRetreiver getTotalCampusElectricityUsageWithStartTime:oneHourAgo endTime:now resolution:kResolutionLive];
+    dispatch_async(dispatch_queue_create("com.carlenergy.dashboard", NULL), ^ {
+        [electricRetreiver getTotalCampusElectricityUsageWithStartTime:oneHourAgo endTime:now resolution:kResolutionHour];
     });
     
     gotGasUsage = NO;
@@ -225,6 +289,7 @@
     });
 }
 
+<<<<<<< HEAD
 - (void)updatePieChart {
     // TODO: add || !gotGasUsage || !gotFuelUsage when it doesn't break everything
     if (!gotWindProduction || !gotElectricityUsage) {
@@ -234,6 +299,23 @@
     NSLog(@"draw now!!!!");
     [pieChart.plotAreaFrame.plotArea setNeedsDisplay];
 //    [pieChart performSelector:@selector(reloadData) withObject:nil afterDelay:0];
+=======
+- (void)updateUsageData {
+    if (!gotWindProduction || !gotElectricityUsage) {
+        return;
+    }
+
+    NSString *producedString = [NSString stringWithFormat:@"%lu kWh produced", [windProduction integerValue]];
+   
+    float percentageWind = [windProduction floatValue]/[energyConsumption floatValue] * 100;
+    NSString *consumedString = [NSString stringWithFormat:@"%i%% campus energy from wind", (int)percentageWind];
+    [[windView producedLabel] setText:producedString];
+    [[windView consumedLabel] setText:consumedString];
+    [[windView consumedLabel] setNeedsDisplay];
+    [[windView producedLabel] setNeedsDisplay];
+    NSLog(@"%@, %@", windProduction, energyConsumption);
+
+>>>>>>> no-coreplot
 }
 
 #pragma mark CEDataRetreiverDelegate
@@ -245,7 +327,9 @@
     }
     windProduction = @(totalProduction);
     gotWindProduction = YES;
-    [self updatePieChart];
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [self updateUsageData];
+    });
 }
 
 - (void)retriever:(CEDataRetriever *)retreiver gotCampusElectricityUsage:(NSArray *)usage {
@@ -255,7 +339,10 @@
     }
     energyConsumption = @(totalUsage);
     gotElectricityUsage = YES;
-    [self performSelectorOnMainThread:@selector(updatePieChart) withObject:nil waitUntilDone:NO];
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [self updateUsageData];
+    });
+//    [self performSelectorOnMainThread:@selector(updateUsageData) withObject:nil waitUntilDone:NO];
 }
 
 - (void)retriever:(CEDataRetriever *)retreiver gotCampusGasUsage:(NSArray *)usage {

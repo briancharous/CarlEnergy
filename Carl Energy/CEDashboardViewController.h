@@ -13,28 +13,15 @@
 @interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate> {
     NSNumber *windProduction;
     NSNumber *energyConsumption;
-    NSNumber *gasConsumption;
-    NSNumber *fuelConsumption;
     BOOL gotWindProduction;
     BOOL gotElectricityUsage;
-<<<<<<< HEAD
-    BOOL gotGasUsage;
-    BOOL gotFuelUsage;
-    CPTXYGraph *pieChart;
-}
-
-- (void)makePieChart;
-- (void)getElectricProductionAndUsage;
-- (void)updatePieChart;
-=======
     CEWindView *windView;
 }
 
-- (void)getElectricProducionAndUsage;
 - (void)updateUsageData;
 - (void)makeTurbine;
 - (void)restartBladeAnimation;
->>>>>>> no-coreplot
+- (void)getElectricProductionAndUsage;
 
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
 @property IBOutlet UIScrollView *scrollView;

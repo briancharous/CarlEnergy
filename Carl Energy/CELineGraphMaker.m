@@ -234,7 +234,7 @@
     NSMutableSet *yMajorLocations = [NSMutableSet set];
     NSMutableSet *yMinorLocations = [NSMutableSet set];
     for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
-        NSUInteger mod = j % majorIncrement;
+//        NSUInteger mod = j % majorIncrement;
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)j] textStyle:self.y.labelTextStyle];
         NSDecimal location = CPTDecimalFromInteger(j);
         label.tickLocation = location;
@@ -308,18 +308,18 @@
         NSString *kString;
         for (int k = 1; k <= numObjects; k++) {
             if (k % 6 == 3) {
-                int newK = hour - (24 - k);
+                NSInteger newK = hour - (24 - k);
                 if (newK < 0)
                     newK = 24 + newK;
                 if (newK > 12){
                     newK = newK - 12;
-                    kString = [NSString stringWithFormat:@"%i%@", newK,@"pm"];
+                    kString = [NSString stringWithFormat:@"%li%@", (long)newK,@"pm"];
                 }
                 else if (newK == 0){
                     kString = @"12am";
                 }
                 else{
-                    kString = [NSString stringWithFormat:@"%i%@", newK,@"am"];
+                    kString = [NSString stringWithFormat:@"%li%@", (long)newK,@"am"];
                 }
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:kString  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;
@@ -338,8 +338,8 @@
         self.x.title = @"Day";
         for (int k = 1; k <= numObjects; k++) {
             if (k%2 == 0){
-                int newK = day - (7 - k);
-                NSString *myString = [NSString stringWithFormat:@"%i%s%i", month, "/",newK];
+                NSInteger newK = day - (7 - k);
+                NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)month, "/",(long)newK];
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;
                 label.tickLocation = CPTDecimalFromCGFloat(location);
@@ -356,11 +356,11 @@
         self.x.title = @"Day";
         for (int k = 1; k <= numObjects; k++) {
             if (k % 7 == 0) {
-                int newK = day - (30 - k);
+                NSInteger newK = day - (30 - k);
                 if (newK < 0){
                     newK = day + (30 + k);
                 }
-                NSString *myString = [NSString stringWithFormat:@"%i%s%i", month, "/",newK];
+                NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)month, "/",(long)newK];
                               // NSString *myString = [NSString stringWithFormat:@"%i", k];
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;
@@ -378,11 +378,11 @@
         self.x.title = @"Month";
         for (int k = 1; k <= numObjects; k++) {
             if (k % 2 == 0) {
-                int newK = month - (12 - k);
+                NSInteger newK = month - (12 - k);
                 if (newK < 1){
                     newK = month + k;
                 }
-                NSString *myString = [NSString stringWithFormat:@"%i",newK];
+                NSString *myString = [NSString stringWithFormat:@"%li",(long)newK];
                 //NSString *myString = [NSString stringWithFormat:@"%i", k];
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;

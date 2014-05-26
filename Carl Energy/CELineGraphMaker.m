@@ -85,8 +85,6 @@
     for (int i = 1; i <= numObjects; i++) {
         [self.dataForClearChart addObject:@0];
     }
-    
-    // Create and assign the host view
     self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     
     // Define the textStyle for the title
@@ -125,8 +123,9 @@
     msftPlot.dataLineStyle = msftLineStyle;
 	[self.electricityLineGraph addPlot:msftPlot toPlotSpace:plotSpace];
     
-    // Configure plot space??
-    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
+    // Configure plot space
+    // do we want to use the next line?
+    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, msftPlot, nil]];
     CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
     [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.xRange = xRange;
@@ -242,9 +241,6 @@
             break;
 
         case CPTScatterPlotFieldY: {
-//            NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
-//            return yValue;
-//            break;
             if ([plot.identifier isEqual:CEElectric] == YES) {
 				NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
 

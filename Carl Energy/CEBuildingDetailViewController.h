@@ -33,7 +33,10 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property CEBuilding *building;
 @property CPTGraphHostingView *electricityLineGraphView;
-@property CELineGraphMaker *graphMaker;
+@property CPTGraphHostingView *waterLineGraphView;
+@property CELineGraphMaker *elecGraphMaker;
+@property CELineGraphMaker *waterGraphMaker;
+
 
 //- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale;
 //- (IBAction)timeChanged:(UISegmentedControl *)sender;

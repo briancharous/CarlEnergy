@@ -288,7 +288,6 @@
     NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
     NSInteger hour = [components hour];
     NSInteger day = [components day];
-    //NSLog([NSString stringWithFormat:@"%i", day]);
     CGFloat dateCount = 24;
     NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
     NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
@@ -296,8 +295,9 @@
     NSLog(self.x.title);
     if (self.requestType == 0){
         NSLog(@"DAY INCREMENT");
+         self.x.title = @"Hour";
         for (int k = 1; k <= numObjects; k++) {
-            if (k % 2 == 0) {
+            if (k % 3 == 0) {
                 int newK = hour - (24 - k);
                 if (newK < 0)
                     newK = 24 + newK;
@@ -318,6 +318,7 @@
     }
     else if (self.requestType == 1){
         NSLog(@"WEEK INCREMENT");
+        self.x.title = @"Day";
         for (int k = 1; k <= numObjects; k++) {
             NSString *myString = [NSString stringWithFormat:@"%i", k];
             CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
@@ -332,6 +333,7 @@
     }
     else if (self.requestType == 2){
         NSLog(@"MONTH INCREMENT");
+        self.x.title = @"Day";
         for (int k = 1; k <= numObjects; k++) {
             if (k % 2 == 0) {
                 NSString *myString = [NSString stringWithFormat:@"%i", k];
@@ -348,6 +350,7 @@
     }
     else if (self.requestType == 3){
         NSLog(@"YEAR INCREMENT");
+        self.x.title = @"Month";
         for (int k = 1; k <= numObjects; k++) {
             if (k % 2 == 0) {
                 NSString *myString = [NSString stringWithFormat:@"%i", k];
@@ -393,13 +396,6 @@
             jRound = (j/1000) * 1000;
         }
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)jRound] textStyle:self.y.labelTextStyle];
-        //        if (jRound > 99999){
-        //            NSMutableString *strLabel = [NSMutableString stringWithFormat:@"%li", (long)jRound];
-        //            NSString *newString = [strLabel substringToIndex:[strLabel length]-5];
-        //            NSMutableString *stringLabel = [NSMutableString stringWithFormat:@"%@%", newString, "k"];
-        //            label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%@", stringLabel] textStyle:self.y.labelTextStyle];
-        //            self.y.title = @"10k kWs";
-        //        }
         if (jRound > 999){
             NSMutableString *strLabel = [NSMutableString stringWithFormat:@"%li", (long)jRound];
             NSString *newString = [strLabel substringToIndex:[strLabel length]-3];

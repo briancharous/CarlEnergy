@@ -31,9 +31,17 @@
     [self.welcomeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0]];
     [self.instructionsLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
     [self.developersLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
-
-
-    
+    [self.scrollView setContentSize:CGSizeMake(320, 800)];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aboutPage"
+                                                     ofType:@"txt"];
+    NSString *content = [NSString stringWithContentsOfFile:filePath
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    self.textView.text = content;
+//    CGRect frame = self.textView.frame;
+//    frame.size.height = self.textView.contentSize.height;
+//    self.textView.frame = frame;
+//    [self.scrollView setContentSize:self.textView.contentSize];
     //UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
     //tempScrollView.contentSize=CGSizeMake(1280,960);
 

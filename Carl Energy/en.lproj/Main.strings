@@ -1,0 +1,51 @@
+
+/* Class = "IBUINavigationItem"; title = "Buildings"; ObjectID = "7je-OM-T2y"; */
+"7je-OM-T2y.title" = "Buildings";
+
+/* Class = "IBUIBarButtonItem"; title = "Buildings"; ObjectID = "82M-3H-gNN"; */
+"82M-3H-gNN.title" = "Buildings";
+
+/* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "8uH-2R-Hgc"; */
+"8uH-2R-Hgc.title" = "Back";
+
+/* Class = "IBUINavigationItem"; title = "Dashboard"; ObjectID = "BmG-nG-Dw7"; */
+"BmG-nG-Dw7.title" = "Dashboard";
+
+/* Class = "IBUITextView"; text = "PLACEHOLDER TEXT"; ObjectID = "EMX-ih-mFk"; */
+"EMX-ih-mFk.text" = "PLACEHOLDER TEXT";
+
+/* Class = "IBUINavigationItem"; title = "Building Name"; ObjectID = "KpR-Ni-FhO"; */
+"KpR-Ni-FhO.title" = "Building Name";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "NDE-P4-n6h"; */
+"NDE-P4-n6h.text" = "Title";
+
+/* Class = "IBUIViewController"; title = "Second"; ObjectID = "QUy-BD-bpt"; */
+"QUy-BD-bpt.title" = "Second";
+
+/* Class = "IBUITabBarItem"; title = "Dashboard"; ObjectID = "Z7h-1E-pvt"; */
+"Z7h-1E-pvt.title" = "Dashboard";
+
+/* Class = "IBUINavigationItem"; title = "About"; ObjectID = "gjx-qJ-dic"; */
+"gjx-qJ-dic.title" = "About";
+
+/* Class = "IBUINavigationController"; title = "Carl Energy"; ObjectID = "kzh-Xi-ooo"; */
+"kzh-Xi-ooo.title" = "Carl Energy";
+
+/* Class = "IBUISegmentedControl"; ndw-Qb-CeI.segmentTitles[0] = "Day"; ObjectID = "ndw-Qb-CeI"; */
+"ndw-Qb-CeI.segmentTitles[0]" = "Day";
+
+/* Class = "IBUISegmentedControl"; ndw-Qb-CeI.segmentTitles[1] = "Week"; ObjectID = "ndw-Qb-CeI"; */
+"ndw-Qb-CeI.segmentTitles[1]" = "Week";
+
+/* Class = "IBUISegmentedControl"; ndw-Qb-CeI.segmentTitles[2] = "Month"; ObjectID = "ndw-Qb-CeI"; */
+"ndw-Qb-CeI.segmentTitles[2]" = "Month";
+
+/* Class = "IBUISegmentedControl"; ndw-Qb-CeI.segmentTitles[3] = "Year"; ObjectID = "ndw-Qb-CeI"; */
+"ndw-Qb-CeI.segmentTitles[3]" = "Year";
+
+/* Class = "IBUIBarButtonItem"; title = "About"; ObjectID = "q6f-OO-FJj"; */
+"q6f-OO-FJj.title" = "About";
+
+/* Class = "IBUITabBarItem"; title = "Buildings"; ObjectID = "u1e-5L-l1D"; */
+"u1e-5L-l1D.title" = "Buildings";

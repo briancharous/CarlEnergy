@@ -33,6 +33,9 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property CEBuilding *building;
 @property CPTGraphHostingView *electricityLineGraphView;
+@property CPTGraph *elecLineGraph;
+@property CPTGraph *waterLineGraph;
+@property CPTGraph *steamLineGraph;
 @property CPTGraphHostingView *waterLineGraphView;
 @property CPTGraphHostingView *steamLineGraphView;
 @property CELineGraphMaker *elecGraphMaker;

@@ -33,9 +33,9 @@ NSString *  const CEElectric       = @"elec";
     //initialize graph views and graph maker
     CGRect parentRect = CGRectMake(0, 75, 320, 250);
     self.electricityLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
-    CGRect parentRect2 = CGRectMake(0, 325, 320, 250);
+    CGRect parentRect2 = CGRectMake(0, 350, 320, 250);
     self.waterLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect2];
-    CGRect parentRect3 = CGRectMake(0, 575, 320, 250);
+    CGRect parentRect3 = CGRectMake(0, 615, 320, 250);
     self.steamLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect3];
     
     self.elecGraphMaker = [[CELineGraphMaker alloc] init];
@@ -48,34 +48,56 @@ NSString *  const CEElectric       = @"elec";
     }
     
     // create graphs and add them to the scroll view
-    CPTGraph *elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeElectricity forBuilding:self.building];
-    CPTGraph *waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeWater forBuilding:self.building];
-    CPTGraph *steamLineGraph = [self.steamGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeSteam forBuilding:self.building];
-    self.electricityLineGraphView.hostedGraph = elecLineGraph;
+    self.elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeElectricity forBuilding:self.building];
+    self.waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeWater forBuilding:self.building];
+    self.steamLineGraph = [self.steamGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeSteam forBuilding:self.building];
+    self.electricityLineGraphView.hostedGraph = self.elecLineGraph;
     [self.scrollView addSubview:self.electricityLineGraphView];
-    self.waterLineGraphView.hostedGraph = waterLineGraph;
+    self.waterLineGraphView.hostedGraph = self.waterLineGraph;
     [self.scrollView addSubview:self.waterLineGraphView];
-    self.steamLineGraphView.hostedGraph = steamLineGraph;
+    self.steamLineGraphView.hostedGraph = self.steamLineGraph;
     [self.scrollView addSubview:self.steamLineGraphView];
     
     // to enable scrolling
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 800)];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 850)];
 
 }
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender
 {
-    CPTGraph *elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeElectricity forBuilding:self.building];
-    self.electricityLineGraphView.hostedGraph = elecLineGraph;
-    CPTGraph *waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeWater forBuilding:self.building];
-    self.waterLineGraphView.hostedGraph = waterLineGraph;
-    return;
+
+    // remove old graphs
+//    [self.electricityLineGraphView.hostedGraph removeFromSuperlayer];
+//    self.electricityLineGraphView.hostedGraph = nil;
+//    [self.waterLineGraphView.hostedGraph removeFromSuperlayer];
+////    [self.ele]
+//    self.waterLineGraphView.hostedGraph = nil;
+//    [self.steamLineGraphView.hostedGraph removeFromSuperlayer];
+//    self.steamLineGraphView.hostedGraph = nil;
+//    [self.electricityLineGraphView.hostedGraph remove]
+    self.elecLineGraph = nil;
+    self.waterLineGraph = nil;
+    self.steamLineGraph = nil;
+
+    [self.elecGraphMaker requestDataOfType:kUsageTypeElectricity forBuilding:self.building forTimeScale:self.segmentedControl.selectedSegmentIndex];
+    [self.waterGraphMaker requestDataOfType:kUsageTypeWater forBuilding:self.building forTimeScale:self.segmentedControl.selectedSegmentIndex];
+    [self.steamGraphMaker requestDataOfType:kUsageTypeSteam forBuilding:self.building forTimeScale:self.segmentedControl.selectedSegmentIndex];
+//    self.elecLineGraph = [self.elecGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeElectricity forBuilding:self.building];
+//    self.electricityLineGraphView.hostedGraph = self.elecLineGraph;
+//    self.waterLineGraph = [self.waterGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeWater forBuilding:self.building];
+//    self.waterLineGraphView.hostedGraph = self.waterLineGraph;
+//    self.steamLineGraph = [self.steamGraphMaker makeLineGraphForTime:self.segmentedControl.selectedSegmentIndex forUsage:kUsageTypeSteam forBuilding:self.building];
+//    self.steamLineGraphView.hostedGraph = self.steamLineGraph;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self.scrollView setFrame:self.view.frame];
 }
 
 /*

@@ -28,10 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.welcomeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0]];
-    [self.instructionsLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
-    [self.developersLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
-    [self.scrollView setContentSize:CGSizeMake(320, 800)];
+//    [self.welcomeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0]];
+//    [self.instructionsLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
+//    [self.developersLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
+    [self.textView setFrame:self.view.frame];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aboutPage"
                                                      ofType:@"txt"];
     NSString *content = [NSString stringWithContentsOfFile:filePath

@@ -4,6 +4,10 @@ Instructions: The Dashboard displays information on current campus energy usage.
 
 Developers: Brian Charous, Michelle Chen, Lila Conlee, Larkin Flodin
 
+==============================
+3rd Party Licences
+==============================
+
 CorePlot Licensing Info:
 Copyright (c) 2014, Drew McCormack, Brad Larson, Eric Skroch, Barry Wark, Dirkjan Krijnders, Rick Maddy, Vijay Kalusani, Caleb Cannon, Jeff Buck, Thomas Elstner, Jeroen Leenarts, Craig Hockenberry, Hartwig Wiesmann, Koen van der Drift, Nino Ag, Mike Lischke, Trevor Harmon, Travis Fischer, Graham Mueller, Rafał Wójcik, and Mike Rossetti.
 All rights reserved.

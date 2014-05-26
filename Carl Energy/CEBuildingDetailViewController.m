@@ -28,12 +28,16 @@ NSString *  const CEElectric       = @"elec";
 {
     [super viewDidLoad];
     //initialize graph views and graph maker
-    CGRect parentRect = CGRectMake(0, 80, 320, 250);
+    CGRect parentRect = CGRectMake(0, 160, 320, 250);
     self.electricityLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
-    CGRect parentRect2 = CGRectMake(0, 300, 320, 250);
+    CGRect parentRect2 = CGRectMake(0, 380, 320, 250);
     self.waterLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect2];
+    CGRect parentRect3 = CGRectMake(0, 600, 320, 250);
+    self.steamLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect3];
+    
     self.elecGraphMaker = [[CELineGraphMaker alloc] init];
     self.waterGraphMaker = [[CELineGraphMaker alloc] init];
+    self.steamGraphMaker = [[CELineGraphMaker alloc] init];
 
     // set navbar title
     if (self.building) {
@@ -47,9 +51,11 @@ NSString *  const CEElectric       = @"elec";
     [self.scrollView addSubview:self.electricityLineGraphView];
     self.waterLineGraphView.hostedGraph = waterLineGraph;
     [self.scrollView addSubview:self.waterLineGraphView];
+    self.steamLineGraphView.hostedGraph = steamLineGraph;
+    [self.scrollView addSubview:self.steamLineGraphView];
     
     // to enable scrolling
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 800)];
 
 }
 

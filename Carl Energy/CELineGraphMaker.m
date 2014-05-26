@@ -302,6 +302,11 @@
 - (void)reloadPlotData {
     NSLog(@"reload plot data");
     
+    self.x.axisLabels = nil;
+//    self.x = nil;
+    self.y.axisLabels = nil;
+//    self.y = nil;
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit |NSCalendarUnitDay | NSCalendarUnitMonth fromDate:[NSDate date]];

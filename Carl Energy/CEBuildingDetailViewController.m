@@ -63,6 +63,16 @@ NSString *  const CEElectric       = @"elec";
 
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.elecGraphMaker.hostView removeFromSuperview];
+    [self.waterGraphMaker.hostView removeFromSuperview];
+    [self.steamGraphMaker.hostView removeFromSuperview];
+
+    self.elecGraphMaker.hostView = nil;
+    self.waterGraphMaker.hostView = nil;
+    self.steamGraphMaker.hostView = nil;
+}
+
 -(IBAction)timeChanged:(UISegmentedControl *)sender
 {
 
@@ -75,9 +85,9 @@ NSString *  const CEElectric       = @"elec";
 //    [self.steamLineGraphView.hostedGraph removeFromSuperlayer];
 //    self.steamLineGraphView.hostedGraph = nil;
 //    [self.electricityLineGraphView.hostedGraph remove]
-    self.elecLineGraph = nil;
-    self.waterLineGraph = nil;
-    self.steamLineGraph = nil;
+//    self.elecLineGraph = nil;
+//    self.waterLineGraph = nil;
+//    self.steamLineGraph = nil;
 
     [self.elecGraphMaker requestDataOfType:kUsageTypeElectricity forBuilding:self.building forTimeScale:self.segmentedControl.selectedSegmentIndex];
     [self.waterGraphMaker requestDataOfType:kUsageTypeWater forBuilding:self.building forTimeScale:self.segmentedControl.selectedSegmentIndex];

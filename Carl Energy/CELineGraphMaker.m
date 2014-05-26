@@ -85,15 +85,7 @@
     for (int i = 1; i <= numObjects; i++) {
         [self.dataForClearChart addObject:@0];
     }
-    
-    // Create and assign the host view
-    //self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-//    CGRect parentRect = CGRectMake(0, 80, 320, 250);
-//    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-    //    [self.segmentedControl setFrame:self.scrollView.bounds];
-    //[self.scrollView setFrame:self.view.bounds];
-    //[self.scrollView addSubview:self.hostView];
-    //self.hostView.hostedGraph = self.electricityLineGraph;
+    self.electricityLineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
     
     // Define the textStyle for the title
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
@@ -131,8 +123,9 @@
     msftPlot.dataLineStyle = msftLineStyle;
 	[self.electricityLineGraph addPlot:msftPlot toPlotSpace:plotSpace];
     
-    // Configure plot space??
-    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, nil]];
+    // Configure plot space
+    // do we want to use the next line?
+    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, msftPlot, nil]];
     CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
     [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
     plotSpace.xRange = xRange;
@@ -229,6 +222,7 @@
     y.axisLabels = yLabels;
     y.majorTickLocations = yMajorLocations;
     y.minorTickLocations = yMinorLocations;
+    self.electricityLineGraph.axisSet = axisSet;
     
     return self.electricityLineGraph;
     
@@ -247,9 +241,6 @@
             break;
 
         case CPTScatterPlotFieldY: {
-//            NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
-//            return yValue;
-//            break;
             if ([plot.identifier isEqual:CEElectric] == YES) {
 				NSNumber *yValue = [self.dataForElectricityChart objectAtIndex:index];
 
@@ -275,10 +266,6 @@
 }
 
 - (void)reloadPlotData {
-//    for (NSObject *item in self.dataForElectricityChart) {
-//        NSLog(@"%a", item);
-//    }
-    //NSLog(@"%a", self.dataForElectricityChart);
     NSUInteger numObjects = [self.dataForElectricityChart count];
     NSLog([NSString stringWithFormat:@"%i", numObjects]);
     for (int i = 1; i <= numObjects; i++) {

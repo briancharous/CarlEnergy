@@ -34,7 +34,9 @@
 @property CEBuilding *building;
 @property CPTGraphHostingView *electricityLineGraphView;
 @property CPTGraphHostingView *waterLineGraphView;
-@property CELineGraphMaker *graphMaker;
+@property CELineGraphMaker *elecGraphMaker;
+@property CELineGraphMaker *waterGraphMaker;
+
 
 //- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale;
 //- (IBAction)timeChanged:(UISegmentedControl *)sender;

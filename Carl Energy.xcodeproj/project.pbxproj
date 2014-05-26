@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		013B09771932837300376BB6 /* CELineGraphMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B09761932837300376BB6 /* CELineGraphMaker.m */; };
+		013B09811932DE3400376BB6 /* aboutPage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 013B09801932DE3400376BB6 /* aboutPage.txt */; };
 		019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D61920800B00478145 /* QuartzCore.framework */; };
 		019ED0D91920801000478145 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D81920801000478145 /* Accelerate.framework */; };
 		019ED0F11920886300478145 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		013B09751932837300376BB6 /* CELineGraphMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CELineGraphMaker.h; sourceTree = "<group>"; };
 		013B09761932837300376BB6 /* CELineGraphMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CELineGraphMaker.m; sourceTree = "<group>"; };
+		013B09801932DE3400376BB6 /* aboutPage.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aboutPage.txt; sourceTree = "<group>"; };
 		019ED0D61920800B00478145 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		019ED0D81920801000478145 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				9FA4A4C5191A95A300AE3551 /* Carl Energy-Info.plist */,
 				9FA4A4C6191A95A300AE3551 /* InfoPlist.strings */,
 				9FA4A4C9191A95A300AE3551 /* main.m */,
+				013B09801932DE3400376BB6 /* aboutPage.txt */,
 				9FA4A4CB191A95A300AE3551 /* Carl Energy-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -335,6 +338,7 @@
 			files = (
 				9FA4A4D9191A95A300AE3551 /* Images.xcassets in Resources */,
 				9FA4A4C8191A95A300AE3551 /* InfoPlist.strings in Resources */,
+				013B09811932DE3400376BB6 /* aboutPage.txt in Resources */,
 				9FC36343192DB70B002E00B6 /* buildings.plist in Resources */,
 				9FA4A4D1191A95A300AE3551 /* Main.storyboard in Resources */,
 			);

@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *instructionsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *developersLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

@@ -219,11 +219,11 @@
         [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
         
     }
-    self.self.y.axisLabels = yLabels;
+    self.y.axisLabels = yLabels;
     self.y.majorTickLocations = yMajorLocations;
-    numObjects = [self.dataForElectricityChart count];
-    NSLog([NSString stringWithFormat:@"%i", 6666]);
-    NSLog([NSString stringWithFormat:@"%i", numObjects]);
+    self.y.minorTickLocations = yMinorLocations;
+    self.electricityLineGraph.axisSet = axisSet;
+    
     return self.electricityLineGraph;
     
     

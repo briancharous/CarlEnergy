@@ -134,10 +134,10 @@
     // do we want to use the next line?
     //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, msftPlot, nil]];
     CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
-    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
+    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.3f)];
     plotSpace.xRange = xRange;
     CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
-    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
+    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.3f)];
     plotSpace.yRange = yRange;
     
     

@@ -277,15 +277,15 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
     //NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
+    //NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit |NSCalendarUnitDay | NSCalendarUnitMonth fromDate:[NSDate date]];
     NSInteger hour = [components hour];
     NSInteger day = [components day];
+    NSInteger month = [components month];
     CGFloat dateCount = 24;
     NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
     NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
     NSUInteger numObjects = [self.dataForElectricityChart count];
-    NSLog(self.x.title);
     if (self.requestType == 0){
         NSLog(@"DAY INCREMENT");
          self.x.title = @"Hour";

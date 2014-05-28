@@ -11,17 +11,13 @@
 #import "CEWindView.h"
 
 @interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate> {
-    NSNumber *windProduction;
-    NSNumber *energyConsumption;
-    BOOL gotWindProduction;
-    BOOL gotElectricityUsage;
+
     CEWindView *windView;
 }
 
-- (void)updateUsageData;
 - (void)makeTurbine;
 - (void)restartBladeAnimation;
-- (void)getElectricProductionAndUsage;
+
 
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
 @property IBOutlet UIScrollView *scrollView;

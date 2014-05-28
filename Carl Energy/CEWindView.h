@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "CEDataRetriever.h"
+#import "CEDashboardItemView.h"
 
-@interface CEWindView : UIView
+@interface CEWindView : CEDashboardItemView <CEDataRetrieverDelegate> {
+    
+    NSNumber *windProduction;
+    NSNumber *energyConsumption;
+    BOOL gotWindProduction;
+    BOOL gotElectricityUsage;
+}
 
 
 @property IBOutlet UIImageView *baseView;
@@ -20,5 +28,6 @@
 @property IBOutlet UILabel *consumedLabel;
 
 - (void)startBladeAnimation;
+- (void)updateUsageData;
 
 @end

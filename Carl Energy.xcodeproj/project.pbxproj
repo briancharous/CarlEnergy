@@ -36,6 +36,7 @@
 		9FB5F6E61932B46F00C9B419 /* CEWindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB5F6E51932B46F00C9B419 /* CEWindView.m */; };
 		9FB5F6E81932B4DC00C9B419 /* CEWindView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */; };
 		9FC36343192DB70B002E00B6 /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FC36342192DB70B002E00B6 /* buildings.plist */; };
+		9FE19A49193662E800082FB3 /* CEDashboardItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE19A48193662E800082FB3 /* CEDashboardItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,8 @@
 		9FB5F6E51932B46F00C9B419 /* CEWindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEWindView.m; sourceTree = "<group>"; };
 		9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CEWindView.xib; sourceTree = "<group>"; };
 		9FC36342192DB70B002E00B6 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
+		9FE19A47193662E800082FB3 /* CEDashboardItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDashboardItemView.h; sourceTree = "<group>"; };
+		9FE19A48193662E800082FB3 /* CEDashboardItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDashboardItemView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,11 +204,7 @@
 				9FA4A4CF191A95A300AE3551 /* Main.storyboard */,
 				9FA4A4D2191A95A300AE3551 /* CEBuildingsListTableViewController.h */,
 				9FA4A4D3191A95A300AE3551 /* CEBuildingsListTableViewController.m */,
-				9FA4A4D5191A95A300AE3551 /* CEDashboardViewController.h */,
-				9FA4A4D6191A95A300AE3551 /* CEDashboardViewController.m */,
-				9FB5F6E41932B46F00C9B419 /* CEWindView.h */,
-				9FB5F6E51932B46F00C9B419 /* CEWindView.m */,
-				9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */,
+				9FE19A4C193662F200082FB3 /* Dashboard */,
 				9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */,
 				9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */,
 				32269D1B192FE71600013D3E /* CEAboutPageViewController.h */,
@@ -246,6 +245,20 @@
 				9FA4A4E8191A95A400AE3551 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9FE19A4C193662F200082FB3 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4A4D5191A95A300AE3551 /* CEDashboardViewController.h */,
+				9FA4A4D6191A95A300AE3551 /* CEDashboardViewController.m */,
+				9FE19A47193662E800082FB3 /* CEDashboardItemView.h */,
+				9FE19A48193662E800082FB3 /* CEDashboardItemView.m */,
+				9FB5F6E41932B46F00C9B419 /* CEWindView.h */,
+				9FB5F6E51932B46F00C9B419 /* CEWindView.m */,
+				9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */,
+			);
+			name = Dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +393,7 @@
 				9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */,
 				329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */,
 				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,
+				9FE19A49193662E800082FB3 /* CEDashboardItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

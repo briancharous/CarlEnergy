@@ -216,7 +216,7 @@
         // 4 - Configure y-axis
         self.y = axisSet.yAxis;
         if (type == kUsageTypeElectricity) {
-            self.y.title = @"kW";
+            self.y.title = @"kW hours";
         }
         else {
             self.y.title = @"gallons";
@@ -227,7 +227,7 @@
         self.y.majorGridLineStyle = gridLineStyle;
         self.y.labelingPolicy = CPTAxisLabelingPolicyNone;
         self.y.labelTextStyle = axisTextStyle;
-        self.y.labelOffset = 16.0f;
+        self.y.labelOffset = 22.0f;
         self.y.majorTickLineStyle = axisLineStyle;
         self.y.majorTickLength = 4.0f;
         self.y.minorTickLength = 2.0f;
@@ -318,7 +318,6 @@
     NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
     NSUInteger numObjects = [self.dataForChart count];
     if (self.requestType == 0){
-//        NSLog(@"DAY INCREMENT");
         self.x.title = @"Hour";
         NSString *kString;
         for (int k = 1; k <= numObjects; k++) {
@@ -348,7 +347,6 @@
         }
     }
     else if (self.requestType == 1){
-//        NSLog(@"WEEK INCREMENT");
         self.x.title = @"Day";
         for (int k = 1; k <= numObjects; k++) {
             if (k%2 == 0){
@@ -366,7 +364,6 @@
         }
     }
     else if (self.requestType == 2){
-//        NSLog(@"MONTH INCREMENT");
         self.x.title = @"Day";
         for (int k = 1; k <= numObjects; k++) {
             if (k % 7 == 0) {
@@ -388,17 +385,17 @@
         }
     }
     else if (self.requestType == 3){
-//        NSLog(@"YEAR INCREMENT");
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
         self.x.title = @"Month";
         for (int k = 1; k <= numObjects; k++) {
-            if (k % 2 == 0) {
+            if (k % 2 == 1) {
                 NSInteger newK = month - (12 - k);
                 if (newK < 1){
                     newK = month + k;
                 }
-                NSString *myString = [NSString stringWithFormat:@"%li",(long)newK];
-                //NSString *myString = [NSString stringWithFormat:@"%i", k];
-                CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
+                NSString *monthName = [[df monthSymbols] objectAtIndex:(newK-1)];
+                monthName = [monthName substringToIndex:3];
+                CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:monthName  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;
                 label.tickLocation = CPTDecimalFromCGFloat(location);
                 label.offset = self.x.majorTickLength;
@@ -415,7 +412,7 @@
     int maxInt = [max intValue];
     [self.lineGraph reloadData];
     if (self.energyType == kUsageTypeElectricity) {
-        self.y.title = @"kW";
+        self.y.title = @"kW hours";
     }
     else if (self.energyType == kUsageTypeWater) {
         self.y.title = @"gallons";
@@ -428,29 +425,23 @@
     if (maxInt == 0) {
         maxInt = 1;
     }
-    NSInteger majorIncrement = ceil(maxInt/5.);
+    NSInteger majorIncrement = ceil(maxInt/5);
     CGFloat yMax = maxInt;
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
     for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
         long jRound = j;
-        if (maxInt < 100){
+        if (j < 100){
             jRound = (j/2) * 2;
         }
-        else if (maxInt < 1000){
+        else if (j < 1000){
             jRound = (j/10) * 10;
         }
-        else if (maxInt < 10000){
+        else if (j < 10000){
             jRound = (j/100) * 100;
         }
-        else if (maxInt < 100000){
-            jRound = (j/1000) * 1000;
-        }
-        else if (maxInt > 100000){
-            jRound = (j/1000) * 1000;
-        }
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)jRound] textStyle:self.y.labelTextStyle];
-        if (jRound > 999){
+        if (jRound > 9999){
             NSMutableString *strLabel = [NSMutableString stringWithFormat:@"%li", (long)jRound];
             NSString *newString = [strLabel substringToIndex:[strLabel length]-3];
             NSMutableString *stringLabel = [NSMutableString stringWithFormat:@"%@%s", newString, "k"];

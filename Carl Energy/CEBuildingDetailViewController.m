@@ -58,6 +58,9 @@ NSString *  const CEElectric       = @"elec";
     self.steamLineGraphView.hostedGraph = self.steamLineGraph;
     [self.scrollView addSubview:self.steamLineGraphView];
     
+    // bring segmented control on top of graphs
+    [self.view bringSubviewToFront:self.segmentedControl];
+    
     // to enable scrolling
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 850)];
 

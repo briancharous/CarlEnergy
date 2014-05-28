@@ -227,7 +227,7 @@
         self.y.majorGridLineStyle = gridLineStyle;
         self.y.labelingPolicy = CPTAxisLabelingPolicyNone;
         self.y.labelTextStyle = axisTextStyle;
-        self.y.labelOffset = 22.0f;
+        self.y.labelOffset = 21.0f;
         self.y.majorTickLineStyle = axisLineStyle;
         self.y.majorTickLength = 4.0f;
         self.y.minorTickLength = 2.0f;
@@ -429,6 +429,8 @@
     CGFloat yMax = maxInt;
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
+    self.y.labelOffset = 21.0f;
+    BOOL big = false;
     for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
         long jRound = j;
         if (j < 100){
@@ -440,13 +442,27 @@
         else if (j < 10000){
             jRound = (j/100) * 100;
         }
-        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)jRound] textStyle:self.y.labelTextStyle];
-        if (jRound > 9999){
-            NSMutableString *strLabel = [NSMutableString stringWithFormat:@"%li", (long)jRound];
-            NSString *newString = [strLabel substringToIndex:[strLabel length]-3];
-            NSMutableString *stringLabel = [NSMutableString stringWithFormat:@"%@%s", newString, "k"];
-            label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%@", stringLabel] textStyle:self.y.labelTextStyle];
+        else if (j > 1000000){
+            big = true;
+            if (j > majorIncrement*4.5){
+                big = false;
+            }
+            jRound = (j/100) * 100;
+            
         }
+        NSString *strLabel = [NSString stringWithFormat:@"%li", (long)jRound];
+        if (big == true){
+            strLabel = @" ";
+            self.y.labelOffset = 33.0f;
+        }
+        else if (jRound > 9999){
+            NSMutableString *strLabel2 = [NSMutableString stringWithFormat:@"%li", (long)jRound];
+            NSString *strLabel1 = [strLabel2 substringToIndex:[strLabel2 length]-3];
+            strLabel = [NSMutableString stringWithFormat:@"%@%s", strLabel1, "k"];
+            //label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%@", stringLabel] textStyle:self.y.labelTextStyle];
+        }
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strLabel textStyle:self.y.labelTextStyle];
+
         NSDecimal location = CPTDecimalFromInteger(j);
         label.tickLocation = location;
         label.offset = -self.y.majorTickLength - self.y.labelOffset;

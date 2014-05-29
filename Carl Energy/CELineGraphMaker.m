@@ -241,7 +241,6 @@
         NSMutableSet *yMajorLocations = [NSMutableSet set];
         NSMutableSet *yMinorLocations = [NSMutableSet set];
         for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
-    //        NSUInteger mod = j % majorIncrement;
             CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)j] textStyle:self.y.labelTextStyle];
             NSDecimal location = CPTDecimalFromInteger(j);
             label.tickLocation = location;
@@ -429,18 +428,26 @@
     CGFloat yMax = maxInt;
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
-    self.y.labelOffset = 21.0f;
+    self.y.labelOffset = 18.0f;
     BOOL big = false;
+    NSLog([NSString stringWithFormat:@"%li", (long)yMax]);
+
     for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
         long jRound = j;
+        if (yMax == 1 && j == 0){
+            break;
+        }
         if (j < 100){
             jRound = (j/2) * 2;
+            self.y.labelOffset = 15.0f;
         }
         else if (j < 1000){
             jRound = (j/10) * 10;
+            self.y.labelOffset = 18.0f;
         }
         else if (j < 10000){
             jRound = (j/100) * 100;
+            self.y.labelOffset = 22.0f;
         }
         else if (j > 1000000){
             big = true;
@@ -450,6 +457,8 @@
             jRound = (j/100) * 100;
             
         }
+        //NSLog([NSString stringWithFormat:@"%li", (long)jRound]);
+
         NSString *strLabel = [NSString stringWithFormat:@"%li", (long)jRound];
         if (big == true){
             strLabel = @" ";
@@ -467,6 +476,7 @@
         label.tickLocation = location;
         label.offset = -self.y.majorTickLength - self.y.labelOffset;
         if (label) {
+            NSLog([NSString stringWithFormat:@"%li", (long)j]);
             [yLabels addObject:label];
         }
         [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];

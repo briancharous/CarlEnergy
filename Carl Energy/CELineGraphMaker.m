@@ -420,8 +420,13 @@
         self.y.title =@"kBTUs";
     }
     
+    BOOL data = true;
     // account for no data available
     if (maxInt == 0) {
+        self.x.title = @"No data available";
+        self.x.titleOffset = -100.0f;
+        self.y.title = @" ";
+        data = false;
         maxInt = 1;
     }
     NSInteger majorIncrement = ceil(maxInt/5.);
@@ -429,13 +434,13 @@
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
     self.y.labelOffset = 18.0f;
-    BOOL big = false;
     NSLog([NSString stringWithFormat:@"%li", (long)yMax]);
 
+    BOOL big = false;
     for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
         //NSLog(@"%d", majorIncrement);
         long jRound = j;
-        if (yMax == 1 && j == 0){
+        if (data == false){
             break;
         }
         if (j < 100){
@@ -448,7 +453,7 @@
         }
         else if (j < 10000){
             jRound = (j/100) * 100;
-            self.y.labelOffset = 22.0f;
+            self.y.labelOffset = 23.0f;
         }
         else if (j > 1000000){
             big = true;
@@ -464,6 +469,8 @@
         if (big == true){
             strLabel = @" ";
             self.y.labelOffset = 33.0f;
+            big = false;
+
         }
         else if (jRound > 9999){
             NSMutableString *strLabel2 = [NSMutableString stringWithFormat:@"%li", (long)jRound];
@@ -476,10 +483,10 @@
         NSDecimal location = CPTDecimalFromInteger(j);
         label.tickLocation = location;
         label.offset = -self.y.majorTickLength - self.y.labelOffset;
-        if (label) {
-            NSLog([NSString stringWithFormat:@"%li", (long)j]);
+        if (label && data) {
             [yLabels addObject:label];
         }
+        
         [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
         
     }

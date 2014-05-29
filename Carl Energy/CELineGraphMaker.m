@@ -417,14 +417,14 @@
         self.y.title = @"gallons";
     }
     else {
-        self.y.title =@"kBtus";
+        self.y.title =@"kBTUs";
     }
     
     // account for no data available
     if (maxInt == 0) {
         maxInt = 1;
     }
-    NSInteger majorIncrement = ceil(maxInt/5);
+    NSInteger majorIncrement = ceil(maxInt/5.);
     CGFloat yMax = maxInt;
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
@@ -433,6 +433,7 @@
     NSLog([NSString stringWithFormat:@"%li", (long)yMax]);
 
     for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
+        //NSLog(@"%d", majorIncrement);
         long jRound = j;
         if (yMax == 1 && j == 0){
             break;

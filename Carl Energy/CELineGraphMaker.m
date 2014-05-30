@@ -16,7 +16,7 @@
         self.retreiver = [[CEDataRetriever alloc] init];
         [self.retreiver setDelegate:self];
     }
-
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
     NSDate *now = [NSDate date];
@@ -65,7 +65,6 @@
 
 - (CPTGraph *)makeLineGraphForTime:(NSInteger)timeframeIndex forUsage:(UsageType)type forBuilding:(CEBuilding*)building
 {
-    NSLog(@"MAKELINECALLED");
     // prep stuff
     switch (timeframeIndex)
     {
@@ -84,14 +83,14 @@
         default:
             break;
     }
-//    self.dataForClearChart = [[NSMutableArray alloc] init];
+    //    self.dataForClearChart = [[NSMutableArray alloc] init];
     
     // Create and assign the host view
     
     if (!self.lineGraph) {
         self.lineGraph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
         self.dataForChart = [[NSMutableArray alloc] init];
-
+        
         
         // Define the textStyle for the title
         CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
@@ -121,9 +120,9 @@
         // Set plot area padding
         [self.lineGraph.plotAreaFrame setPaddingLeft:20.0f];
         [self.lineGraph.plotAreaFrame setPaddingRight:20.0f];
-//        [self.lineGraph.plotAreaFrame setPaddingTop:20.0f];
+        //        [self.lineGraph.plotAreaFrame setPaddingTop:20.0f];
         [self.lineGraph.plotAreaFrame setPaddingBottom:40.0f];
-         self.lineGraph.plotAreaFrame.masksToBorder = NO;
+        self.lineGraph.plotAreaFrame.masksToBorder = NO;
         self.lineGraph.plotAreaFrame.masksToBounds = NO;
         self.lineGraph.masksToBounds = NO;
         self.lineGraph.masksToBorder = NO;
@@ -251,12 +250,13 @@
             [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
             
         }
+        
         self.y.axisLabels = yLabels;
         self.y.majorTickLocations = yMajorLocations;
         self.y.minorTickLocations = yMinorLocations;
         self.lineGraph.axisSet = axisSet;
     }
-
+    
     return self.lineGraph;
 }
 
@@ -270,11 +270,11 @@
         case CPTScatterPlotFieldX:
             return @(index);
             break;
-
+            
         case CPTScatterPlotFieldY: {
             if ([plot.identifier isEqual:CEElectric] == YES) {
 				NSNumber *yValue = [self.dataForChart objectAtIndex:index];
-
+                
                 return yValue;}
             else if ([plot.identifier isEqual:CEClear] == YES) {
 				NSNumber *yValue = [self.dataForClearChart objectAtIndex:index];
@@ -284,7 +284,7 @@
         }
     }
     return [NSDecimalNumber zero];
-
+    
 }
 
 #pragma mark - CEDataRetreiverDelegate methods
@@ -302,9 +302,9 @@
     NSLog(@"reload plot data");
     
     self.x.axisLabels = nil;
-//    self.x = nil;
+    //    self.x = nil;
     self.y.axisLabels = nil;
-//    self.y = nil;
+    //    self.y = nil;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd+HH:mm:ss"];
@@ -371,7 +371,7 @@
                     newK = day + (30 + k);
                 }
                 NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)month, "/",(long)newK];
-                              // NSString *myString = [NSString stringWithFormat:@"%i", k];
+                // NSString *myString = [NSString stringWithFormat:@"%i", k];
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;
                 label.tickLocation = CPTDecimalFromCGFloat(location);
@@ -431,19 +431,24 @@
     }
     NSInteger majorIncrement = ceil(maxInt/5.);
     CGFloat yMax = maxInt;
+    if (maxInt < 5){
+        majorIncrement = 1;
+    }
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
     self.y.labelOffset = 18.0f;
-    NSLog([NSString stringWithFormat:@"%li", (long)yMax]);
-
+    
     BOOL big = false;
     for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
-        //NSLog(@"%d", majorIncrement);
         long jRound = j;
         if (data == false){
             break;
         }
-        if (j < 100){
+        if (j < 10){
+            jRound = j;
+            self.y.labelOffset = 15.0f;
+        }
+        else if (j < 100){
             jRound = (j/2) * 2;
             self.y.labelOffset = 15.0f;
         }
@@ -464,22 +469,19 @@
             
         }
         //NSLog([NSString stringWithFormat:@"%li", (long)jRound]);
-
         NSString *strLabel = [NSString stringWithFormat:@"%li", (long)jRound];
         if (big == true){
             strLabel = @" ";
             self.y.labelOffset = 33.0f;
             big = false;
-
+            
         }
         else if (jRound > 9999){
             NSMutableString *strLabel2 = [NSMutableString stringWithFormat:@"%li", (long)jRound];
             NSString *strLabel1 = [strLabel2 substringToIndex:[strLabel2 length]-3];
             strLabel = [NSMutableString stringWithFormat:@"%@%s", strLabel1, "k"];
-            //label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%@", stringLabel] textStyle:self.y.labelTextStyle];
         }
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strLabel textStyle:self.y.labelTextStyle];
-
         NSDecimal location = CPTDecimalFromInteger(j);
         label.tickLocation = location;
         label.offset = -self.y.majorTickLength - self.y.labelOffset;
@@ -490,12 +492,12 @@
         [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
         
     }
-
     self.x.axisLabels = xLabels;
     self.x.majorTickLocations = xLocations;
     
     self.y.axisLabels = yLabels;
     self.y.majorTickLocations = yMajorLocations;
+    
     
     
     [self.lineGraph.defaultPlotSpace scaleToFitPlots:[self.lineGraph allPlots]];
@@ -505,6 +507,15 @@
     CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
     plotSpace.yRange = yRange;
+    
+    // test code for y axis problem
+    NSLog(self.y.title);
+    NSLog(@"%i", [self.y.axisLabels count]);
+    NSLog(@"%i", [self.y.majorTickLocations count]);
+    NSArray *yArray = [self.y.axisLabels allObjects];
+    NSLog(@"%@", yArray);
+    NSArray *yArray2 = [self.y.majorTickLocations allObjects];
+    NSLog(@"%@", yArray2);
+    
 }
-
 @end

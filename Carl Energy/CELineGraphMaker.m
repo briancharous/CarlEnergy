@@ -76,6 +76,9 @@
         self.retreiver = nil;
         self.retreiver = [[CEDataRetriever alloc] init];
         [self.retreiver setDelegate:self];
+        dispatch_async(dispatch_queue_create("com.carlenergy.graphs", NULL), ^ {
+            [self.retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
+        });
     }
 }
 
@@ -101,8 +104,8 @@
         default:
             break;
     }
-    //    self.dataForClearChart = [[NSMutableArray alloc] init];
-    
+    self.dataForClearChart = [[NSMutableArray alloc] init];
+
     // Create and assign the host view
     
     if (!self.lineGraph) {
@@ -310,6 +313,9 @@
     [self.dataForChart removeAllObjects];
     for (CEDataPoint *point in usage) {
         [self.dataForChart addObject:@(point.weight * point.value)];
+        //[self.dataForClearChart addObject:[NSNumber numberWithInt:i]
+        [self.dataForClearChart addObject:[NSNumber numberWithInt:0]];
+
     }
     dispatch_async(dispatch_get_main_queue(), ^ {
         [self reloadPlotData];
@@ -387,7 +393,7 @@
         NSDate *now = [NSDate date];
         for (int k = 1; k <= numObjects; k++) {
             if (k % 7 == 0) {
-                int daysToAdd = -(numObjects-k);
+                int daysToAdd = (int) -(numObjects-k);
                 NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
                 NSDateComponents *components1 = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth fromDate:newDate];
                 NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)[components1 month], "/",(long)[components1 day]];
@@ -405,7 +411,7 @@
     else if (self.requestType == 3){
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         self.x.title = @"Month";
-        for (int k = 1; k <= 12; k++) {
+        for (int k = 1; k <= numObjects; k++) {
             if (k % 2 == 1) {
                 NSInteger newK = month - (12 - k);
                 if (newK < 1){
@@ -449,8 +455,7 @@
         self.y.title = @" ";
         data = false;
     }
-    NSInteger majorIncrement = ceil(maxInt/5.);
-    CGFloat yMax = maxInt;
+    NSInteger majorIncrement = ceil(maxInt/4);
     if (maxInt < 5){
         majorIncrement = 1;
     }
@@ -460,7 +465,7 @@
 
     BOOL big = false;
     if (maxInt > 0){
-        for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
+        for (NSInteger j = majorIncrement; j <= majorIncrement*4; j += majorIncrement) {
             long jRound = j;
             if (data == false){
                 break;
@@ -475,19 +480,20 @@
             }
             else if (j < 1000){
                 jRound = (j/10) * 10;
-                self.y.labelOffset = 18.0f;
+                self.y.labelOffset = 17.5f;
             }
             else if (j < 100000){
                 jRound = (j/100) * 100;
+                self.y.labelOffset = 22.0f;
+            }
+            else if (j < 1000000){
+                jRound = (j/100) * 100;
                 self.y.labelOffset = 23.0f;
             }
-//            else if (j < 100000){
-//                jRound = (j/100) * 100;
-//                self.y.labelOffset = 23.0f;
-//            }
+            
             else if (j > 1000000){
                 big = true;
-                if (j > majorIncrement*4.5){
+                if (j > majorIncrement*3.5){
                     big = false;
                 }
                 jRound = (j/100) * 100;
@@ -518,12 +524,13 @@
             
         }
     }
+    
+
     //Handles values less than one
     else if (maxInt == 0){
-        NSLog(@"small");
         float maxFloat = [maxF floatValue];
-        float majorIncrement = maxFloat/5;
-        for (float j = majorIncrement; j <= maxFloat; j += majorIncrement) {
+        float majorIncrement = maxFloat/4;
+        for (float j = majorIncrement; j <= majorIncrement*4; j += majorIncrement) {
             float jRound = j;
             if (data == false){
                 break;
@@ -554,7 +561,8 @@
     
     
     [self.lineGraph.defaultPlotSpace scaleToFitPlots:[self.lineGraph allPlots]];
-    
+    //[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, msftPlot, nil]];
+
     // make sure top doesn't get chopped off
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.lineGraph.defaultPlotSpace;
     CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
@@ -563,6 +571,7 @@
     
     // test code for y axis problem
 //    NSLog(@"%@", self.y.title);
+//    NSLog(@"%i", maxInt);
 //    NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
 //    NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
 //    NSArray *yArray = [self.y.axisLabels allObjects];

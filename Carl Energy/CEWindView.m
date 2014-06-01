@@ -44,6 +44,10 @@
     NSString *consumedString = [NSString stringWithFormat:@"%i%% campus electricity from wind", (int)percentageWind];
     [[self producedLabel] setText:producedString];
     [[self consumedLabel] setText:consumedString];
+    
+    if ([self.delegate respondsToSelector:@selector(dashboardItemViewRefreshedData:)]) {
+        [self.delegate dashboardItemViewRefreshedData:self];
+    }
 }
 
 #pragma mark Data Retrieval

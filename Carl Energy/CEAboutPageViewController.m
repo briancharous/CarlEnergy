@@ -31,13 +31,13 @@
 //    [self.welcomeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0]];
 //    [self.instructionsLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
 //    [self.developersLabel setFont:[UIFont fontWithName:@"Helvetica" size:18.0]];
-    [self.textView setFrame:self.view.frame];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aboutPage"
-                                                     ofType:@"txt"];
-    NSString *content = [NSString stringWithContentsOfFile:filePath
-                                                  encoding:NSUTF8StringEncoding
-                                                     error:NULL];
-    self.textView.text = content;
+//    [self.textView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aboutPage"
+//                                                     ofType:@"txt"];
+//    NSString *content = [NSString stringWithContentsOfFile:filePath
+//                                                  encoding:NSUTF8StringEncoding
+//                                                     error:NULL];
+//    self.textView.text = content;
 //    CGRect frame = self.textView.frame;
 //    frame.size.height = self.textView.contentSize.height;
 //    self.textView.frame = frame;
@@ -47,10 +47,27 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.textView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aboutPage"
+                                                         ofType:@"txt"];
+    NSString *content = [NSString stringWithContentsOfFile:filePath
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    self.textView.text = content;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    [self.textView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
 }
 
 /*

@@ -38,23 +38,7 @@ NSString *  const CEElectric       = @"elec";
     else [self.scrollView setFrame:self.view.frame];
 
     
-    //initialize graph views and graph maker
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenHeight = screenRect.size.height;
-    CGFloat myWidth = 0;
-    if (UIInterfaceOrientationIsPortrait([self interfaceOrientation])) {
-        myWidth = 0;
-    }
-    else {
-        myWidth = screenHeight / 2 - 160;
-    }
-    CGRect parentRect = CGRectMake(myWidth, 75, 320, 250);
-    CGRect parentRect2 = CGRectMake(myWidth, 350, 320, 250);
-    CGRect parentRect3 = CGRectMake(myWidth, 615, 320, 250);
-    self.electricityLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
-    self.waterLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect2];
-    self.steamLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect3];
-    
+    //initialize graph makers
     self.elecGraphMaker = [[CELineGraphMaker alloc] init];
     self.waterGraphMaker = [[CELineGraphMaker alloc] init];
     self.steamGraphMaker = [[CELineGraphMaker alloc] init];
@@ -104,8 +88,19 @@ NSString *  const CEElectric       = @"elec";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self.electricityLineGraphView removeFromSuperview];
+    [self.waterLineGraphView removeFromSuperview];
+    [self.steamLineGraphView removeFromSuperview];
+    self.electricityLineGraphView = nil;
+    self.waterLineGraphView = nil;
+    self.steamLineGraphView = nil;
+}
+
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self.scrollView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self redrawForNewOrientation];
     
     //[self.scrollView setFrame:self.view.frame];
     //[self.scrollView setContentSize:CGSizeMake(200, 850)];

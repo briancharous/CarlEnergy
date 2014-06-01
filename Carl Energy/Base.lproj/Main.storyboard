@@ -7,7 +7,7 @@
         <!--Dashboard View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
             <objects>
-                <viewController title="Second" id="QUy-BD-bpt" customClass="CEDashboardViewController" sceneMemberID="viewController">
+                <viewController title="Second" hidesBottomBarWhenPushed="YES" id="QUy-BD-bpt" customClass="CEDashboardViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gMD-aP-Fq6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                     <navigationItem key="navigationItem" title="Dashboard" id="BmG-nG-Dw7">
                         <barButtonItem key="leftBarButtonItem" title="About" id="q6f-OO-FJj">
                             <connections>
-                                <segue destination="DBZ-5N-Mog" kind="custom" customClass="customSegue" id="wiJ-EN-u8F"/>
+                                <segue destination="w3o-kJ-p4d" kind="push" id="MlN-sB-IhS"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Buildings" id="lau-Ta-LfZ">
@@ -59,13 +59,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="About" id="gjx-qJ-dic">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="8uH-2R-Hgc">
-                            <connections>
-                                <segue destination="ytq-45-nbQ" kind="custom" customClass="customSegueBack" id="weJ-Fr-VMu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="About" id="gjx-qJ-dic"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -74,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5D-eQ-TjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2562" y="706"/>
+            <point key="canvasLocation" x="1806" y="706"/>
         </scene>
         <!--Buildings List Table View Controller - Buildings-->
         <scene sceneID="acT-Ih-dpk">
@@ -163,7 +157,7 @@
         <!--Navigation Controller-->
         <scene sceneID="oNn-dr-Mvr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ytq-45-nbQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ytq-45-nbQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gsc-IR-pRL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -177,25 +171,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWv-je-ixf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="653" y="706"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="tXW-sJ-beV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DBZ-5N-Mog" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Q6M-Dj-Lox">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="w3o-kJ-p4d" kind="relationship" relationship="rootViewController" id="s4V-TR-3R2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WY5-u8-L1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2036" y="706"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

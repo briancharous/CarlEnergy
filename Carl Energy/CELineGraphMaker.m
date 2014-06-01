@@ -377,7 +377,7 @@
         NSDate *now = [NSDate date];
         for (int k = 1; k <= numObjects; k++) {
             if (k % 7 == 0) {
-                int daysToAdd = -(numObjects-k);
+                int daysToAdd = (int) -(numObjects-k);
                 NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
                 NSDateComponents *components1 = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth fromDate:newDate];
                 NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)[components1 month], "/",(long)[components1 day]];
@@ -439,7 +439,7 @@
         self.y.title = @" ";
         data = false;
     }
-    NSInteger majorIncrement = ceil(maxInt/5.);
+    NSInteger majorIncrement = ceil(maxInt/4);
     CGFloat yMax = maxInt;
     if (maxInt < 5){
         majorIncrement = 1;
@@ -450,7 +450,7 @@
 
     BOOL big = false;
     if (maxInt > 0){
-        for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
+        for (NSInteger j = majorIncrement; j <= majorIncrement*4; j += majorIncrement) {
             long jRound = j;
             if (data == false){
                 break;
@@ -471,10 +471,6 @@
                 jRound = (j/100) * 100;
                 self.y.labelOffset = 23.0f;
             }
-//            else if (j < 100000){
-//                jRound = (j/100) * 100;
-//                self.y.labelOffset = 23.0f;
-//            }
             else if (j > 1000000){
                 big = true;
                 if (j > majorIncrement*4.5){
@@ -510,7 +506,6 @@
     }
     //Handles values less than one
     else if (maxInt == 0){
-        NSLog(@"small");
         float maxFloat = [maxF floatValue];
         float majorIncrement = maxFloat/5;
         for (float j = majorIncrement; j <= maxFloat; j += majorIncrement) {
@@ -536,6 +531,7 @@
         }
     }
     self.x.axisLabels = xLabels;
+    NSLog(@"%@", xLabels);
     self.x.majorTickLocations = xLocations;
     
     self.y.axisLabels = yLabels;
@@ -552,13 +548,14 @@
     plotSpace.yRange = yRange;
     
     // test code for y axis problem
-//    NSLog(@"%@", self.y.title);
-//    NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
-//    NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
-//    NSArray *yArray = [self.y.axisLabels allObjects];
-//    NSLog(@"%@", yArray);
-//    NSArray *yArray2 = [self.y.majorTickLocations allObjects];
-//    NSLog(@"%@", yArray2);
+    NSLog(@"%@", self.y.title);
+    NSLog(@"%i", maxInt);
+    NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
+    NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
+    NSArray *yArray = [self.y.axisLabels allObjects];
+    NSLog(@"%@", yArray);
+    NSArray *yArray2 = [self.y.majorTickLocations allObjects];
+    NSLog(@"%@", yArray2);
     
 }
 @end

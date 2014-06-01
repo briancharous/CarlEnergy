@@ -299,7 +299,6 @@
 }
 
 - (void)reloadPlotData {
-    NSLog(@"reload plot data");
     
     self.x.axisLabels = nil;
     //    self.x = nil;
@@ -408,6 +407,8 @@
     
     
     NSNumber * max = [self.dataForChart valueForKeyPath:@"@max.intValue"];
+    NSNumber * maxF = [self.dataForChart valueForKeyPath:@"@max.floatValue"];
+    self.x.titleOffset = 15.0f;
     int maxInt = [max intValue];
     [self.lineGraph reloadData];
     if (self.energyType == kUsageTypeElectricity) {
@@ -419,15 +420,14 @@
     else {
         self.y.title =@"kBTUs";
     }
-    
+
     BOOL data = true;
     // account for no data available
-    if (maxInt == 0) {
+    if (maxF == NULL) {
         self.x.title = @"No data available";
         self.x.titleOffset = -100.0f;
         self.y.title = @" ";
         data = false;
-        maxInt = 1;
     }
     NSInteger majorIncrement = ceil(maxInt/5.);
     CGFloat yMax = maxInt;
@@ -437,60 +437,89 @@
     NSMutableSet *yLabels = [NSMutableSet set];
     NSMutableSet *yMajorLocations = [NSMutableSet set];
     self.y.labelOffset = 18.0f;
-    
+
     BOOL big = false;
-    for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
-        long jRound = j;
-        if (data == false){
-            break;
-        }
-        if (j < 10){
-            jRound = j;
-            self.y.labelOffset = 15.0f;
-        }
-        else if (j < 100){
-            jRound = (j/2) * 2;
-            self.y.labelOffset = 15.0f;
-        }
-        else if (j < 1000){
-            jRound = (j/10) * 10;
-            self.y.labelOffset = 18.0f;
-        }
-        else if (j < 10000){
-            jRound = (j/100) * 100;
-            self.y.labelOffset = 23.0f;
-        }
-        else if (j > 1000000){
-            big = true;
-            if (j > majorIncrement*4.5){
-                big = false;
+    if (maxInt > 0){
+        for (NSInteger j = majorIncrement; j <= yMax; j += majorIncrement) {
+            long jRound = j;
+            if (data == false){
+                break;
             }
-            jRound = (j/100) * 100;
+            if (j < 10){
+                jRound = j;
+                self.y.labelOffset = 15.0f;
+            }
+            else if (j < 100){
+                jRound = (j/2) * 2;
+                self.y.labelOffset = 15.0f;
+            }
+            else if (j < 1000){
+                jRound = (j/10) * 10;
+                self.y.labelOffset = 18.0f;
+            }
+            else if (j < 10000){
+                jRound = (j/100) * 100;
+                self.y.labelOffset = 23.0f;
+            }
+            else if (j > 1000000){
+                big = true;
+                if (j > majorIncrement*4.5){
+                    big = false;
+                }
+                jRound = (j/100) * 100;
+                
+            }
+            //NSLog([NSString stringWithFormat:@"%li", (long)jRound]);
+            NSString *strLabel = [NSString stringWithFormat:@"%li", (long)jRound];
+            if (big == true){
+                strLabel = @" ";
+                self.y.labelOffset = 33.0f;
+                big = false;
+                
+            }
+            else if (jRound > 9999){
+                NSMutableString *strLabel2 = [NSMutableString stringWithFormat:@"%li", (long)jRound];
+                NSString *strLabel1 = [strLabel2 substringToIndex:[strLabel2 length]-3];
+                strLabel = [NSMutableString stringWithFormat:@"%@%s", strLabel1, "k"];
+            }
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strLabel textStyle:self.y.labelTextStyle];
+            NSDecimal location = CPTDecimalFromInteger(j);
+            label.tickLocation = location;
+            label.offset = -self.y.majorTickLength - self.y.labelOffset;
+            if (label && data) {
+                [yLabels addObject:label];
+            }
+            
+            [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
             
         }
-        //NSLog([NSString stringWithFormat:@"%li", (long)jRound]);
-        NSString *strLabel = [NSString stringWithFormat:@"%li", (long)jRound];
-        if (big == true){
-            strLabel = @" ";
-            self.y.labelOffset = 33.0f;
-            big = false;
+    }
+    //Handles values less than one
+    else if (maxInt == 0){
+        NSLog(@"small");
+        float maxFloat = [maxF floatValue];
+        float majorIncrement = maxFloat/5;
+        for (float j = majorIncrement; j <= maxFloat; j += majorIncrement) {
+            float jRound = j;
+            if (data == false){
+                break;
+            }
+            else{
+                jRound = j;
+                self.y.labelOffset = 20.0f;
+            }
+            NSString *strLabel = [NSString stringWithFormat:@"%f", jRound];
+            strLabel = [strLabel substringToIndex:4];
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strLabel textStyle:self.y.labelTextStyle];
+            NSDecimal location = CPTDecimalFromFloat(j);
+            label.tickLocation = location;
+            label.offset = -self.y.majorTickLength - self.y.labelOffset;
+            if (label && data) {
+                [yLabels addObject:label];
+            }
             
+            [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
         }
-        else if (jRound > 9999){
-            NSMutableString *strLabel2 = [NSMutableString stringWithFormat:@"%li", (long)jRound];
-            NSString *strLabel1 = [strLabel2 substringToIndex:[strLabel2 length]-3];
-            strLabel = [NSMutableString stringWithFormat:@"%@%s", strLabel1, "k"];
-        }
-        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strLabel textStyle:self.y.labelTextStyle];
-        NSDecimal location = CPTDecimalFromInteger(j);
-        label.tickLocation = location;
-        label.offset = -self.y.majorTickLength - self.y.labelOffset;
-        if (label && data) {
-            [yLabels addObject:label];
-        }
-        
-        [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
-        
     }
     self.x.axisLabels = xLabels;
     self.x.majorTickLocations = xLocations;
@@ -510,6 +539,7 @@
     
     // test code for y axis problem
     NSLog(@"%@", self.y.title);
+    NSLog(@"%i",maxInt);
     NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
     NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
     NSArray *yArray = [self.y.axisLabels allObjects];

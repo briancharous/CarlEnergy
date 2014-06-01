@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ytq-45-nbQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ytq-45-nbQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -22,7 +22,7 @@
                     <navigationItem key="navigationItem" title="Dashboard" id="BmG-nG-Dw7">
                         <barButtonItem key="leftBarButtonItem" title="About" id="q6f-OO-FJj">
                             <connections>
-                                <segue destination="w3o-kJ-p4d" kind="push" id="lXP-b8-l8c"/>
+                                <segue destination="DBZ-5N-Mog" kind="custom" customClass="customSegue" id="wiJ-EN-u8F"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Buildings" id="lau-Ta-LfZ">
@@ -42,23 +42,29 @@
         <!--About Page View Controller - About-->
         <scene sceneID="C5a-ty-C4A">
             <objects>
-                <viewController id="w3o-kJ-p4d" customClass="CEAboutPageViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="w3o-kJ-p4d" customClass="CEAboutPageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4FB-kd-kjj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="PLACEHOLDER TEXT" selectable="NO" id="EMX-ih-mFk">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="60"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="About" id="gjx-qJ-dic">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="8uH-2R-Hgc"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="8uH-2R-Hgc">
+                            <connections>
+                                <segue destination="ytq-45-nbQ" kind="custom" customClass="customSegueBack" id="weJ-Fr-VMu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
@@ -68,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5D-eQ-TjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600" y="706"/>
+            <point key="canvasLocation" x="2562" y="706"/>
         </scene>
         <!--Buildings List Table View Controller - Buildings-->
         <scene sceneID="acT-Ih-dpk">
@@ -154,11 +160,10 @@
             </objects>
             <point key="canvasLocation" x="2036" y="-131"/>
         </scene>
-        <!--Navigation Controller - Dashboard-->
+        <!--Navigation Controller-->
         <scene sceneID="oNn-dr-Mvr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ytq-45-nbQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="ic_dashboard" id="Z7h-1E-pvt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gsc-IR-pRL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -173,10 +178,26 @@
             </objects>
             <point key="canvasLocation" x="653" y="706"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tXW-sJ-beV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DBZ-5N-Mog" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Q6M-Dj-Lox">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="w3o-kJ-p4d" kind="relationship" relationship="rootViewController" id="s4V-TR-3R2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WY5-u8-L1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2036" y="706"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="ic_dashboard" width="25" height="25"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

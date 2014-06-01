@@ -123,9 +123,8 @@ NSString *  const CEElectric       = @"elec";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.scrollView setFrame:self.view.frame];
-    
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
     // remove old graph views
     [self.elecGraphMaker.hostView removeFromSuperview];
     [self.waterGraphMaker.hostView removeFromSuperview];
@@ -134,7 +133,10 @@ NSString *  const CEElectric       = @"elec";
     self.elecGraphMaker.hostView = nil;
     self.waterGraphMaker.hostView = nil;
     self.steamGraphMaker.hostView = nil;
-    
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self.scrollView setFrame:self.view.frame];
     [self redrawForNewOrientation];
     
 }

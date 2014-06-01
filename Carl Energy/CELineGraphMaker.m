@@ -386,7 +386,7 @@
     else if (self.requestType == 3){
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         self.x.title = @"Month";
-        for (int k = 1; k <= numObjects; k++) {
+        for (int k = 1; k <= 12; k++) {
             if (k % 2 == 1) {
                 NSInteger newK = month - (12 - k);
                 if (newK < 1){

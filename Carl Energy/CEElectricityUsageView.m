@@ -58,6 +58,10 @@
     NSString *maxString = [NSString stringWithFormat:@"%li kW was the peak consumption \n for this month", (long)peakUsage];
     [self.currentLabel setText:instantString];
     [self.peakLabel setText:maxString];
+    
+    if ([self.delegate respondsToSelector:@selector(dashboardItemViewRefreshedData:)]) {
+        [self.delegate dashboardItemViewRefreshedData:self];
+    }
 }
 
 #pragma mark CEDataRetreiverDelegate methods

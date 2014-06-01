@@ -66,6 +66,9 @@
         self.retreiver = nil;
         self.retreiver = [[CEDataRetriever alloc] init];
         [self.retreiver setDelegate:self];
+        dispatch_async(dispatch_queue_create("com.carlenergy.graphs", NULL), ^ {
+            [self.retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
+        });
     }
 }
 
@@ -380,7 +383,7 @@
         NSDate *now = [NSDate date];
         for (int k = 1; k <= numObjects; k++) {
             if (k % 7 == 0) {
-                int daysToAdd = -(numObjects-k);
+                int daysToAdd = (int) -(numObjects-k);
                 NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
                 NSDateComponents *components1 = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth fromDate:newDate];
                 NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)[components1 month], "/",(long)[components1 day]];
@@ -398,7 +401,7 @@
     else if (self.requestType == 3){
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         self.x.title = @"Month";
-        for (int k = 1; k <= 12; k++) {
+        for (int k = 1; k <= numObjects; k++) {
             if (k % 2 == 1) {
                 NSInteger newK = month - (12 - k);
                 if (newK < 1){

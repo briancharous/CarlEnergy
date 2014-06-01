@@ -22,7 +22,7 @@
 }
 
 + (NSInteger)preferredHeight {
-    return 150;
+    return 125;
 }
 
 - (void)refreshData {

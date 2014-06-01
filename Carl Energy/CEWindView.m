@@ -30,7 +30,7 @@
 */
 
 + (NSInteger)preferredHeight {
-    return 300;
+    return 250;
 }
 
 - (void)restartAnimation {

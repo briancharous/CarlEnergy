@@ -8,12 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CEDashboardItemViewDelegate;
+
 @interface CEDashboardItemView : UIView
 // NEVER MAKE AN OBJECT OF THIS CLASS
 // ALWAYS MAKE SUBCLASSES OF THIS CLASS
 
+@property (nonatomic, assign) id <CEDashboardItemViewDelegate> delegate;
+
 - (void)refreshData;
 + (NSInteger)preferredHeight;
 - (void)restartAnimation;
+
+@end
+
+@protocol CEDashboardItemViewDelegate <NSObject>
+
+@optional
+
+-(void)dashboardItemViewRefreshedData:(CEDashboardItemView *)view;
 
 @end

@@ -346,10 +346,13 @@
     }
     else if (self.requestType == 1){
         self.x.title = @"Day";
+        NSDate *now = [NSDate date];
         for (int k = 1; k <= numObjects; k++) {
             if (k%2 == 0){
-                NSInteger newK = day - (7 - k);
-                NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)month, "/",(long)newK];
+                int daysToAdd = -(7-k);
+                NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
+                NSDateComponents *components1 = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth fromDate:newDate];
+                NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)[components1 month], "/",(long)[components1 day]];
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;
                 label.tickLocation = CPTDecimalFromCGFloat(location);
@@ -363,14 +366,13 @@
     }
     else if (self.requestType == 2){
         self.x.title = @"Day";
+        NSDate *now = [NSDate date];
         for (int k = 1; k <= numObjects; k++) {
             if (k % 7 == 0) {
-                NSInteger newK = day - (30 - k);
-                if (newK < 0){
-                    newK = day + (30 + k);
-                }
-                NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)month, "/",(long)newK];
-                // NSString *myString = [NSString stringWithFormat:@"%i", k];
+                int daysToAdd = -(numObjects-k);
+                NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
+                NSDateComponents *components1 = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth fromDate:newDate];
+                NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)[components1 month], "/",(long)[components1 day]];
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
                 CGFloat location = k;
                 label.tickLocation = CPTDecimalFromCGFloat(location);
@@ -457,10 +459,14 @@
                 jRound = (j/10) * 10;
                 self.y.labelOffset = 18.0f;
             }
-            else if (j < 10000){
+            else if (j < 100000){
                 jRound = (j/100) * 100;
                 self.y.labelOffset = 23.0f;
             }
+//            else if (j < 100000){
+//                jRound = (j/100) * 100;
+//                self.y.labelOffset = 23.0f;
+//            }
             else if (j > 1000000){
                 big = true;
                 if (j > majorIncrement*4.5){
@@ -538,14 +544,14 @@
     plotSpace.yRange = yRange;
     
     // test code for y axis problem
-    NSLog(@"%@", self.y.title);
-    NSLog(@"%i",maxInt);
-    NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
-    NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
-    NSArray *yArray = [self.y.axisLabels allObjects];
-    NSLog(@"%@", yArray);
-    NSArray *yArray2 = [self.y.majorTickLocations allObjects];
-    NSLog(@"%@", yArray2);
+//    NSLog(@"%@", self.y.title);
+//    NSLog(@"%i",maxInt);
+//    NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
+//    NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
+//    NSArray *yArray = [self.y.axisLabels allObjects];
+//    NSLog(@"%@", yArray);
+//    NSArray *yArray2 = [self.y.majorTickLocations allObjects];
+//    NSLog(@"%@", yArray2);
     
 }
 @end

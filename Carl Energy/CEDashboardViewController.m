@@ -28,8 +28,11 @@
     
     [self.scrollView setFrame:self.view.frame];
     [self.scrollView setDelegate:self];
+    
+    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+    
     contentOffsetZero = statusBarHeight + self.navigationController.navigationBar.frame.size.height;
-//    pullToRefreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -50, self.scrollView.frame.size.width, 30)];
+    //    pullToRefreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -50, self.scrollView.frame.size.width, 30)];
     [pullToRefreshLabel setText:@"Pull to refresh"];
     [self.scrollView addSubview:pullToRefreshLabel];
     self.dashboardViews = [[NSMutableArray alloc] init];
@@ -49,11 +52,13 @@
     // setup the scroll view
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
     for (CEDashboardItemView *view in self.dashboardViews) {
-        [self.scrollView addSubview:view];
+        //[self.scrollView addSubview:view];
+        [self.mainView addSubview:view];
         [view restartAnimation];
     }
+    [self.scrollView addSubview:self.mainView];
     [self refreshSubviewsData];
-
+    
     // Refresh control doesn't really seem to work super well
     // weird jump when you pull down
     refreshControl = [[UIRefreshControl alloc] init];
@@ -86,32 +91,34 @@
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-//    // undraw and redraw the graph
-//    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-//    // Maybe not needed after more content added:
-//    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
-//    [self makePieChart];
+    //    // undraw and redraw the graph
+    //    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    //    // Maybe not needed after more content added:
+    //    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
+    //    [self makePieChart];
+    
+    [self.mainView setFrame:CGRectMake(0,0,self.scrollView.frame.size.width, 480)];
 
 }
 
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-//    if (windView) {
+    //    if (windView) {
     
-        // NO IDEA WHAT IS GOING ON HERE
-        /*
-        [UIView animateWithDuration:duration animations:^ {
-            if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-                NSLog(@"landscape");
-                [windView setFrame:CGRectMake(windView.frame.origin.x, windView.frame.origin.y, self.scrollView.bounds.size.width, 200)];
-            }
-            else {
-                NSLog(@"portrait");
-                [windView setFrame:CGRectMake(windView.frame.origin.x, windView.frame.origin.y, self.scrollView.bounds.size.width, 350)];
-            }
-        }];
-        */
-//    }
+    // NO IDEA WHAT IS GOING ON HERE
+    /*
+     [UIView animateWithDuration:duration animations:^ {
+     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+     NSLog(@"landscape");
+     [windView setFrame:CGRectMake(windView.frame.origin.x, windView.frame.origin.y, self.scrollView.bounds.size.width, 200)];
+     }
+     else {
+     NSLog(@"portrait");
+     [windView setFrame:CGRectMake(windView.frame.origin.x, windView.frame.origin.y, self.scrollView.bounds.size.width, 350)];
+     }
+     }];
+     */
+    //    }
 }
 
 - (void)didReceiveMemoryWarning

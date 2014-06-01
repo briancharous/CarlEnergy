@@ -26,5 +26,6 @@
 
 @property IBOutlet UIScrollView *scrollView;
 @property NSMutableArray *dashboardViews;
+@property UIView *mainView;
 
 @end

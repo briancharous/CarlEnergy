@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
     [self loadInitialData];
+
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_building_selected"]];
 
@@ -142,6 +143,9 @@
          // otherwise sometimes building names that are long (i.e. "Weitz Center for Creativity") look funny
          UIBarButtonItem *backNoTitle = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
          [self.navigationItem setBackBarButtonItem:backNoTitle];
+         
+         [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+
      }
 
  }

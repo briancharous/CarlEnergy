@@ -21,7 +21,7 @@
     return self;
 }
 
-- (void)startBladeAnimation {
+- (void)restartAnimation {
     CABasicAnimation* rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * .3];

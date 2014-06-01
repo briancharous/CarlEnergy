@@ -21,6 +21,10 @@
     return self;
 }
 
++ (NSInteger)preferredHeight {
+    return 150;
+}
+
 - (void)refreshData {
     CEDataRetriever *instantRetreiver = [[CEDataRetriever alloc] init];
     [instantRetreiver setDelegate:self];
@@ -50,7 +54,7 @@
     }
     
     NSString *instantString = [NSString stringWithFormat:@"%li kW currently being used", (long)instantUsage];
-    NSString *maxString = [NSString stringWithFormat:@"%li kW was the peak consumption for this month", (long)peakUsage];
+    NSString *maxString = [NSString stringWithFormat:@"%li kW peak consumption for this month", (long)peakUsage];
     [self.currentLabel setText:instantString];
     [self.peakLabel setText:maxString];
 }

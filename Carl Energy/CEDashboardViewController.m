@@ -20,28 +20,46 @@
     
     // listen for when the app enters the foreground to start animating the
     // wind turbine blades
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartBladeAnimation) name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartSubviewsAnimation) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_dashboard_selected"]];
+    
+    [self.scrollView setFrame:self.view.frame];
+    self.dashboardViews = [[NSMutableArray alloc] init];
+    
+    // create the wind usage view and electricity usage views
+    NSInteger curY = 0;
+    CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEWindView preferredHeight])];
+    [self.dashboardViews addObject:windView];
+    curY += [CEWindView preferredHeight];
+    CEElectricityUsageView *elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEElectricityUsageView preferredHeight])];
+    [self.dashboardViews addObject:elecView];
+    curY += [CEElectricityUsageView preferredHeight];
+    
+    
+    // setup the scroll view
+    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
+    for (CEDashboardItemView *view in self.dashboardViews) {
+        [self.scrollView addSubview:view];
+        [view refreshData];
+        [view restartAnimation];
+    }
 
 //  Refresh control doesn't really seem to work in a scroll view
 //    refreshControl = [[UIRefreshControl alloc] init];
 //    [refreshControl addTarget:self action:@selector(getElectricProductionAndUsage) forControlEvents:UIControlEventValueChanged];
 //    [self.scrollView addSubview:refreshControl];
-    
-    [self.scrollView setContentSize:self.view.frame.size];
-    [self.scrollView setFrame:self.view.frame];
-    [self makeTurbine];
-    [self makeUsageView];
+    //    [self makeTurbine];
+//    [self makeUsageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self restartBladeAnimation];
+    [self restartSubviewsAnimation];
 }
 
-- (void)restartBladeAnimation {
-    if (windView) {
-        [windView startBladeAnimation];
+- (void)restartSubviewsAnimation {
+    for (CEWindView *view in self.dashboardViews) {
+        [view restartAnimation];
     }
 }
 
@@ -56,8 +74,8 @@
 
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    if (windView) {
-        
+//    if (windView) {
+    
         // NO IDEA WHAT IS GOING ON HERE
         /*
         [UIView animateWithDuration:duration animations:^ {
@@ -71,20 +89,20 @@
             }
         }];
         */
-    }
+//    }
 }
 
-- (void)makeTurbine {
-    windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 350)];
-    [self.scrollView addSubview:windView];
-    [windView refreshData];
-}
-
-- (void)makeUsageView {
-    elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, 350, self.scrollView.bounds.size.width, 200)];
-    [self.scrollView addSubview:elecView];
-    [elecView refreshData];
-}
+//- (void)makeTurbine {
+//    windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 350)];
+//    [self.scrollView addSubview:windView];
+//    [windView refreshData];
+//}
+//
+//- (void)makeUsageView {
+//    elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, 350, self.scrollView.bounds.size.width, 200)];
+//    [self.scrollView addSubview:elecView];
+//    [elecView refreshData];
+//}
 //
 //- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart {
 //    return 2;

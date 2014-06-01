@@ -13,5 +13,7 @@
 // ALWAYS MAKE SUBCLASSES OF THIS CLASS
 
 - (void)refreshData;
++ (NSInteger)preferredHeight;
+- (void)restartAnimation;
 
 @end

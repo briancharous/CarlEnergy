@@ -32,11 +32,11 @@
     [peakRetreiver setDelegate:self];
     
     NSDate *now = [NSDate date];
-    NSDate *shorlyBeforeNow = [now dateByAddingTimeInterval:-60*60*1.1]; // two hour ago (really only need the server to return 1 data point)
+    NSDate *shortlyBeforeNow = [now dateByAddingTimeInterval:-60*60*1.1]; // two hour ago (really only need the server to return 1 data point)
     
     gotInstantUsage = NO;
     dispatch_async(dispatch_queue_create("com.carlenergy.dashboard", NULL), ^ {
-        [instantRetreiver getTotalCampusElectricityUsageWithStartTime:shorlyBeforeNow endTime:now resolution:kResolutionHour];
+        [instantRetreiver getTotalCampusElectricityUsageWithStartTime:shortlyBeforeNow endTime:now resolution:kResolutionHour];
     });
     
     gotPeakUsage = NO;
@@ -53,6 +53,7 @@
         return;
     }
     
+    self.peakLabel.numberOfLines = 0;
     NSString *instantString = [NSString stringWithFormat:@"%li kW currently being used", (long)instantUsage];
     NSString *maxString = [NSString stringWithFormat:@"%li kW peak consumption for this month", (long)peakUsage];
     [self.currentLabel setText:instantString];

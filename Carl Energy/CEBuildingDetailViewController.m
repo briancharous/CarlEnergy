@@ -27,8 +27,17 @@ NSString *  const CEElectric       = @"elec";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.scrollView.backgroundColor = [UIColor redColor];
     
-    [self.scrollView setFrame:self.view.frame];
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+        [self.scrollView setFrame:CGRectMake(self.view.frame.size.width / 4,160, self.view.frame.size.width, self.view.frame.size.height - 160)];
+        NSLog(@"landscape");
+
+    }
+    
+    else [self.scrollView setFrame:self.view.frame];
+
     
     //initialize graph views and graph maker
     CGRect parentRect = CGRectMake(0, 75, 320, 250);
@@ -63,7 +72,6 @@ NSString *  const CEElectric       = @"elec";
     
     // to enable scrolling
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 850)];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -110,8 +118,17 @@ NSString *  const CEElectric       = @"elec";
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.scrollView setFrame:self.view.frame];
+    [self.scrollView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
+    
+    //[self.scrollView setFrame:self.view.frame];
+    //[self.scrollView setContentSize:CGSizeMake(200, 850)];
+    /*if (UIDeviceOrientationIsLandscape(fromInterfaceOrientation)) {
+        NSLog(@"Was landscape");
+        [self.scrollView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
+
+    }*/
 }
+
 
 /*
 #pragma mark - Navigation

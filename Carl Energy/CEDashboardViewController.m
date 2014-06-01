@@ -29,7 +29,8 @@
 //    [refreshControl addTarget:self action:@selector(getElectricProductionAndUsage) forControlEvents:UIControlEventValueChanged];
 //    [self.scrollView addSubview:refreshControl];
     
-    [self.scrollView setContentSize:self.view.frame.size];
+    //set length of scrollview 
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 350)];
     [self.scrollView setFrame:self.view.frame];
     [self makeTurbine];
 }
@@ -48,7 +49,7 @@
 //    // undraw and redraw the graph
 //    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 //    // Maybe not needed after more content added:
-//    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 100)];
 //    [self makePieChart];
 
 }

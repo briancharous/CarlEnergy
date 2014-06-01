@@ -10,6 +10,16 @@
 
 @implementation CELineGraphMaker
 
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    //    // undraw and redraw the graph
+    //    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    //    // Maybe not needed after more content added:
+   // [self.hostView setContentSize:CGSizeMake(self.hostView.frame.size.width, 100)];
+    //    [self makePieChart];
+    
+}
+
+
 - (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale
 {
     if (!self.retreiver) {

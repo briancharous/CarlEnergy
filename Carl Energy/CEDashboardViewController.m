@@ -22,10 +22,9 @@
     // wind turbine blades
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartSubviewsAnimation) name:UIApplicationWillEnterForegroundNotification object:nil];
     
-    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_dashboard_selected"]];
+//    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_dashboard_selected"]];
     
     [self.scrollView setFrame:self.view.frame];
-    [self.scrollView setDelegate:self];
     
 //    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
     
@@ -112,7 +111,9 @@
             curY += [view preferredHeightForLandscape];
         }
     }
+    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
 }
+
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     

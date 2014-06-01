@@ -151,6 +151,8 @@
         // Actual data plot
         CPTScatterPlot *elecPlot = [[CPTScatterPlot alloc] init];
         elecPlot.dataSource = self;
+        elecPlot.delegate = self;
+        [elecPlot setPlotSymbolMarginForHitDetection:100];
         elecPlot.identifier = CEElectric;
         CPTColor *elecColor = [CPTColor redColor];
         CPTMutableLineStyle *elecLineStyle = [elecPlot.dataLineStyle mutableCopy];
@@ -493,6 +495,16 @@
         plotSpace.yRange = yRange;
         
     }
-    
 }
+
+#pragma mark CPTScatterPlotDelegate
+//-(void)scatterPlot:(CPTScatterPlot *)scatterPlot plotSymbolTouchDownAtRecordIndex:(NSUInteger)idx withEvent:(UIEvent *)event {
+//    NSLog(@"it's here");
+//}
+//
+//
+//- (void)scatterPlotDataLineTouchDown:(CPTScatterPlot *)plot {
+//    NSLog(@"it's here2");
+//}
+
 @end

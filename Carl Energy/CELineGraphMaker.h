@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, CETimeScale) {
 extern NSString * const CEClear;
 extern NSString * const CEElectric;
 
-@interface CELineGraphMaker : NSObject <CEDataRetrieverDelegate, CPTPlotDataSource>
+@interface CELineGraphMaker : NSObject <CEDataRetrieverDelegate, CPTPlotDataSource, CPTScatterPlotDelegate>
 
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
 @property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;

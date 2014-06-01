@@ -27,7 +27,6 @@ NSString *  const CEElectric       = @"elec";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.scrollView.backgroundColor = [UIColor redColor];
     
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
@@ -116,7 +115,31 @@ NSString *  const CEElectric       = @"elec";
 
     }*/
 }
-
+- (void) redrawForNewOrientation
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenHeight = screenRect.size.height;
+    CGFloat myWidth = 0;
+    if (UIInterfaceOrientationIsPortrait([self interfaceOrientation])) {
+        myWidth = 0;
+    }
+    else {
+        myWidth = screenHeight / 2 - 160;
+    }
+    CGRect parentRect = CGRectMake(myWidth, 75, 320, 250);
+    CGRect parentRect2 = CGRectMake(myWidth, 350, 320, 250);
+    CGRect parentRect3 = CGRectMake(myWidth, 615, 320, 250);
+    self.electricityLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
+    self.electricityLineGraphView.hostedGraph = self.elecLineGraph;
+    self.waterLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect2];
+    self.waterLineGraphView.hostedGraph = self.waterLineGraph;
+    self.steamLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect3];
+    self.steamLineGraphView.hostedGraph = self.steamLineGraph;
+    
+    [self.scrollView addSubview:self.electricityLineGraphView];
+    [self.scrollView addSubview:self.waterLineGraphView];
+    [self.scrollView addSubview:self.steamLineGraphView];
+}
 
 /*
 #pragma mark - Navigation

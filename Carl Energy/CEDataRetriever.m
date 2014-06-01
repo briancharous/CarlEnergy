@@ -236,6 +236,8 @@
 
 - (void)getPeakCampusConsumptionForPeriod:(Resolution)period {
     
+    [self setRequestInProgress:YES];
+    
     NSString *resolutionString;
     switch (period) {
         case kResolutionLive:
@@ -298,6 +300,8 @@
             }
         }
     }
+    
+    [self setRequestInProgress:NO];
 }
 
 // These use the wrong usageType

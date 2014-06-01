@@ -531,7 +531,6 @@
         }
     }
     self.x.axisLabels = xLabels;
-    NSLog(@"%@", xLabels);
     self.x.majorTickLocations = xLocations;
     
     self.y.axisLabels = yLabels;

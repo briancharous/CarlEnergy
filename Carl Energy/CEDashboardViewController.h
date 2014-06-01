@@ -11,12 +11,18 @@
 #import "CEWindView.h"
 #import "CEElectricityUsageView.h"
 
-@interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate> {
+@interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate> {
+
+    NSInteger numRefreshedViews;
+    NSInteger contentOffsetZero;
+    UILabel *pullToRefreshLabel;
+    CGPoint scrollRefreshPoint;
+    UIRefreshControl *refreshControl;
+    BOOL isRefreshing;
 }
 
-//- (void)makeTurbine;
 - (void)restartSubviewsAnimation;
-//- (void)makeUsageView;
+- (void)refreshSubviewsData;
 
 @property IBOutlet UIScrollView *scrollView;
 @property NSMutableArray *dashboardViews;

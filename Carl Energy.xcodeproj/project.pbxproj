@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		012D0AE1193BC7800058F79F /* customSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D0AE0193BC7800058F79F /* customSegue.m */; };
+		012D0AE6193BC9480058F79F /* customSegueBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D0AE5193BC9480058F79F /* customSegueBack.m */; };
 		013B09771932837300376BB6 /* CELineGraphMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B09761932837300376BB6 /* CELineGraphMaker.m */; };
 		013B09811932DE3400376BB6 /* aboutPage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 013B09801932DE3400376BB6 /* aboutPage.txt */; };
 		019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D61920800B00478145 /* QuartzCore.framework */; };
@@ -66,6 +68,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		012D0ADF193BC7800058F79F /* customSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customSegue.h; sourceTree = "<group>"; };
+		012D0AE0193BC7800058F79F /* customSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customSegue.m; sourceTree = "<group>"; };
+		012D0AE4193BC9480058F79F /* customSegueBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = customSegueBack.h; path = "Carl Energy/customSegueBack.h"; sourceTree = "<group>"; };
+		012D0AE5193BC9480058F79F /* customSegueBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = customSegueBack.m; path = "Carl Energy/customSegueBack.m"; sourceTree = "<group>"; };
 		013B09751932837300376BB6 /* CELineGraphMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CELineGraphMaker.h; sourceTree = "<group>"; };
 		013B09761932837300376BB6 /* CELineGraphMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CELineGraphMaker.m; sourceTree = "<group>"; };
 		013B09801932DE3400376BB6 /* aboutPage.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aboutPage.txt; sourceTree = "<group>"; };
@@ -143,6 +149,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		012D0AE7193BE65F0058F79F /* Custom Segue Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				012D0ADF193BC7800058F79F /* customSegue.h */,
+				012D0AE0193BC7800058F79F /* customSegue.m */,
+				012D0AE4193BC9480058F79F /* customSegueBack.h */,
+				012D0AE5193BC9480058F79F /* customSegueBack.m */,
+			);
+			name = "Custom Segue Stuff";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		019ED0E81920884300478145 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +232,7 @@
 				9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */,
 				32269D1B192FE71600013D3E /* CEAboutPageViewController.h */,
 				32269D1C192FE71600013D3E /* CEAboutPageViewController.m */,
+				012D0AE7193BE65F0058F79F /* Custom Segue Stuff */,
 				9F8480ED191D4BD3005F09BA /* Data Wrappers */,
 				9FA4A4D8191A95A300AE3551 /* Images.xcassets */,
 				9FA4A4C4191A95A300AE3551 /* Supporting Files */,
@@ -390,6 +409,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				012D0AE1193BC7800058F79F /* customSegue.m in Sources */,
+				012D0AE6193BC9480058F79F /* customSegueBack.m in Sources */,
 				9FB5F6E61932B46F00C9B419 /* CEWindView.m in Sources */,
 				9FA4A4D7191A95A300AE3551 /* CEDashboardViewController.m in Sources */,
 				32269D1D192FE71600013D3E /* CEAboutPageViewController.m in Sources */,

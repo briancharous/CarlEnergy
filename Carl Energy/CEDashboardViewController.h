@@ -12,15 +12,13 @@
 #import "CEElectricityUsageView.h"
 
 @interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate> {
-
-    CEWindView *windView;
-    CEElectricityUsageView *elecView;
 }
 
-- (void)makeTurbine;
-- (void)restartBladeAnimation;
-- (void)makeUsageView;
+//- (void)makeTurbine;
+- (void)restartSubviewsAnimation;
+//- (void)makeUsageView;
 
 @property IBOutlet UIScrollView *scrollView;
+@property NSMutableArray *dashboardViews;
 
 @end

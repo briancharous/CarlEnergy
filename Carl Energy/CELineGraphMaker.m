@@ -66,6 +66,9 @@
         self.retreiver = nil;
         self.retreiver = [[CEDataRetriever alloc] init];
         [self.retreiver setDelegate:self];
+        dispatch_async(dispatch_queue_create("com.carlenergy.graphs", NULL), ^ {
+            [self.retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
+        });
     }
 }
 

@@ -8,64 +8,64 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CEWindView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_base" translatesAutoresizingMaskIntoConstraints="NO" id="rmn-hB-dq7">
-                    <rect key="frame" x="75" y="331" width="28" height="100"/>
+                    <rect key="frame" x="45" y="276" width="16" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="8Dg-AE-WBQ"/>
-                        <constraint firstAttribute="width" constant="28" id="sRb-nW-gYv"/>
+                        <constraint firstAttribute="height" constant="64" id="8Dg-AE-WBQ"/>
+                        <constraint firstAttribute="width" constant="16" id="sRb-nW-gYv"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_blades" translatesAutoresizingMaskIntoConstraints="NO" id="fGv-5x-cfu">
-                    <rect key="frame" x="14" y="236" width="150" height="150"/>
+                    <rect key="frame" x="3" y="216" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="150" id="2Un-Kn-ML0"/>
-                        <constraint firstAttribute="width" constant="150" id="IVR-xb-rQk"/>
+                        <constraint firstAttribute="height" constant="100" id="2Un-Kn-ML0"/>
+                        <constraint firstAttribute="width" constant="100" id="IVR-xb-rQk"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_base" translatesAutoresizingMaskIntoConstraints="NO" id="xxt-ke-TlG">
-                    <rect key="frame" x="153" y="381" width="14" height="50"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_base_small" translatesAutoresizingMaskIntoConstraints="NO" id="xxt-ke-TlG">
+                    <rect key="frame" x="111" y="308" width="8" height="32"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="14" id="mTd-1L-PcU"/>
-                        <constraint firstAttribute="height" constant="50" id="msl-As-BIT"/>
+                        <constraint firstAttribute="width" constant="8" id="mTd-1L-PcU"/>
+                        <constraint firstAttribute="height" constant="32" id="msl-As-BIT"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_blades" translatesAutoresizingMaskIntoConstraints="NO" id="Rpi-NC-K0O">
-                    <rect key="frame" x="123" y="334" width="75" height="75"/>
+                    <rect key="frame" x="96" y="284" width="38" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="75" id="QJ1-1t-Yp6"/>
-                        <constraint firstAttribute="height" constant="75" id="oEP-Ki-ulX"/>
+                        <constraint firstAttribute="width" constant="38" id="QJ1-1t-Yp6"/>
+                        <constraint firstAttribute="height" constant="38" id="oEP-Ki-ulX"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Wind Production" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZA-0H-8NL">
-                    <rect key="frame" x="0.0" y="20" width="320" height="31"/>
+                    <rect key="frame" x="0.0" y="10" width="320" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past 24 hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jun-jw-zJP">
-                    <rect key="frame" x="0.0" y="61" width="320" height="24"/>
+                    <rect key="frame" x="0.0" y="51" width="320" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-ThinItalic" family="Helvetica Neue" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCT-Hc-YdM">
-                    <rect key="frame" x="0.0" y="95" width="310" height="21"/>
+                    <rect key="frame" x="0.0" y="80" width="310" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-6I-xXx">
-                    <rect key="frame" x="0.0" y="126" width="310" height="21"/>
+                    <rect key="frame" x="0.0" y="106" width="310" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,30 +76,29 @@
             <constraints>
                 <constraint firstItem="xxt-ke-TlG" firstAttribute="leading" secondItem="rmn-hB-dq7" secondAttribute="trailing" constant="50" id="07s-xd-ta5"/>
                 <constraint firstItem="jun-jw-zJP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9e0-Zw-foS"/>
-                <constraint firstItem="rmn-hB-dq7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="75" id="9y7-oS-wle"/>
+                <constraint firstItem="rmn-hB-dq7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="45" id="9y7-oS-wle"/>
                 <constraint firstItem="Rpi-NC-K0O" firstAttribute="centerX" secondItem="xxt-ke-TlG" secondAttribute="centerX" id="Dk8-2z-Nzb"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DCT-Hc-YdM" secondAttribute="trailing" constant="10" id="FOk-6m-4Iu"/>
-                <constraint firstItem="xxt-ke-TlG" firstAttribute="top" secondItem="Rpi-NC-K0O" secondAttribute="centerY" constant="10" id="Gn7-Uk-F0H"/>
+                <constraint firstItem="xxt-ke-TlG" firstAttribute="top" secondItem="Rpi-NC-K0O" secondAttribute="centerY" constant="5" id="Gn7-Uk-F0H"/>
                 <constraint firstAttribute="trailing" secondItem="JZA-0H-8NL" secondAttribute="trailing" id="IdT-IQ-w8X"/>
                 <constraint firstItem="JZA-0H-8NL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MTi-qr-S3q"/>
                 <constraint firstItem="DCT-Hc-YdM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NQz-VV-3nl"/>
-                <constraint firstItem="vOz-6I-xXx" firstAttribute="top" secondItem="DCT-Hc-YdM" secondAttribute="bottom" constant="10" id="OMz-0m-VCp"/>
-                <constraint firstItem="rmn-hB-dq7" firstAttribute="top" secondItem="fGv-5x-cfu" secondAttribute="centerY" constant="20" id="PSP-Q3-UVu"/>
+                <constraint firstItem="vOz-6I-xXx" firstAttribute="top" secondItem="DCT-Hc-YdM" secondAttribute="bottom" constant="5" id="OMz-0m-VCp"/>
+                <constraint firstItem="rmn-hB-dq7" firstAttribute="top" secondItem="fGv-5x-cfu" secondAttribute="centerY" constant="10" id="PSP-Q3-UVu"/>
                 <constraint firstItem="jun-jw-zJP" firstAttribute="top" secondItem="JZA-0H-8NL" secondAttribute="bottom" constant="10" id="SrB-CI-D9l"/>
                 <constraint firstAttribute="trailing" secondItem="jun-jw-zJP" secondAttribute="trailing" id="Uf5-go-FFE"/>
                 <constraint firstAttribute="trailing" secondItem="DCT-Hc-YdM" secondAttribute="trailing" constant="10" id="Uvy-Jq-2SS"/>
                 <constraint firstItem="DCT-Hc-YdM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ypi-5t-04A"/>
                 <constraint firstAttribute="bottom" secondItem="rmn-hB-dq7" secondAttribute="bottom" id="ctO-9i-g09"/>
                 <constraint firstItem="vOz-6I-xXx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e1e-nd-BwS"/>
-                <constraint firstItem="DCT-Hc-YdM" firstAttribute="top" secondItem="jun-jw-zJP" secondAttribute="bottom" constant="10" id="hcI-xl-7rs"/>
+                <constraint firstItem="DCT-Hc-YdM" firstAttribute="top" secondItem="jun-jw-zJP" secondAttribute="bottom" constant="5" id="hcI-xl-7rs"/>
                 <constraint firstItem="fGv-5x-cfu" firstAttribute="centerX" secondItem="rmn-hB-dq7" secondAttribute="centerX" id="lCa-Om-a4i"/>
-                <constraint firstItem="DCT-Hc-YdM" firstAttribute="top" secondItem="jun-jw-zJP" secondAttribute="bottom" constant="10" id="lNV-7b-rFo"/>
-                <constraint firstItem="JZA-0H-8NL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="nHE-Px-Xqk"/>
+                <constraint firstItem="JZA-0H-8NL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="nHE-Px-Xqk"/>
                 <constraint firstAttribute="bottom" secondItem="xxt-ke-TlG" secondAttribute="bottom" id="tQn-sY-zfm"/>
                 <constraint firstAttribute="trailing" secondItem="vOz-6I-xXx" secondAttribute="trailing" constant="10" id="unP-Lt-u2s"/>
             </constraints>
             <connections>
-                <outlet property="baseView" destination="rmn-hB-dq7" id="hfI-uW-g7o"/>
+                <outlet property="baseView" destination="rmn-hB-dq7" id="dDF-xS-Yc8"/>
                 <outlet property="baseView2" destination="xxt-ke-TlG" id="LgA-xI-Uzd"/>
                 <outlet property="bladesView" destination="fGv-5x-cfu" id="jFT-Py-Q2D"/>
                 <outlet property="bladesView2" destination="Rpi-NC-K0O" id="lyE-3l-Ih7"/>
@@ -109,7 +108,8 @@
         </view>
     </objects>
     <resources>
-        <image name="turbine_base" width="28" height="80"/>
-        <image name="turbine_blades" width="150" height="150"/>
+        <image name="turbine_base" width="16" height="64"/>
+        <image name="turbine_base_small" width="8" height="32"/>
+        <image name="turbine_blades" width="100" height="100"/>
     </resources>
 </document>

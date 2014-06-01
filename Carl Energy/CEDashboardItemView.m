@@ -23,7 +23,19 @@
 
 - (void)refreshData {}
 
-+ (NSInteger)preferredHeight {
+- (NSInteger)preferredHeightForPortrait {
+    return 350;
+}
+
++ (NSInteger)preferredHeightForPortrait {
+    return 350;
+}
+
+- (NSInteger)preferredHeightForLandscape {
+    return 350;
+}
+
++ (NSInteger)preferredHeightForLandscape {
     return 350;
 }
 

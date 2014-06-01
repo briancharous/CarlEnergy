@@ -21,8 +21,20 @@
     return self;
 }
 
-+ (NSInteger)preferredHeight {
-    return 150;
+- (NSInteger)preferredHeightForPortrait {
+    return [CEElectricityUsageView preferredHeightForPortrait];
+}
+
++ (NSInteger)preferredHeightForPortrait {
+    return 125;
+}
+
+- (NSInteger)preferredHeightForLandscape {
+    return [CEElectricityUsageView preferredHeightForLandscape];
+}
+
++ (NSInteger)preferredHeightForLandscape {
+    return 125;
 }
 
 - (void)refreshData {

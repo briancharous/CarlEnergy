@@ -17,7 +17,10 @@
 @property (nonatomic, assign) id <CEDashboardItemViewDelegate> delegate;
 
 - (void)refreshData;
-+ (NSInteger)preferredHeight;
+- (NSInteger)preferredHeightForPortrait;
++ (NSInteger)preferredHeightForPortrait;
+- (NSInteger)preferredHeightForLandscape;
++ (NSInteger)preferredHeightForLandscape;
 - (void)restartAnimation;
 
 @end

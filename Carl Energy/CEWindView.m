@@ -21,6 +21,30 @@
     return self;
 }
 
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+
+}
+*/
+
+- (NSInteger)preferredHeightForPortrait {
+    return [CEWindView preferredHeightForPortrait];
+}
+
++ (NSInteger)preferredHeightForPortrait {
+    return 250;
+}
+
+- (NSInteger)preferredHeightForLandscape {
+    return [CEWindView preferredHeightForLandscape];
+}
+
++ (NSInteger)preferredHeightForLandscape {
+    return 150;
+}
+
 - (void)restartAnimation {
     CABasicAnimation* rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -110,13 +134,6 @@
 ////    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDid object:<#(id)#>]
 //}
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
 
 @end

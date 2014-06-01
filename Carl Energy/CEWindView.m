@@ -42,7 +42,7 @@
 }
 
 + (NSInteger)preferredHeightForLandscape {
-    return 100;
+    return 150;
 }
 
 - (void)restartAnimation {

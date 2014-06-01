@@ -99,15 +99,26 @@
     [self.scrollView setFrame:self.view.frame];
     NSInteger curY = 0;
     for (CEDashboardItemView *view in self.dashboardViews) {
-        [UIView animateWithDuration:.25 animations:^ {
-            [view setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [view preferredHeightForPortrait])];
-        }];
-        curY += [view preferredHeightForPortrait];
+        if (UIInterfaceOrientationIsPortrait(curOrientation)) {
+            [UIView animateWithDuration:.25 animations:^ {
+                [view setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [view preferredHeightForPortrait])];
+            }];
+            curY += [view preferredHeightForPortrait];
+        }
+        else {
+            [UIView animateWithDuration:.25 animations:^ {
+                [view setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [view preferredHeightForLandscape])];
+            }];
+            curY += [view preferredHeightForLandscape];
+        }
     }
 }
 
-//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-//   
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    curOrientation = toInterfaceOrientation;
+}
+//
 //    NSInteger curY = 0;
 //    for (CEDashboardItemView *view in self.dashboardViews) {
 //        [UIView animateWithDuration:duration animations:^ {

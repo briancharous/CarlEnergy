@@ -34,7 +34,7 @@
 }
 
 + (NSInteger)preferredHeightForLandscape {
-    return 100;
+    return 125;
 }
 
 - (void)refreshData {

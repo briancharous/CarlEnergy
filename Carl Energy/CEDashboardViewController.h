@@ -17,6 +17,7 @@
     UILabel *pullToRefreshLabel;
     UIRefreshControl *refreshControl;
     BOOL isRefreshing;
+    UIInterfaceOrientation curOrientation;
 }
 
 - (void)restartSubviewsAnimation;

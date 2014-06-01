@@ -10,8 +10,6 @@
 
 #import "CEDashboardViewController.h"
 
-#define statusBarHeight 20
-
 
 @implementation CEDashboardViewController
 
@@ -29,9 +27,8 @@
     [self.scrollView setFrame:self.view.frame];
     [self.scrollView setDelegate:self];
     
-    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+//    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
     
-    contentOffsetZero = statusBarHeight + self.navigationController.navigationBar.frame.size.height;
     //    pullToRefreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -50, self.scrollView.frame.size.width, 30)];
     [pullToRefreshLabel setText:@"Pull to refresh"];
     [self.scrollView addSubview:pullToRefreshLabel];
@@ -39,24 +36,24 @@
     
     // create the wind usage view and electricity usage views
     NSInteger curY = 0;
-    CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEWindView preferredHeight])];
+    CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEWindView preferredHeightForPortrait])];
     [windView setDelegate:self];
     [self.dashboardViews addObject:windView];
-    curY += [CEWindView preferredHeight];
-    CEElectricityUsageView *elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEElectricityUsageView preferredHeight])];
+    curY += [CEWindView preferredHeightForPortrait];
+    CEElectricityUsageView *elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEElectricityUsageView preferredHeightForPortrait])];
     [self.dashboardViews addObject:elecView];
     [elecView setDelegate:self];
-    curY += [CEElectricityUsageView preferredHeight];
+    curY += [CEElectricityUsageView preferredHeightForPortrait];
     
     
     // setup the scroll view
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
     for (CEDashboardItemView *view in self.dashboardViews) {
-        //[self.scrollView addSubview:view];
-        [self.mainView addSubview:view];
+        [self.scrollView addSubview:view];
+//        [self.mainView addSubview:view];
         [view restartAnimation];
     }
-    [self.scrollView addSubview:self.mainView];
+//    [self.scrollView addSubview:self.mainView];
     [self refreshSubviewsData];
     
     // Refresh control doesn't really seem to work super well
@@ -97,29 +94,33 @@
     //    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
     //    [self makePieChart];
     
-    [self.mainView setFrame:CGRectMake(0,0,self.scrollView.frame.size.width, 480)];
+//    [self.mainView setFrame:CGRectMake(0,0,self.scrollView.frame.size.width, 480)];
 
+    [self.scrollView setFrame:self.view.frame];
+    NSInteger curY = 0;
+    for (CEDashboardItemView *view in self.dashboardViews) {
+        [UIView animateWithDuration:.25 animations:^ {
+            [view setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [view preferredHeightForPortrait])];
+        }];
+        curY += [view preferredHeightForPortrait];
+    }
 }
 
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    //    if (windView) {
-    
-    // NO IDEA WHAT IS GOING ON HERE
-    /*
-     [UIView animateWithDuration:duration animations:^ {
-     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-     NSLog(@"landscape");
-     [windView setFrame:CGRectMake(windView.frame.origin.x, windView.frame.origin.y, self.scrollView.bounds.size.width, 200)];
-     }
-     else {
-     NSLog(@"portrait");
-     [windView setFrame:CGRectMake(windView.frame.origin.x, windView.frame.origin.y, self.scrollView.bounds.size.width, 350)];
-     }
-     }];
-     */
-    //    }
-}
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//   
+//    NSInteger curY = 0;
+//    for (CEDashboardItemView *view in self.dashboardViews) {
+//        [UIView animateWithDuration:duration animations:^ {
+//            if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+//                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, [view preferredHeightForLandscape])];
+//            }
+//            else {
+//                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, [view preferredHeightForPortrait])];
+//            }
+//        }];
+//        curY += [view preferredHeightForPortrait];
+//    }
+//}
 
 - (void)didReceiveMemoryWarning
 {

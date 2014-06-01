@@ -14,9 +14,7 @@
 @interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate> {
 
     NSInteger numRefreshedViews;
-    NSInteger contentOffsetZero;
     UILabel *pullToRefreshLabel;
-    CGPoint scrollRefreshPoint;
     UIRefreshControl *refreshControl;
     BOOL isRefreshing;
 }
@@ -26,6 +24,6 @@
 
 @property IBOutlet UIScrollView *scrollView;
 @property NSMutableArray *dashboardViews;
-@property UIView *mainView;
+//@property UIView *mainView;
 
 @end

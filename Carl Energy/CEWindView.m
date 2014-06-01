@@ -29,8 +29,20 @@
 }
 */
 
-+ (NSInteger)preferredHeight {
+- (NSInteger)preferredHeightForPortrait {
+    return [CEWindView preferredHeightForPortrait];
+}
+
++ (NSInteger)preferredHeightForPortrait {
     return 250;
+}
+
+- (NSInteger)preferredHeightForLandscape {
+    return [CEWindView preferredHeightForLandscape];
+}
+
++ (NSInteger)preferredHeightForLandscape {
+    return 100;
 }
 
 - (void)restartAnimation {

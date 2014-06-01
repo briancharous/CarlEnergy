@@ -343,7 +343,7 @@
             }
             for (int k = 1; k <= numObjects; k++) {
                 if (k%val == 0){
-                    int daysToAdd = -(numObjects-k);
+                    NSInteger daysToAdd = -(numObjects-k);
                     NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
                     NSDateComponents *components1 = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth fromDate:newDate];
                     NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)[components1 month], "/",(long)[components1 day]];

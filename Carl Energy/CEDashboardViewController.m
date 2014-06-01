@@ -32,6 +32,7 @@
     [self.scrollView setContentSize:self.view.frame.size];
     [self.scrollView setFrame:self.view.frame];
     [self makeTurbine];
+    [self makeUsageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,6 +78,12 @@
     windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 350)];
     [self.scrollView addSubview:windView];
     [windView refreshData];
+}
+
+- (void)makeUsageView {
+    elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, 350, self.scrollView.bounds.size.width, 200)];
+    [self.scrollView addSubview:elecView];
+    [elecView refreshData];
 }
 //
 //- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart {

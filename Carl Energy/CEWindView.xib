@@ -72,12 +72,13 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.021162661869999998" green="0.74724968110000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.36862745098039218" green="0.72156862745098038" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="xxt-ke-TlG" firstAttribute="leading" secondItem="rmn-hB-dq7" secondAttribute="trailing" constant="50" id="07s-xd-ta5"/>
                 <constraint firstItem="jun-jw-zJP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9e0-Zw-foS"/>
                 <constraint firstItem="rmn-hB-dq7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="75" id="9y7-oS-wle"/>
                 <constraint firstItem="Rpi-NC-K0O" firstAttribute="centerX" secondItem="xxt-ke-TlG" secondAttribute="centerX" id="Dk8-2z-Nzb"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DCT-Hc-YdM" secondAttribute="trailing" constant="10" id="FOk-6m-4Iu"/>
                 <constraint firstItem="xxt-ke-TlG" firstAttribute="top" secondItem="Rpi-NC-K0O" secondAttribute="centerY" constant="10" id="Gn7-Uk-F0H"/>
                 <constraint firstAttribute="trailing" secondItem="JZA-0H-8NL" secondAttribute="trailing" id="IdT-IQ-w8X"/>
                 <constraint firstItem="JZA-0H-8NL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MTi-qr-S3q"/>
@@ -87,10 +88,12 @@
                 <constraint firstItem="jun-jw-zJP" firstAttribute="top" secondItem="JZA-0H-8NL" secondAttribute="bottom" constant="10" id="SrB-CI-D9l"/>
                 <constraint firstAttribute="trailing" secondItem="jun-jw-zJP" secondAttribute="trailing" id="Uf5-go-FFE"/>
                 <constraint firstAttribute="trailing" secondItem="DCT-Hc-YdM" secondAttribute="trailing" constant="10" id="Uvy-Jq-2SS"/>
+                <constraint firstItem="DCT-Hc-YdM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ypi-5t-04A"/>
                 <constraint firstAttribute="bottom" secondItem="rmn-hB-dq7" secondAttribute="bottom" id="ctO-9i-g09"/>
                 <constraint firstItem="vOz-6I-xXx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e1e-nd-BwS"/>
                 <constraint firstItem="DCT-Hc-YdM" firstAttribute="top" secondItem="jun-jw-zJP" secondAttribute="bottom" constant="10" id="hcI-xl-7rs"/>
                 <constraint firstItem="fGv-5x-cfu" firstAttribute="centerX" secondItem="rmn-hB-dq7" secondAttribute="centerX" id="lCa-Om-a4i"/>
+                <constraint firstItem="DCT-Hc-YdM" firstAttribute="top" secondItem="jun-jw-zJP" secondAttribute="bottom" constant="10" id="lNV-7b-rFo"/>
                 <constraint firstItem="JZA-0H-8NL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="nHE-Px-Xqk"/>
                 <constraint firstAttribute="bottom" secondItem="xxt-ke-TlG" secondAttribute="bottom" id="tQn-sY-zfm"/>
                 <constraint firstAttribute="trailing" secondItem="vOz-6I-xXx" secondAttribute="trailing" constant="10" id="unP-Lt-u2s"/>

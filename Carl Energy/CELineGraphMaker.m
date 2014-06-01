@@ -509,9 +509,9 @@
     plotSpace.yRange = yRange;
     
     // test code for y axis problem
-    NSLog(self.y.title);
-    NSLog(@"%i", [self.y.axisLabels count]);
-    NSLog(@"%i", [self.y.majorTickLocations count]);
+    NSLog(@"%@", self.y.title);
+    NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
+    NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
     NSArray *yArray = [self.y.axisLabels allObjects];
     NSLog(@"%@", yArray);
     NSArray *yArray2 = [self.y.majorTickLocations allObjects];

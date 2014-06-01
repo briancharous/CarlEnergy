@@ -53,11 +53,19 @@
             break;
     }
     
-    //TODO: cancel request if another one is in progress
     if (!self.retreiver.requestInProgress) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+        dispatch_async(dispatch_queue_create("com.carlenergy.graphs", NULL), ^ {
             [self.retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
         });
+    }
+    else {
+        // if a request is in progress, cancel the request by deleteing the old
+        // data retreiver
+        // is this going to be a memory issue??
+        [self.retreiver setDelegate:nil];
+        self.retreiver = nil;
+        self.retreiver = [[CEDataRetriever alloc] init];
+        [self.retreiver setDelegate:self];
     }
 }
 
@@ -509,13 +517,13 @@
     plotSpace.yRange = yRange;
     
     // test code for y axis problem
-    NSLog(@"%@", self.y.title);
-    NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
-    NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
-    NSArray *yArray = [self.y.axisLabels allObjects];
-    NSLog(@"%@", yArray);
-    NSArray *yArray2 = [self.y.majorTickLocations allObjects];
-    NSLog(@"%@", yArray2);
+//    NSLog(@"%@", self.y.title);
+//    NSLog(@"%lu", (unsigned long)[self.y.axisLabels count]);
+//    NSLog(@"%lu", (unsigned long)[self.y.majorTickLocations count]);
+//    NSArray *yArray = [self.y.axisLabels allObjects];
+//    NSLog(@"%@", yArray);
+//    NSArray *yArray2 = [self.y.majorTickLocations allObjects];
+//    NSLog(@"%@", yArray2);
     
 }
 @end

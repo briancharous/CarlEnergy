@@ -9,17 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "CEDataRetriever.h"
 #import "CEWindView.h"
+#import "CEElectricityUsageView.h"
 
 @interface CEDashboardViewController : UIViewController <CEDataRetrieverDelegate> {
-
-    CEWindView *windView;
 }
 
-- (void)makeTurbine;
-- (void)restartBladeAnimation;
+//- (void)makeTurbine;
+- (void)restartSubviewsAnimation;
+//- (void)makeUsageView;
 
-
-@property (readwrite, strong, nonatomic) NSMutableArray *dataForChart;
 @property IBOutlet UIScrollView *scrollView;
+@property NSMutableArray *dashboardViews;
 
 @end

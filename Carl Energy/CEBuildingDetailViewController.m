@@ -40,11 +40,20 @@ NSString *  const CEElectric       = @"elec";
 
     
     //initialize graph views and graph maker
-    CGRect parentRect = CGRectMake(0, 75, 320, 250);
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenHeight = screenRect.size.height;
+    CGFloat myWidth = 0;
+    if (UIInterfaceOrientationIsPortrait([self interfaceOrientation])) {
+        myWidth = 0;
+    }
+    else {
+        myWidth = screenHeight / 2 - 160;
+    }
+    CGRect parentRect = CGRectMake(myWidth, 75, 320, 250);
+    CGRect parentRect2 = CGRectMake(myWidth, 350, 320, 250);
+    CGRect parentRect3 = CGRectMake(myWidth, 615, 320, 250);
     self.electricityLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
-    CGRect parentRect2 = CGRectMake(0, 350, 320, 250);
     self.waterLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect2];
-    CGRect parentRect3 = CGRectMake(0, 615, 320, 250);
     self.steamLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect3];
     
     self.elecGraphMaker = [[CELineGraphMaker alloc] init];
@@ -72,6 +81,11 @@ NSString *  const CEElectric       = @"elec";
     
     // to enable scrolling
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 850)];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.scrollView setFrame:self.view.frame];
+    [self redrawForNewOrientation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

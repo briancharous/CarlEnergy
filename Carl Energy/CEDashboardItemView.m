@@ -21,10 +21,13 @@
     return self;
 }
 
-- (void)refreshData {
-    // OVERRIDE THIS FUNCTION IN THE SUBCLASS
-    mustOverride();
+- (void)refreshData {}
+
++ (NSInteger)preferredHeight {
+    return 350;
 }
+
+- (void)restartAnimation {}
 
 /*
 // Only override drawRect: if you perform custom drawing.

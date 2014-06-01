@@ -27,7 +27,8 @@
 @property IBOutlet UILabel *producedLabel;
 @property IBOutlet UILabel *consumedLabel;
 
-- (void)startBladeAnimation;
+- (void)restartAnimation;
 - (void)updateUsageData;
+
 
 @end

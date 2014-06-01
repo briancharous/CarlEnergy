@@ -14,6 +14,8 @@
 		019ED0F11920886300478145 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */; };
 		32269D1D192FE71600013D3E /* CEAboutPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32269D1C192FE71600013D3E /* CEAboutPageViewController.m */; };
 		329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */; };
+		9F84282E193A8EAC002F1A3D /* CEElectricityUsageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F84282D193A8EAC002F1A3D /* CEElectricityUsageView.m */; };
+		9F842832193A8EBE002F1A3D /* CEElectricityUsageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F842831193A8EBE002F1A3D /* CEElectricityUsageView.xib */; };
 		9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480E8191D4556005F09BA /* CEBuilding.m */; };
 		9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480EB191D4A14005F09BA /* CEDataPoint.m */; };
 		9F8E0560192C0735001335C4 /* CEMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E055F192C0735001335C4 /* CEMeter.m */; };
@@ -74,6 +76,9 @@
 		32269D1C192FE71600013D3E /* CEAboutPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEAboutPageViewController.m; sourceTree = "<group>"; };
 		329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuildingDetailViewController.h; sourceTree = "<group>"; };
 		329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuildingDetailViewController.m; sourceTree = "<group>"; };
+		9F84282C193A8EAC002F1A3D /* CEElectricityUsageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEElectricityUsageView.h; sourceTree = "<group>"; };
+		9F84282D193A8EAC002F1A3D /* CEElectricityUsageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEElectricityUsageView.m; sourceTree = "<group>"; };
+		9F842831193A8EBE002F1A3D /* CEElectricityUsageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CEElectricityUsageView.xib; sourceTree = "<group>"; };
 		9F8480E7191D4556005F09BA /* CEBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuilding.h; sourceTree = "<group>"; };
 		9F8480E8191D4556005F09BA /* CEBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuilding.m; sourceTree = "<group>"; };
 		9F8480EA191D4A14005F09BA /* CEDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataPoint.h; sourceTree = "<group>"; };
@@ -257,6 +262,9 @@
 				9FB5F6E41932B46F00C9B419 /* CEWindView.h */,
 				9FB5F6E51932B46F00C9B419 /* CEWindView.m */,
 				9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */,
+				9F84282C193A8EAC002F1A3D /* CEElectricityUsageView.h */,
+				9F84282D193A8EAC002F1A3D /* CEElectricityUsageView.m */,
+				9F842831193A8EBE002F1A3D /* CEElectricityUsageView.xib */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -359,6 +367,7 @@
 			files = (
 				9FB5F6E81932B4DC00C9B419 /* CEWindView.xib in Resources */,
 				9FA4A4D9191A95A300AE3551 /* Images.xcassets in Resources */,
+				9F842832193A8EBE002F1A3D /* CEElectricityUsageView.xib in Resources */,
 				9FA4A4C8191A95A300AE3551 /* InfoPlist.strings in Resources */,
 				013B09811932DE3400376BB6 /* aboutPage.txt in Resources */,
 				9FC36343192DB70B002E00B6 /* buildings.plist in Resources */,
@@ -394,6 +403,7 @@
 				329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */,
 				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,
 				9FE19A49193662E800082FB3 /* CEDashboardItemView.m in Sources */,
+				9F84282E193A8EAC002F1A3D /* CEElectricityUsageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

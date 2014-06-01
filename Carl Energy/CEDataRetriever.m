@@ -234,6 +234,76 @@
     
 }
 
+- (void)getPeakCampusConsumptionForPeriod:(Resolution)period {
+    
+    [self setRequestInProgress:YES];
+    
+    NSString *resolutionString;
+    switch (period) {
+        case kResolutionLive:
+            resolutionString = @"live";
+            break;
+        case kResolutionDay:
+            resolutionString = @"today";
+            break;
+        case kResolutionHour:
+            resolutionString = @"hour";
+            break;
+        case kResolutionMonth:
+            resolutionString = @"month";
+            break;
+        default:
+            resolutionString = @"";
+            break;
+    }
+    
+    CEBuilding *mainCampus = nil;
+    
+    NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
+    for (NSDictionary *dict in buildingsDictionaries) {
+        if ([[dict objectForKey:@"displayName"] isEqualToString:@"Main Campus"]) {
+            mainCampus = [self buildingFromDictionary:dict];
+            break;
+        }
+    }
+    
+    NSString *meterName = nil;
+    for (CEMeter *meter in mainCampus.meters) {
+        if (meter.usageType == kUsageTypeElectricity) {
+            meterName = meter.systemName;
+            break;
+        }
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/reports/average/?name=%@&page=1&period=%@", self.baseUrl, meterName, resolutionString];
+    NSURL *requestURL = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
+    NSURLResponse *response = nil;
+    NSError *webError = nil;
+    NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
+    
+    if (webError == nil) {
+        NSError *jsonError = nil;
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:result options:0 error:&jsonError];
+        if (jsonError == nil) {
+            if (![[json objectForKey:@"results"] isEqual:[NSNull null]]) {
+                NSDictionary *results = [json objectForKey:@"results"];
+                if (results) {
+                    NSDictionary *usage = [results objectForKey:meterName];
+                    if (usage) {
+                        if ([self.delegate respondsToSelector:@selector(retriever:gotPeakConsumption:)]) {
+                            float peakUsage = [[usage objectForKey:@"trueMaximum"] floatValue];
+                            [self.delegate retriever:self gotPeakConsumption:peakUsage];
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    [self setRequestInProgress:NO];
+}
+
 // These use the wrong usageType
 //- (void)getTotalCampusGasUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res {
 //    

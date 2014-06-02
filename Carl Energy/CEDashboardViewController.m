@@ -131,6 +131,7 @@
                 }
                 r = nil;
                 CEBuildingMiniView *mini = [[CEBuildingMiniView alloc] initWithFrame:CGRectZero];
+                [mini setMiniViewDelegate:self];
                 [mini setDelegate:self];
                 [mini setBuilding:b];
                 [self.dashboardViews addObject:mini];
@@ -251,6 +252,14 @@
     [self.buildingsPopover dismissPopoverAnimated:YES];
     CEBuildingDetailViewController *detailView = [[UIStoryboard storyboardWithName:@"Main-iPad" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"buildingDetailView"];
     [detailView setBuilding:building];
+    [self.navigationController pushViewController:detailView animated:YES];
+}
+
+#pragma mark Building mini view delegate
+- (void)buildingMiniViewWasSelected:(CEBuildingMiniView *)miniView {
+    CEBuilding *selectedBuilding = [miniView building];
+    CEBuildingDetailViewController *detailView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"buildingDetailView"];
+    [detailView setBuilding:selectedBuilding];
     [self.navigationController pushViewController:detailView animated:YES];
 }
 

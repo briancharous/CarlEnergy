@@ -15,7 +15,7 @@
 #import "CEDataRetriever.h"
 #import "CEBuildingDetailViewController.h"
 
-@interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate, CEDashboardReorderDelegate, CEBuildingsListControllerDelegate> {
+@interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate, CEDashboardReorderDelegate, CEBuildingsListControllerDelegate, CEBuildingMiniViewDelegate> {
 
     NSInteger numRefreshedViews;
     UILabel *pullToRefreshLabel;

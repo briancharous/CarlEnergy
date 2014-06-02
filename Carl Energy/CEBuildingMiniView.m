@@ -19,6 +19,7 @@
         [self.elecLabel setText:@""];
         [self.waterLabel setText:@""];
         [self.steamLabel setText:@""];
+        [self.bigButton addTarget:self action:@selector(bigButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -26,6 +27,10 @@
 - (void)setBuilding:(CEBuilding *)building {
     _building = building;
     [self.titleLabel setText:building.displayName];
+}
+
+- (void)bigButtonPressed {
+    [self.miniViewDelegate buildingMiniViewWasSelected:self];
 }
 
 - (void)refreshData {

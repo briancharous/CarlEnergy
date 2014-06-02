@@ -112,7 +112,7 @@
         <!--Building Detail View Controller - Building Name-->
         <scene sceneID="e1q-Nd-WUw">
             <objects>
-                <viewController id="YXv-bG-9kb" customClass="CEBuildingDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="buildingDetailView" id="YXv-bG-9kb" customClass="CEBuildingDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h0C-z4-BZ2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

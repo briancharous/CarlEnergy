@@ -9,6 +9,8 @@
 #import "CEDashboardItemView.h"
 #import "CEDataRetriever.h"
 
+@protocol CEBuildingMiniViewDelegate;
+
 @interface CEBuildingMiniView : CEDashboardItemView <CEDataRetrieverDelegate> {
     BOOL gotElecUsage;
     BOOL gotWaterUsage;
@@ -27,9 +29,18 @@
 @property IBOutlet UILabel *waterLabel;
 @property IBOutlet UILabel *steamLabel;
 @property IBOutlet UILabel *titleLabel;
+@property IBOutlet UIButton *bigButton;
 
 @property (nonatomic, strong) CEBuilding *building;
+@property (nonatomic, assign) id <CEBuildingMiniViewDelegate> miniViewDelegate;
 
 - (void)updateUsageData;
+- (void)bigButtonPressed;
+
+@end
+
+@protocol CEBuildingMiniViewDelegate <NSObject>
+
+- (void)buildingMiniViewWasSelected:(CEBuildingMiniView *)miniView;
 
 @end

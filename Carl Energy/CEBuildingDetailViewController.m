@@ -70,21 +70,22 @@ NSString *  const CEElectric       = @"elec";
 
 - (void)pinToDashboard {
 //    [self.navigationItem setPrompt:[NSString stringWithFormat:@"%@ pinned to Dashboard", self.building.displayName]];
-    UILabel *confirmationLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    UILabel *confirmationLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
     [confirmationLabel setText:[NSString stringWithFormat:@"%@ added to Dashboard", self.building.displayName]];
     [confirmationLabel setBackgroundColor:[UIColor colorWithRed:.2 green:.2 blue:.2 alpha:.8]];
     [confirmationLabel setTextColor:[UIColor whiteColor]];
+    [confirmationLabel setNumberOfLines:2];
     [confirmationLabel setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:confirmationLabel];
-    [UIView animateWithDuration:.25 animations: ^ {
+    [UIView animateWithDuration:.25 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^ {
         // 64 is height of nav bar + status bar
         [confirmationLabel setFrame:CGRectMake(0, 64, self.view.frame.size.width, confirmationLabel.frame.size.height)];
-    }];
+    } completion:nil];
 //    __weak CEBuildingDetailViewController *blockSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW,  2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^ {
-        [UIView animateWithDuration:.5 animations:^ {
+        [UIView animateWithDuration:.25 animations:^ {
             [confirmationLabel setFrame:CGRectMake(0, 0, self.view.frame.size.width, confirmationLabel.frame.size.height)];
-        } completion:^ (BOOL finished) {
+        }completion:^ (BOOL finished) {
             [confirmationLabel removeFromSuperview];
         }];
     });
@@ -92,6 +93,7 @@ NSString *  const CEElectric       = @"elec";
     [dashboardItems addObject:@{@"type": @0, @"name": self.building.displayName}];
     [[NSUserDefaults standardUserDefaults] setObject:dashboardItems forKey:@"dashboard"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"new_pin" object:self userInfo:nil];
 }
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender

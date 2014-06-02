@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CEDashboardReorderDelegate;
+
+
 @interface CEDashboardReorderTableViewController : UITableViewController
 
+
 @property NSArray *views;
+@property (nonatomic, assign) id <CEDashboardReorderDelegate> delegate;
 
 - (void)done;
+
+@end
+
+@protocol CEDashboardReorderDelegate <NSObject>
+
+- (void)reorderViewDidFinish:(CEDashboardReorderTableViewController *)view;
 
 @end

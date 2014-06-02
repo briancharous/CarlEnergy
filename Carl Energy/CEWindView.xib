@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_base" translatesAutoresizingMaskIntoConstraints="NO" id="rmn-hB-dq7">
-                    <rect key="frame" x="45" y="276" width="16" height="64"/>
+                    <rect key="frame" x="75" y="276" width="16" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="8Dg-AE-WBQ"/>
@@ -20,7 +20,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_blades" translatesAutoresizingMaskIntoConstraints="NO" id="fGv-5x-cfu">
-                    <rect key="frame" x="3" y="216" width="100" height="100"/>
+                    <rect key="frame" x="33" y="216" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="2Un-Kn-ML0"/>
@@ -28,7 +28,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_base_small" translatesAutoresizingMaskIntoConstraints="NO" id="xxt-ke-TlG">
-                    <rect key="frame" x="111" y="308" width="8" height="32"/>
+                    <rect key="frame" x="141" y="308" width="8" height="32"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="8" id="mTd-1L-PcU"/>
@@ -36,52 +36,63 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turbine_blades" translatesAutoresizingMaskIntoConstraints="NO" id="Rpi-NC-K0O">
-                    <rect key="frame" x="96" y="284" width="38" height="38"/>
+                    <rect key="frame" x="126" y="284" width="38" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="38" id="QJ1-1t-Yp6"/>
                         <constraint firstAttribute="height" constant="38" id="oEP-Ki-ulX"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Campus Wind Production" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZA-0H-8NL">
-                    <rect key="frame" x="0.0" y="10" width="320" height="31"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Wind Production" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZA-0H-8NL">
+                    <rect key="frame" x="15" y="10" width="305" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Past 24 hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jun-jw-zJP">
-                    <rect key="frame" x="0.0" y="51" width="320" height="24"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past 24 hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jun-jw-zJP">
+                    <rect key="frame" x="15" y="51" width="305" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-ThinItalic" family="Helvetica Neue" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCT-Hc-YdM">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCT-Hc-YdM">
                     <rect key="frame" x="0.0" y="80" width="310" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-6I-xXx">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-6I-xXx">
                     <rect key="frame" x="0.0" y="106" width="310" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnX-Nk-qTl">
+                    <rect key="frame" x="0.0" y="0.0" width="15" height="340"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.93725490196078431" green="0.45490196078431372" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="dQD-jm-Xcu"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="lhP-H6-8w9"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.028822925693634868" green="0.71933582617401493" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="xxt-ke-TlG" firstAttribute="leading" secondItem="rmn-hB-dq7" secondAttribute="trailing" constant="50" id="07s-xd-ta5"/>
-                <constraint firstItem="jun-jw-zJP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9e0-Zw-foS"/>
-                <constraint firstItem="rmn-hB-dq7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="45" id="9y7-oS-wle"/>
+                <constraint firstItem="HnX-Nk-qTl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4fU-M4-MxQ"/>
+                <constraint firstItem="HnX-Nk-qTl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6qA-Ts-tu6"/>
+                <constraint firstItem="rmn-hB-dq7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="75" id="9y7-oS-wle"/>
                 <constraint firstItem="Rpi-NC-K0O" firstAttribute="centerX" secondItem="xxt-ke-TlG" secondAttribute="centerX" id="Dk8-2z-Nzb"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DCT-Hc-YdM" secondAttribute="trailing" constant="10" id="FOk-6m-4Iu"/>
+                <constraint firstItem="JZA-0H-8NL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Fct-3v-qJZ"/>
                 <constraint firstItem="xxt-ke-TlG" firstAttribute="top" secondItem="Rpi-NC-K0O" secondAttribute="centerY" constant="5" id="Gn7-Uk-F0H"/>
+                <constraint firstItem="JZA-0H-8NL" firstAttribute="leading" secondItem="HnX-Nk-qTl" secondAttribute="trailing" id="HRn-8X-vwX"/>
                 <constraint firstAttribute="trailing" secondItem="JZA-0H-8NL" secondAttribute="trailing" id="IdT-IQ-w8X"/>
-                <constraint firstItem="JZA-0H-8NL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MTi-qr-S3q"/>
                 <constraint firstItem="DCT-Hc-YdM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NQz-VV-3nl"/>
                 <constraint firstItem="vOz-6I-xXx" firstAttribute="top" secondItem="DCT-Hc-YdM" secondAttribute="bottom" constant="5" id="OMz-0m-VCp"/>
                 <constraint firstItem="rmn-hB-dq7" firstAttribute="top" secondItem="fGv-5x-cfu" secondAttribute="centerY" constant="10" id="PSP-Q3-UVu"/>
@@ -89,9 +100,11 @@
                 <constraint firstAttribute="trailing" secondItem="jun-jw-zJP" secondAttribute="trailing" id="Uf5-go-FFE"/>
                 <constraint firstAttribute="trailing" secondItem="DCT-Hc-YdM" secondAttribute="trailing" constant="10" id="Uvy-Jq-2SS"/>
                 <constraint firstItem="DCT-Hc-YdM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ypi-5t-04A"/>
+                <constraint firstItem="jun-jw-zJP" firstAttribute="leading" secondItem="HnX-Nk-qTl" secondAttribute="trailing" id="bYu-Fe-xam"/>
                 <constraint firstAttribute="bottom" secondItem="rmn-hB-dq7" secondAttribute="bottom" id="ctO-9i-g09"/>
                 <constraint firstItem="vOz-6I-xXx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e1e-nd-BwS"/>
                 <constraint firstItem="DCT-Hc-YdM" firstAttribute="top" secondItem="jun-jw-zJP" secondAttribute="bottom" constant="5" id="hcI-xl-7rs"/>
+                <constraint firstAttribute="bottom" secondItem="HnX-Nk-qTl" secondAttribute="bottom" id="kvS-hd-BHo"/>
                 <constraint firstItem="fGv-5x-cfu" firstAttribute="centerX" secondItem="rmn-hB-dq7" secondAttribute="centerX" id="lCa-Om-a4i"/>
                 <constraint firstAttribute="bottom" secondItem="xxt-ke-TlG" secondAttribute="bottom" id="tQn-sY-zfm"/>
                 <constraint firstAttribute="trailing" secondItem="vOz-6I-xXx" secondAttribute="trailing" constant="10" id="unP-Lt-u2s"/>

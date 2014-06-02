@@ -14,19 +14,21 @@
 #import "CEDashboardReorderTableViewController.h"
 
 
-@interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate> {
+@interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate, CEDashboardReorderDelegate> {
 
     NSInteger numRefreshedViews;
     UILabel *pullToRefreshLabel;
     UIRefreshControl *refreshControl;
     BOOL isRefreshing;
     UIInterfaceOrientation curOrientation;
+    UIButton *reorderButton;
 }
 
 - (void)restartSubviewsAnimation;
 - (void)refreshSubviewsData;
 - (void)setupDashboardViews;
 - (void)presentReorderView;
+- (void)reloadAllViews;
 
 @property IBOutlet UIScrollView *scrollView;
 @property NSMutableArray *dashboardViews;

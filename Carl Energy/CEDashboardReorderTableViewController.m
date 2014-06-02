@@ -26,6 +26,7 @@
 - (void)done {
     [[NSUserDefaults standardUserDefaults] setObject:self.views forKey:@"dashboard"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.delegate reorderViewDidFinish:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

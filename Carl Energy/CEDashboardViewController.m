@@ -22,17 +22,14 @@
     // wind turbine blades
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartSubviewsAnimation) name:UIApplicationWillEnterForegroundNotification object:nil];
     
-//    [self.navigationController.tabBarItem setSelectedImage:[UIImage imageNamed:@"ic_dashboard_selected"]];
-    
     [self.scrollView setFrame:self.view.frame];
     
-//    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
     
     //    pullToRefreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -50, self.scrollView.frame.size.width, 30)];
     [pullToRefreshLabel setText:@"Pull to refresh"];
     [self.scrollView addSubview:pullToRefreshLabel];
+    [self.scrollView setBackgroundColor:[UIColor colorWithRed:248/255.0 green:242/255.0 blue:229/255.0 alpha:1]];
     self.dashboardViews = [[NSMutableArray alloc] init];
-    
     
     // Refresh control doesn't really seem to work super well
     // weird jump when you pull down
@@ -41,11 +38,15 @@
     [self.scrollView addSubview:refreshControl];
     // make refresh control always on bottom
     [refreshControl.layer setZPosition:-1];
+    [self setupDashboardViews];
+    [self refreshSubviewsData];
+
+    // listen for new item added to dashboard
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAllViews) name:@"new_pin" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     // reload dashboard views in case user has pinned new building
-    [self setupDashboardViews];
     [self restartSubviewsAnimation];
     
     // relayout subviews
@@ -59,10 +60,11 @@
             [view setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [view preferredHeightForLandscape])];
             curY += [view preferredHeightForLandscape];
         }
+        curY += 10;
     }
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY+50)];
     
-    UIButton *reorderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    reorderButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [reorderButton setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, 50)];
     [reorderButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [reorderButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
@@ -80,11 +82,6 @@
         views = @[@{@"type": @1}, @{@"type": @2}];
         [[NSUserDefaults standardUserDefaults] setObject:views forKey:@"dashboard"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
-    [self.dashboardViews removeAllObjects];
-    for (UIView *v in self.scrollView.subviews) {
-        [v removeFromSuperview];
     }
     
     for (NSDictionary *dict in views) {
@@ -130,7 +127,6 @@
         [self.scrollView addSubview:view];
         [view restartAnimation];
     }
-    [self refreshSubviewsData];
 }
 
 - (void)restartSubviewsAnimation {
@@ -154,6 +150,7 @@
 - (void)presentReorderView {
     CEDashboardReorderTableViewController *reorderVC = [[CEDashboardReorderTableViewController alloc] initWithStyle:UITableViewStylePlain];
     [reorderVC setViews:[[NSUserDefaults standardUserDefaults] arrayForKey:@"dashboard"]];
+    [reorderVC setDelegate:self];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:reorderVC];
     [navController.navigationBar setTranslucent:YES];
     [self presentViewController:navController animated:YES completion:nil];
@@ -176,8 +173,12 @@
             }];
             curY += [view preferredHeightForLandscape];
         }
+        // put some space between subviews
+        curY += 10;
     }
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY+50)];
+    [reorderButton setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, 50)];
+    [self restartSubviewsAnimation];
 }
 
 
@@ -202,5 +203,19 @@
     }
 }
 
+#pragma mark Dashboard reorder delegate
+- (void)reorderViewDidFinish:(CEDashboardReorderTableViewController *)view {
+    [self reloadAllViews];
+}
+
+- (void)reloadAllViews {
+    [self.dashboardViews removeAllObjects];
+    for (CEDashboardItemView *v in self.scrollView.subviews) {
+        [v removeFromSuperview];
+    }
+    [self.scrollView addSubview:refreshControl];
+    [self setupDashboardViews];
+    [self refreshSubviewsData];
+}
 
 @end

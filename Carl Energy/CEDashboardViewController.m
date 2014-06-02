@@ -66,6 +66,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self restartSubviewsAnimation];
+    NSInteger curY = 0;
+    for (CEDashboardItemView *view in self.dashboardViews) {
+        if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+            [view setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [view preferredHeightForPortrait])];
+            curY += [view preferredHeightForPortrait];
+        }
+        else {
+            [view setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [view preferredHeightForLandscape])];
+            curY += [view preferredHeightForLandscape];
+        }
+    }
+    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
 }
 
 - (void)restartSubviewsAnimation {

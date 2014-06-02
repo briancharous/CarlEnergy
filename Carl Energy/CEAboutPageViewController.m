@@ -26,6 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.textView setFrame:self.view.frame];
+//    [self.textView setFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64)];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aboutPage"
+                                                         ofType:@"txt"];
+    NSString *content = [NSString stringWithContentsOfFile:filePath
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    self.textView.text = content;
     // Do any additional setup after loading the view.
     
 //    [self.welcomeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0]];
@@ -47,16 +55,6 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self.textView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aboutPage"
-                                                         ofType:@"txt"];
-    NSString *content = [NSString stringWithContentsOfFile:filePath
-                                                  encoding:NSUTF8StringEncoding
-                                                     error:NULL];
-    self.textView.text = content;
-}
 
 - (void)didReceiveMemoryWarning
 {

@@ -82,7 +82,7 @@
 }
 
 + (NSInteger)preferredHeightForPortrait {
-    return 180;
+    return 155;
 }
 
 - (NSInteger)preferredHeightForLandscape {
@@ -90,7 +90,7 @@
 }
 
 + (NSInteger)preferredHeightForLandscape {
-    return 190;
+    return 155;
 }
 
 #pragma mark CEDataRetreiverDelegate 

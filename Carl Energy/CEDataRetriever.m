@@ -131,8 +131,10 @@
 //        NSLog(@"%@", [requestURL absoluteString]);
         NSURLResponse *response = nil;
         NSError *webError = nil;
-        NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
         
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
         // extract data from the JSON
         // TODO: more error handling
@@ -280,8 +282,10 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
     NSURLResponse *response = nil;
     NSError *webError = nil;
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
-    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
     if (webError == nil) {
         NSError *jsonError = nil;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:result options:0 error:&jsonError];

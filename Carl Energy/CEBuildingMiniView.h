@@ -7,7 +7,29 @@
 //
 
 #import "CEDashboardItemView.h"
+#import "CEDataRetriever.h"
 
-@interface CEBuildingMiniView : CEDashboardItemView
+@interface CEBuildingMiniView : CEDashboardItemView <CEDataRetrieverDelegate> {
+    BOOL gotElecUsage;
+    BOOL gotWaterUsage;
+    BOOL gotSteamUsage;
+    
+    NSInteger elecUsage;
+    NSInteger waterUsage;
+    NSInteger steamUsage;
+    
+    CEDataRetriever *elecRetreiver;
+    CEDataRetriever *waterRetreiver;
+    CEDataRetriever *steamRetreiver;
+}
+
+@property IBOutlet UILabel *elecLabel;
+@property IBOutlet UILabel *waterLabel;
+@property IBOutlet UILabel *steamLabel;
+@property IBOutlet UILabel *titleLabel;
+
+@property (nonatomic, strong) CEBuilding *building;
+
+- (void)updateUsageData;
 
 @end

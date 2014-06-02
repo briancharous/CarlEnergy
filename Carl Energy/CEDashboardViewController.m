@@ -33,27 +33,6 @@
     [self.scrollView addSubview:pullToRefreshLabel];
     self.dashboardViews = [[NSMutableArray alloc] init];
     
-    // create the wind usage view and electricity usage views
-    NSInteger curY = 0;
-    CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEWindView preferredHeightForPortrait])];
-    [windView setDelegate:self];
-    [self.dashboardViews addObject:windView];
-    curY += [CEWindView preferredHeightForPortrait];
-    CEElectricityUsageView *elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEElectricityUsageView preferredHeightForPortrait])];
-    [self.dashboardViews addObject:elecView];
-    [elecView setDelegate:self];
-    curY += [CEElectricityUsageView preferredHeightForPortrait];
-    
-    
-    // setup the scroll view
-    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
-    for (CEDashboardItemView *view in self.dashboardViews) {
-        [self.scrollView addSubview:view];
-//        [self.mainView addSubview:view];
-        [view restartAnimation];
-    }
-//    [self.scrollView addSubview:self.mainView];
-    [self refreshSubviewsData];
     
     // Refresh control doesn't really seem to work super well
     // weird jump when you pull down
@@ -65,6 +44,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    // reload dashboard views in case user has pinned new building
+    [self setupDashboardViews];
     [self restartSubviewsAnimation];
     NSInteger curY = 0;
     for (CEDashboardItemView *view in self.dashboardViews) {
@@ -78,6 +59,68 @@
         }
     }
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
+}
+
+- (void)setupDashboardViews {
+    NSArray *views = [[NSUserDefaults standardUserDefaults] arrayForKey:@"dashboard"];
+    if (views == nil) {
+        // create default views list
+        // type 1 is the wind view, type 2 is elecricity view, type 0 is custom building
+        views = @[@{@"type": @1}, @{@"type": @2}];
+        [[NSUserDefaults standardUserDefaults] setObject:views forKey:@"dashboard"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    [self.dashboardViews removeAllObjects];
+    
+    NSInteger curY = 0;
+    for (NSDictionary *dict in views) {
+        NSInteger type = [[dict objectForKey:@"type"] intValue];
+        switch (type) {
+            case 1: {
+                CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEWindView preferredHeightForPortrait])];
+                [windView setDelegate:self];
+                [self.dashboardViews addObject:windView];
+                curY += [CEWindView preferredHeightForPortrait];
+                break;
+            }
+            case 2: {
+                CEElectricityUsageView *elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEElectricityUsageView preferredHeightForPortrait])];
+                [self.dashboardViews addObject:elecView];
+                [elecView setDelegate:self];
+                curY += [CEElectricityUsageView preferredHeightForPortrait];
+                break;
+            }
+            case 0: {
+                // create mini building
+                CEBuilding *b = nil;
+                CEDataRetriever *r = [[CEDataRetriever alloc] init];
+                NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
+                for (NSDictionary *bdict in buildingsDictionaries) {
+                    if ([[bdict objectForKey:@"displayName"] isEqualToString:[dict objectForKey:@"name"]]) {
+                        b = [r buildingFromDictionary:bdict];
+                        break;
+                    }
+                }
+                r = nil;
+                CEBuildingMiniView *mini = [[CEBuildingMiniView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEBuildingMiniView preferredHeightForPortrait])];
+                [mini setDelegate:self];
+                [mini setBuilding:b];
+                [self.dashboardViews addObject:mini];
+                curY += [CEBuildingMiniView preferredHeightForPortrait];
+                break;
+            }
+            default:
+                break;
+        }
+    }
+    // setup the scroll view
+    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
+    for (CEDashboardItemView *view in self.dashboardViews) {
+        [self.scrollView addSubview:view];
+        [view restartAnimation];
+    }
+    [self refreshSubviewsData];
 }
 
 - (void)restartSubviewsAnimation {

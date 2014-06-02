@@ -58,6 +58,9 @@ NSString *  const CEElectric       = @"elec";
     
     // to enable scrolling
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 850)];
+    
+    UIBarButtonItem *pinButton = [[UIBarButtonItem alloc] initWithTitle:@"Pin to Dashboard" style:UIBarButtonItemStylePlain target:self action:@selector(pinToDashboard)];
+    [self.navigationItem setRightBarButtonItem:pinButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -73,6 +76,13 @@ NSString *  const CEElectric       = @"elec";
     self.elecGraphMaker.hostView = nil;
     self.waterGraphMaker.hostView = nil;
     self.steamGraphMaker.hostView = nil;
+}
+
+- (void)pinToDashboard {
+    NSMutableArray *dashboardItems = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"dashboard"] mutableCopy];
+    [dashboardItems addObject:@{@"type": @0, @"name": self.building.displayName}];
+    [[NSUserDefaults standardUserDefaults] setObject:dashboardItems forKey:@"dashboard"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(IBAction)timeChanged:(UISegmentedControl *)sender

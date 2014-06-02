@@ -11,6 +11,7 @@
 #import "CorePlot-CocoaTouch.h"
 #import "CEMeter.h"
 #import "CELineGraphMaker.h"
+#import "CEDashboardViewController.h"
 
 //typedef NS_ENUM(NSInteger, CETimeScale) {
 //    kTimeScaleDay,
@@ -41,6 +42,8 @@
 @property CELineGraphMaker *elecGraphMaker;
 @property CELineGraphMaker *waterGraphMaker;
 @property CELineGraphMaker *steamGraphMaker;
+
+- (void)pinToDashboard;
 
 
 //- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale;

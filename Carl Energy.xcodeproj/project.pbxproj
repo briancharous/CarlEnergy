@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		012D0AE1193BC7800058F79F /* customSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D0AE0193BC7800058F79F /* customSegue.m */; };
-		012D0AE6193BC9480058F79F /* customSegueBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D0AE5193BC9480058F79F /* customSegueBack.m */; };
 		013B09771932837300376BB6 /* CELineGraphMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B09761932837300376BB6 /* CELineGraphMaker.m */; };
 		013B09811932DE3400376BB6 /* aboutPage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 013B09801932DE3400376BB6 /* aboutPage.txt */; };
 		019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D61920800B00478145 /* QuartzCore.framework */; };

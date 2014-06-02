@@ -10,6 +10,8 @@
 #import "CEDataRetriever.h"
 #import "CEWindView.h"
 #import "CEElectricityUsageView.h"
+#import "CEBuildingMiniView.h"
+
 
 @interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate> {
 
@@ -22,6 +24,7 @@
 
 - (void)restartSubviewsAnimation;
 - (void)refreshSubviewsData;
+- (void)setupDashboardViews;
 
 @property IBOutlet UIScrollView *scrollView;
 @property NSMutableArray *dashboardViews;

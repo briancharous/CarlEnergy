@@ -243,6 +243,7 @@
     // hide the popover and push the detail view
     [self.buildingsPopover dismissPopoverAnimated:YES];
     CEBuildingDetailViewController *detailView = [[UIStoryboard storyboardWithName:@"Main-iPad" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"buildingDetailView"];
+    [detailView setBuilding:building];
     [self.navigationController pushViewController:detailView animated:YES];
 }
 

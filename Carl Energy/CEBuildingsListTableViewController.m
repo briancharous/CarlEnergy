@@ -7,6 +7,7 @@
 //
 
 #import "CEBuildingsListTableViewController.h"
+#import "CEBuildingDetailViewController.h"
 
 @interface CEBuildingsListTableViewController ()
 

@@ -123,7 +123,9 @@
     NSInteger fromIndex = fromIndexPath.row;
     NSInteger toIndex = toIndexPath.row;
     NSMutableArray *temp = [NSMutableArray arrayWithArray:self.views];
-    [temp exchangeObjectAtIndex:fromIndex withObjectAtIndex:toIndex];
+    NSDictionary *d = [temp objectAtIndex:fromIndex];
+    [temp removeObjectAtIndex:fromIndex];
+    [temp insertObject:d atIndex:toIndex];
     self.views = [NSArray arrayWithArray:temp];
 }
 

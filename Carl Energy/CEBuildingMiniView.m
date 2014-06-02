@@ -74,7 +74,7 @@
     }
     NSString *elecString = [NSString stringWithFormat:@"%li kWh of electricity", (long)elecUsage];
     NSString *waterString = [NSString stringWithFormat:@"%li gallons of water", (long)waterUsage];
-    NSString *steamString = [NSString stringWithFormat:@"%li BTUs of steam", (long)steamUsage];
+    NSString *steamString = [NSString stringWithFormat:@"%li kBTUs of steam", (long)steamUsage];
     [self.elecLabel setText:elecString];
     [self.waterLabel setText:waterString];
     [self.steamLabel setText:steamString];

@@ -377,7 +377,13 @@
 
         // Set axis title
         if (self.energyType == kUsageTypeElectricity) {
-            self.y.title = @"kW hours";
+            // day or week
+            if (self.requestType == 0 || self.requestType == 1) {
+                self.y.title = @"kW";
+            }
+            else {
+                self.y.title = @"kWh";
+            }
         }
         else if (self.energyType == kUsageTypeWater) {
             self.y.title = @"Gallons";

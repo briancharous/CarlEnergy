@@ -171,6 +171,7 @@
     [reorderVC setViews:[[NSUserDefaults standardUserDefaults] arrayForKey:@"dashboard"]];
     [reorderVC setDelegate:self];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:reorderVC];
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
     [navController.navigationBar setTranslucent:YES];
     [self presentViewController:navController animated:YES completion:nil];
 }
@@ -225,6 +226,12 @@
 #pragma mark Dashboard reorder delegate
 - (void)reorderViewDidFinish:(CEDashboardReorderTableViewController *)view {
     [self reloadAllViews];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // since the ipad modal doesn't take up the whole screen, manually invoke
+        // view will appear to re-layout the list
+        [self viewWillAppear:YES];
+    }
 }
 
 - (void)reloadAllViews {
@@ -246,5 +253,6 @@
     [detailView setBuilding:building];
     [self.navigationController pushViewController:detailView animated:YES];
 }
+
 
 @end

@@ -165,6 +165,7 @@
             <point key="canvasLocation" x="9" y="556"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.36862745099999999" green="0.72156862749999995" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

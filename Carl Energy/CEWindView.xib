@@ -74,7 +74,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnX-Nk-qTl">
                     <rect key="frame" x="0.0" y="0.0" width="15" height="340"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.93725490196078431" green="0.45490196078431372" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.1529411765" green="0.80000000000000004" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="15" id="dQD-jm-Xcu"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="lhP-H6-8w9"/>

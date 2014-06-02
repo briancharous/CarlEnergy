@@ -128,17 +128,9 @@ NSString *  const CEElectric       = @"elec";
 {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenHeight = screenRect.size.height;
-    CGFloat myWidth = 0;
-    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-        myWidth = 0;
-    }
-    else {
-        // center the graphs in the window
-        myWidth = screenHeight / 2 - 160;
-    }
-    CGRect parentRect = CGRectMake(myWidth, 75, 320, 250);
-    CGRect parentRect2 = CGRectMake(myWidth, 350, 320, 250);
-    CGRect parentRect3 = CGRectMake(myWidth, 615, 320, 250);
+    CGRect parentRect = CGRectMake(0, 75, self.scrollView.frame.size.width, 250);
+    CGRect parentRect2 = CGRectMake(0, 350, self.scrollView.frame.size.width, 250);
+    CGRect parentRect3 = CGRectMake(0, 615, self.scrollView.frame.size.width, 250);
     self.electricityLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect];
     self.electricityLineGraphView.hostedGraph = self.elecLineGraph;
     self.waterLineGraphView = [[CPTGraphHostingView alloc] initWithFrame:parentRect2];

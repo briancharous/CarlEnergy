@@ -175,6 +175,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9F842842193C52D8002F1A3D /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		9F8480ED191D4BD3005F09BA /* Data Wrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +231,7 @@
 		9FA4A4C3191A95A300AE3551 /* Carl Energy */ = {
 			isa = PBXGroup;
 			children = (
+				9F842842193C52D8002F1A3D /* iPad */,
 				329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */,
 				329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */,
 				013B09751932837300376BB6 /* CELineGraphMaker.h */,
@@ -580,7 +588,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -604,7 +612,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -38,22 +38,22 @@
 }
 
 - (void)refreshData {
-    CEDataRetriever *instantRetreiver = [[CEDataRetriever alloc] init];
-    [instantRetreiver setDelegate:self];
-    CEDataRetriever *peakRetreiver = [[CEDataRetriever alloc] init];
-    [peakRetreiver setDelegate:self];
+    CEDataRetriever *instantretriever = [[CEDataRetriever alloc] init];
+    [instantretriever setDelegate:self];
+    CEDataRetriever *peakretriever = [[CEDataRetriever alloc] init];
+    [peakretriever setDelegate:self];
     
     NSDate *now = [NSDate date];
     NSDate *shortlyBeforeNow = [now dateByAddingTimeInterval:-60*60*1.1]; // two hour ago (really only need the server to return 1 data point)
     
     gotInstantUsage = NO;
     dispatch_async(dispatch_queue_create("com.carlenergy.dashboard", NULL), ^ {
-        [instantRetreiver getTotalCampusElectricityUsageWithStartTime:shortlyBeforeNow endTime:now resolution:kResolutionHour];
+        [instantretriever getTotalCampusElectricityUsageWithStartTime:shortlyBeforeNow endTime:now resolution:kResolutionHour];
     });
     
     gotPeakUsage = NO;
     dispatch_async(dispatch_queue_create("com.carlenergy.dashboard", NULL), ^ {
-        [peakRetreiver getPeakCampusConsumptionForPeriod:kResolutionMonth];
+        [peakretriever getPeakCampusConsumptionForPeriod:kResolutionMonth];
     });
     
     [self.currentLabel setText:@"Updating..."];
@@ -76,9 +76,9 @@
     }
 }
 
-#pragma mark CEDataRetreiverDelegate methods
+#pragma mark CEDataretrieverDelegate methods
 
-- (void)retriever:(CEDataRetriever *)retreiver gotCampusElectricityUsage:(NSArray *)usage {
+- (void)retriever:(CEDataRetriever *)retriever gotCampusElectricityUsage:(NSArray *)usage {
     
     // get instantaneous usage
     CEDataPoint *p = [usage objectAtIndex:0];
@@ -90,7 +90,7 @@
     });
 }
 
-- (void)retriever:(CEDataRetriever *)retreiver gotPeakConsumption:(float)consumption {
+- (void)retriever:(CEDataRetriever *)retriever gotPeakConsumption:(float)consumption {
     peakUsage = (NSInteger)consumption;
     gotPeakUsage = YES;
     

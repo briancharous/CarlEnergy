@@ -142,13 +142,6 @@
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    //    // undraw and redraw the graph
-    //    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    //    // Maybe not needed after more content added:
-    //    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + 1)];
-    //    [self makePieChart];
-    
-//    [self.mainView setFrame:CGRectMake(0,0,self.scrollView.frame.size.width, 480)];
 
     [self.scrollView setFrame:self.view.frame];
     NSInteger curY = 0;
@@ -174,20 +167,6 @@
     
     curOrientation = toInterfaceOrientation;
 }
-//
-//    NSInteger curY = 0;
-//    for (CEDashboardItemView *view in self.dashboardViews) {
-//        [UIView animateWithDuration:duration animations:^ {
-//            if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-//                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, [view preferredHeightForLandscape])];
-//            }
-//            else {
-//                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, [view preferredHeightForPortrait])];
-//            }
-//        }];
-//        curY += [view preferredHeightForPortrait];
-//    }
-//}
 
 - (void)didReceiveMemoryWarning
 {

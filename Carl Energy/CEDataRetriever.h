@@ -28,8 +28,6 @@ typedef NS_ENUM(NSInteger, Resolution) {
 - (CEBuilding *)buildingFromDictionary:(NSDictionary *)dict;
 - (void)getTotalCampusElectricityUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
 - (void)getPeakCampusConsumptionForPeriod:(Resolution)period;
-//- (void)getTotalCampusGasUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
-//- (void)getTotalCampusFuelUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res;
 
 @property (nonatomic, assign) id <CEDataRetrieverDelegate> delegate;
 @property NSString *baseUrl;
@@ -49,8 +47,8 @@ typedef NS_ENUM(NSInteger, Resolution) {
 
 - (void)retriever:(CEDataRetriever *)retriever gotBuildings:(NSArray *)buildings;
 - (void)retriever:(CEDataRetriever *)retriever gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(CEBuilding *)building;
-- (void)retriever:(CEDataRetriever *)retreiver gotWindProduction:(NSArray *)production;
-- (void)retriever:(CEDataRetriever *)retreiver gotCampusElectricityUsage:(NSArray *)usage;
-- (void)retriever:(CEDataRetriever *)retreiver gotPeakConsumption:(float)consumption;
+- (void)retriever:(CEDataRetriever *)retriever gotWindProduction:(NSArray *)production;
+- (void)retriever:(CEDataRetriever *)retriever gotCampusElectricityUsage:(NSArray *)usage;
+- (void)retriever:(CEDataRetriever *)retriever gotPeakConsumption:(float)consumption;
 
 @end

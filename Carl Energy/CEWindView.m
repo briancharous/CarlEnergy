@@ -79,10 +79,10 @@
     // get wind production and main campus consumption
     // between now and one hour ago
     
-    CEDataRetriever *windRetreiver = [[CEDataRetriever alloc] init];
-    CEDataRetriever *electricRetreiver = [[CEDataRetriever alloc] init];
-    [windRetreiver setDelegate:self];
-    [electricRetreiver setDelegate:self];
+    CEDataRetriever *windretriever = [[CEDataRetriever alloc] init];
+    CEDataRetriever *electricretriever = [[CEDataRetriever alloc] init];
+    [windretriever setDelegate:self];
+    [electricretriever setDelegate:self];
     
     NSDate *now = [NSDate date];
     NSDate *oneDayAgo = [now dateByAddingTimeInterval:-60*60*24];
@@ -90,22 +90,22 @@
     gotWindProduction = NO;
     windProduction = @(0);
     dispatch_async(dispatch_queue_create("com.carlenergy.dashboard", NULL), ^ {
-        [windRetreiver getTotalWindProductionWithStartTime:oneDayAgo endTime:now resolution:kResolutionHour];
+        [windretriever getTotalWindProductionWithStartTime:oneDayAgo endTime:now resolution:kResolutionHour];
     });
     
     gotElectricityUsage = NO;
     energyConsumption = @(0);
     dispatch_async(dispatch_queue_create("com.carlenergy.dashboard", NULL), ^ {
-        [electricRetreiver getTotalCampusElectricityUsageWithStartTime:oneDayAgo endTime:now resolution:kResolutionHour];
+        [electricretriever getTotalCampusElectricityUsageWithStartTime:oneDayAgo endTime:now resolution:kResolutionHour];
     });
     
     [self.producedLabel setText:@"Updating..."];
     [self.consumedLabel setText:@""];
 }
 
-#pragma mark CEDataRetreiverDelegate
+#pragma mark CEDataretrieverDelegate
 
-- (void)retriever:(CEDataRetriever *)retreiver gotWindProduction:(NSArray *)production {
+- (void)retriever:(CEDataRetriever *)retriever gotWindProduction:(NSArray *)production {
     float totalProduction = 0;
     for (CEDataPoint *point in production) {
         totalProduction += point.value * point.weight;
@@ -117,7 +117,7 @@
     });
 }
 
-- (void)retriever:(CEDataRetriever *)retreiver gotCampusElectricityUsage:(NSArray *)usage {
+- (void)retriever:(CEDataRetriever *)retriever gotCampusElectricityUsage:(NSArray *)usage {
     float totalUsage = 0;
     for (CEDataPoint *point in usage) {
         totalUsage += point.value * point.weight;
@@ -127,12 +127,8 @@
     dispatch_async(dispatch_get_main_queue(), ^ {
         [self updateUsageData];
     });
-    //    [self performSelectorOnMainThread:@selector(updateUsageData) withObject:nil waitUntilDone:NO];
 }
 
-//- (void)dealloc {
-////    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDid object:<#(id)#>]
-//}
 
 
 

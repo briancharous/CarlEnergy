@@ -9,7 +9,6 @@
 #import "CEBuildingDetailViewController.h"
 #include <stdlib.h>
 
-
 @implementation CEBuildingDetailViewController
 
 NSString *  const CEClear       = @"clear";
@@ -27,16 +26,6 @@ NSString *  const CEElectric       = @"elec";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-        [self.scrollView setFrame:CGRectMake(self.view.frame.size.width / 4,160, self.view.frame.size.width, self.view.frame.size.height - 160)];
-        NSLog(@"landscape");
-
-    }
-    
-    else [self.scrollView setFrame:self.view.frame];
-
     
     //initialize graph makers
     self.elecGraphMaker = [[CELineGraphMaker alloc] init];
@@ -69,13 +58,14 @@ NSString *  const CEElectric       = @"elec";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [self.elecGraphMaker.hostView removeFromSuperview];
-    [self.waterGraphMaker.hostView removeFromSuperview];
-    [self.steamGraphMaker.hostView removeFromSuperview];
-
-    self.elecGraphMaker.hostView = nil;
-    self.waterGraphMaker.hostView = nil;
-    self.steamGraphMaker.hostView = nil;
+    // deallocate graph views to save memory
+    [self.electricityLineGraphView removeFromSuperview];
+    [self.waterLineGraphView removeFromSuperview];
+    [self.steamLineGraphView removeFromSuperview];
+    
+    self.electricityLineGraphView = nil;
+    self.waterLineGraphView = nil;
+    self.steamLineGraphView = nil;
 }
 
 - (void)pinToDashboard {
@@ -100,6 +90,7 @@ NSString *  const CEElectric       = @"elec";
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    // remove the current graphs so they can be redrawn after rotation
     [self.electricityLineGraphView removeFromSuperview];
     [self.waterLineGraphView removeFromSuperview];
     [self.steamLineGraphView removeFromSuperview];
@@ -109,26 +100,19 @@ NSString *  const CEElectric       = @"elec";
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.scrollView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.scrollView setFrame:self.view.bounds];
     [self redrawForNewOrientation];
-    
-    //[self.scrollView setFrame:self.view.frame];
-    //[self.scrollView setContentSize:CGSizeMake(200, 850)];
-    /*if (UIDeviceOrientationIsLandscape(fromInterfaceOrientation)) {
-        NSLog(@"Was landscape");
-        [self.scrollView setFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height)];
-
-    }*/
 }
 - (void) redrawForNewOrientation
 {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenHeight = screenRect.size.height;
     CGFloat myWidth = 0;
-    if (UIInterfaceOrientationIsPortrait([self interfaceOrientation])) {
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
         myWidth = 0;
     }
     else {
+        // center the graphs in the window
         myWidth = screenHeight / 2 - 160;
     }
     CGRect parentRect = CGRectMake(myWidth, 75, 320, 250);

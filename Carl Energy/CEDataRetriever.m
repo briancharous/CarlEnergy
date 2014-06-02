@@ -20,35 +20,6 @@
 }
 
 - (void)getBuildingsOnCampus {
-    // RUN THIS IN A SEPARATE THREAD OTHERWISE IT WILL LOCK UP THE UI
-    
-//    [self setRequestInProgress:YES];
-//    
-//    NSMutableArray *buildings = [[NSMutableArray alloc] init];
-//    
-//    // fire off a web request
-//    NSString *urlString = [NSString stringWithFormat:@"%@/json/carleton/children", self.baseUrl];
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    NSURLResponse *response = nil;
-//    NSError *webError = nil;
-//    NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&webError];
-//    
-//    //TODO: Error handling
-//    if (webError == nil) {
-//        NSError *jsonError = nil;
-//        NSArray *json = [NSJSONSerialization JSONObjectWithData:result options:0 error:&jsonError];
-//        if (jsonError == nil) {
-//            for (NSDictionary *buildingJSON in json) {
-//                CEBuilding *b = [[CEBuilding alloc] init];
-//                [b setDisplayName:[buildingJSON objectForKey:@"displayName"]];
-//                [b setWebName:[buildingJSON objectForKey:@"urlElement"]];
-//                [b setImageURL:[buildingJSON objectForKey:@"profile"]];
-//                [buildings addObject:b];
-//            }
-//        }
-//    }
-    
     
     // read from plist
     NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
@@ -128,7 +99,6 @@
         NSString *urlString = [NSString stringWithFormat:@"%@/reports/timeseries/?start=%@&end=%@&resolution=%@&name=%@", self.baseUrl, startString, endString, resolutionString, nameString];
         NSURL *requestURL = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
-//        NSLog(@"%@", [requestURL absoluteString]);
         NSURLResponse *response = nil;
         NSError *webError = nil;
         
@@ -307,52 +277,5 @@
     
     [self setRequestInProgress:NO];
 }
-
-// These use the wrong usageType
-//- (void)getTotalCampusGasUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res {
-//    
-//    [self setRequestInProgress:YES];
-//    CEBuilding *mainCampus = nil;
-//    
-//    NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
-//    for (NSDictionary *dict in buildingsDictionaries) {
-//        if ([[dict objectForKey:@"displayName"] isEqualToString:@"Main Campus"]) {
-//            mainCampus = [self buildingFromDictionary:dict];
-//            break;
-//        }
-//    }
-//    
-//    NSArray *points = [self syncGetUsage:kUsageTypeElectricity ForBuilding:mainCampus startTime:start endTime:end resolution:res];
-//    
-//    if ([self.delegate respondsToSelector:@selector(retriever:gotCampusGasUsage:)]) {
-//        [self.delegate retriever:self gotCampusGasUsage:points];
-//    }
-//    
-//    [self setRequestInProgress:NO];
-//    
-//}
-//
-//- (void)getTotalCampusFuelUsageWithStartTime:(NSDate *)start endTime:(NSDate *)end resolution:(Resolution)res {
-//    
-//    [self setRequestInProgress:YES];
-//    CEBuilding *mainCampus = nil;
-//    
-//    NSArray *buildingsDictionaries = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"buildings" ofType:@"plist"]];
-//    for (NSDictionary *dict in buildingsDictionaries) {
-//        if ([[dict objectForKey:@"displayName"] isEqualToString:@"Main Campus"]) {
-//            mainCampus = [self buildingFromDictionary:dict];
-//            break;
-//        }
-//    }
-//    
-//    NSArray *points = [self syncGetUsage:kUsageTypeElectricity ForBuilding:mainCampus startTime:start endTime:end resolution:res];
-//    
-//    if ([self.delegate respondsToSelector:@selector(retriever:gotCampusFuelUsage:)]) {
-//        [self.delegate retriever:self gotCampusFuelUsage:points];
-//    }
-//    
-//    [self setRequestInProgress:NO];
-
-//}
 
 @end

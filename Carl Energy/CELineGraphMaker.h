@@ -32,7 +32,7 @@ extern NSString * const CEElectric;
 @property CPTXYAxis *y;
 @property UsageType energyType;
 @property int requestType;
-@property CEDataRetriever *retreiver;
+@property CEDataRetriever *retriever;
 
 - (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale;
 - (void)reloadPlotData;

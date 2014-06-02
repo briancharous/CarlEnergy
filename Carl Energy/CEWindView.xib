@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -72,7 +72,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.36862745098039218" green="0.72156862745098038" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.028822925693634868" green="0.71933582617401493" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="xxt-ke-TlG" firstAttribute="leading" secondItem="rmn-hB-dq7" secondAttribute="trailing" constant="50" id="07s-xd-ta5"/>
                 <constraint firstItem="jun-jw-zJP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9e0-Zw-foS"/>

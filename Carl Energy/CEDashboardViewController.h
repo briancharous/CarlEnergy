@@ -11,6 +11,7 @@
 #import "CEWindView.h"
 #import "CEElectricityUsageView.h"
 #import "CEBuildingMiniView.h"
+#import "CEDashboardReorderTableViewController.h"
 
 
 @interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate> {
@@ -25,6 +26,7 @@
 - (void)restartSubviewsAnimation;
 - (void)refreshSubviewsData;
 - (void)setupDashboardViews;
+- (void)presentReorderView;
 
 @property IBOutlet UIScrollView *scrollView;
 @property NSMutableArray *dashboardViews;

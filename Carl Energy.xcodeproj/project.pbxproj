@@ -18,6 +18,7 @@
 		9F842832193A8EBE002F1A3D /* CEElectricityUsageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F842831193A8EBE002F1A3D /* CEElectricityUsageView.xib */; };
 		9F842835193BE49E002F1A3D /* CEBuildingMiniView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F842834193BE49E002F1A3D /* CEBuildingMiniView.m */; };
 		9F842837193BE4AE002F1A3D /* CEBuildingMiniView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F842836193BE4AE002F1A3D /* CEBuildingMiniView.xib */; };
+		9F84283F193C2BD7002F1A3D /* CEDashboardReorderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F84283E193C2BD7002F1A3D /* CEDashboardReorderTableViewController.m */; };
 		9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480E8191D4556005F09BA /* CEBuilding.m */; };
 		9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480EB191D4A14005F09BA /* CEDataPoint.m */; };
 		9F8E0560192C0735001335C4 /* CEMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E055F192C0735001335C4 /* CEMeter.m */; };
@@ -88,6 +89,8 @@
 		9F842833193BE49E002F1A3D /* CEBuildingMiniView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuildingMiniView.h; sourceTree = "<group>"; };
 		9F842834193BE49E002F1A3D /* CEBuildingMiniView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuildingMiniView.m; sourceTree = "<group>"; };
 		9F842836193BE4AE002F1A3D /* CEBuildingMiniView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CEBuildingMiniView.xib; sourceTree = "<group>"; };
+		9F84283D193C2BD7002F1A3D /* CEDashboardReorderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDashboardReorderTableViewController.h; sourceTree = "<group>"; };
+		9F84283E193C2BD7002F1A3D /* CEDashboardReorderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDashboardReorderTableViewController.m; sourceTree = "<group>"; };
 		9F8480E7191D4556005F09BA /* CEBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuilding.h; sourceTree = "<group>"; };
 		9F8480E8191D4556005F09BA /* CEBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuilding.m; sourceTree = "<group>"; };
 		9F8480EA191D4A14005F09BA /* CEDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataPoint.h; sourceTree = "<group>"; };
@@ -290,6 +293,8 @@
 				9F842833193BE49E002F1A3D /* CEBuildingMiniView.h */,
 				9F842834193BE49E002F1A3D /* CEBuildingMiniView.m */,
 				9F842836193BE4AE002F1A3D /* CEBuildingMiniView.xib */,
+				9F84283D193C2BD7002F1A3D /* CEDashboardReorderTableViewController.h */,
+				9F84283E193C2BD7002F1A3D /* CEDashboardReorderTableViewController.m */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 				9F8E0560192C0735001335C4 /* CEMeter.m in Sources */,
 				9FA4A4F7191A98DF00AE3551 /* CEDataRetriever.m in Sources */,
 				329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */,
+				9F84283F193C2BD7002F1A3D /* CEDashboardReorderTableViewController.m in Sources */,
 				9FA4A4CA191A95A300AE3551 /* main.m in Sources */,
 				9FE19A49193662E800082FB3 /* CEDashboardItemView.m in Sources */,
 				9F84282E193A8EAC002F1A3D /* CEElectricityUsageView.m in Sources */,

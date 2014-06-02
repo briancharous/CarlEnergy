@@ -47,6 +47,8 @@
     // reload dashboard views in case user has pinned new building
     [self setupDashboardViews];
     [self restartSubviewsAnimation];
+    
+    // relayout subviews
     NSInteger curY = 0;
     for (CEDashboardItemView *view in self.dashboardViews) {
         if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
@@ -58,7 +60,16 @@
             curY += [view preferredHeightForLandscape];
         }
     }
-    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
+    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY+50)];
+    
+    UIButton *reorderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [reorderButton setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, 50)];
+    [reorderButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [reorderButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
+    [reorderButton setTitle:@"Reorder Dashboard" forState:UIControlStateNormal];
+    [reorderButton setShowsTouchWhenHighlighted:YES];
+    [reorderButton addTarget:self action:@selector(presentReorderView) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:reorderButton];
 }
 
 - (void)setupDashboardViews {
@@ -72,23 +83,23 @@
     }
     
     [self.dashboardViews removeAllObjects];
+    for (UIView *v in self.scrollView.subviews) {
+        [v removeFromSuperview];
+    }
     
-    NSInteger curY = 0;
     for (NSDictionary *dict in views) {
         NSInteger type = [[dict objectForKey:@"type"] intValue];
         switch (type) {
             case 1: {
-                CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEWindView preferredHeightForPortrait])];
+                CEWindView *windView = [[CEWindView alloc] initWithFrame:CGRectZero];
                 [windView setDelegate:self];
                 [self.dashboardViews addObject:windView];
-                curY += [CEWindView preferredHeightForPortrait];
                 break;
             }
             case 2: {
-                CEElectricityUsageView *elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEElectricityUsageView preferredHeightForPortrait])];
+                CEElectricityUsageView *elecView = [[CEElectricityUsageView alloc] initWithFrame:CGRectZero];
                 [self.dashboardViews addObject:elecView];
                 [elecView setDelegate:self];
-                curY += [CEElectricityUsageView preferredHeightForPortrait];
                 break;
             }
             case 0: {
@@ -103,19 +114,18 @@
                     }
                 }
                 r = nil;
-                CEBuildingMiniView *mini = [[CEBuildingMiniView alloc] initWithFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, [CEBuildingMiniView preferredHeightForPortrait])];
+                CEBuildingMiniView *mini = [[CEBuildingMiniView alloc] initWithFrame:CGRectZero];
                 [mini setDelegate:self];
                 [mini setBuilding:b];
                 [self.dashboardViews addObject:mini];
-                curY += [CEBuildingMiniView preferredHeightForPortrait];
                 break;
             }
             default:
                 break;
         }
     }
-    // setup the scroll view
-    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
+    
+
     for (CEDashboardItemView *view in self.dashboardViews) {
         [self.scrollView addSubview:view];
         [view restartAnimation];
@@ -141,6 +151,14 @@
     [refreshControl beginRefreshing];
 }
 
+- (void)presentReorderView {
+    CEDashboardReorderTableViewController *reorderVC = [[CEDashboardReorderTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [reorderVC setViews:[[NSUserDefaults standardUserDefaults] arrayForKey:@"dashboard"]];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:reorderVC];
+    [navController.navigationBar setTranslucent:YES];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 
     [self.scrollView setFrame:self.view.frame];
@@ -159,7 +177,7 @@
             curY += [view preferredHeightForLandscape];
         }
     }
-    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY)];
+    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY+50)];
 }
 
 

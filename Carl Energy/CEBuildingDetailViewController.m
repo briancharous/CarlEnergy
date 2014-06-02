@@ -126,8 +126,6 @@ NSString *  const CEElectric       = @"elec";
 }
 - (void) redrawForNewOrientation
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenHeight = screenRect.size.height;
     CGRect parentRect = CGRectMake(0, 75, self.scrollView.frame.size.width, 250);
     CGRect parentRect2 = CGRectMake(0, 350, self.scrollView.frame.size.width, 250);
     CGRect parentRect3 = CGRectMake(0, 615, self.scrollView.frame.size.width, 250);

@@ -91,6 +91,7 @@
     
     [reorderButton setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, 50)];
     [self.scrollView addSubview:reorderButton];
+    [self refreshSubviewsData];
 }
 
 - (void)setupDashboardViews {
@@ -227,12 +228,7 @@
 #pragma mark Dashboard reorder delegate
 - (void)reorderViewDidFinish:(CEDashboardReorderTableViewController *)view {
     [self reloadAllViews];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        // since the ipad modal doesn't take up the whole screen, manually invoke
-        // view will appear to re-layout the list
-        [self viewWillAppear:YES];
-    }
+    [self viewWillAppear:YES];
 }
 
 - (void)reloadAllViews {
@@ -242,7 +238,6 @@
     }
     [self.scrollView addSubview:refreshControl];
     [self setupDashboardViews];
-    [self refreshSubviewsData];
 }
 
 #pragma mark Buildings list delegate

@@ -12,41 +12,20 @@
 #import "CEMeter.h"
 #import "CELineGraphMaker.h"
 
-//typedef NS_ENUM(NSInteger, CETimeScale) {
-//    kTimeScaleDay,
-//    kTimeScaleWeek,
-//    kTimeScaleMonth,
-//    kTimeScaleYear
-//};
-
-
-//extern NSString * const CEClear;
-//extern NSString * const CEElectric;
-
-
 @interface CEBuildingDetailViewController : UIViewController //<CEDataRetrieverDelegate, CPTPlotDataSource>
 
-@property (nonatomic, strong) CPTGraphHostingView *hostView;
-//@property (readwrite, strong, nonatomic) NSMutableArray *dataForElectricityChart;
-//@property (readwrite, strong, nonatomic) NSMutableArray *dataForClearChart;
 @property IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property CEBuilding *building;
 @property CPTGraphHostingView *electricityLineGraphView;
+@property CPTGraphHostingView *waterLineGraphView;
+@property CPTGraphHostingView *steamLineGraphView;
 @property CPTGraph *elecLineGraph;
 @property CPTGraph *waterLineGraph;
 @property CPTGraph *steamLineGraph;
-@property CPTGraphHostingView *waterLineGraphView;
-@property CPTGraphHostingView *steamLineGraphView;
 @property CELineGraphMaker *elecGraphMaker;
 @property CELineGraphMaker *waterGraphMaker;
 @property CELineGraphMaker *steamGraphMaker;
-
-
-//- (void)requestDataOfType:(UsageType)type forTimeScale:(CETimeScale)timeScale;
-//- (IBAction)timeChanged:(UISegmentedControl *)sender;
-//- (void)reloadPlotData;
-
 
 @end
 

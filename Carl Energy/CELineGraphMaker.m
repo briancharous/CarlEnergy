@@ -10,21 +10,11 @@
 
 @implementation CELineGraphMaker
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    //    // undraw and redraw the graph
-    //    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    //    // Maybe not needed after more content added:
-   // [self.hostView setContentSize:CGSizeMake(self.hostView.frame.size.width, 100)];
-    //    [self makePieChart];
-    
-}
-
-
 - (void)requestDataOfType:(UsageType)type forBuilding:(CEBuilding*)building forTimeScale:(CETimeScale)timeScale
 {
-    if (!self.retreiver) {
-        self.retreiver = [[CEDataRetriever alloc] init];
-        [self.retreiver setDelegate:self];
+    if (!self.retriever) {
+        self.retriever = [[CEDataRetriever alloc] init];
+        [self.retriever setDelegate:self];
     }
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -63,21 +53,21 @@
             break;
     }
     
-    if (!self.retreiver.requestInProgress) {
+    if (!self.retriever.requestInProgress) {
         dispatch_async(dispatch_queue_create("com.carlenergy.graphs", NULL), ^ {
-            [self.retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
+            [self.retriever getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
         });
     }
     else {
-        // if a request is in progress, cancel the request by deleteing the old
-        // data retreiver
+        // if a request is in progress, cancel the request by deleting the old
+        // data retriever
         // is this going to be a memory issue??
-        [self.retreiver setDelegate:nil];
-        self.retreiver = nil;
-        self.retreiver = [[CEDataRetriever alloc] init];
-        [self.retreiver setDelegate:self];
+        [self.retriever setDelegate:nil];
+        self.retriever = nil;
+        self.retriever = [[CEDataRetriever alloc] init];
+        [self.retriever setDelegate:self];
         dispatch_async(dispatch_queue_create("com.carlenergy.graphs", NULL), ^ {
-            [self.retreiver getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
+            [self.retriever getUsage:type ForBuilding:building startTime:previous endTime:now resolution:resolution];
         });
     }
 }
@@ -160,17 +150,17 @@
         elecPlot.dataLineStyle = elecLineStyle;
         [self.lineGraph addPlot:elecPlot toPlotSpace:plotSpace];
         // Dummy plot that allows for correct sizing
-        CPTScatterPlot *msftPlot = [[CPTScatterPlot alloc] init];
-        msftPlot.dataSource = self;
-        msftPlot.identifier = CEClear;
-        CPTColor *msftColor = [CPTColor clearColor];
-        CPTMutableLineStyle *msftLineStyle = [msftPlot.dataLineStyle mutableCopy];
-        msftLineStyle.lineColor = msftColor;
-        msftPlot.dataLineStyle = msftLineStyle;
-        [self.lineGraph addPlot:msftPlot toPlotSpace:plotSpace];
+        CPTScatterPlot *myPlot = [[CPTScatterPlot alloc] init];
+        myPlot.dataSource = self;
+        myPlot.identifier = CEClear;
+        CPTColor *myColor = [CPTColor clearColor];
+        CPTMutableLineStyle *myLineStyle = [myPlot.dataLineStyle mutableCopy];
+        myLineStyle.lineColor = myColor;
+        myPlot.dataLineStyle = myLineStyle;
+        [self.lineGraph addPlot:myPlot toPlotSpace:plotSpace];
         
         // Configure plot space
-        [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, msftPlot, nil]];
+        [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, myPlot, nil]];
         CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
         [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.5f)];
         plotSpace.xRange = xRange;
@@ -178,11 +168,8 @@
         [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.5f)];
         plotSpace.yRange = yRange;
         
-        
-        
-        // TODO: clean up this code
         // Configure axes
-        // 1 - Create styles
+        // Create styles
         CPTMutableTextStyle *axisTitleStyle = [CPTMutableTextStyle textStyle];
         axisTitleStyle.color = [CPTColor blackColor];
         axisTitleStyle.fontName = @"Helvetica-Bold";
@@ -201,10 +188,10 @@
         tickLineStyle.lineColor = [CPTColor blackColor];
         tickLineStyle.lineWidth = 1.0f;
         
-        // 2 - Get axis set
+        // Get axis set
         CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.lineGraph.axisSet;
         
-        // 3 - Configure x-axis
+        // Configure x-axis
         self.x = axisSet.xAxis;
         self.x.titleTextStyle = axisTitleStyle;
         self.x.axisLineStyle = axisLineStyle;
@@ -215,7 +202,7 @@
         self.x.tickDirection = CPTSignNegative;
         self.x.axisConstraints = [CPTConstraints constraintWithLowerOffset:0];
         
-        // 4 - Configure y-axis
+        // Configure y-axis
         self.y = axisSet.yAxis;
         self.y.titleTextStyle = axisTitleStyle;
         self.y.titleOffset = -40.0f;
@@ -263,7 +250,7 @@
     
 }
 
-#pragma mark - CEDataRetreiverDelegate methods
+#pragma mark - CEDataRetrieverDelegate methods
 - (void)retriever:(CEDataRetriever *)retriever gotUsage:(NSArray *)usage ofType:(UsageType)usageType forBuilding:(CEBuilding *)building {
     [self.dataForChart removeAllObjects];
     for (CEDataPoint *point in usage) {
@@ -293,7 +280,7 @@
     }
     else{
     
-        //Configure X axis
+        // Configure X axis
         self.x.titleOffset = 17.0f;
         NSDate *now = [NSDate date];
         NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit  | NSCalendarUnitMonth fromDate:now];
@@ -305,7 +292,7 @@
         NSMutableSet *xLabels = [NSMutableSet setWithCapacity:dateCount];
         NSMutableSet *xLocations = [NSMutableSet setWithCapacity:dateCount];
         
-        //Day
+        // Day
         if (self.requestType == 0){
             self.x.title = @"Hour";
             NSString *kString;
@@ -335,11 +322,11 @@
                 }
             }
         }
-        //Week and Month
+        // Week and Month
         else if (self.requestType == 1 || self.requestType == 2){
             self.x.title = @"Day";
             int val = 2;
-            //Changes number of labels for month request
+            // Changes number of labels for month request
             if (self.requestType == 2){
                 val = 7;
             }
@@ -360,7 +347,7 @@
                 }
             }
         }
-        //Year
+        // Year
         else if (self.requestType == 3){
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
             self.x.title = @"Month";
@@ -384,11 +371,11 @@
             }
         }
         
-        //Configure Y axis
+        // Configure Y axis
         [self.lineGraph reloadData];
         int maxInt = [max intValue];
 
-        //Set axis title
+        // Set axis title
         if (self.energyType == kUsageTypeElectricity) {
             self.y.title = @"kW hours";
         }
@@ -399,7 +386,7 @@
             self.y.title =@"kBTUs";
         }
         
-        //Configure axis labels
+        // Configure axis labels
         NSMutableSet *yLabels = [NSMutableSet set];
         NSMutableSet *yMajorLocations = [NSMutableSet set];
         self.y.labelOffset = 18.0f;
@@ -460,7 +447,7 @@
             }
         }
         
-        //Handles values less than one
+        // Handles values less than one
         else if (maxInt == 0){
             float maxFloat = [maxF floatValue];
             float majorIncrement = maxFloat/4;
@@ -481,7 +468,7 @@
             }
         }
         
-        //Sets labels and scales graph
+        // Sets labels and scales graph
         self.x.axisLabels = xLabels;
         self.x.majorTickLocations = xLocations;
         self.y.axisLabels = yLabels;
@@ -496,15 +483,5 @@
         
     }
 }
-
-#pragma mark CPTScatterPlotDelegate
-//-(void)scatterPlot:(CPTScatterPlot *)scatterPlot plotSymbolTouchDownAtRecordIndex:(NSUInteger)idx withEvent:(UIEvent *)event {
-//    NSLog(@"it's here");
-//}
-//
-//
-//- (void)scatterPlotDataLineTouchDown:(CPTScatterPlot *)plot {
-//    NSLog(@"it's here2");
-//}
 
 @end

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		012D0AE1193BC7800058F79F /* customSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D0AE0193BC7800058F79F /* customSegue.m */; };
-		012D0AE6193BC9480058F79F /* customSegueBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 012D0AE5193BC9480058F79F /* customSegueBack.m */; };
 		013B09771932837300376BB6 /* CELineGraphMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B09761932837300376BB6 /* CELineGraphMaker.m */; };
 		013B09811932DE3400376BB6 /* aboutPage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 013B09801932DE3400376BB6 /* aboutPage.txt */; };
 		019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D61920800B00478145 /* QuartzCore.framework */; };
@@ -74,8 +72,8 @@
 		012D0AE0193BC7800058F79F /* customSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customSegue.m; sourceTree = "<group>"; };
 		012D0AE4193BC9480058F79F /* customSegueBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = customSegueBack.h; path = "Carl Energy/customSegueBack.h"; sourceTree = "<group>"; };
 		012D0AE5193BC9480058F79F /* customSegueBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = customSegueBack.m; path = "Carl Energy/customSegueBack.m"; sourceTree = "<group>"; };
-		013B09751932837300376BB6 /* CELineGraphMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CELineGraphMaker.h; sourceTree = "<group>"; };
-		013B09761932837300376BB6 /* CELineGraphMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CELineGraphMaker.m; sourceTree = "<group>"; };
+		013B09751932837300376BB6 /* CELineGraphMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CELineGraphMaker.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		013B09761932837300376BB6 /* CELineGraphMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CELineGraphMaker.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		013B09801932DE3400376BB6 /* aboutPage.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aboutPage.txt; sourceTree = "<group>"; };
 		019ED0D61920800B00478145 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		019ED0D81920801000478145 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -85,7 +83,7 @@
 		329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuildingDetailViewController.h; sourceTree = "<group>"; };
 		329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuildingDetailViewController.m; sourceTree = "<group>"; };
 		9F84282C193A8EAC002F1A3D /* CEElectricityUsageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEElectricityUsageView.h; sourceTree = "<group>"; };
-		9F84282D193A8EAC002F1A3D /* CEElectricityUsageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEElectricityUsageView.m; sourceTree = "<group>"; };
+		9F84282D193A8EAC002F1A3D /* CEElectricityUsageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CEElectricityUsageView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9F842831193A8EBE002F1A3D /* CEElectricityUsageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CEElectricityUsageView.xib; sourceTree = "<group>"; };
 		9F842833193BE49E002F1A3D /* CEBuildingMiniView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuildingMiniView.h; sourceTree = "<group>"; };
 		9F842834193BE49E002F1A3D /* CEBuildingMiniView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuildingMiniView.m; sourceTree = "<group>"; };
@@ -108,7 +106,7 @@
 		9FA4A4CD191A95A300AE3551 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9FA4A4D0191A95A300AE3551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9FA4A4D2191A95A300AE3551 /* CEBuildingsListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEBuildingsListTableViewController.h; sourceTree = "<group>"; };
-		9FA4A4D3191A95A300AE3551 /* CEBuildingsListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEBuildingsListTableViewController.m; sourceTree = "<group>"; };
+		9FA4A4D3191A95A300AE3551 /* CEBuildingsListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CEBuildingsListTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9FA4A4D5191A95A300AE3551 /* CEDashboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEDashboardViewController.h; sourceTree = "<group>"; };
 		9FA4A4D6191A95A300AE3551 /* CEDashboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEDashboardViewController.m; sourceTree = "<group>"; };
 		9FA4A4D8191A95A300AE3551 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -117,10 +115,10 @@
 		9FA4A4E7191A95A400AE3551 /* Carl EnergyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Carl EnergyTests-Info.plist"; sourceTree = "<group>"; };
 		9FA4A4E9191A95A400AE3551 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FA4A4EB191A95A400AE3551 /* Carl_EnergyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Carl_EnergyTests.m; sourceTree = "<group>"; };
-		9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataRetriever.h; sourceTree = "<group>"; };
+		9FA4A4F5191A98DF00AE3551 /* CEDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CEDataRetriever.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		9FA4A4F6191A98DF00AE3551 /* CEDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDataRetriever.m; sourceTree = "<group>"; };
 		9FB5F6E41932B46F00C9B419 /* CEWindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEWindView.h; sourceTree = "<group>"; };
-		9FB5F6E51932B46F00C9B419 /* CEWindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEWindView.m; sourceTree = "<group>"; };
+		9FB5F6E51932B46F00C9B419 /* CEWindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CEWindView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9FB5F6E71932B4DC00C9B419 /* CEWindView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CEWindView.xib; sourceTree = "<group>"; };
 		9FC36342192DB70B002E00B6 /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		9FE19A47193662E800082FB3 /* CEDashboardItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDashboardItemView.h; sourceTree = "<group>"; };

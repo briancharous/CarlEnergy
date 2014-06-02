@@ -41,10 +41,10 @@
 
 - (void)loadInitialData {
     
-    CEDataRetriever *retreiver = [[CEDataRetriever alloc] init];
-    [retreiver setDelegate:self];
-    [NSThread detachNewThreadSelector:@selector(getBuildingsOnCampus) toTarget:retreiver withObject:nil];
-//    [retreiver getBuildingsOnCampus];
+    CEDataRetriever *retriever = [[CEDataRetriever alloc] init];
+    [retriever setDelegate:self];
+    [NSThread detachNewThreadSelector:@selector(getBuildingsOnCampus) toTarget:retriever withObject:nil];
+//    [retriever getBuildingsOnCampus];
 }
 
 - (void)didReceiveMemoryWarning

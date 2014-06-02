@@ -40,9 +40,34 @@
     [refreshControl.layer setZPosition:-1];
     [self setupDashboardViews];
     [self refreshSubviewsData];
+    
+    // add reorder button
+    reorderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [reorderButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [reorderButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
+    [reorderButton setTitle:@"Reorder Dashboard" forState:UIControlStateNormal];
+    [reorderButton setShowsTouchWhenHighlighted:YES];
+    [reorderButton addTarget:self action:@selector(presentReorderView) forControlEvents:UIControlEventTouchUpInside];
 
     // listen for new item added to dashboard
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAllViews) name:@"new_pin" object:nil];
+    
+    // if it's an ipad, hook up the buildings button to show the buildings list in a popover
+    // on the iphone it's managed in the storyboard
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.buildingsButton setTarget:self];
+        [self.buildingsButton setAction:@selector(showBuildingsPopover)];
+    }
+}
+
+- (void)showBuildingsPopover {
+    if (!self.buildingsPopover) {
+        CEBuildingsListTableViewController *buildingsList = [[UIStoryboard storyboardWithName:@"Main-iPad" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"buildingsList"];
+        [buildingsList setDelegate:self];
+        self.buildingsPopover = [[UIPopoverController alloc] initWithContentViewController:buildingsList];
+    }
+    [self.buildingsPopover setPopoverContentSize:CGSizeMake(300, self.view.frame.size.height)];
+    [self.buildingsPopover presentPopoverFromBarButtonItem:self.buildingsButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,13 +89,7 @@
     }
     [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, curY+50)];
     
-    reorderButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [reorderButton setFrame:CGRectMake(0, curY, self.scrollView.frame.size.width, 50)];
-    [reorderButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [reorderButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
-    [reorderButton setTitle:@"Reorder Dashboard" forState:UIControlStateNormal];
-    [reorderButton setShowsTouchWhenHighlighted:YES];
-    [reorderButton addTarget:self action:@selector(presentReorderView) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:reorderButton];
 }
 
@@ -216,6 +235,15 @@
     [self.scrollView addSubview:refreshControl];
     [self setupDashboardViews];
     [self refreshSubviewsData];
+}
+
+#pragma mark Buildings list delegate
+- (void)buildingsList:(CEBuildingsListTableViewController *)list didSelectBuilding:(CEBuilding *)building {
+    // if this is an ipad, the list is shown in a popover
+    // hide the popover and push the detail view
+    [self.buildingsPopover dismissPopoverAnimated:YES];
+    CEBuildingDetailViewController *detailView = [[UIStoryboard storyboardWithName:@"Main-iPad" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"buildingDetailView"];
+    [self.navigationController pushViewController:detailView animated:YES];
 }
 
 @end

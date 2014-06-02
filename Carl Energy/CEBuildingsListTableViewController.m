@@ -87,6 +87,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.delegate buildingsList:self didSelectBuilding:[self.buildings objectAtIndex:indexPath.row]];
+    }
 }
 
 /*

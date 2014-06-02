@@ -19,6 +19,7 @@
 		9F842835193BE49E002F1A3D /* CEBuildingMiniView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F842834193BE49E002F1A3D /* CEBuildingMiniView.m */; };
 		9F842837193BE4AE002F1A3D /* CEBuildingMiniView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F842836193BE4AE002F1A3D /* CEBuildingMiniView.xib */; };
 		9F84283F193C2BD7002F1A3D /* CEDashboardReorderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F84283E193C2BD7002F1A3D /* CEDashboardReorderTableViewController.m */; };
+		9F842845193C5A90002F1A3D /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F842843193C5A90002F1A3D /* Main-iPad.storyboard */; };
 		9F8480E9191D4556005F09BA /* CEBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480E8191D4556005F09BA /* CEBuilding.m */; };
 		9F8480EC191D4A14005F09BA /* CEDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8480EB191D4A14005F09BA /* CEDataPoint.m */; };
 		9F8E0560192C0735001335C4 /* CEMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E055F192C0735001335C4 /* CEMeter.m */; };
@@ -91,6 +92,7 @@
 		9F842836193BE4AE002F1A3D /* CEBuildingMiniView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CEBuildingMiniView.xib; sourceTree = "<group>"; };
 		9F84283D193C2BD7002F1A3D /* CEDashboardReorderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDashboardReorderTableViewController.h; sourceTree = "<group>"; };
 		9F84283E193C2BD7002F1A3D /* CEDashboardReorderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEDashboardReorderTableViewController.m; sourceTree = "<group>"; };
+		9F842844193C5A90002F1A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Main-iPad.storyboard"; sourceTree = "<group>"; };
 		9F8480E7191D4556005F09BA /* CEBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuilding.h; sourceTree = "<group>"; };
 		9F8480E8191D4556005F09BA /* CEBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuilding.m; sourceTree = "<group>"; };
 		9F8480EA191D4A14005F09BA /* CEDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEDataPoint.h; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				9FA4A4CC191A95A300AE3551 /* AppDelegate.h */,
 				9FA4A4CD191A95A300AE3551 /* AppDelegate.m */,
 				9FA4A4CF191A95A300AE3551 /* Main.storyboard */,
+				9F842843193C5A90002F1A3D /* Main-iPad.storyboard */,
 				9FA4A4D2191A95A300AE3551 /* CEBuildingsListTableViewController.h */,
 				9FA4A4D3191A95A300AE3551 /* CEBuildingsListTableViewController.m */,
 				9FE19A4C193662F200082FB3 /* Dashboard */,
@@ -356,7 +359,7 @@
 				ORGANIZATIONNAME = "Carleton College";
 				TargetAttributes = {
 					9FA4A4B9191A95A300AE3551 = {
-						DevelopmentTeam = 3YCVS5227N;
+						DevelopmentTeam = P67F2FBXLF;
 					};
 					9FA4A4DD191A95A300AE3551 = {
 						TestTargetID = 9FA4A4B9191A95A300AE3551;
@@ -410,6 +413,7 @@
 				013B09811932DE3400376BB6 /* aboutPage.txt in Resources */,
 				9F842837193BE4AE002F1A3D /* CEBuildingMiniView.xib in Resources */,
 				9FC36343192DB70B002E00B6 /* buildings.plist in Resources */,
+				9F842845193C5A90002F1A3D /* Main-iPad.storyboard in Resources */,
 				9FA4A4D1191A95A300AE3551 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +476,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9F842843193C5A90002F1A3D /* Main-iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F842844193C5A90002F1A3D /* Base */,
+			);
+			name = "Main-iPad.storyboard";
+			sourceTree = "<group>";
+		};
 		9FA4A4C6191A95A300AE3551 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

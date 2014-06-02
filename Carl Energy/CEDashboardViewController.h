@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CEDataRetriever.h"
 #import "CEWindView.h"
 #import "CEElectricityUsageView.h"
 #import "CEBuildingMiniView.h"
+#import "CEBuildingsListTableViewController.h"
 #import "CEDashboardReorderTableViewController.h"
+#import "CEDataRetriever.h"
 
-
-@interface CEDashboardViewController : UIViewController <CEDashboardItemViewDelegate, UIScrollViewDelegate, CEDashboardReorderDelegate> {
+@interface CEDashboardViewController : UIViewController <CEBuildingsListControllerDelegate, CEDashboardItemViewDelegate, UIScrollViewDelegate, CEDashboardReorderDelegate> {
 
     NSInteger numRefreshedViews;
     UILabel *pullToRefreshLabel;
@@ -29,8 +29,11 @@
 - (void)setupDashboardViews;
 - (void)presentReorderView;
 - (void)reloadAllViews;
+- (void)showBuildingsPopover;
 
 @property IBOutlet UIScrollView *scrollView;
 @property NSMutableArray *dashboardViews;
+@property IBOutlet UIBarButtonItem *buildingsButton;
+@property UIPopoverController *buildingsPopover;
 
 @end

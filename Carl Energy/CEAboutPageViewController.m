@@ -33,6 +33,12 @@
                                                   encoding:NSUTF8StringEncoding
                                                      error:NULL];
     self.textView.text = content;
+    UIFont *myFont = [UIFont fontWithName:@"Helvetica Neue" size:14.0];
+    // iPad
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
+        myFont = [UIFont fontWithName:@"Helvetica Neue" size:20.0];
+    }
+    [self.textView setFont:myFont];
 }
 
 

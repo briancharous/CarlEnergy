@@ -130,6 +130,12 @@
                             [point setValue:[[data valueForKey:@"value"] floatValue]];
                             [dataPoints addObject:point];
                         }
+                        else {
+                            CEDataPoint *point = [[CEDataPoint alloc] init];
+                            [point setWeight:0.f];
+                            [point setValue:0.f];
+                            [dataPoints addObject:point];
+                        }
                     }
                 }
             }

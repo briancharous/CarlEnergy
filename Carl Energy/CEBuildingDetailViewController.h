@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CEDataRetriever.h"
-#import "CorePlot-CocoaTouch.h"
+#import <CorePlot/CorePlot.h>
 #import "CEMeter.h"
 #import "CELineGraphMaker.h"
 #import "CEDashboardViewController.h"

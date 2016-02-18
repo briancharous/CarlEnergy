@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CEDataRetriever.h"
-#import "CorePlot-CocoaTouch.h"
+#import <CorePlot/CorePlot.h>
 #import "CEMeter.h"
 
 typedef NS_ENUM(NSInteger, CETimeScale) {

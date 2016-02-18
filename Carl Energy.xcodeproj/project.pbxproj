@@ -11,9 +11,9 @@
 		013B09811932DE3400376BB6 /* aboutPage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 013B09801932DE3400376BB6 /* aboutPage.txt */; };
 		019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D61920800B00478145 /* QuartzCore.framework */; };
 		019ED0D91920801000478145 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0D81920801000478145 /* Accelerate.framework */; };
-		019ED0F11920886300478145 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */; };
 		32269D1D192FE71600013D3E /* CEAboutPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32269D1C192FE71600013D3E /* CEAboutPageViewController.m */; };
 		329C22F9191ED67200248363 /* CEBuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */; };
+		9F7632331C75915A00E24E49 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7632321C75915A00E24E49 /* CorePlot.framework */; };
 		9F84282E193A8EAC002F1A3D /* CEElectricityUsageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F84282D193A8EAC002F1A3D /* CEElectricityUsageView.m */; };
 		9F842832193A8EBE002F1A3D /* CEElectricityUsageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F842831193A8EBE002F1A3D /* CEElectricityUsageView.xib */; };
 		9F842835193BE49E002F1A3D /* CEBuildingMiniView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F842834193BE49E002F1A3D /* CEBuildingMiniView.m */; };
@@ -46,20 +46,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		019ED0ED1920884300478145 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
-			remoteInfo = "CorePlot-CocoaTouch";
-		};
-		019ED0EF1920885F00478145 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
-			remoteInfo = "CorePlot-CocoaTouch";
-		};
 		9FA4A4E3191A95A400AE3551 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9FA4A4B2191A95A300AE3551 /* Project object */;
@@ -79,11 +65,11 @@
 		013B09801932DE3400376BB6 /* aboutPage.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aboutPage.txt; sourceTree = "<group>"; };
 		019ED0D61920800B00478145 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		019ED0D81920801000478145 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		32269D1B192FE71600013D3E /* CEAboutPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEAboutPageViewController.h; sourceTree = "<group>"; };
 		32269D1C192FE71600013D3E /* CEAboutPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEAboutPageViewController.m; sourceTree = "<group>"; };
 		329C22F7191ED67200248363 /* CEBuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEBuildingDetailViewController.h; sourceTree = "<group>"; };
 		329C22F8191ED67200248363 /* CEBuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEBuildingDetailViewController.m; sourceTree = "<group>"; };
+		9F7632321C75915A00E24E49 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CorePlot.framework; path = Carthage/Build/iOS/CorePlot.framework; sourceTree = "<group>"; };
 		9F84282C193A8EAC002F1A3D /* CEElectricityUsageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEElectricityUsageView.h; sourceTree = "<group>"; };
 		9F84282D193A8EAC002F1A3D /* CEElectricityUsageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CEElectricityUsageView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9F842831193A8EBE002F1A3D /* CEElectricityUsageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CEElectricityUsageView.xib; sourceTree = "<group>"; };
@@ -135,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				019ED0F11920886300478145 /* libCorePlot-CocoaTouch.a in Frameworks */,
+				9F7632331C75915A00E24E49 /* CorePlot.framework in Frameworks */,
 				019ED0D91920801000478145 /* Accelerate.framework in Frameworks */,
 				019ED0D71920800B00478145 /* QuartzCore.framework in Frameworks */,
 				9FA4A4C0191A95A300AE3551 /* CoreGraphics.framework in Frameworks */,
@@ -169,14 +155,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		019ED0E81920884300478145 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		9F8480ED191D4BD3005F09BA /* Data Wrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +175,6 @@
 				9FA4A4E5191A95A400AE3551 /* Carl EnergyTests */,
 				9FA4A4BC191A95A300AE3551 /* Frameworks */,
 				9FA4A4BB191A95A300AE3551 /* Products */,
-				019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,6 +190,7 @@
 		9FA4A4BC191A95A300AE3551 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F7632321C75915A00E24E49 /* CorePlot.framework */,
 				019ED0D81920801000478145 /* Accelerate.framework */,
 				019ED0D61920800B00478145 /* QuartzCore.framework */,
 				9FA4A4BD191A95A300AE3551 /* Foundation.framework */,
@@ -312,11 +290,11 @@
 				9FA4A4B6191A95A300AE3551 /* Sources */,
 				9FA4A4B7191A95A300AE3551 /* Frameworks */,
 				9FA4A4B8191A95A300AE3551 /* Resources */,
+				9F7632341C75916500E24E49 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				019ED0F01920885F00478145 /* PBXTargetDependency */,
 			);
 			name = "Carl Energy";
 			productName = "Carl Energy";
@@ -347,7 +325,7 @@
 		9FA4A4B2191A95A300AE3551 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Carleton College";
 				TargetAttributes = {
 					9FA4A4B9191A95A300AE3551 = {
@@ -369,12 +347,6 @@
 			mainGroup = 9FA4A4B1191A95A300AE3551;
 			productRefGroup = 9FA4A4BB191A95A300AE3551 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 019ED0E81920884300478145 /* Products */;
-					ProjectRef = 019ED0E71920884300478145 /* CorePlot-CocoaTouch.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				9FA4A4B9191A95A300AE3551 /* Carl Energy */,
@@ -382,16 +354,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		019ED0EE1920884300478145 /* libCorePlot-CocoaTouch.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libCorePlot-CocoaTouch.a";
-			remoteRef = 019ED0ED1920884300478145 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9FA4A4B8191A95A300AE3551 /* Resources */ = {
@@ -419,6 +381,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9F7632341C75916500E24E49 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CorePlot.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9FA4A4B6191A95A300AE3551 /* Sources */ = {
@@ -455,11 +434,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		019ED0F01920885F00478145 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "CorePlot-CocoaTouch";
-			targetProxy = 019ED0EF1920885F00478145 /* PBXContainerItemProxy */;
-		};
 		9FA4A4E4191A95A400AE3551 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9FA4A4B9191A95A300AE3551 /* Carl Energy */;
@@ -521,6 +495,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -580,16 +555,21 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"framework/**",
 				);
 				INFOPLIST_FILE = "Carl Energy/Carl Energy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.carleton.mad2014.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -604,16 +584,21 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"framework/**",
 				);
 				INFOPLIST_FILE = "Carl Energy/Carl Energy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				OTHER_LDFLAGS = "-ObjC";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.carleton.mad2014.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -637,6 +622,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Carl EnergyTests/Carl EnergyTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.carleton.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -655,6 +641,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Carl Energy/Carl Energy-Prefix.pch";
 				INFOPLIST_FILE = "Carl EnergyTests/Carl EnergyTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.carleton.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

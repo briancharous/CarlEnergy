@@ -1,1 +1,4 @@
 *.xcuserdatad
+Cartfile.resolved
+Carthage/
+build/

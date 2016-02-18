@@ -162,10 +162,10 @@
         // Configure plot space
         [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:elecPlot, myPlot, nil]];
         CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
-        [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.5f)];
+        [xRange expandRangeByFactor:[NSNumber numberWithFloat:1.5f]];
         plotSpace.xRange = xRange;
         CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
-        [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.5f)];
+        [yRange expandRangeByFactor:[NSNumber numberWithFloat:1.5f]];
         plotSpace.yRange = yRange;
         
         // Configure axes
@@ -313,7 +313,7 @@
                     }
                     CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:kString  textStyle:self.x.labelTextStyle];
                     CGFloat location = k;
-                    label.tickLocation = CPTDecimalFromCGFloat(location);
+                    label.tickLocation = [NSNumber numberWithFloat:1.5f];
                     label.offset = self.x.majorTickLength;
                     if (label) {
                         [xLabels addObject:label];
@@ -338,7 +338,7 @@
                     NSString *myString = [NSString stringWithFormat:@"%li%s%li", (long)[components1 month], "/",(long)[components1 day]];
                     CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:myString  textStyle:self.x.labelTextStyle];
                     CGFloat location = k;
-                    label.tickLocation = CPTDecimalFromCGFloat(location);
+                    label.tickLocation = [NSNumber numberWithFloat:location];
                     label.offset = self.x.majorTickLength;
                     if (label) {
                         [xLabels addObject:label];
@@ -361,7 +361,7 @@
                     monthName = [monthName substringToIndex:3];
                     CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:monthName  textStyle:self.x.labelTextStyle];
                     CGFloat location = k;
-                    label.tickLocation = CPTDecimalFromCGFloat(location);
+                    label.tickLocation = [NSNumber numberWithFloat:location];
                     label.offset = self.x.majorTickLength;
                     if (label) {
                         [xLabels addObject:label];
@@ -441,14 +441,13 @@
                 }
                 big = false;
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strLabel textStyle:self.y.labelTextStyle];
-                NSDecimal location = CPTDecimalFromInteger(j);
-                label.tickLocation = location;
+                label.tickLocation = [NSNumber numberWithFloat:j];
                 label.offset = -self.y.majorTickLength - self.y.labelOffset;
                 if (label) {
                     [yLabels addObject:label];
                 }
                 
-                [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
+                [yMajorLocations addObject:[NSNumber numberWithInt:j]];
                 
             }
         }
@@ -463,14 +462,13 @@
                 NSString *strLabel = [NSString stringWithFormat:@"%f", jRound];
                 strLabel = [strLabel substringToIndex:4];
                 CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strLabel textStyle:self.y.labelTextStyle];
-                NSDecimal location = CPTDecimalFromFloat(j);
-                label.tickLocation = location;
+                label.tickLocation = [NSNumber numberWithFloat:j];
                 label.offset = -self.y.majorTickLength - self.y.labelOffset;
                 if (label) {
                     [yLabels addObject:label];
                 }
                 
-                [yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
+                [yMajorLocations addObject:[NSNumber numberWithFloat:j]];
             }
         }
         
@@ -484,7 +482,7 @@
         // Makes sure top doesn't get chopped off
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) self.lineGraph.defaultPlotSpace;
         CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
-        [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+        [yRange expandRangeByFactor:[NSNumber numberWithFloat:1.1f]];
         plotSpace.yRange = yRange;
         
     }
